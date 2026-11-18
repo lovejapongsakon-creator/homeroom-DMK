@@ -1631,6 +1631,164 @@
     .hr-step-head > span:nth-child(2) { flex: 1; min-width: 0; }
     .stu-name { word-break: break-word; }
     @media (max-width: 360px) { .tc-tab { font-size: .64rem; } .tc-class { font-size: 1.25rem; } .hr-bulk-btn small { display: none !important; } }
+
+    /* =====================================================================
+       v1.4 — ปุ่มแจ้งเตือนลอย / เมนูแอดมิน / พื้นหลังหน้านักเรียน-ครู
+       ===================================================================== */
+    body { padding-bottom: max(24px, env(safe-area-inset-bottom)); }
+    .hd-bell { display: none; }
+    .status-bar-info { padding-top: max(10px, env(safe-area-inset-top)); }
+
+    /* ปุ่มแจ้งเตือนลอย */
+    .notif-fab { position: fixed; z-index: 90; left: auto; right: 12px; top: auto; bottom: 28px; width: 56px; height: 56px; border-radius: 50%;
+      border: 2px solid rgba(255,255,255,.9); display: grid; place-items: center; cursor: grab; touch-action: none; user-select: none; -webkit-user-select: none;
+      background: linear-gradient(145deg, #4c6ef5 0%, #7048e8 100%); color: #fff; -webkit-tap-highlight-color: transparent;
+      box-shadow: 0 10px 24px rgba(76,110,245,.38), 0 2px 6px rgba(20,30,60,.18); transition: left .28s cubic-bezier(.2,.8,.2,1), transform .15s, box-shadow .2s; }
+    .notif-fab[hidden] { display: none; }
+    .notif-fab[style*="top"] { bottom: auto; right: auto; }
+    .notif-fab svg { width: 26px; height: 26px; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
+    .notif-fab:active { transform: scale(.94); }
+    .notif-fab.dragging { cursor: grabbing; transition: none; transform: scale(1.08); box-shadow: 0 16px 34px rgba(76,110,245,.45); opacity: .95; }
+    .notif-fab.has-new svg { animation: fabRing 2.4s ease-in-out infinite; transform-origin: 50% 15%; }
+    @keyframes fabRing { 0%, 70%, 100% { transform: rotate(0); } 74% { transform: rotate(14deg); } 80% { transform: rotate(-12deg); } 86% { transform: rotate(8deg); } 92% { transform: rotate(-4deg); } }
+    .notif-count { position: absolute; top: -4px; right: -4px; min-width: 22px; height: 22px; padding: 0 6px; border-radius: 11px; display: none;
+      align-items: center; justify-content: center; font-size: .72rem; font-weight: 800; color: #fff; background: #f03e3e; border: 2px solid #fff; line-height: 1; }
+    .notif-count.active { display: flex; }
+    #notifSheet .record-card { border-radius: 14px; }
+
+    /* เมนูแอดมิน (แทนแถบล่าง) */
+    .adm-nav { grid-template-columns: repeat(3, 1fr); gap: 4px; margin: 10px 14px 0; padding: 4px; background: #fff; border: 1px solid var(--line); border-radius: 14px; box-shadow: 0 4px 12px rgba(60,100,160,.06); }
+    .adm-nav .nav-btn { display: flex; align-items: center; justify-content: center; text-align: center; font: inherit; font-size: .76rem; font-weight: 700; color: #5b7088; background: transparent; border: none; border-radius: 10px; padding: 9px 4px; cursor: pointer; flex-direction: row; }
+    .adm-nav .nav-btn.active { color: #fff; background: linear-gradient(150deg, #2f6fd1, #6c5ce7); }
+
+    /* เลเยอร์พื้นหลัง */
+    .page-fx { position: fixed; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; display: none; }
+    .page-fx i { position: absolute; display: block; }
+    body[data-role="student"] .page-fx, body[data-role="teacher"] .page-fx { display: block; }
+    body[data-role="student"] .app-shell, body[data-role="teacher"] .app-shell { background: transparent; box-shadow: none; border-color: transparent; }
+    @media (prefers-reduced-motion: reduce) { .page-fx i, .notif-fab.has-new svg { animation: none !important; } }
+
+    /* ---------- นักเรียน: ฉากค่ำคืนแบบเกม สีเปลี่ยนตามแรงก์ ---------- */
+    body[data-role="student"] { background: #0f0c29; --rk-glow: #7b8cff; --rk-text: #eef; }
+    body[data-role="student"] .page-fx { background:
+        radial-gradient(120% 60% at 50% -5%, color-mix(in srgb, var(--rk-glow) 55%, #1b1650) 0%, transparent 62%),
+        linear-gradient(180deg, #17123f 0%, #221a55 38%, #2c2366 70%, #1a1546 100%); }
+    body[data-role="student"] .fx-a { width: 70vmax; height: 70vmax; left: -25vmax; top: 18vh; border-radius: 50%; filter: blur(60px); opacity: .45;
+      background: radial-gradient(circle, color-mix(in srgb, var(--rk-glow) 80%, #ff6ec7) 0%, transparent 65%); animation: fxDrift 18s ease-in-out infinite alternate; }
+    body[data-role="student"] .fx-b { width: 60vmax; height: 60vmax; right: -24vmax; top: -12vh; border-radius: 50%; filter: blur(60px); opacity: .4;
+      background: radial-gradient(circle, #4dabf7 0%, transparent 65%); animation: fxDrift 22s ease-in-out infinite alternate-reverse; }
+    body[data-role="student"] .fx-c { width: 55vmax; height: 55vmax; right: -18vmax; bottom: -22vmax; border-radius: 50%; filter: blur(70px); opacity: .35;
+      background: radial-gradient(circle, #f783ac 0%, transparent 65%); animation: fxDrift 26s ease-in-out infinite alternate; }
+    body[data-role="student"] .fx-grid { inset: auto 0 0 0; height: 45vh; opacity: .22;
+      background-image: linear-gradient(rgba(255,255,255,.35) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.35) 1px, transparent 1px);
+      background-size: 36px 36px; transform: perspective(420px) rotateX(58deg); transform-origin: 50% 100%;
+      -webkit-mask-image: linear-gradient(to top, #000 0%, transparent 85%); mask-image: linear-gradient(to top, #000 0%, transparent 85%); }
+    body[data-role="student"] .fx-stars { inset: 0; opacity: .75;
+      background-image: radial-gradient(1.4px 1.4px at 12% 18%, #fff 60%, transparent 61%), radial-gradient(1px 1px at 28% 42%, #fff 60%, transparent 61%),
+        radial-gradient(1.6px 1.6px at 46% 12%, #fff 60%, transparent 61%), radial-gradient(1px 1px at 63% 33%, #fff 60%, transparent 61%),
+        radial-gradient(1.3px 1.3px at 82% 22%, #fff 60%, transparent 61%), radial-gradient(1px 1px at 91% 48%, #fff 60%, transparent 61%),
+        radial-gradient(1.2px 1.2px at 7% 60%, #fff 60%, transparent 61%), radial-gradient(1px 1px at 36% 70%, #fff 60%, transparent 61%),
+        radial-gradient(1.4px 1.4px at 72% 64%, #fff 60%, transparent 61%), radial-gradient(1px 1px at 55% 86%, #fff 60%, transparent 61%);
+      background-size: 100% 100%; animation: fxTwinkle 5s ease-in-out infinite alternate; }
+    @keyframes fxDrift { 0% { transform: translate(0,0) scale(1); } 100% { transform: translate(6vmax, -4vmax) scale(1.12); } }
+    @keyframes fxTwinkle { 0% { opacity: .35; } 100% { opacity: .85; } }
+
+    body[data-role="student"] .app-header { background: rgba(18,14,52,.55); border-bottom: 1px solid rgba(255,255,255,.08); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); }
+    body[data-role="student"] .brand-title { color: #fff; }
+    body[data-role="student"] .brand-subtitle { color: rgba(255,255,255,.72); }
+    body[data-role="student"] .status-bar-info { background: rgba(255,255,255,.06); border-bottom: 1px solid rgba(255,255,255,.08); }
+    body[data-role="student"] .sb-name { color: #fff; }
+    body[data-role="student"] .sb-timer, body[data-role="student"] .sb-speed { color: rgba(255,255,255,.65); }
+    body[data-role="student"] .sb-avatar { background: linear-gradient(135deg, color-mix(in srgb, var(--rk-glow) 60%, #fff), #f8d7ff); }
+    body[data-role="student"] .sb-btn { background: rgba(255,255,255,.1); border-color: rgba(255,255,255,.18); color: #fff; }
+    body[data-role="student"] .sb-btn svg { stroke: #fff; }
+    body[data-role="student"] .rk-top { color: rgba(255,255,255,.75); }
+    body[data-role="student"] .rk-season { background: rgba(255,255,255,.1); border-color: rgba(255,255,255,.2); color: #fff; }
+    body[data-role="student"] .rk-stage::before { content: ''; position: absolute; left: 50%; top: 40px; width: min(80vw, 300px); height: min(80vw, 300px); transform: translateX(-50%);
+      border-radius: 50%; background: radial-gradient(circle, color-mix(in srgb, var(--rk-glow) 60%, transparent) 0%, transparent 62%); filter: blur(6px); opacity: .75; pointer-events: none; animation: fxPulse 4s ease-in-out infinite; }
+    body[data-role="student"] .rk-stage::after { content: ''; position: absolute; left: 50%; top: 44px; width: min(76vw, 290px); height: min(76vw, 290px); transform: translateX(-50%);
+      border-radius: 50%; pointer-events: none; opacity: .35;
+      background: repeating-conic-gradient(from 0deg, color-mix(in srgb, var(--rk-glow) 70%, #fff) 0deg 4deg, transparent 4deg 22deg);
+      -webkit-mask-image: radial-gradient(circle, #000 0%, transparent 68%); mask-image: radial-gradient(circle, #000 0%, transparent 68%); animation: fxSpin 40s linear infinite; }
+    @keyframes fxPulse { 0%, 100% { opacity: .55; transform: translateX(-50%) scale(.95); } 50% { opacity: .9; transform: translateX(-50%) scale(1.05); } }
+    @keyframes fxSpin { to { transform: translateX(-50%) rotate(360deg); } }
+    body[data-role="student"] .rk-stage > * { position: relative; z-index: 1; }
+    body[data-role="student"] .rk-skel { background: linear-gradient(110deg, rgba(255,255,255,.06) 30%, rgba(255,255,255,.16) 50%, rgba(255,255,255,.06) 70%); background-size: 220% 100%; }
+    body[data-role="student"] .rk-stage .rank-emblem { filter: drop-shadow(0 14px 22px rgba(0,0,0,.45)) drop-shadow(0 0 16px color-mix(in srgb, var(--rk-glow) 55%, transparent)); }
+    body[data-role="student"] .rk-stage .rank-name { background: linear-gradient(180deg, #fff 0%, var(--rk-text) 55%, color-mix(in srgb, var(--rk-glow) 70%, #fff) 100%);
+      -webkit-background-clip: text; background-clip: text; filter: drop-shadow(0 2px 10px color-mix(in srgb, var(--rk-glow) 60%, transparent)); }
+    body[data-role="student"] .rk-stage .rank-name-th { color: rgba(255,255,255,.72); }
+    body[data-role="student"] .rk-score { color: #fff; }
+    body[data-role="student"] .rk-score span { color: rgba(255,255,255,.65); }
+    body[data-role="student"] .rk-stage .rank-bar { background: rgba(255,255,255,.14); }
+    body[data-role="student"] .rk-stage .rank-bar span { box-shadow: 0 0 12px color-mix(in srgb, var(--rk-glow) 80%, transparent); }
+    body[data-role="student"] .rk-stage .rank-next { color: rgba(255,255,255,.82); }
+    body[data-role="student"] .st-stat { background: rgba(255,255,255,.09); border-color: rgba(255,255,255,.16); box-shadow: inset 0 1px 0 rgba(255,255,255,.12); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
+    body[data-role="student"] .st-stat b { color: #fff; }
+    body[data-role="student"] .st-stat span { color: rgba(255,255,255,.7); }
+    body[data-role="student"] #view-student .tc-card, body[data-role="student"] #view-student .tc-tabs { background: rgba(255,255,255,.96); border-color: rgba(255,255,255,.6); box-shadow: 0 12px 30px rgba(5,5,30,.35); }
+    body[data-role="student"] .notif-fab { background: linear-gradient(145deg, color-mix(in srgb, var(--rk-glow) 75%, #fff), #7048e8); }
+
+    /* ---------- ครู: พื้นหลังโมเดิร์นสว่าง + กรอบกระจก ---------- */
+    body[data-role="teacher"] { background: #eef3fb; }
+    body[data-role="teacher"] .page-fx { background: linear-gradient(165deg, #eef4ff 0%, #f4f1ff 45%, #eefaf6 100%); }
+    body[data-role="teacher"] .fx-a { width: 60vmax; height: 60vmax; left: -22vmax; top: -18vmax; border-radius: 50%; filter: blur(50px); opacity: .55; background: radial-gradient(circle, #a5c8ff 0%, transparent 65%); animation: fxDrift 24s ease-in-out infinite alternate; }
+    body[data-role="teacher"] .fx-b { width: 50vmax; height: 50vmax; right: -20vmax; top: 30vh; border-radius: 50%; filter: blur(50px); opacity: .45; background: radial-gradient(circle, #d0bfff 0%, transparent 65%); animation: fxDrift 28s ease-in-out infinite alternate-reverse; }
+    body[data-role="teacher"] .fx-c { width: 46vmax; height: 46vmax; left: -10vmax; bottom: -20vmax; border-radius: 50%; filter: blur(50px); opacity: .45; background: radial-gradient(circle, #a6f0d0 0%, transparent 65%); animation: fxDrift 30s ease-in-out infinite alternate; }
+    body[data-role="teacher"] .fx-grid { inset: 0; opacity: .5; background-image: radial-gradient(rgba(76,110,245,.18) 1px, transparent 1.2px); background-size: 22px 22px;
+      -webkit-mask-image: linear-gradient(180deg, #000 0%, transparent 70%); mask-image: linear-gradient(180deg, #000 0%, transparent 70%); }
+    body[data-role="teacher"] .app-header { background: rgba(255,255,255,.72); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); border-bottom: 1px solid rgba(255,255,255,.9); }
+    body[data-role="teacher"] .status-bar-info { background: rgba(255,255,255,.55); border-bottom: 1px solid rgba(255,255,255,.9); }
+    body[data-role="teacher"] #view-teacher .tc-card,
+    body[data-role="teacher"] #view-teacher .hr-step,
+    body[data-role="teacher"] #view-teacher .tc-tabs,
+    body[data-role="teacher"] #view-teacher .hr-savebar {
+      background: rgba(255,255,255,.86); border: 1px solid rgba(255,255,255,.95); border-radius: 22px;
+      box-shadow: 0 1px 0 rgba(255,255,255,.8) inset, 0 10px 30px rgba(60,80,140,.10), 0 2px 6px rgba(60,80,140,.05); }
+    body[data-role="teacher"] #view-teacher .hr-step-head { font-weight: 800; }
+    body[data-role="teacher"] #view-teacher .hr-step-no { background: linear-gradient(145deg, #4c6ef5, #7048e8); color: #fff; box-shadow: 0 4px 10px rgba(76,110,245,.3); }
+    body[data-role="teacher"] #view-teacher .stu-row { border-color: #e8eef8; border-radius: 14px; }
+
+    /* แผงข้อมูลครูที่ปรึกษา: สีเข้มหรู มีสีสันพอดี */
+    .tc-panel { position: relative; overflow: hidden; color: #fff; border: none; border-radius: 24px; padding: 16px;
+      background: radial-gradient(120% 90% at 100% 0%, rgba(255,140,200,.35) 0%, transparent 45%),
+                  radial-gradient(90% 80% at 0% 100%, rgba(80,220,200,.28) 0%, transparent 50%),
+                  linear-gradient(140deg, #1f3a93 0%, #3b4fd8 48%, #6a44d6 100%);
+      box-shadow: 0 16px 34px rgba(48,62,170,.32), 0 2px 0 rgba(255,255,255,.15) inset; }
+    .tc-panel::before { content: ''; position: absolute; right: -40px; top: -40px; width: 170px; height: 170px; border-radius: 50%;
+      border: 26px solid rgba(255,255,255,.07); pointer-events: none; }
+    .tc-panel::after { content: ''; position: absolute; left: 16px; right: 16px; top: 0; height: 3px; border-radius: 0 0 3px 3px;
+      background: linear-gradient(90deg, #ffd43b, #ff8787, #b197fc); opacity: .9; }
+    .tc-panel > * { position: relative; }
+    .tc-panel .tc-eyebrow { color: rgba(255,255,255,.75); letter-spacing: .6px; }
+    .tc-panel .tc-class { color: #fff; font-size: 1.7rem; letter-spacing: .3px; text-shadow: 0 2px 10px rgba(0,0,0,.18); }
+    .tc-panel .tc-meta { color: rgba(255,255,255,.82); }
+    .tc-panel .tc-year { color: rgba(255,255,255,.75); }
+    .tc-panel .tc-year select { color: #fff; background: rgba(255,255,255,.14); border-color: rgba(255,255,255,.28); border-radius: 12px; }
+    .tc-panel .tc-year select option { color: #1d2440; }
+    .tc-panel .tc-cal { background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.16); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
+    .tc-panel .tc-cal-label { color: #fff; }
+    .tc-panel .tc-cal-nav { background: rgba(255,255,255,.14); border-color: rgba(255,255,255,.22); }
+    .tc-panel .tc-cal-nav svg { stroke: #fff; }
+    .tc-panel .tc-day { background: rgba(255,255,255,.14); color: #fff; box-shadow: none; }
+    .tc-panel .tc-day-abbr { color: rgba(255,255,255,.75); }
+    .tc-panel .tc-day.today .tc-day-num { color: #ffe066; }
+    .tc-panel .tc-day.done .tc-day-dot { background: #63e6be; }
+    .tc-panel .tc-day.missing .tc-day-dot { background: #ffc078; }
+    .tc-panel .tc-day.future { background: transparent; }
+    .tc-panel .tc-day.sel { background: #fff; border-color: #fff; color: #3b4fd8; box-shadow: 0 8px 18px rgba(10,20,80,.3); }
+    .tc-panel .tc-day.sel .tc-day-abbr { color: #6a44d6; }
+    .tc-panel .tc-day.sel .tc-day-num { color: #2b3cb8; }
+    .tc-panel .tc-day.sel.done .tc-day-dot { background: #12b886; }
+    .tc-panel .tc-day.sel.missing .tc-day-dot { background: #f08c00; }
+    .tc-panel .tc-selected-date { color: #fff; }
+    .tc-panel .tc-status.done { color: #8ff0c9; } .tc-panel .tc-status.todo, .tc-panel .tc-status.missing { color: #ffd8a8; } .tc-panel .tc-status.edit { color: #d0ebff; }
+    .tc-panel .tc-load-btn { background: #fff; color: #3b4fd8; border-color: #fff; box-shadow: 0 4px 12px rgba(10,20,80,.2); }
+    .tc-panel .tc-teacher { border-top-color: rgba(255,255,255,.2); }
+    .tc-panel .tc-teacher-label { color: rgba(255,255,255,.75); }
+    .tc-panel .teacher-pick button { background: rgba(255,255,255,.12); color: #fff; border: 1.5px solid rgba(255,255,255,.25); box-shadow: none; }
+    .tc-panel .teacher-pick button.on { background: #fff; color: #3b4fd8; border-color: #fff; }
+    .tc-panel .tc-teacher input { background: rgba(255,255,255,.95); }
     @media print {
       body { background: #fff !important; padding: 0 !important; }
       body * { visibility: hidden !important; }
@@ -1657,10 +1815,6 @@
           <h1 class="brand-title">ระบบกิจกรรมโฮมรูม</h1>
           <p class="brand-subtitle">โรงเรียนพระปริยัติธรรมวัดธรรมมงคล แผนกสามัญศึกษา</p>
         </div>
-        <button type="button" class="hd-bell" id="openNotifBtn" aria-label="การแจ้งเตือน" title="การแจ้งเตือน">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 16.5V11a6 6 0 1 1 12 0v5.5l1.5 2h-15z"/><path d="M10 20.5a2 2 0 0 0 4 0"/></svg>
-          <span class="notif-dot" id="notifDot"></span>
-        </button>
       </div>
     </header>
 
@@ -1690,6 +1844,13 @@
         </button>
       </div>
     </div>
+
+    <!-- เมนูผู้ดูแลระบบ (แสดงเฉพาะแอดมิน) -->
+    <nav class="adm-nav" id="bottomNav" aria-label="เมนูผู้ดูแลระบบ" style="display: none;">
+      <button type="button" class="nav-btn active" data-bottom-nav="role-home">หน้าจัดการ</button>
+      <button type="button" class="nav-btn" data-bottom-nav="reports">กราฟรายงานผล</button>
+      <button type="button" class="nav-btn" data-bottom-nav="line-status">สถานะ 18 ห้อง</button>
+    </nav>
 
     <main class="app-main" id="appMain" style="display: none;">
 
@@ -2217,14 +2378,6 @@
         </div>
       </section>
 
-      <!-- ==================== 5. แจ้งเตือน ==================== -->
-      <section class="view-section" id="view-notifications">
-        <div class="card card-blue">
-          <h2 class="section-title">รายการแจ้งเตือนในระบบ</h2>
-          <p class="section-desc">แจ้งเตือนการบันทึกโฮมรูม คะแนนความประพฤติ การตอบกลับคำปรึกษา และการอนุมัติรายงาน</p>
-          <div id="notificationList" class="record-list"></div>
-        </div>
-      </section>
 
       <!-- ==================== 6. สถานะการส่งโฮมรูม 18 ห้อง + LINE ==================== -->
       <section class="view-section" id="view-line-status">
@@ -2277,13 +2430,6 @@
       </section>
     </main>
 
-    <!-- Bottom Navigation -->
-    <nav class="bottom-nav" id="bottomNav" aria-label="เมนูหลักด้านล่าง" style="display: none;">
-      <button type="button" class="nav-btn active" data-bottom-nav="role-home"><span class="nav-icon">🏠</span><span>หน้าใช้งาน</span></button>
-      <button type="button" class="nav-btn" data-bottom-nav="reports"><span class="nav-icon">📊</span><span>กราฟรายงานผล</span></button>
-      <button type="button" class="nav-btn" data-bottom-nav="line-status"><span class="nav-icon">💬</span><span>สถานะ 18 ห้อง</span></button>
-      <button type="button" class="nav-btn" data-bottom-nav="notifications"><span class="nav-icon">🔔</span><span>แจ้งเตือน</span></button>
-    </nav>
 
     <!-- LOGIN -->
     <div id="loginScreen" class="login-container">
@@ -2330,6 +2476,25 @@
   </div>
 
   <!-- แผ่นเลือกเรื่องที่ใช้บ่อย -->
+  <div class="page-fx" aria-hidden="true"><i class="fx-a"></i><i class="fx-b"></i><i class="fx-c"></i><i class="fx-grid"></i><i class="fx-stars"></i></div>
+
+  <button type="button" class="notif-fab" id="notifFab" aria-label="การแจ้งเตือน" title="การแจ้งเตือน (ลากย้ายตำแหน่งได้)" hidden>
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 16.5V11a6 6 0 1 1 12 0v5.5l1.5 2h-15z"/><path d="M10 20.5a2 2 0 0 0 4 0"/></svg>
+    <span class="notif-count" id="notifDot"></span>
+  </button>
+
+  <div class="sheet" id="notifSheet" hidden>
+    <div class="sheet-backdrop" data-close-sheet></div>
+    <div class="sheet-panel" role="dialog" aria-modal="true" aria-labelledby="notifSheetTitle">
+      <div class="sheet-grip" aria-hidden="true"></div>
+      <div class="sheet-head">
+        <b id="notifSheetTitle">การแจ้งเตือน</b>
+        <button type="button" class="sheet-close" data-close-sheet aria-label="ปิด"><svg viewBox="0 0 24 24"><path d="M6.5 6.5l11 11M17.5 6.5l-11 11"/></svg></button>
+      </div>
+      <div class="sheet-body"><div id="notificationList" class="record-list"></div></div>
+    </div>
+  </div>
+
   <div class="sheet" id="topicSheet" hidden>
     <div class="sheet-backdrop" data-close-sheet></div>
     <div class="sheet-panel" role="dialog" aria-modal="true" aria-labelledby="topicSheetTitle">
@@ -2678,6 +2843,8 @@
     store.del('hr_token'); store.del('hr_boot');
     $('loginScreen').style.display = 'flex';
     ['appHeader', 'statusBarInfo', 'appMain', 'bottomNav'].forEach((id) => { $(id).style.display = 'none'; });
+    $('notifFab').hidden = true; closeNotifSheet(true);
+    delete document.body.dataset.role;
     $('changePasswordSection').style.display = 'none';
     // ล้างฟอร์มทั้งหมด เพื่อไม่ให้ข้อมูลของผู้ใช้คนก่อนค้างอยู่
     document.querySelectorAll('#appMain form').forEach((f) => f.reset());
@@ -2692,10 +2859,12 @@
 
   function showApp() {
     $('loginScreen').style.display = 'none';
-    $('appHeader').style.display = 'block';
+    $('appHeader').style.display = 'none'; // v1.4.1: ตัดแถบหัวเว็บออก ประหยัดพื้นที่
     $('statusBarInfo').style.display = 'flex';
     $('appMain').style.display = 'flex';
-    $('bottomNav').style.display = 'grid';
+    $('bottomNav').style.display = S.user.role === 'admin' ? 'grid' : 'none';
+    document.body.dataset.role = S.user.role;
+    $('notifFab').hidden = false; placeFab();
     S.activeView = 'role-home';
     S.refreshLeft = CONFIG.REFRESH_SECONDS;
     syncViews();
@@ -2737,14 +2906,8 @@
 
     if (S.activeView === 'reports') { $('view-reports').classList.add('active'); loadStats(); }
     else if (S.activeView === 'line-status') { $('view-line-status').classList.add('active'); loadStats(); }
-    else if (S.activeView === 'notifications') {
-      $('view-notifications').classList.add('active');
-      markNotificationsSeen();
-    } else { $('view-' + S.user.role).classList.add('active'); }
-
-    document.querySelector('[data-bottom-nav="reports"]').style.display = isAdmin ? '' : 'none';
-    document.querySelector('[data-bottom-nav="line-status"]').style.display = isAdmin ? '' : 'none';
-    $('bottomNav').style.gridTemplateColumns = isAdmin ? 'repeat(4, 1fr)' : 'repeat(2, 1fr)';
+    else { S.activeView = 'role-home'; $('view-' + S.user.role).classList.add('active'); }
+    $('bottomNav').style.display = isAdmin ? 'grid' : 'none';
     document.querySelectorAll('.nav-btn').forEach((b) => b.classList.toggle('active', b.dataset.bottomNav === S.activeView));
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
@@ -2752,7 +2915,66 @@
   document.querySelectorAll('.nav-btn').forEach((btn) => btn.addEventListener('click', () => {
     S.activeView = btn.dataset.bottomNav; syncViews();
   }));
-  $('openNotifBtn').addEventListener('click', () => { S.activeView = 'notifications'; syncViews(); });
+
+  // ---------------- ปุ่มแจ้งเตือนลอย (ลากไปวางตรงไหนก็ได้ · แตะเพื่อเปิด) ----------------
+  const FAB_KEY = 'hr_fab_pos';
+  function fabPos() { try { return JSON.parse(localStorage.getItem(FAB_KEY) || 'null'); } catch (e) { return null; } }
+  function placeFab(pos) {
+    const f = $('notifFab'); if (f.hidden) return;
+    const size = f.offsetWidth || 56, m = 12, W = window.innerWidth, H = window.innerHeight;
+    pos = pos || fabPos() || { side: 'right', y: H - size - 28 };
+    const y = Math.min(Math.max(pos.y, 70), H - size - m);
+    f.style.left = (pos.side === 'left' ? m : W - size - m) + 'px';
+    f.style.top = y + 'px';
+  }
+  (function initFab() {
+    const f = $('notifFab');
+    let sx = 0, sy = 0, ox = 0, oy = 0, drag = false, down = false;
+    f.addEventListener('pointerdown', (e) => {
+      if (e.button !== undefined && e.button !== 0) return;
+      down = true; drag = false; sx = e.clientX; sy = e.clientY; ox = f.offsetLeft; oy = f.offsetTop;
+      try { f.setPointerCapture(e.pointerId); } catch (err) {}
+    });
+    f.addEventListener('pointermove', (e) => {
+      if (!down) return;
+      const dx = e.clientX - sx, dy = e.clientY - sy;
+      if (!drag && Math.hypot(dx, dy) < 7) return;
+      drag = true; f.classList.add('dragging');
+      const size = f.offsetWidth;
+      f.style.left = Math.min(Math.max(ox + dx, 4), window.innerWidth - size - 4) + 'px';
+      f.style.top = Math.min(Math.max(oy + dy, 4), window.innerHeight - size - 4) + 'px';
+    });
+    const end = (e) => {
+      if (!down) return; down = false;
+      try { f.releasePointerCapture(e.pointerId); } catch (err) {}
+      if (!drag) return;
+      f.classList.remove('dragging');
+      const pos = { side: f.offsetLeft + f.offsetWidth / 2 < window.innerWidth / 2 ? 'left' : 'right', y: f.offsetTop };
+      try { localStorage.setItem(FAB_KEY, JSON.stringify(pos)); } catch (err) {}
+      placeFab(pos);
+      f.dataset.justDragged = '1'; setTimeout(() => { delete f.dataset.justDragged; }, 60);
+    };
+    f.addEventListener('pointerup', end);
+    f.addEventListener('pointercancel', end);
+    f.addEventListener('click', () => { if (f.dataset.justDragged) return; openNotifSheet(); });
+    window.addEventListener('resize', () => placeFab());
+  })();
+  function openNotifSheet() {
+    const sh = $('notifSheet');
+    renderNotifications();
+    sh.hidden = false;
+    requestAnimationFrame(() => sh.classList.add('open'));
+    document.body.style.overflow = 'hidden';
+    markNotificationsSeen();
+  }
+  function closeNotifSheet(instant) {
+    const sh = $('notifSheet'); if (sh.hidden) return;
+    sh.classList.remove('open');
+    document.body.style.overflow = '';
+    if (instant) sh.hidden = true; else setTimeout(() => { sh.hidden = true; }, 220);
+  }
+  $('notifSheet').addEventListener('click', (e) => { if (e.target.closest('[data-close-sheet]')) closeNotifSheet(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeNotifSheet(); });
 
 
   function switchAdminTab(tab) {
@@ -3571,6 +3793,8 @@
     const info = getRankInfo(d.points, d.glorySince), r = info.rank;
     const hero = $('rankHero');
     hero.style.setProperty('--rk-glow', r.glow);
+    document.body.style.setProperty('--rk-glow', r.glow);
+    document.body.style.setProperty('--rk-text', r.text || '#fff');
     hero.style.setProperty('--rk-ink', r.ink || r.glow);
     $('rankSeason').textContent = 'ปีการศึกษา ' + th(d.currentYear || '');
     if (shownRankIdx !== info.idx) { showEmblem(r); shownRankIdx = info.idx; preloadRanks(info.idx); }
@@ -4036,22 +4260,27 @@
 
   // ---------------- แจ้งเตือน ----------------
   function seenKey() { return 'hr_seen_' + (S.user ? S.user.role + '_' + S.user.id : ''); }
+  const noEmoji = (t) => String(t || '').replace(/[\p{Extended_Pictographic}\uFE0F\u200D]/gu, '').replace(/\s{2,}/g, ' ').trim();
   function renderNotifications() {
     const list = (S.data && S.data.notifications) || [];
     $('notificationList').innerHTML = !list.length ? emptyBox('ยังไม่มีการแจ้งเตือนสำหรับท่านในระบบ') : list.map((n) => `
       <div class="record-card">
-        <div class="record-head"><div class="record-title">${tesc(n.title)}</div></div>
+        <div class="record-head"><div class="record-title">${tesc(noEmoji(n.title))}</div></div>
         <div style="font-size:0.82rem;">${tesc(n.detail)}</div>
         <div class="record-meta">${thaiDateShort(n.time)} ${th(String(n.time).slice(11, 16))} น.</div>
       </div>`).join('');
-    const newest = list[0] ? list[0].time : '';
     const seen = store.get(seenKey()) || '';
-    $('notifDot').classList.toggle('active', !!newest && newest > seen && S.activeView !== 'notifications');
+    const unread = $('notifSheet').classList.contains('open') ? 0 : list.filter((n) => String(n.time) > seen).length;
+    const dot = $('notifDot');
+    dot.textContent = unread > 9 ? '9+' : unread ? th(String(unread)) : '';
+    dot.classList.toggle('active', unread > 0);
+    $('notifFab').classList.toggle('has-new', unread > 0);
   }
   function markNotificationsSeen() {
     const list = (S.data && S.data.notifications) || [];
     if (list[0]) store.set(seenKey(), list[0].time);
-    $('notifDot').classList.remove('active');
+    $('notifDot').classList.remove('active'); $('notifDot').textContent = '';
+    $('notifFab').classList.remove('has-new');
   }
 
   // ---------------- บันทึกข้อความราชการ ----------------
