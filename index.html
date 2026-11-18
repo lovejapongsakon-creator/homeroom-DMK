@@ -2,12 +2,20 @@
 <html lang="th">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#2f6fd1">
+  <meta name="format-detection" content="telephone=no">
   <meta name="robots" content="noindex, nofollow">
   <title>ระบบกิจกรรมโฮมรูม โรงเรียนพระปริยัติธรรมวัดธรรมมงคล</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&family=Sarabun:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://script.google.com">
+  <link rel="preconnect" href="https://script.googleusercontent.com">
+  <link rel="preconnect" href="https://i.ibb.co">
+  <link rel="preload" as="image" href="assets/logo.webp" fetchpriority="high">
+  <!-- โหลดฟอนต์แบบไม่บล็อกการแสดงผล -->
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;500;600;700;800&family=Sarabun:wght@400;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;500;600;700;800&family=Sarabun:wght@400;700&display=swap" rel="stylesheet"></noscript>
   <style>
     :root {
       --bg: #fdf8fb;
@@ -1447,6 +1455,182 @@
     .hr-bulk-btn.absent .hr-bulk-ico { width: 24px; height: 24px; font-size: .8rem; }
     .hr-bulk-btn.absent b { font-size: .78rem; }
     .hr-bulk-btn.absent small { display: none; }
+    /* =================================================================
+       v1.3 — ออกแบบใหม่: หน้าเข้าสู่ระบบ / หน้าครู / หน้านักเรียน (เน้นมือถือ)
+       ================================================================= */
+    /* ---------- เข้าสู่ระบบ ---------- */
+    .login-container { padding: 0 0 28px; gap: 0; justify-content: flex-start; background: #f5f8fd; }
+    .lg-hero { position: relative; overflow: hidden; min-height: 50vh; display: flex; align-items: center; justify-content: center; padding: max(44px, env(safe-area-inset-top)) 20px 78px; color: #fff;
+      background: linear-gradient(150deg, #1c3f8f 0%, #2f6fd1 42%, #7b5be0 72%, #d9669b 100%); }
+    .lg-aurora { position: absolute; inset: -20%; pointer-events: none; filter: blur(42px); opacity: .75; }
+    .lg-aurora i { position: absolute; border-radius: 50%; mix-blend-mode: screen; animation: lgFloat 14s ease-in-out infinite; }
+    .lg-aurora i:nth-child(1) { width: 60%; height: 55%; left: -5%; top: 5%; background: #4dabf7; }
+    .lg-aurora i:nth-child(2) { width: 55%; height: 50%; right: -8%; top: 0; background: #f783ac; animation-delay: -4s; animation-duration: 17s; }
+    .lg-aurora i:nth-child(3) { width: 50%; height: 45%; left: 20%; bottom: -5%; background: #9775fa; animation-delay: -8s; animation-duration: 19s; }
+    .lg-aurora i:nth-child(4) { width: 30%; height: 30%; right: 15%; bottom: 10%; background: #ffd43b; opacity: .45; animation-delay: -2s; }
+    @keyframes lgFloat { 0%,100% { transform: translate(0,0) scale(1); } 33% { transform: translate(6%, 4%) scale(1.08); } 66% { transform: translate(-5%, 6%) scale(.95); } }
+    .lg-dots { position: absolute; inset: 0; pointer-events: none; opacity: .35;
+      background: radial-gradient(circle at 1px 1px, rgba(255,255,255,.55) 1px, transparent 0) 0 0 / 20px 20px;
+      -webkit-mask: linear-gradient(180deg, #000 0%, transparent 85%); mask: linear-gradient(180deg, #000 0%, transparent 85%); }
+    .lg-wave { position: absolute; left: 0; right: 0; bottom: -1px; width: 100%; height: 46px; fill: #f5f8fd; }
+    .lg-hero .login-hero { position: relative; z-index: 1; }
+    .lg-hero .login-logo-ring { width: 124px; height: 124px; margin-bottom: 18px; background: #fff;
+      box-shadow: 0 0 0 7px rgba(255,255,255,.22), 0 0 0 14px rgba(255,255,255,.10), 0 18px 40px rgba(10,25,70,.35); }
+    .lg-hero .login-logo-ring::after { inset: -14px; padding: 2px; opacity: .9;
+      background: conic-gradient(from 0deg, rgba(255,255,255,0), #fff 25%, rgba(255,255,255,0) 50%); }
+    .lg-hero .login-logo { width: 108px; height: 108px; }
+    .lg-hero .login-heading { color: #fff; -webkit-text-fill-color: #fff; background: none; font-size: clamp(1.85rem, 8.4vw, 2.4rem);
+      text-shadow: 0 4px 22px rgba(10,25,70,.35); letter-spacing: -.4px; }
+    .lg-hero .login-school { color: rgba(255,255,255,.92); font-weight: 500; font-size: clamp(.66rem, 3.35vw, .95rem); margin-top: 8px; }
+    .login-container .login-card { position: relative; z-index: 2; margin: -46px 18px 0; padding: 24px 20px 22px; border-radius: 24px;
+      background: #fff; border: 1px solid #edf2f9; box-shadow: 0 24px 50px rgba(20, 50, 110, .16), 0 2px 6px rgba(20,50,110,.06); }
+    .login-container .config-warning { margin: 0 18px 12px; position: relative; z-index: 2; }
+    @media (min-width: 768px) { .lg-hero { border-radius: 24px 24px 0 0; } }
+    @media (prefers-reduced-motion: reduce) { .lg-aurora i { animation: none; } }
+
+    /* ---------- ครู: แผงข้อมูล + ปฏิทิน ---------- */
+    .tc-hero { display: none; }
+    .tc-panel { background: #fff; border: 1px solid var(--line); border-radius: 20px; padding: 14px; box-shadow: 0 8px 22px rgba(60,100,160,.08); display: flex; flex-direction: column; gap: 12px; }
+    .tc-panel-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; }
+    .tc-panel-class { display: flex; flex-direction: column; min-width: 0; }
+    .tc-eyebrow { font-size: .7rem; font-weight: 600; color: var(--muted); letter-spacing: .2px; }
+    .tc-class { font-size: 1.45rem; font-weight: 800; line-height: 1.2; color: var(--ink-strong); }
+    .tc-meta { font-size: .74rem; color: #5b7088; line-height: 1.45; }
+    .tc-year { flex: none; display: flex; flex-direction: column; align-items: flex-end; gap: 3px; font-size: .66rem; font-weight: 600; color: var(--muted); }
+    .tc-year select { font: inherit; font-size: 16px; font-weight: 700; color: #1d4f8f; border: 1.5px solid #d6e4f3; background: #f5f9fe; border-radius: 10px; padding: 4px 8px; }
+    .tc-cal { background: #f5f8fd; border-radius: 16px; padding: 8px; }
+    .tc-cal-bar { display: flex; align-items: center; justify-content: space-between; gap: 6px; margin-bottom: 6px; }
+    .tc-cal-label { font-size: .78rem; font-weight: 700; color: #33506e; text-align: center; flex: 1; }
+    .tc-cal-nav { width: 34px; height: 34px; border-radius: 10px; border: 1px solid #dbe7f4; background: #fff; display: grid; place-items: center; cursor: pointer; }
+    .tc-cal-nav svg { width: 18px; height: 18px; fill: none; stroke: #3a5878; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+    .tc-cal-nav:disabled { opacity: .35; cursor: default; }
+    .tc-week { display: grid; gap: 6px; margin: 0; }
+    .tc-day { font: inherit; cursor: pointer; border: 1.5px solid transparent; background: #fff; border-radius: 14px; padding: 7px 2px 6px; display: flex; flex-direction: column; align-items: center; gap: 1px;
+      color: #33506e; box-shadow: 0 1px 3px rgba(40,70,120,.06); transition: transform .1s, border-color .15s, background .15s; outline: none; }
+    .tc-day:active { transform: scale(.96); }
+    .tc-day-abbr { font-size: .68rem; font-weight: 600; color: #6b7f96; }
+    .tc-day-num { font-size: 1.05rem; font-weight: 800; line-height: 1.2; }
+    .tc-day-dot { width: 7px; height: 7px; border-radius: 50%; background: transparent; margin-top: 2px; }
+    .tc-day.done .tc-day-dot { background: #22a35e; }
+    .tc-day.missing .tc-day-dot { background: #f0a12b; }
+    .tc-day.future { background: transparent; box-shadow: none; opacity: .4; cursor: default; }
+    .tc-day.today .tc-day-num { color: #2f6fd1; }
+    .tc-day.sel { border-color: #2f6fd1; background: linear-gradient(160deg, #2f6fd1, #6c5ce7); color: #fff; box-shadow: 0 6px 14px rgba(47,111,209,.32); }
+    .tc-day.sel .tc-day-abbr, .tc-day.sel .tc-day-num { color: #fff; }
+    .tc-day.sel.done .tc-day-dot { background: #8ef0b5; }
+    .tc-day.sel.missing .tc-day-dot { background: #ffd27a; }
+    .tc-day:focus-visible { border-color: #2f6fd1; }
+    .tc-selected { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+    .tc-selected-text { display: flex; flex-direction: column; min-width: 0; }
+    .tc-selected-date { font-size: .92rem; font-weight: 700; color: var(--ink-strong); line-height: 1.4; }
+    .tc-status { font-size: .74rem; font-weight: 600; display: flex; align-items: center; gap: 5px; }
+    .tc-status::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: currentColor; flex: none; }
+    .tc-status.done { color: #1b7a45; } .tc-status.todo, .tc-status.missing { color: #b8680a; } .tc-status.edit { color: #2f6fd1; }
+    .tc-load-btn { flex: none; font: inherit; font-size: .78rem; font-weight: 700; color: #1d4f8f; background: #eaf2fc; border: 1px solid #cfe0f5; border-radius: 12px; padding: 9px 12px; cursor: pointer; white-space: nowrap; }
+    .tc-teacher { display: flex; flex-direction: column; gap: 6px; border-top: 1px dashed #e1eaf5; padding-top: 10px; }
+    .tc-teacher:empty { display: none; }
+    .tc-teacher-label { font-size: .7rem; font-weight: 600; color: var(--muted); }
+    .tc-teacher input { font: inherit; font-size: 16px; border: 1.5px solid #d6e4f3; border-radius: 12px; padding: 9px 12px; width: 100%; }
+    .teacher-pick { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 6px; }
+    .teacher-pick button { font-size: .8rem; padding: 9px 10px; border-radius: 12px; text-align: center; }
+    .hr-exist { background: #f3f8ff; border: 1px solid #d4e5f8; color: #234466; flex-direction: column; align-items: flex-start; gap: 2px; line-height: 1.5; }
+    .hr-exist small { color: #5b7088; }
+
+    /* ---------- ครู: แท็บ (ไม่ใช้อิโมจิ) ---------- */
+    .tc-tabs { background: #fff; border: 1px solid var(--line); border-radius: 18px; padding: 5px; gap: 4px; box-shadow: 0 4px 14px rgba(60,100,160,.06); }
+    .tc-tab { padding: 9px 2px 8px; border-radius: 13px; gap: 4px; font-size: .72rem; color: #5b7088; }
+    .tc-tab svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    .tc-tab.active { color: #fff; background: linear-gradient(150deg, #2f6fd1, #6c5ce7); box-shadow: 0 6px 14px rgba(47,111,209,.28); }
+    .tc-tab span:not(.tc-badge) { white-space: nowrap; }
+    .tc-badge { top: 4px; right: 14%; border: 2px solid #fff; }
+
+    /* ---------- ครู: เช็กชื่อ ปุ่มเท่ากัน 50:50 ---------- */
+    .hr-bulk { grid-template-columns: 1fr 1fr !important; gap: 8px; }
+    .hr-bulk-btn, .hr-bulk-btn.absent { justify-self: stretch; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;
+      gap: 4px; padding: 14px 8px !important; min-height: 104px; border-radius: 16px; border-width: 2px; }
+    .hr-bulk-btn b, .hr-bulk-btn.absent b { font-size: .95rem !important; line-height: 1.3; }
+    .hr-bulk-btn small, .hr-bulk-btn.absent small { display: block !important; font-size: .68rem; }
+    .hr-bulk-ico, .hr-bulk-btn.absent .hr-bulk-ico { width: 36px !important; height: 36px !important; }
+    .hr-bulk-ico svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
+    .hr-bulk-btn.absent { background: #fff5f7; color: #b72e48; border-color: #f2b9c5; box-shadow: none; }
+    .hr-bulk-btn.present { border-color: transparent; }
+
+    /* ---------- ครู: ปุ่มเลือกเรื่อง + แผ่นเลือก ---------- */
+    .topic-pick-btn { font: inherit; width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 10px; text-align: left; cursor: pointer;
+      padding: 12px 14px; border-radius: 14px; border: 1.5px solid #cfe0f5; background: linear-gradient(135deg, #f3f8ff, #fbf4ff); color: #1d4f8f; }
+    .topic-pick-btn b { display: block; font-size: .92rem; }
+    .topic-pick-btn small { display: block; font-size: .7rem; color: #5b7088; margin-top: 1px; }
+    .topic-pick-btn svg { width: 22px; height: 22px; flex: none; fill: none; stroke: #2f6fd1; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+    .sheet { position: fixed; inset: 0; z-index: 120; }
+    .sheet[hidden] { display: none; }
+    .sheet-backdrop { position: absolute; inset: 0; background: rgba(15,25,45,.45); opacity: 0; transition: opacity .2s; }
+    .sheet-panel { position: absolute; left: 50%; bottom: 0; width: 100%; max-width: 520px; max-height: 86vh; display: flex; flex-direction: column;
+      background: #fff; border-radius: 22px 22px 0 0; box-shadow: 0 -10px 40px rgba(0,0,0,.2); transform: translate(-50%, 100%); transition: transform .24s cubic-bezier(.2,.8,.2,1);
+      padding-bottom: env(safe-area-inset-bottom); }
+    .sheet.open .sheet-backdrop { opacity: 1; }
+    .sheet.open .sheet-panel { transform: translate(-50%, 0); }
+    .sheet-grip { width: 42px; height: 5px; border-radius: 3px; background: #d5dde8; margin: 8px auto 2px; }
+    .sheet-head { display: flex; align-items: center; justify-content: space-between; padding: 6px 16px 10px; border-bottom: 1px solid #eef2f7; }
+    .sheet-head b { font-size: 1rem; color: var(--ink-strong); }
+    .sheet-close { width: 36px; height: 36px; border-radius: 50%; border: none; background: #f1f5fa; display: grid; place-items: center; cursor: pointer; }
+    .sheet-close svg { width: 18px; height: 18px; fill: none; stroke: #4b6480; stroke-width: 2.2; stroke-linecap: round; }
+    .sheet-body { overflow-y: auto; -webkit-overflow-scrolling: touch; padding: 10px 12px 16px; display: flex; flex-direction: column; gap: 12px; }
+    .tp-group { flex: none; border-radius: 16px; overflow: hidden; border: 1px solid color-mix(in srgb, var(--tp) 22%, #fff); background: #fff; }
+    .tp-head { display: flex; justify-content: space-between; align-items: center; padding: 9px 12px; font-size: .84rem; font-weight: 800; color: #fff; background: var(--tp); }
+    .tp-head span { font-size: .68rem; font-weight: 600; opacity: .9; }
+    .tp-item { font: inherit; display: flex; flex-direction: column; gap: 2px; width: 100%; text-align: left; cursor: pointer; border: none; border-top: 1px solid #f0f3f8;
+      background: var(--tp-bg); padding: 11px 12px 11px 14px; border-left: 4px solid var(--tp); }
+    .tp-item:first-of-type { border-top: none; }
+    .tp-item span { font-size: .88rem; font-weight: 600; color: var(--ink-strong); line-height: 1.4; }
+    .tp-item small { font-size: .68rem; color: #5b7088; }
+    .tp-item:active { filter: brightness(.96); }
+    .hr-magic { background: linear-gradient(120deg, #6c5ce7, #d86c9b); }
+    .trait-chip .tick svg { width: 13px; height: 13px; fill: none; stroke: #fff; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+    .tc-card-sub { font-size: .68rem; font-weight: 500; color: var(--muted); margin-left: 4px; }
+
+    /* ---------- นักเรียน: ตราแบบไม่มีพื้นหลัง ---------- */
+    .rank-hero { display: none; }
+    .rk-stage { position: relative; text-align: center; padding: 6px 4px 4px; }
+    .rk-top { display: flex; justify-content: space-between; align-items: center; font-size: .72rem; color: #5b7088; font-weight: 600; }
+    .rk-season { padding: 3px 10px; border-radius: 999px; background: #fff; border: 1px solid var(--line); }
+    .rk-stage .rank-emblem-wrap { width: min(62vw, 230px); height: min(62vw, 230px); margin: 4px auto 0; position: relative; display: grid; place-items: center; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+    .rk-halo { position: absolute; inset: 12%; border-radius: 50%; background: radial-gradient(circle, var(--rk-glow) 0%, transparent 68%); opacity: 0; transform: scale(.7); transition: opacity .3s, transform .5s; }
+    .rank-emblem-wrap.pop .rk-halo { animation: rkHalo .9s ease; }
+    @keyframes rkHalo { 0% { opacity: .0; transform: scale(.6); } 30% { opacity: .55; } 100% { opacity: 0; transform: scale(1.35); } }
+    .rk-skel { position: absolute; inset: 14%; border-radius: 50%; background: linear-gradient(110deg, #eef3f9 30%, #f9fbfe 50%, #eef3f9 70%); background-size: 220% 100%; animation: rkSkel 1.1s linear infinite; transition: opacity .3s; }
+    .rk-skel.gone { opacity: 0; pointer-events: none; }
+    @keyframes rkSkel { to { background-position: -220% 0; } }
+    .rk-stage .rank-emblem { position: relative; width: 100%; height: 100%; object-fit: contain; opacity: 0; transform: scale(.92);
+      filter: drop-shadow(0 12px 18px rgba(30,40,80,.22)); transition: opacity .35s ease, transform .45s cubic-bezier(.2,.8,.2,1); animation: none; }
+    .rk-stage .rank-emblem.ready { opacity: 1; transform: scale(1); animation: rkFloat 4s ease-in-out .5s infinite; }
+    .rank-emblem-wrap.pop .rank-emblem.ready { animation: rkPop2 .55s ease, rkFloat 4s ease-in-out .6s infinite; }
+    @keyframes rkPop2 { 0% { transform: scale(1); } 35% { transform: scale(1.12) rotate(-3deg); } 70% { transform: scale(.97) rotate(1deg); } 100% { transform: scale(1); } }
+    .rk-shine { position: absolute; inset: 0; pointer-events: none; -webkit-mask-size: contain; mask-size: contain; -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
+      -webkit-mask-position: center; mask-position: center; background: linear-gradient(115deg, transparent 38%, rgba(255,255,255,.75) 50%, transparent 62%);
+      background-size: 250% 100%; background-position: 160% 0; animation: rkShine 5s ease-in-out 1.2s infinite; mix-blend-mode: soft-light; }
+    @keyframes rkShine { 0%, 70% { background-position: 160% 0; } 100% { background-position: -60% 0; } }
+    .rk-sparks { position: absolute; left: 50%; top: 50%; width: 0; height: 0; pointer-events: none; }
+    .rk-sparks i { position: absolute; width: 8px; height: 8px; margin: -4px; border-radius: 50%; animation: rkSpark .85s cubic-bezier(.2,.8,.2,1) forwards; }
+    @keyframes rkSpark { 0% { transform: translate(0,0) scale(1); opacity: 1; } 100% { transform: translate(var(--dx), var(--dy)) scale(.2); opacity: 0; } }
+    .rank-fb.big { position: absolute; width: 60%; height: 60%; font-size: min(26vw, 96px); background: #f1f5fb; }
+    .rk-stage .rank-name { margin-top: 2px; font-size: clamp(1.35rem, 6.6vw, 1.7rem); font-weight: 800; letter-spacing: .5px; text-transform: uppercase; text-shadow: none;
+      background: linear-gradient(180deg, var(--rk-ink) 0%, color-mix(in srgb, var(--rk-ink) 70%, #1d2440) 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+    .rk-stage .rank-name-th { font-size: .8rem; color: #5b7088; opacity: 1; }
+    .rk-score { margin-top: 8px; display: flex; align-items: baseline; justify-content: center; gap: 6px; color: var(--ink-strong); }
+    .rk-score b { font-size: 2.1rem; line-height: 1; }
+    .rk-score span { font-size: .8rem; color: #5b7088; }
+    .rk-stage .rank-bar { background: #e8eef6; height: 10px; max-width: 300px; margin: 10px auto 6px; }
+    .rk-stage .rank-bar span { background: linear-gradient(90deg, var(--rk-glow), #ff8fb1); box-shadow: none; }
+    .rk-stage .rank-next { font-size: .78rem; color: #3d5670; opacity: 1; }
+    .rank-step { font: inherit; cursor: pointer; display: flex; flex-direction: column; align-items: center; border: 1.5px solid transparent; }
+    .rank-step .rank-fb { width: 54px; height: 54px; font-size: 26px; }
+    @media (prefers-reduced-motion: reduce) { .rk-stage .rank-emblem.ready, .rk-shine, .rk-skel { animation: none !important; } }
+
+    /* ---------- มือถือทั่วไป ---------- */
+    .hr-step-head { flex-wrap: wrap; row-gap: 4px; }
+    .hr-step-head > span:nth-child(2) { flex: 1; min-width: 0; }
+    .stu-name { word-break: break-word; }
+    @media (max-width: 360px) { .tc-tab { font-size: .64rem; } .tc-class { font-size: 1.25rem; } .hr-bulk-btn small { display: none !important; } }
     @media print {
       body { background: #fff !important; padding: 0 !important; }
       body * { visibility: hidden !important; }
@@ -1468,7 +1652,7 @@
     <!-- Header -->
     <header class="app-header" id="appHeader" style="display: none;">
       <div class="hd">
-        <img class="brand-logo" src="https://i.ibb.co/99CQnjKY/2.png" alt="ตราโรงเรียน" width="40" height="40">
+        <img class="brand-logo" src="assets/logo.webp" onerror="this.onerror=null;this.src='https://i.ibb.co/99CQnjKY/2.png'" alt="ตราโรงเรียน" width="40" height="40">
         <div class="hd-text">
           <h1 class="brand-title">ระบบกิจกรรมโฮมรูม</h1>
           <p class="brand-subtitle">โรงเรียนพระปริยัติธรรมวัดธรรมมงคล แผนกสามัญศึกษา</p>
@@ -1527,78 +1711,60 @@
       <!-- ==================== 1. ครูที่ปรึกษา ==================== -->
       <section class="view-section" id="view-teacher">
 
-        <!-- การ์ดสรุปวันนี้ -->
-        <div class="tc-hero">
-          <div class="tc-hero-top">
-            <div>
-              <div class="tc-hello" id="tcHello">สวัสดีครับ</div>
-              <div class="tc-room" id="tcRoomLine">-</div>
+        <!-- แผงข้อมูลห้อง + ปฏิทินสัปดาห์ (แตะวันเพื่อดู/บันทึกย้อนหลัง) -->
+        <div class="tc-panel">
+          <div class="tc-panel-head">
+            <div class="tc-panel-class">
+              <span class="tc-eyebrow">ครูที่ปรึกษา</span>
+              <span class="tc-class" id="tcClass">-</span>
+              <span class="tc-meta" id="tcMeta">-</span>
             </div>
-            <div class="tc-today-chip" id="tcTodayChip">-</div>
+            <label class="tc-year"><span>ปีการศึกษา</span><select id="hrYear" aria-label="ปีการศึกษา"></select></label>
           </div>
-          <div class="tc-week" id="tcWeek" aria-label="การบันทึกโฮมรูมสัปดาห์นี้"></div>
+          <div class="tc-cal">
+            <div class="tc-cal-bar">
+              <button type="button" class="tc-cal-nav" id="tcPrevWeek" aria-label="สัปดาห์ก่อน"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
+              <span class="tc-cal-label" id="tcWeekLabel">-</span>
+              <button type="button" class="tc-cal-nav" id="tcNextWeek" aria-label="สัปดาห์ถัดไป"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
+            </div>
+            <div class="tc-week" id="tcWeek" role="tablist" aria-label="เลือกวันโฮมรูม"></div>
+          </div>
+          <div class="tc-selected">
+            <div class="tc-selected-text">
+              <span class="tc-selected-date" id="hrDateThai">-</span>
+              <span class="tc-status" id="tcDayStatus">-</span>
+            </div>
+            <button type="button" class="tc-load-btn" id="hrLoadExisting" style="display:none;">เปิดดู / แก้ไข</button>
+          </div>
+          <div class="tc-teacher" id="hrTeacherPick"></div>
+          <input type="hidden" id="hrDate">
+          <input type="hidden" id="hrTeacher">
         </div>
 
         <!-- แท็บ -->
         <nav class="tc-tabs" role="tablist" aria-label="เมนูครูที่ปรึกษา">
-          <button type="button" class="tc-tab active" data-teacher-tab="homeroom-form" role="tab">
-            <span class="tc-tab-ico">📝</span><span>บันทึกโฮมรูม</span>
-          </button>
-          <button type="button" class="tc-tab" data-teacher-tab="behavior-form" role="tab">
-            <span class="tc-tab-ico">⭐</span><span>ความประพฤติ</span>
-          </button>
-          <button type="button" class="tc-tab" data-teacher-tab="counsel-reply" role="tab">
-            <span class="tc-tab-ico">💬</span><span>คำปรึกษา</span><span class="tc-badge" id="counselBadge"></span>
-          </button>
-          <button type="button" class="tc-tab" data-teacher-tab="submit-report" role="tab">
-            <span class="tc-tab-ico">📤</span><span>รายงาน</span>
-          </button>
+          <button type="button" class="tc-tab active" data-teacher-tab="homeroom-form" role="tab"><svg viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="17" rx="2.5"/><path d="M9 4.5V3h6v1.5"/><path d="M8.5 12.5l2.2 2.2 4.8-4.8"/></svg><span>บันทึกโฮมรูม</span></button>
+          <button type="button" class="tc-tab" data-teacher-tab="behavior-form" role="tab"><svg viewBox="0 0 24 24"><path d="M12 3.6l2.5 5.2 5.7.8-4.1 4 1 5.7L12 16.6l-5.1 2.7 1-5.7-4.1-4 5.7-.8z"/></svg><span>ความประพฤติ</span></button>
+          <button type="button" class="tc-tab" data-teacher-tab="counsel-reply" role="tab"><svg viewBox="0 0 24 24"><path d="M4.5 6.5a2.5 2.5 0 0 1 2.5-2.5h10a2.5 2.5 0 0 1 2.5 2.5v7a2.5 2.5 0 0 1-2.5 2.5H10l-4.5 3.5V16H7a2.5 2.5 0 0 1-2.5-2.5z"/><path d="M8.5 9h7M8.5 12h4.5"/></svg><span>คำปรึกษา</span><span class="tc-badge" id="counselBadge"></span></button>
+          <button type="button" class="tc-tab" data-teacher-tab="submit-report" role="tab"><svg viewBox="0 0 24 24"><path d="M7 3.5h7l4 4V19a1.5 1.5 0 0 1-1.5 1.5h-9.5A1.5 1.5 0 0 1 5.5 19V5A1.5 1.5 0 0 1 7 3.5z"/><path d="M14 3.5V8h4"/><path d="M8.5 16.5v-3M12 16.5v-5.5M15.5 16.5v-2"/></svg><span>รายงาน</span></button>
         </nav>
 
         <!-- 1.1 บันทึกโฮมรูม -->
         <div class="teacher-pane" id="pane-homeroom-form">
           <div class="hr-exist" id="hrExistBanner" style="display:none;"></div>
-          <div class="hr-dayoff" id="hrDayOffBanner" style="display:none;"></div>
 
           <form id="homeroomForm" novalidate>
-            <!-- ขั้นที่ 1 ข้อมูลทั่วไป -->
-            <div class="hr-step">
-              <div class="hr-step-head"><span class="hr-step-no">1</span><span>ข้อมูลโฮมรูม</span><span class="hr-auto-tag">กรอกอัตโนมัติ</span></div>
-              <div class="hr-info-grid">
-                <label class="hr-info">
-                  <span class="hr-info-label">📅 วันที่โฮมรูม</span>
-                  <input type="date" id="hrDate" required>
-                  <span class="hr-info-sub" id="hrDateThai">-</span>
-                </label>
-                <label class="hr-info">
-                  <span class="hr-info-label">🎓 ปีการศึกษา</span>
-                  <select id="hrYear" required></select>
-                  <span class="hr-info-sub">ตามปีปัจจุบันของระบบ</span>
-                </label>
-                <div class="hr-info">
-                  <span class="hr-info-label">🏫 ระดับชั้น</span>
-                  <strong class="hr-info-value" id="hrRoom">-</strong>
-                  <span class="hr-info-sub" id="hrRoomSub">-</span>
-                </div>
-                <div class="hr-info">
-                  <span class="hr-info-label">👤 ครูผู้โฮมรูม</span>
-                  <div id="hrTeacherPick"></div>
-                  <input type="hidden" id="hrTeacher">
-                </div>
-              </div>
-            </div>
-
             <!-- ขั้นที่ 2 เช็กชื่อ -->
             <div class="hr-step">
-              <div class="hr-step-head"><span class="hr-step-no">2</span><span>เช็กชื่อนักเรียน</span><span class="hr-count-total" id="hrTotalCount"></span></div>
+              <div class="hr-step-head"><span class="hr-step-no">1</span><span>เช็กชื่อนักเรียน</span><span class="hr-count-total" id="hrTotalCount"></span></div>
               <div class="hr-bulk">
                 <button type="button" class="hr-bulk-btn present" id="btnCheckAllPresent">
-                  <span class="hr-bulk-ico">✓</span>
-                  <span><b>มาครบทุกคน</b><small>กดครั้งเดียว เช็กให้ทั้งห้อง</small></span>
+                  <span class="hr-bulk-ico"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>
+                  <b>มาครบทุกคน</b><small>กดครั้งเดียวทั้งห้อง</small>
                 </button>
                 <button type="button" class="hr-bulk-btn absent" id="btnCheckAllAbsent">
-                  <span class="hr-bulk-ico">✕</span>
-                  <span><b>ขาดทั้งห้อง</b><small>ใช้เมื่อไม่มีใครมา</small></span>
+                  <span class="hr-bulk-ico"><svg viewBox="0 0 24 24"><path d="M6.5 6.5l11 11M17.5 6.5l-11 11"/></svg></span>
+                  <b>ขาดทั้งห้อง</b><small>กดครั้งเดียวทั้งห้อง</small>
                 </button>
               </div>
               <div class="hr-tally">
@@ -1608,18 +1774,18 @@
               </div>
               <div class="hr-student-list" id="studentCheckInTableBody"></div>
               <div class="hr-absent-box">
-                <span class="hr-info-label">📋 รายชื่อและสาเหตุการขาด/ลา <em>(ประมวลผลอัตโนมัติ)</em></span>
+                <span class="hr-info-label">รายชื่อและสาเหตุการขาด/ลา <em>(ประมวลผลอัตโนมัติ)</em></span>
                 <div id="hrAbsentNames" class="hr-absent-text">-</div>
               </div>
             </div>
 
             <!-- ขั้นที่ 3 เรื่องและสาระ -->
             <div class="hr-step">
-              <div class="hr-step-head"><span class="hr-step-no">3</span><span>เรื่อง / กิจกรรม / แจ้งข่าว</span></div>
-              <label class="hr-field">
-                <span class="hr-info-label">เลือกเรื่องที่ใช้บ่อย</span>
-                <select id="hrTopicPreset"><option value="">— เลือกจากรายการ (หรือพิมพ์เองด้านล่าง) —</option></select>
-              </label>
+              <div class="hr-step-head"><span class="hr-step-no">2</span><span>เรื่อง / กิจกรรม / แจ้งข่าว</span></div>
+              <button type="button" class="topic-pick-btn" id="hrTopicPickBtn" aria-haspopup="dialog">
+                <span><b>เลือกเรื่องที่ใช้บ่อย</b><small>20 เรื่อง แบ่งตามหมวด · ระบบเลือกคุณลักษณะให้อัตโนมัติ</small></span>
+                <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
               <label class="hr-field">
                 <span class="hr-info-label">เรื่อง / กิจกรรม / แจ้งข่าว</span>
                 <input type="text" id="hrTopic" maxlength="300" placeholder="พิมพ์หัวข้อเอง หรือเลือกจากรายการด้านบน" required>
@@ -1628,7 +1794,7 @@
               <div class="hr-field">
                 <div class="hr-summary-head">
                   <span class="hr-info-label">สาระสำคัญ</span>
-                  <button type="button" class="hr-magic" id="hrAutoSummary">✨ เขียนให้อัตโนมัติ</button>
+                  <button type="button" class="hr-magic" id="hrAutoSummary">เขียนให้อัตโนมัติ</button>
                 </div>
                 <textarea id="hrSummary" maxlength="3000" rows="4" placeholder="สรุปสาระสำคัญที่อบรมหรือแจ้งนักเรียน หรือกด “เขียนให้อัตโนมัติ” แล้วแก้ไขเพิ่มเติมได้" required></textarea>
               </div>
@@ -1636,7 +1802,7 @@
 
             <!-- ขั้นที่ 4 คุณลักษณะ -->
             <div class="hr-step">
-              <div class="hr-step-head"><span class="hr-step-no">4</span><span>คุณลักษณะอันพึงประสงค์ 8 ประการ</span><span class="hr-auto-tag" id="hrTraitAutoTag" style="display:none;">เลือกตามสถิติแล้ว</span></div>
+              <div class="hr-step-head"><span class="hr-step-no">3</span><span>คุณลักษณะอันพึงประสงค์ 8 ประการ</span><span class="hr-auto-tag" id="hrTraitAutoTag" style="display:none;">เลือกตามสถิติแล้ว</span></div>
               <p class="hr-hint">เลือกได้มากกว่า 1 ข้อ · เมื่อเลือกเรื่องจากรายการ ระบบจะเลือกให้ตามสถิติการบันทึกของครู</p>
               <div class="trait-chips" id="traitsCheckboxContainer"></div>
             </div>
@@ -1644,13 +1810,13 @@
             <!-- แถบบันทึก -->
             <div class="hr-savebar">
               <div class="hr-savebar-info" id="hrSaveInfo">มา ๐ · ขาด ๐ · ลา ๐</div>
-              <button type="submit" class="hr-save-btn" id="hrSubmitBtn">💾 บันทึกโฮมรูม</button>
+              <button type="submit" class="hr-save-btn" id="hrSubmitBtn">บันทึกโฮมรูม</button>
             </div>
             <div class="hr-draft-note" id="hrDraftNote"></div>
           </form>
 
           <div class="tc-card" id="pane-homeroom-list">
-            <h3 class="tc-card-title">🗂️ ประวัติการบันทึกโฮมรูม</h3>
+            <h3 class="tc-card-title">ประวัติการบันทึกโฮมรูม</h3>
             <div id="homeroomListContainer" class="record-list"></div>
           </div>
         </div>
@@ -1658,7 +1824,7 @@
         <!-- 1.2 คะแนนความประพฤติ -->
         <div class="teacher-pane" id="pane-behavior-form" style="display:none;">
           <div class="tc-card">
-            <h3 class="tc-card-title">⭐ ให้คะแนนความประพฤติ</h3>
+            <h3 class="tc-card-title">ให้คะแนนความประพฤติ</h3>
             <p class="hr-hint">เพิ่มคะแนนได้เฉพาะนักเรียนในห้องของท่าน · คะแนนจะแสดงเป็นตราแรงก์ในหน้านักเรียนทันที</p>
             <form id="behaviorForm" class="form-grid" novalidate>
               <label class="hr-field">
@@ -1684,11 +1850,11 @@
               <div class="quick-chips" id="bhReasonChips"></div>
               <input type="hidden" id="bhTeacher">
               <input type="hidden" id="bhRoom">
-              <button type="submit" class="hr-save-btn" id="bhSubmitBtn">⭐ บันทึกคะแนน</button>
+              <button type="submit" class="hr-save-btn" id="bhSubmitBtn">บันทึกคะแนน</button>
             </form>
           </div>
           <div class="tc-card">
-            <h3 class="tc-card-title">📜 ประวัติการให้คะแนนในห้อง</h3>
+            <h3 class="tc-card-title">ประวัติการให้คะแนนในห้อง</h3>
             <div id="teacherBehaviorList" class="record-list"></div>
           </div>
         </div>
@@ -1696,7 +1862,7 @@
         <!-- 1.3 ตอบคำปรึกษา -->
         <div class="teacher-pane" id="pane-counsel-reply" style="display:none;">
           <div class="tc-card">
-            <h3 class="tc-card-title">💬 คำปรึกษาจากนักเรียน</h3>
+            <h3 class="tc-card-title">คำปรึกษาจากนักเรียน</h3>
             <p class="hr-hint">ตอบกลับแล้วนักเรียนจะเห็นคำตอบและได้รับแจ้งเตือนในระบบ</p>
             <input type="hidden" id="csReplyTeacher">
             <div id="teacherCounselList" class="chat-list"></div>
@@ -1706,7 +1872,7 @@
         <!-- 1.4 ส่งรายงาน -->
         <div class="teacher-pane" id="pane-submit-report" style="display:none;">
           <div class="tc-card">
-            <h3 class="tc-card-title">📤 ส่งรายงานสรุปผลกิจกรรมโฮมรูม</h3>
+            <h3 class="tc-card-title">ส่งรายงานสรุปผลกิจกรรมโฮมรูม</h3>
             <p class="hr-hint">ระบบคำนวณสถิติจากบันทึกโฮมรูมในช่วงวันที่ให้อัตโนมัติ แล้วเสนอผู้บริหารเป็นบันทึกข้อความ</p>
             <form id="reportApprovalForm" class="form-grid" novalidate>
               <div class="form-row-2">
@@ -1726,18 +1892,18 @@
                 <label class="hr-field"><span class="hr-info-label">ตั้งแต่วันที่</span><input type="date" id="repStart" required></label>
                 <label class="hr-field"><span class="hr-info-label">ถึงวันที่</span><input type="date" id="repEnd" required></label>
               </div>
-              <button type="button" class="btn btn-secondary btn-sm" id="repPreviewBtn">📊 ดูสถิติช่วงวันที่นี้ก่อนส่ง</button>
+              <button type="button" class="btn btn-secondary btn-sm" id="repPreviewBtn">ดูสถิติช่วงวันที่นี้ก่อนส่ง</button>
               <div class="report-preview" id="repPreviewBox" style="display:none;"></div>
               <input type="hidden" id="repTeacherName">
               <label class="hr-field">
                 <span class="hr-info-label">สรุปผลการดำเนินกิจกรรมและปัญหาที่พบ</span>
                 <textarea id="repNote" maxlength="3000" rows="4" placeholder="สรุปภาพรวมการเข้าโฮมรูม พฤติกรรมนักเรียน และข้อเสนอแนะ..." required></textarea>
               </label>
-              <button type="submit" class="hr-save-btn" id="repSubmitBtn">📤 ส่งรายงานเพื่อขออนุมัติ</button>
+              <button type="submit" class="hr-save-btn" id="repSubmitBtn">ส่งรายงานเพื่อขออนุมัติ</button>
             </form>
           </div>
           <div class="tc-card">
-            <h3 class="tc-card-title">📄 สถานะรายงานและบันทึกข้อความ</h3>
+            <h3 class="tc-card-title">สถานะรายงานและบันทึกข้อความ</h3>
             <div id="teacherReportStatusList" class="record-list"></div>
           </div>
         </div>
@@ -1745,19 +1911,21 @@
 
       <!-- ==================== 2. นักเรียน / สามเณร ==================== -->
       <section class="view-section" id="view-student">
-        <div class="rank-hero" id="rankHero">
-          <div class="rank-hero-bg" aria-hidden="true"></div>
-          <div class="rank-hero-top">
-            <span class="rank-hero-kicker">ตราความประพฤติของฉัน</span>
-            <span class="rank-hero-season" id="rankSeason">-</span>
+        <div class="rk-stage" id="rankHero">
+          <div class="rk-top">
+            <span class="rk-kicker">ตราความประพฤติของฉัน</span>
+            <span class="rk-season" id="rankSeason">-</span>
           </div>
-          <div class="rank-emblem-wrap" id="rankEmblemWrap">
-            <div class="rank-rays" aria-hidden="true"></div>
-            <img id="rankEmblem" class="rank-emblem" alt="ตราแรงก์">
+          <div class="rank-emblem-wrap" id="rankEmblemWrap" role="button" tabindex="0" aria-label="แตะที่ตรา">
+            <div class="rk-halo" aria-hidden="true"></div>
+            <div class="rk-skel" id="rankSkel" aria-hidden="true"></div>
+            <img id="rankEmblem" class="rank-emblem" alt="ตราแรงก์" decoding="async" fetchpriority="high">
+            <div class="rk-shine" id="rankShine" aria-hidden="true"></div>
+            <div class="rk-sparks" id="rankSparks" aria-hidden="true"></div>
           </div>
           <div class="rank-name" id="rankName">-</div>
           <div class="rank-name-th" id="rankNameTh">-</div>
-          <div class="rank-score"><b id="rankScore">-</b><span>/ ๑๐๐ คะแนน</span></div>
+          <div class="rk-score"><b id="rankScore">-</b><span>/ ๑๐๐ คะแนน</span></div>
           <div class="rank-bar"><span id="rankBar"></span></div>
           <div class="rank-next" id="rankNext">-</div>
         </div>
@@ -1769,7 +1937,7 @@
         </div>
 
         <div class="tc-card">
-          <h3 class="tc-card-title">🏆 เส้นทางแรงก์ทั้งหมด</h3>
+          <h3 class="tc-card-title">เส้นทางแรงก์ทั้งหมด <small class="tc-card-sub">แตะตราเพื่อดูเกณฑ์</small></h3>
           <div class="rank-ladder" id="rankLadder"></div>
         </div>
 
@@ -2119,14 +2287,17 @@
 
     <!-- LOGIN -->
     <div id="loginScreen" class="login-container">
-      <div class="login-bg" aria-hidden="true"></div>
-
-      <div class="login-hero">
-        <div class="login-logo-ring">
-          <img class="login-logo" id="loginLogo" src="https://i.ibb.co/99CQnjKY/2.png" alt="ตราโรงเรียนพระปริยัติธรรมวัดธรรมมงคล" width="112" height="112" decoding="async">
+      <div class="lg-hero">
+        <div class="lg-aurora" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+        <div class="lg-dots" aria-hidden="true"></div>
+        <svg class="lg-wave" viewBox="0 0 400 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0 30 C 100 70 300 -10 400 30 L400 60 L0 60 Z"/></svg>
+        <div class="login-hero">
+          <div class="login-logo-ring">
+            <img class="login-logo" id="loginLogo" src="assets/logo.webp" onerror="this.onerror=null;this.src='https://i.ibb.co/99CQnjKY/2.png'" alt="ตราโรงเรียนพระปริยัติธรรมวัดธรรมมงคล" width="112" height="112" decoding="async" fetchpriority="high">
+          </div>
+          <h1 class="login-heading">ระบบกิจกรรมโฮมรูม</h1>
+          <p class="login-school">โรงเรียนพระปริยัติธรรมวัดธรรมมงคล แผนกสามัญศึกษา</p>
         </div>
-        <h1 class="login-heading">ระบบกิจกรรมโฮมรูม</h1>
-        <p class="login-school">โรงเรียนพระปริยัติธรรมวัดธรรมมงคล แผนกสามัญศึกษา</p>
       </div>
 
       <div class="config-warning" id="configWarning" style="display:none;">
@@ -2155,6 +2326,19 @@
           </button>
         </form>
       </div>
+    </div>
+  </div>
+
+  <!-- แผ่นเลือกเรื่องที่ใช้บ่อย -->
+  <div class="sheet" id="topicSheet" hidden>
+    <div class="sheet-backdrop" data-close-sheet></div>
+    <div class="sheet-panel" role="dialog" aria-modal="true" aria-labelledby="topicSheetTitle">
+      <div class="sheet-grip" aria-hidden="true"></div>
+      <div class="sheet-head">
+        <b id="topicSheetTitle">เลือกเรื่อง / กิจกรรม</b>
+        <button type="button" class="sheet-close" data-close-sheet aria-label="ปิด"><svg viewBox="0 0 24 24"><path d="M6.5 6.5l11 11M17.5 6.5l-11 11"/></svg></button>
+      </div>
+      <div class="sheet-body" id="topicSheetBody"></div>
     </div>
   </div>
 
@@ -2227,23 +2411,27 @@
     GARUDA_IMG: 'assets/garuda.png',
     GARUDA_FALLBACK: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTT0WdwNjxuSaeQ6fr9Egulh4eeRUOtp0w2SNcIfSEcmQ&s=10',
     // ตราโรงเรียน (แนะนำให้อัปโหลดไว้ใน repo เช่น assets/logo.png แล้วเปลี่ยนตรงนี้ เพื่อความเสถียร)
-    SCHOOL_LOGO: 'https://i.ibb.co/99CQnjKY/2.png'
+    SCHOOL_LOGO: 'assets/logo.webp',
+    SCHOOL_LOGO_FALLBACK: 'https://i.ibb.co/99CQnjKY/2.png',
+    // เมื่ออัปโหลดโฟลเดอร์ assets/ranks ขึ้น GitHub แล้ว ให้ตั้งเป็น true ระบบจะโหลดรูปจากเว็บไซต์เอง (เร็วและเสถียรกว่า)
+    LOCAL_ASSETS: true,
+    ASSET_BASE: 'assets/ranks/'
   };
 
   // ตราความประพฤติ 11 ระดับ (คะแนน 0–100) + ตราพิเศษ Glorious Ruler (คะแนนเต็ม 100 ติดต่อกันเกิน 1 เดือน)
   // ถ้าต้องการความเสถียรสูงสุด ให้ดาวน์โหลดรูปไปไว้ใน repo (เช่น assets/ranks/bronze.png) แล้วแก้ img ด้านล่าง
   const RANKS = [
-    { max: 10,  name: 'Bronze',             th: 'บรอนซ์',               icon: '🥉', glow: '#c98a5a', text: '#ffd9b8', img: 'https://i.ibb.co/275gzyx3/Glossy-Bronze-Shield-Emblem.png' },
-    { max: 20,  name: 'Silver',             th: 'ซิลเวอร์',              icon: '🥈', glow: '#a9a3d6', text: '#eceaff', img: 'https://i.ibb.co/PsYqGp4K/Silver-Lavender-Shield-Emblem.png' },
-    { max: 30,  name: 'Gold',               th: 'โกลด์',                 icon: '🥇', glow: '#e3b23c', text: '#ffe7a3', img: 'https://i.ibb.co/6ckbYt3h/Ornate-Golden-Shield-Rank-Emblem.png' },
-    { max: 40,  name: 'Platinum',           th: 'แพลทินัม',              icon: '💠', glow: '#9c8cf0', text: '#e6e0ff', img: 'https://i.ibb.co/6730GDvB/Glowing-Silver-Purple-Crystal-Crest.png' },
-    { max: 50,  name: 'Diamond',            th: 'ไดมอนด์',               icon: '💎', glow: '#5cc4ff', text: '#d6f2ff', img: 'https://i.ibb.co/chZK9T4Y/Crystalline-Ice-Blue-Diamond-Crest.png' },
-    { max: 60,  name: 'Commander',          th: 'คอมมานเดอร์ (คอม)',      icon: '🛡️', glow: '#a45cff', text: '#f3dcff', img: 'https://i.ibb.co/4RtK0CQ5/Ornate-Purple-Gold-Fantasy-Rank-Emblem.png' },
-    { max: 70,  name: 'Conqueror',          th: 'คอนเคอเรอร์ (คอน)',     icon: '⚔️', glow: '#8a4dff', text: '#ead9ff', img: 'https://i.ibb.co/0RRBJZz8/Royal-Purple-Crystal-Crest.png' },
-    { max: 80,  name: 'Overlord Conqueror', th: 'โอเวอร์ลอร์ด คอนเคอเรอร์', icon: '👑', glow: '#f0b429', text: '#fff0c2', img: 'https://i.ibb.co/zVx3zVk2/Ornate-Golden-Crown-Crest-with-Glowing-Gemstones.png' },
-    { max: 90,  name: 'Supreme Conqueror',  th: 'สุพรีม คอนเคอเรอร์',     icon: '🦁', glow: '#ffb547', text: '#ffeccc', img: 'https://i.ibb.co/Fq8N5t81/Regal-Golden-Lion-Crest-with-Purple-Gems.png' },
-    { max: 100, name: 'Immortal Conqueror', th: 'อิมมอร์ทัล คอนเคอเรอร์', icon: '🔱', glow: '#ff9f43', text: '#ffe2b8', img: 'https://i.ibb.co/CKHnd8QG/Golden-Lion-Crown-Crest-with-Purple-Gems.png' },
-    {           name: 'Glorious Ruler',     th: 'กลอรีเอิส รูเลอร์ · ตราสูงสุด', icon: '🌟', glow: '#ffd700', text: '#fff6cc', img: 'https://i.ibb.co/0NYL01v/Majestic-Golden-Lion-Crystal-Crest.png' }
+    { file: '01-bronze.webp', ink: '#8a4f24', max: 10,  name: 'Bronze',             th: 'บรอนซ์',               icon: '🥉', glow: '#c98a5a', text: '#ffd9b8', img: 'https://i.ibb.co/275gzyx3/Glossy-Bronze-Shield-Emblem.png' },
+    { file: '02-silver.webp', ink: '#5b5490', max: 20,  name: 'Silver',             th: 'ซิลเวอร์',              icon: '🥈', glow: '#a9a3d6', text: '#eceaff', img: 'https://i.ibb.co/PsYqGp4K/Silver-Lavender-Shield-Emblem.png' },
+    { file: '03-gold.webp', ink: '#a67408', max: 30,  name: 'Gold',               th: 'โกลด์',                 icon: '🥇', glow: '#e3b23c', text: '#ffe7a3', img: 'https://i.ibb.co/6ckbYt3h/Ornate-Golden-Shield-Rank-Emblem.png' },
+    { file: '04-platinum.webp', ink: '#5a46c4', max: 40,  name: 'Platinum',           th: 'แพลทินัม',              icon: '💠', glow: '#9c8cf0', text: '#e6e0ff', img: 'https://i.ibb.co/6730GDvB/Glowing-Silver-Purple-Crystal-Crest.png' },
+    { file: '05-diamond.webp', ink: '#1f7fb8', max: 50,  name: 'Diamond',            th: 'ไดมอนด์',               icon: '💎', glow: '#5cc4ff', text: '#d6f2ff', img: 'https://i.ibb.co/chZK9T4Y/Crystalline-Ice-Blue-Diamond-Crest.png' },
+    { file: '06-commander.webp', ink: '#7a2fd0', max: 60,  name: 'Commander',          th: 'คอมมานเดอร์ (คอม)',      icon: '🛡️', glow: '#a45cff', text: '#f3dcff', img: 'https://i.ibb.co/4RtK0CQ5/Ornate-Purple-Gold-Fantasy-Rank-Emblem.png' },
+    { file: '07-conqueror.webp', ink: '#6a2fd0', max: 70,  name: 'Conqueror',          th: 'คอนเคอเรอร์ (คอน)',     icon: '⚔️', glow: '#8a4dff', text: '#ead9ff', img: 'https://i.ibb.co/0RRBJZz8/Royal-Purple-Crystal-Crest.png' },
+    { file: '08-overlord-conqueror.webp', ink: '#b07800', max: 80,  name: 'Overlord Conqueror', th: 'โอเวอร์ลอร์ด คอนเคอเรอร์', icon: '👑', glow: '#f0b429', text: '#fff0c2', img: 'https://i.ibb.co/zVx3zVk2/Ornate-Golden-Crown-Crest-with-Glowing-Gemstones.png' },
+    { file: '09-supreme-conqueror.webp', ink: '#b86e00', max: 90,  name: 'Supreme Conqueror',  th: 'สุพรีม คอนเคอเรอร์',     icon: '🦁', glow: '#ffb547', text: '#ffeccc', img: 'https://i.ibb.co/Fq8N5t81/Regal-Golden-Lion-Crest-with-Purple-Gems.png' },
+    { file: '10-immortal-conqueror.webp', ink: '#c25f00', max: 100, name: 'Immortal Conqueror', th: 'อิมมอร์ทัล คอนเคอเรอร์', icon: '🔱', glow: '#ff9f43', text: '#ffe2b8', img: 'https://i.ibb.co/CKHnd8QG/Golden-Lion-Crown-Crest-with-Purple-Gems.png' },
+    { file: '', /* ยังไม่มีไฟล์ในเครื่อง → ใช้ ibb; เมื่อได้ภาพแล้วใส่ '11-glorious-ruler.webp' */ ink: '#a87d00',           name: 'Glorious Ruler',     th: 'กลอรีเอิส รูเลอร์ · ตราสูงสุด', icon: '🌟', glow: '#ffd700', text: '#fff6cc', img: 'https://i.ibb.co/0NYL01v/Majestic-Golden-Lion-Crystal-Crest.png' }
   ];
 
   const TRAIT_COLORS = ['#8ec5fc', '#ffafcc', '#a2d2ff', '#ffc8dd', '#bde0fe', '#f48fb1', '#72b6f6', '#f8bbd0'];
@@ -2313,21 +2501,38 @@
 
   function apiConfigured() { return CONFIG.API_URL && /^https:\/\/script\.google(usercontent)?\.com\//.test(CONFIG.API_URL); }
 
+  const SAFE_ACTIONS = ['ping', 'bootstrap', 'stats', 'previewReport', 'getHomeroom'];
   async function api(action, payload = {}) {
     if (!apiConfigured()) throw new Error('ยังไม่ได้ตั้งค่า API_URL ในไฟล์ index.html');
-    loading(true);
+    const quiet = action === 'ping';
+    if (!quiet) loading(true);
     const t0 = performance.now();
     try {
+      // คำสั่งที่อ่านอย่างเดียวลองใหม่อัตโนมัติได้เมื่อเน็ตสะดุด (คำสั่งบันทึกไม่ลองซ้ำ เพื่อกันข้อมูลซ้ำ)
+      const retries = SAFE_ACTIONS.indexOf(action) >= 0 ? 2 : 0;
       let res;
-      try {
-        res = await fetch(CONFIG.API_URL, {
-          method: 'POST',
-          redirect: 'follow',
-          headers: { 'Content-Type': 'text/plain;charset=utf-8' }, // เลี่ยง CORS preflight ของ Apps Script
-          body: JSON.stringify({ action, token: S.token, payload })
-        });
-      } catch (netErr) {
-        throw new Error('เชื่อมต่อเซิร์ฟเวอร์ไม่ได้ กรุณาตรวจสอบอินเทอร์เน็ต');
+      for (let attempt = 0; ; attempt++) {
+        const ctl = window.AbortController ? new AbortController() : null;
+        const timer = setTimeout(() => ctl && ctl.abort(), action === 'importStudents' ? 120000 : 30000);
+        try {
+          res = await fetch(CONFIG.API_URL, {
+            method: 'POST',
+            redirect: 'follow',
+            cache: 'no-store',
+            headers: { 'Content-Type': 'text/plain;charset=utf-8' }, // เลี่ยง CORS preflight ของ Apps Script
+            body: JSON.stringify({ action, token: S.token, payload }),
+            signal: ctl ? ctl.signal : undefined
+          });
+          clearTimeout(timer);
+          break;
+        } catch (netErr) {
+          clearTimeout(timer);
+          if (attempt < retries) { await new Promise((r) => setTimeout(r, 700 * (attempt + 1))); continue; }
+          const e = new Error(navigator.onLine === false ? 'ไม่มีการเชื่อมต่ออินเทอร์เน็ต กรุณาลองใหม่อีกครั้ง'
+            : (netErr && netErr.name === 'AbortError' ? 'เซิร์ฟเวอร์ตอบช้าเกินไป กรุณาลองใหม่อีกครั้ง' : 'เชื่อมต่อเซิร์ฟเวอร์ไม่ได้ กรุณาตรวจสอบอินเทอร์เน็ต'));
+          e.code = 'NETWORK';
+          throw e;
+        }
       }
       let j;
       try { j = await res.json(); } catch (e) { throw new Error('เซิร์ฟเวอร์ตอบกลับไม่ถูกต้อง (ตรวจสอบการ Deploy Web App ให้ผู้มีสิทธิ์เข้าถึงเป็น "ทุกคน")'); }
@@ -2337,11 +2542,11 @@
         if (j.code === 'SESSION_EXPIRED') { logoutLocal(j.error); }
         throw err;
       }
-      showSpeed(action, performance.now() - t0);
+      if (!quiet) showSpeed(action, performance.now() - t0);
       // คำสั่งบันทึกส่วนใหญ่ส่งข้อมูลชุดใหม่กลับมาด้วย นำไปแสดงทันทีโดยไม่ต้องโหลดซ้ำ
       if (j.data && j.data.boot) { applyBoot(j.data.boot); delete j.data.boot; }
       return j.data;
-    } finally { loading(false); }
+    } finally { if (!quiet) loading(false); }
   }
 
   // ---------------- ความเร็ว + ข้อมูลในเครื่อง ----------------
@@ -2591,7 +2796,7 @@
   // สรุปจากคำตอบ "แบบบันทึกโฮมรูม (การตอบกลับ)" ของครูที่ปรึกษา ภาคเรียนที่ 2/2569
   // tr = คุณลักษณะที่ครูเลือกบ่อยที่สุดสำหรับเรื่องนั้น (1 รักชาติฯ 2 ซื่อสัตย์ 3 มีวินัย 4 ใฝ่เรียนรู้ 5 พอเพียง 6 มุ่งมั่นฯ 7 รักความเป็นไทย 8 จิตสาธารณะ)
   const TOPIC_PRESETS = [
-    { g: '📚 ด้านการเรียน', items: [
+    { g: 'ด้านการเรียน', c: '#2f6fc4', bg: '#e8f1fc', items: [
       { t: 'ติดตามงานค้างและการส่งงาน', tr: [4, 6, 3], k: ['งานค้าง', 'ตามงาน', 'ติดตามงาน', 'ส่งงาน', 'การบ้าน', 'แจกแจงงาน', 'มอบหมายงาน', 'รายงาน'],
         s: ['ครูที่ปรึกษาติดตามงานค้างและการส่งงานของสามเณรในแต่ละรายวิชา แจ้งให้สามเณรที่มีงานค้างทยอยทำและส่งให้ครบตามกำหนด พร้อมแนะนำการแบ่งเวลาทำงานให้เหมาะสม เพื่อไม่ให้ส่งผลกระทบต่อผลการเรียน',
             'ตรวจสอบรายชื่อสามเณรที่ยังมีงานค้าง ชี้แจงรายวิชาและกำหนดส่งให้ชัดเจน กำชับให้รับผิดชอบงานของตนเองและส่งให้ทันเวลา หากมีปัญหาในการทำงานให้ปรึกษาครูประจำวิชาหรือครูที่ปรึกษา'] },
@@ -2608,7 +2813,7 @@
         s: ['ครูที่ปรึกษาพูดคุยเรื่องเป้าหมายชีวิตและการเรียนต่อ ให้สามเณรสำรวจความถนัดและความสนใจของตนเอง กำหนดเป้าหมายให้ชัดเจน และวางแผนการเรียนเพื่อไปสู่เป้าหมายนั้น',
             'แนะแนวการศึกษาต่อและการวางแผนอนาคต ให้ข้อมูลเกี่ยวกับการสมัครเรียนต่อ และกระตุ้นให้สามเณรตั้งใจเรียนเพื่อเตรียมความพร้อม'] }
     ] },
-    { g: '⏰ ด้านวินัยและความรับผิดชอบ', items: [
+    { g: 'ด้านวินัยและความรับผิดชอบ', c: '#c96a0c', bg: '#fdf1e3', items: [
       { t: 'การมาเรียน ขาด ลา มาสาย และการตรงต่อเวลา', tr: [3, 4], k: ['มาสาย', 'ขาด', 'ลา', 'ตรงต่อเวลา', 'มาเรียน', 'ตื่นเช้า', 'เวลา'],
         s: ['ครูที่ปรึกษาเน้นย้ำเรื่องการมาเรียนให้ตรงเวลา ชี้แจงผลเสียของการขาดเรียนและมาสาย ให้สามเณรแจ้งลาทุกครั้งที่มีกิจธุระ และฝึกเตรียมตัวล่วงหน้าเพื่อสร้างนิสัยความมีวินัย',
             'พูดคุยเรื่องการตรงต่อเวลาและคุณค่าของเวลา ให้สามเณรมาถึงโรงเรียนก่อนเวลาเข้าเรียน ไม่ผัดวันประกันพรุ่ง และรับผิดชอบต่อการเข้าเรียนของตนเอง'] },
@@ -2622,7 +2827,7 @@
         s: ['ครูที่ปรึกษาพูดคุยเรื่องความซื่อสัตย์และความรับผิดชอบ ให้สามเณรพูดความจริง รักษาคำพูด กล้ายอมรับและแก้ไขเมื่อทำผิด และทำหน้าที่ที่ได้รับมอบหมายอย่างเต็มความสามารถ',
             'ปลูกฝังคุณธรรมด้านความซื่อสัตย์สุจริต ไม่ทำความดีเพียงเพราะมีคนมองเห็น และไม่หลีกเลี่ยงความรับผิดชอบ เพื่อให้เป็นผู้ที่ผู้อื่นเชื่อถือและไว้วางใจได้'] }
     ] },
-    { g: '☸️ ด้านศาสนาและคุณธรรม', items: [
+    { g: 'ด้านศาสนาและคุณธรรม', c: '#7a4fd6', bg: '#f2ecfd', items: [
       { t: 'กิจวัตรประจำวัน นั่งสมาธิก่อนเลิกเรียน', tr: [3, 4], k: ['สมาธิ', 'กิจวัตร', 'จิตนิ่ง'],
         s: ['ครูที่ปรึกษานำสามเณรนั่งสมาธิก่อนเลิกเรียน เพื่อฝึกให้จิตใจสงบ มีสติ และจดจ่อกับสิ่งที่ทำ พร้อมทบทวนกิจวัตรประจำวันของสามเณร',
             'ร่วมกันนั่งสมาธิและทบทวนกิจวัตรประจำวัน ส่งเสริมให้สามเณรมีความสำรวมและนำสติไปใช้ในการเรียนและการดำเนินชีวิต'] },
@@ -2636,7 +2841,7 @@
         s: ['ครูที่ปรึกษาส่งเสริมให้สามเณรมีจิตอาสา ร่วมทำประโยชน์ให้แก่วัดและโรงเรียน เห็นคุณค่าของสถานที่ที่อาศัยและศึกษาเล่าเรียน และรู้จักเสียสละเพื่อส่วนรวม',
             'พูดคุยเรื่องการบำเพ็ญประโยชน์และการช่วยเหลืองานส่วนรวม ให้สามเณรทำความดีด้วยใจบริสุทธิ์ โดยไม่หวังผลตอบแทน'] }
     ] },
-    { g: '🌱 ด้านการดำเนินชีวิต', items: [
+    { g: 'ด้านการดำเนินชีวิต', c: '#1d8a4c', bg: '#e6f6ec', items: [
       { t: 'การออมปัจจัยและการใช้จ่ายอย่างพอเพียง', tr: [5, 3], k: ['ออม', 'เก็บเงิน', 'ประหยัด', 'ปัจจัย', 'ค่าห้อง', 'ใช้จ่าย', 'อดออม'],
         s: ['ครูที่ปรึกษาส่งเสริมการออมปัจจัย ให้สามเณรรู้จักวางแผนการใช้จ่าย แยกเงินออมก่อนใช้ และใช้จ่ายอย่างประหยัดตามหลักปรัชญาของเศรษฐกิจพอเพียง',
             'พูดคุยเรื่องการเก็บออมเพื่ออนาคตและการรับมือความเสี่ยง ให้สามเณรบันทึกรายรับรายจ่าย และใช้ปัจจัยอย่างมีเหตุผลและคุ้มค่า'] },
@@ -2653,7 +2858,7 @@
         s: ['ครูที่ปรึกษาส่งเสริมความภาคภูมิใจในความเป็นไทย การใช้ภาษาไทยอย่างถูกต้อง และการสืบสานวัฒนธรรมประเพณีอันดีงาม',
             'พูดคุยถึงคุณค่าของวัฒนธรรมไทยและมารยาทไทย ให้สามเณรนำไปปฏิบัติในชีวิตประจำวันอย่างภาคภูมิใจ'] }
     ] },
-    { g: '📢 ด้านข่าวสารและอื่น ๆ', items: [
+    { g: 'ด้านข่าวสารและอื่น ๆ', c: '#c2416f', bg: '#fdebf2', items: [
       { t: 'แจ้งข่าวสารและกิจกรรมของโรงเรียน', tr: [3, 8], k: ['แจ้ง', 'ข่าวสาร', 'กิจกรรม', 'ชุมนุม', 'ตรวจนับ', 'ประชุม', 'ผ้าไตร'],
         s: ['ครูที่ปรึกษาแจ้งข่าวสารและกิจกรรมของโรงเรียนให้สามเณรทราบ ชี้แจงสิ่งที่ต้องเตรียมและกำหนดการให้ชัดเจน พร้อมกำชับให้เข้าร่วมกิจกรรมอย่างพร้อมเพรียง',
             'ประชาสัมพันธ์กิจกรรมและข้อปฏิบัติของโรงเรียน ให้สามเณรเตรียมตัวและปฏิบัติตามกำหนดการได้อย่างถูกต้อง'] },
@@ -2690,6 +2895,8 @@
   function currentTeacher() { return $('hrTeacher').value.trim(); }
 
   // ==================== ครูที่ปรึกษา ====================
+  const DAY_ABBR = ['อา.', 'จ.', 'อ.', 'พ.', 'พฤ.', 'ศ.', 'ส.'];
+  const MAX_WEEKS_BACK = 10;
   function renderTeacher() {
     const st = tcState();
     const d = S.data, ri = d.roomInfo || { advisors: [] };
@@ -2700,29 +2907,29 @@
       st.inited = true;
       const t = today();
       $('hrDate').value = isHomeroomDay(t) ? t : lastHomeroomDay(t);
-      $('hrDate').max = t;
-      $('hrTopicPreset').innerHTML = '<option value="">— เลือกจากรายการ (หรือพิมพ์เองด้านล่าง) —</option>' +
-        TOPIC_PRESETS.map((g) => `<optgroup label="${esc(g.g)}">${g.items.map((it) => `<option value="${FLAT_PRESETS.indexOf(it)}">${esc(it.t)}</option>`).join('')}</optgroup>`).join('');
+      st.weekOffset = 0;
       $('traitsCheckboxContainer').innerHTML = ((d.traits || DEFAULT_TRAITS)).map((tname, i) => `
-        <label class="trait-chip" data-trait="${i + 1}"><input type="checkbox" name="hrTraits" value="${i + 1}"><span class="tick">✓</span><span>${esc(tname)}</span></label>`).join('');
+        <label class="trait-chip" data-trait="${i + 1}"><input type="checkbox" name="hrTraits" value="${i + 1}"><span class="tick"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span>${esc(tname)}</span></label>`).join('');
       $('bhReasonChips').innerHTML = BEHAVIOR_CHIPS.map((c) => `<button type="button" class="quick-chip" data-bh-chip="${esc(c)}">${esc(c)}</button>`).join('');
+      buildTopicSheet();
       restoreDraft();
+      st.weekOffset = weekOffsetOf($('hrDate').value);
       if (!$('repStart').value) setReportPeriod();
     }
     fillYearSelect($('hrYear'));
     if (st.year) $('hrYear').value = st.year;
 
-    renderTeacherPick(ri);
-    $('hrRoom').textContent = th(S.user.room);
-    $('hrRoomSub').textContent = [ri.roomNo ? 'ห้อง ' + th(ri.roomNo) : '', ri.plan || ''].filter(Boolean).join(' · ') || ' ';
+    $('tcClass').textContent = th(S.user.room);
+    $('tcMeta').textContent = [ri.roomNo ? 'ห้อง ' + th(ri.roomNo) : '', ri.plan || '', 'นักเรียน ' + th(students.length) + ' รูป'].filter(Boolean).join(' · ');
     $('repRoom').value = th(S.user.room);
     $('bhRoom').value = S.user.room;
     $('hrTotalCount').textContent = 'ทั้งหมด ' + th(students.length) + ' รูป';
 
-    renderTeacherHero(ri);
+    renderTeacherPick(ri);
+    renderWeek();
     renderCheckIn();
     renderTraitsState();
-    onDateChanged(false);
+    onDateChanged();
     renderRecentTopics();
     renderHomeroomList();
     renderBehaviorSelect();
@@ -2731,26 +2938,49 @@
     renderTeacherReports();
   }
 
-  function renderTeacherHero(ri) {
-    const t = today();
-    const name = currentTeacher() || (ri.advisors[0] || 'ครูที่ปรึกษา');
-    const h = new Date().getHours();
-    $('tcHello').textContent = (h < 12 ? 'อรุณสวัสดิ์' : h < 17 ? 'สวัสดี' : 'สวัสดียามเย็น') + ' · ' + name;
-    $('tcRoomLine').innerHTML = `ครูที่ปรึกษา ${th(S.user.room)}<span class="tc-room-sub">นักเรียน ${th((S.data.students || []).length)} รูป · วัน${dayName(t)}ที่ ${esc(thaiDate(t))}</span>`;
-    const chip = $('tcTodayChip'), rec = recordFor(t);
-    if (!isHomeroomDay(t)) { chip.className = 'tc-today-chip'; chip.textContent = '🛌 วันนี้โรงเรียนหยุด'; }
-    else if (rec) { chip.className = 'tc-today-chip done'; chip.textContent = '✓ บันทึกวันนี้แล้ว'; }
-    else { chip.className = 'tc-today-chip todo'; chip.textContent = '⏳ ยังไม่บันทึกวันนี้'; }
-    // สัปดาห์นี้ จันทร์–ศุกร์
-    const d0 = parseIso(t); const mon = new Date(d0); mon.setDate(d0.getDate() - ((d0.getDay() + 6) % 7));
+  // ---- ปฏิทินสัปดาห์ ----
+  function mondayOf(iso) { const d = parseIso(iso); d.setDate(d.getDate() - ((d.getDay() + 6) % 7)); return d; }
+  function weekOffsetOf(iso) {
+    const diff = Math.round((mondayOf(today()) - mondayOf(iso || today())) / (7 * 86400000));
+    return Math.max(0, Math.min(MAX_WEEKS_BACK, diff));
+  }
+  function renderWeek() {
+    const st = tcState(), t = today(), sel = $('hrDate').value;
+    const mon = mondayOf(t); mon.setDate(mon.getDate() - 7 * (st.weekOffset || 0));
+    const days = homeroomDays();
     const cells = [];
-    for (let i = 0; i < 5; i++) {
+    let first = null, last = null;
+    for (let i = 0; i < 7; i++) {
       const d = new Date(mon); d.setDate(mon.getDate() + i);
-      const iso = isoLocal(d), done = !!recordFor(iso);
-      const cls = ['tc-day', done ? 'done' : '', iso === t ? 'today' : '', iso > t ? 'future' : ''].join(' ');
-      cells.push(`<div class="${cls}">${DAY_TH[d.getDay()].slice(0, 2)}.<b>${done ? '✓' : th(d.getDate())}</b></div>`);
+      const iso = isoLocal(d);
+      if (days.indexOf(DAY_TH[d.getDay()]) < 0) continue;
+      first = first || d; last = d;
+      const rec = recordFor(iso), future = iso > t;
+      const state = future ? 'future' : rec ? 'done' : 'missing';
+      const label = future ? 'ยังไม่ถึง' : rec ? 'บันทึกแล้ว' : 'ยังไม่บันทึก';
+      cells.push(`<button type="button" role="tab" class="tc-day ${state}${iso === sel ? ' sel' : ''}${iso === t ? ' today' : ''}" data-day="${iso}" ${future ? 'disabled' : ''}
+        aria-selected="${iso === sel}" aria-label="วัน${DAY_TH[d.getDay()]}ที่ ${thaiDate(iso, false)} ${label}">
+        <span class="tc-day-abbr">${DAY_ABBR[d.getDay()]}</span><span class="tc-day-num">${th(d.getDate())}</span><span class="tc-day-dot"></span></button>`);
     }
+    $('tcWeek').style.gridTemplateColumns = `repeat(${Math.max(cells.length, 1)}, 1fr)`;
     $('tcWeek').innerHTML = cells.join('');
+    const fmt = (d) => th(d.getDate()) + ' ' + d.toLocaleDateString('th-TH', { month: 'short' });
+    $('tcWeekLabel').textContent = first ? (st.weekOffset ? '' : 'สัปดาห์นี้ · ') + fmt(first) + ' – ' + fmt(last) + ' ' + th(last.getFullYear() + 543) : '-';
+    $('tcPrevWeek').disabled = (st.weekOffset || 0) >= MAX_WEEKS_BACK;
+    $('tcNextWeek').disabled = !(st.weekOffset > 0);
+  }
+  $('tcPrevWeek').addEventListener('click', () => { const st = tcState(); st.weekOffset = Math.min(MAX_WEEKS_BACK, (st.weekOffset || 0) + 1); renderWeek(); });
+  $('tcNextWeek').addEventListener('click', () => { const st = tcState(); st.weekOffset = Math.max(0, (st.weekOffset || 0) - 1); renderWeek(); });
+  $('tcWeek').addEventListener('click', (e) => {
+    const b = e.target.closest('[data-day]'); if (!b || b.disabled) return;
+    selectDate(b.dataset.day);
+  });
+  function selectDate(iso) {
+    const st = tcState();
+    if ($('hrDate').value === iso) return;
+    $('hrDate').value = iso;
+    st.editingId = null;
+    renderWeek(); onDateChanged(); saveDraft();
   }
 
   function renderTeacherPick(ri) {
@@ -2758,12 +2988,14 @@
     const saved = store.get('hr_tname_' + S.user.room);
     let cur = $('hrTeacher').value || (saved && (ri.advisors.indexOf(saved) >= 0 || !ri.advisors.length) ? saved : '') || ri.advisors[0] || '';
     if (ri.advisors.length > 1) {
-      box.innerHTML = `<div class="teacher-pick">${ri.advisors.map((a) => `<button type="button" data-tname="${esc(a)}" class="${a === cur ? 'on' : ''}">${esc(a)}</button>`).join('')}</div>`;
+      box.style.display = '';
+      box.innerHTML = `<span class="tc-teacher-label">ผู้โฮมรูม</span><div class="teacher-pick">${ri.advisors.map((a) => `<button type="button" data-tname="${esc(a)}" class="${a === cur ? 'on' : ''}">${esc(a)}</button>`).join('')}</div>`;
     } else if (ri.advisors.length === 1) {
-      box.innerHTML = `<strong class="hr-info-value hr-tname">${esc(ri.advisors[0])}</strong><span class="hr-info-sub" style="display:block;">✓ ตรวจจากรหัสห้อง</span>`;
+      box.style.display = 'none'; box.innerHTML = '';
       cur = ri.advisors[0];
     } else {
-      box.innerHTML = `<input type="text" id="hrTeacherFree" value="${esc(cur)}" placeholder="พิมพ์ชื่อครูผู้โฮมรูม">`;
+      box.style.display = '';
+      box.innerHTML = `<span class="tc-teacher-label">ผู้โฮมรูม</span><input type="text" id="hrTeacherFree" value="${esc(cur)}" placeholder="พิมพ์ชื่อครูผู้โฮมรูม">`;
       $('hrTeacherFree').addEventListener('input', (e) => setTeacher(e.target.value.trim(), false));
     }
     setTeacher(cur, false);
@@ -2776,40 +3008,37 @@
   }
   $('hrTeacherPick').addEventListener('click', (e) => {
     const b = e.target.closest('[data-tname]');
-    if (b) { setTeacher(b.dataset.tname); saveDraft(); renderTeacherHero(S.data.roomInfo || { advisors: [] }); }
+    if (b) { setTeacher(b.dataset.tname); saveDraft(); }
   });
 
-  // ---- วันที่ ----
-  function onDateChanged(user) {
-    const date = $('hrDate').value;
+  // ---- วันที่ที่เลือก ----
+  function onDateChanged() {
+    const date = $('hrDate').value, st = tcState();
     $('hrDateThai').textContent = date ? 'วัน' + dayName(date) + 'ที่ ' + thaiDate(date) : '-';
-    const off = $('hrDayOffBanner'), t = today();
-    if (date && !isHomeroomDay(date)) {
-      off.style.display = 'flex';
-      off.innerHTML = `🛌 วัน${dayName(date)}ไม่ใช่วันจัดกิจกรรมโฮมรูม (โรงเรียนหยุด) กรุณาเลือกวันที่ใหม่`;
-    } else if (date && date > t) {
-      off.style.display = 'flex'; off.textContent = '⚠️ ไม่สามารถบันทึกโฮมรูมล่วงหน้าได้';
-    } else if (!user && date && date !== t && !isHomeroomDay(t)) {
-      off.style.display = 'flex';
-      off.innerHTML = `🛌 วันนี้ (${dayName(t)}) โรงเรียนหยุด ระบบตั้งวันที่เป็น<b>วัน${dayName(date)}ที่ ${thaiDate(date)}</b> ให้แล้ว`;
-    } else off.style.display = 'none';
-
-    const st = tcState(), rec = date && recordFor(date), ex = $('hrExistBanner');
-    if (rec && st.editingId !== rec.id) {
+    const rec = date && recordFor(date), status = $('tcDayStatus'), btn = $('hrLoadExisting'), ex = $('hrExistBanner');
+    if (rec && st.editingId === rec.id) {
+      status.className = 'tc-status edit'; status.textContent = 'กำลังแก้ไขบันทึกเดิม';
+      btn.style.display = 'none';
       ex.style.display = 'flex';
-      ex.innerHTML = `<span>✓ วันที่ ${thaiDateShort(date)} บันทึกแล้ว: <b>${esc(rec.topic)}</b></span><button type="button" id="hrLoadExisting">✏️ โหลดมาแก้ไข</button>`;
+      ex.innerHTML = `<span>กำลังแก้ไขบันทึกวันที่ ${thaiDateShort(date)} · กด “บันทึกโฮมรูม” เพื่อแทนที่ข้อมูลเดิม</span>`;
     } else if (rec) {
+      status.className = 'tc-status done';
+      status.textContent = `บันทึกแล้ว · มา ${th(rec.present)} ขาด ${th(rec.absent)} ลา ${th(rec.leave)}`;
+      btn.style.display = '';
       ex.style.display = 'flex';
-      ex.innerHTML = `<span>✏️ กำลังแก้ไขบันทึกวันที่ ${thaiDateShort(date)} · กดบันทึกเพื่อแทนที่ข้อมูลเดิม</span>`;
-    } else ex.style.display = 'none';
+      ex.innerHTML = `<span><b>${esc(rec.topic)}</b><br><small>${tesc(String(rec.summary || '').slice(0, 140))}${(rec.summary || '').length > 140 ? '…' : ''}</small></span>`;
+    } else {
+      status.className = 'tc-status ' + (date === today() ? 'todo' : 'missing');
+      status.textContent = date === today() ? 'ยังไม่บันทึกวันนี้' : 'ยังไม่ได้บันทึก · บันทึกย้อนหลังได้';
+      btn.style.display = 'none';
+      ex.style.display = 'none';
+    }
   }
-  $('hrDate').addEventListener('change', () => { tcState().editingId = null; onDateChanged(true); saveDraft(); });
   $('hrYear').addEventListener('change', () => { tcState().year = $('hrYear').value; });
-  $('hrExistBanner').addEventListener('click', (e) => {
-    if (!e.target.closest('#hrLoadExisting')) return;
+  $('hrLoadExisting').addEventListener('click', (e) => {
     const rec = recordFor($('hrDate').value);
     if (!rec) return;
-    busy(e.target.closest('button'), async () => {
+    busy(e.currentTarget, async () => {
       const r = await api('getHomeroom', { id: rec.id });
       const st = tcState();
       r.attendance.forEach((a) => { st.att[a.id] = { status: a.status, reason: a.reason || '' }; });
@@ -2817,10 +3046,46 @@
       st.traits = new Set(r.record.traits); st.editingId = rec.id;
       if (r.record.teacher) setTeacher(r.record.teacher, false);
       if (r.record.year) $('hrYear').value = r.record.year;
-      renderCheckIn(); renderTraitsState(); onDateChanged(true);
-      toast('📂 โหลดบันทึกเดิมแล้ว แก้ไขแล้วกดบันทึกได้เลย');
+      renderCheckIn(); renderTraitsState(); onDateChanged();
+      toast('โหลดบันทึกเดิมแล้ว แก้ไขแล้วกดบันทึกได้เลย');
+      document.querySelector('#homeroomForm .hr-step').scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   });
+
+  // ---- แผ่นเลือกเรื่อง (แยกหมวดด้วยแถบสี) ----
+  function buildTopicSheet() {
+    $('topicSheetBody').innerHTML = TOPIC_PRESETS.map((g) => `
+      <div class="tp-group" style="--tp:${g.c}; --tp-bg:${g.bg};">
+        <div class="tp-head">${esc(g.g)}<span>${th(g.items.length)} เรื่อง</span></div>
+        ${g.items.map((it) => `<button type="button" class="tp-item" data-preset="${FLAT_PRESETS.indexOf(it)}"><span>${esc(it.t)}</span>
+          <small>${it.tr.map((n) => esc(String(traitName(n)).replace(/^\d\.\s*/, ''))).join(' · ')}</small></button>`).join('')}
+      </div>`).join('');
+  }
+  function openTopicSheet() {
+    const sh = $('topicSheet');
+    sh.hidden = false;
+    requestAnimationFrame(() => sh.classList.add('open'));
+    document.body.style.overflow = 'hidden';
+  }
+  function closeTopicSheet() {
+    const sh = $('topicSheet');
+    sh.classList.remove('open');
+    document.body.style.overflow = '';
+    setTimeout(() => { sh.hidden = true; }, 220);
+  }
+  $('hrTopicPickBtn').addEventListener('click', openTopicSheet);
+  $('topicSheet').addEventListener('click', (e) => {
+    if (e.target.closest('[data-close-sheet]')) { closeTopicSheet(); return; }
+    const b = e.target.closest('[data-preset]'); if (!b) return;
+    const idx = +b.dataset.preset, st = tcState();
+    $('hrTopic').value = FLAT_PRESETS[idx].t;
+    st.presetIdx = idx; st.sumVariant = 0;
+    applyPresetTraits(idx);
+    closeTopicSheet();
+    saveDraft();
+    if (!$('hrSummary').value.trim() || $('hrSummary').value === st.autoSummary) writeAutoSummary(false);
+  });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !$('topicSheet').hidden) closeTopicSheet(); });
 
   // ---- เช็กชื่อ ----
   function renderCheckIn() {
@@ -2924,17 +3189,6 @@
     renderTraitsState();
     $('hrTraitAutoTag').style.display = 'inline-block';
   }
-  $('hrTopicPreset').addEventListener('change', () => {
-    const v = $('hrTopicPreset').value;
-    if (v === '') return;
-    const idx = +v, st = tcState();
-    $('hrTopic').value = FLAT_PRESETS[idx].t;
-    st.presetIdx = idx; st.sumVariant = 0;
-    applyPresetTraits(idx);
-    $('hrTopicPreset').value = '';
-    saveDraft();
-    if (!$('hrSummary').value.trim() || $('hrSummary').value === st.autoSummary) writeAutoSummary(false);
-  });
   $('hrTopic').addEventListener('input', () => { tcState().presetIdx = -1; saveDraft(); });
   $('hrTopic').addEventListener('change', () => {
     const st = tcState();
@@ -2980,7 +3234,7 @@
     if (cycle !== null && $('hrSummary').value.trim() && $('hrSummary').value !== st.autoSummary &&
       !confirm('มีข้อความสาระสำคัญที่พิมพ์ไว้แล้ว ต้องการแทนที่ด้วยข้อความอัตโนมัติหรือไม่?')) return;
     $('hrSummary').value = text; st.autoSummary = text; st.sumVariant++;
-    $('hrAutoSummary').textContent = '🔄 เขียนแบบอื่น';
+    $('hrAutoSummary').textContent = 'เขียนแบบอื่น';
     if (!st.traits.size && idx >= 0) applyPresetTraits(idx);
     saveDraft();
   }
@@ -3035,10 +3289,10 @@
       topic: $('hrTopic').value.trim(), summary: $('hrSummary').value.trim(),
       traits: Array.from(st.traits), attendance: collectAttendance()
     };
-    const fail = (msg, el) => { toast('⚠️ ' + msg, 'warn', 4000); if (el) { el.scrollIntoView({ behavior: 'smooth', block: 'center' }); if (el.focus) el.focus(); } };
-    if (!payload.date) return fail('กรุณาเลือกวันที่', $('hrDate'));
-    if (!isHomeroomDay(payload.date)) return fail('วัน' + dayName(payload.date) + 'ไม่ใช่วันจัดกิจกรรมโฮมรูม', $('hrDate'));
-    if (payload.date > today()) return fail('ไม่สามารถบันทึกโฮมรูมล่วงหน้าได้', $('hrDate'));
+    const fail = (msg, el) => { toast(msg, 'warn', 4000); if (el) { el.scrollIntoView({ behavior: 'smooth', block: 'center' }); if (el.focus) el.focus(); } };
+    if (!payload.date) return fail('กรุณาเลือกวันที่', $('tcWeek'));
+    if (!isHomeroomDay(payload.date)) return fail('วัน' + dayName(payload.date) + 'ไม่ใช่วันจัดกิจกรรมโฮมรูม', $('tcWeek'));
+    if (payload.date > today()) return fail('ไม่สามารถบันทึกโฮมรูมล่วงหน้าได้', $('tcWeek'));
     if (!payload.teacherName) return fail('กรุณาเลือกชื่อครูผู้โฮมรูม', $('hrTeacherPick'));
     if (!payload.topic) return fail('กรุณาเลือกหรือพิมพ์เรื่อง/กิจกรรม', $('hrTopic'));
     if (!payload.summary) return fail('กรุณากรอกสาระสำคัญ หรือกด “เขียนให้อัตโนมัติ”', $('hrSummary'));
@@ -3055,15 +3309,14 @@
       S.data.homeroom = [r.record].concat((S.data.homeroom || []).filter((h) => (r.replacedIds || []).indexOf(h.id) < 0))
         .sort((a, b) => (a.date < b.date ? 1 : -1));
       saveBootCache();
-      toast(`✅ บันทึกโฮมรูม${r.replaced ? ' (แทนที่ข้อมูลเดิม)' : ''} เรียบร้อย · มา ${th(r.present)} ขาด ${th(r.absent)} ลา ${th(r.leave)}`, 'ok', 4500);
+      toast(`บันทึกโฮมรูม${r.replaced ? ' (แทนที่ข้อมูลเดิม)' : ''} เรียบร้อย · มา ${th(r.present)} ขาด ${th(r.absent)} ลา ${th(r.leave)}`, 'ok', 4500);
       // เตรียมฟอร์มสำหรับครั้งถัดไป
       $('hrTopic').value = ''; $('hrSummary').value = '';
       st.traits = new Set(); st.presetIdx = -1; st.sumVariant = 0; st.autoSummary = ''; st.editingId = null;
       (S.data.students || []).forEach((s) => { st.att[s.id] = { status: 'present', reason: '' }; });
-      $('hrTraitAutoTag').style.display = 'none'; $('hrAutoSummary').textContent = '✨ เขียนให้อัตโนมัติ';
+      $('hrTraitAutoTag').style.display = 'none'; $('hrAutoSummary').textContent = 'เขียนให้อัตโนมัติ';
       clearDraft();
-      renderCheckIn(); renderTraitsState(); onDateChanged(true); renderRecentTopics(); renderHomeroomList();
-      renderTeacherHero(S.data.roomInfo || { advisors: [] });
+      renderCheckIn(); renderTraitsState(); renderWeek(); onDateChanged(); renderRecentTopics(); renderHomeroomList();
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   });
@@ -3222,38 +3475,113 @@
   }));
 
   // ==================== นักเรียน ====================
+  // ลำดับรูปที่ลองโหลด: รูปในเว็บไซต์เอง (assets/ranks) → ibb.co → ตราสำรองแบบไอคอน
+  function rankSrcs(r) {
+    const out = [];
+    if (CONFIG.LOCAL_ASSETS && r.file) out.push(CONFIG.ASSET_BASE + r.file);
+    if (r.img) out.push(r.img);
+    return out;
+  }
+  const IMG_CACHE = {}; // src → 'ok' | 'fail'
+  function loadFirst(srcs) {
+    return new Promise((resolve) => {
+      const tryAt = (i) => {
+        if (i >= srcs.length) return resolve(null);
+        const src = srcs[i];
+        if (IMG_CACHE[src] === 'fail') return tryAt(i + 1);
+        const im = new Image();
+        im.decoding = 'async';
+        im.onload = () => { IMG_CACHE[src] = 'ok'; resolve(src); };
+        im.onerror = () => { IMG_CACHE[src] = 'fail'; tryAt(i + 1); };
+        im.src = src;
+      };
+      tryAt(0);
+    });
+  }
+  // โหลดตราปัจจุบันก่อน แล้วค่อยโหลดตราอื่นเบื้องหลังตอนเครื่องว่าง
+  function preloadRanks(idx) {
+    loadFirst(rankSrcs(RANKS[idx]));
+    const rest = () => RANKS.forEach((r, i) => { if (i !== idx) loadFirst(rankSrcs(r)); });
+    (window.requestIdleCallback || ((f) => setTimeout(f, 1200)))(rest);
+  }
   function getRankInfo(points, glorySince) {
     const score = Math.max(0, Number(points) || 0);
     let idx = RANKS.findIndex((r) => r.max !== undefined && Math.min(score, 100) <= r.max);
     if (idx < 0) idx = RANKS.length - 2;
     let gloryDays = 0;
-    if (score >= 100 && glorySince) gloryDays = Math.floor((parseIso(today()) - parseIso(glorySince)) / 86400000);
+    if (score >= 100 && glorySince) gloryDays = Math.max(0, Math.floor((parseIso(today()) - parseIso(glorySince)) / 86400000));
     if (score >= 100 && gloryDays >= 30) idx = RANKS.length - 1;
     return { score, idx, rank: RANKS[idx], gloryDays };
   }
-  function rankImg(r, cls) {
-    const fb = `<div class="rank-fb">${r.icon}</div>`;
-    return r.img ? `<img src="${esc(r.img)}" class="${cls || ''}" alt="${esc(r.name)}" loading="lazy" onerror="this.outerHTML=this.dataset.fb" data-fb="${esc(fb)}">` : fb;
+  function rankThumb(r) {
+    const srcs = rankSrcs(r);
+    return srcs.length
+      ? `<img alt="${esc(r.name)}" loading="lazy" decoding="async" src="${esc(srcs[0])}" data-srcs="${esc(JSON.stringify(srcs.slice(1)))}" data-icon="${esc(r.icon)}" onerror="rkImgFallback(this)">`
+      : `<div class="rank-fb">${r.icon}</div>`;
   }
+  window.rkImgFallback = function (img) {
+    let rest = [];
+    try { rest = JSON.parse(img.dataset.srcs || '[]'); } catch (e) { rest = []; }
+    if (rest.length) { img.dataset.srcs = JSON.stringify(rest.slice(1)); img.src = rest[0]; }
+    else img.outerHTML = `<div class="rank-fb">${img.dataset.icon || '🏅'}</div>`;
+  };
+
+  let shownRankIdx = -1;
+  function showEmblem(r) {
+    const img = $('rankEmblem'), wrap = $('rankEmblemWrap'), skel = $('rankSkel');
+    const old = wrap.querySelector('.rank-fb'); if (old) old.remove();
+    const srcs = rankSrcs(r);
+    const cached = srcs.find((s) => IMG_CACHE[s] === 'ok');
+    if (cached && img.getAttribute('src') === cached) { img.classList.add('ready'); skel.classList.add('gone'); return; }
+    img.classList.remove('ready'); skel.classList.remove('gone');
+    loadFirst(srcs).then((src) => {
+      if (!src) {
+        img.removeAttribute('src'); skel.classList.add('gone');
+        wrap.insertAdjacentHTML('beforeend', `<div class="rank-fb big">${r.icon}</div>`);
+        return;
+      }
+      img.src = src;
+      const shine = $('rankShine');
+      shine.style.webkitMaskImage = shine.style.maskImage = `url("${src}")`;
+      const done = () => { img.classList.add('ready'); skel.classList.add('gone'); };
+      if (img.decode) img.decode().then(done, done); else done();
+    });
+  }
+  function sparkBurst(color, n = 12) {
+    const box = $('rankSparks');
+    for (let i = 0; i < n; i++) {
+      const sp = document.createElement('i');
+      const ang = (Math.PI * 2 * i) / n + Math.random() * 0.4, dist = 70 + Math.random() * 40;
+      sp.style.setProperty('--dx', Math.cos(ang) * dist + 'px');
+      sp.style.setProperty('--dy', Math.sin(ang) * dist + 'px');
+      sp.style.background = i % 3 ? color : '#ffd76a';
+      box.appendChild(sp);
+      setTimeout(() => sp.remove(), 900);
+    }
+  }
+  function popEmblem() {
+    const w = $('rankEmblemWrap');
+    w.classList.remove('pop'); void w.offsetWidth; w.classList.add('pop');
+    const info = getRankInfo(S.data.points, S.data.glorySince);
+    sparkBurst(info.rank.glow);
+  }
+
   function renderStudent() {
     const d = S.data, u = S.user;
     const info = getRankInfo(d.points, d.glorySince), r = info.rank;
     const hero = $('rankHero');
-    hero.style.setProperty('--rk-glow', r.glow); hero.style.setProperty('--rk-text', r.text);
+    hero.style.setProperty('--rk-glow', r.glow);
+    hero.style.setProperty('--rk-ink', r.ink || r.glow);
     $('rankSeason').textContent = 'ปีการศึกษา ' + th(d.currentYear || '');
-    const em = $('rankEmblem');
-    em.style.display = r.img ? '' : 'none';
-    em.onerror = () => { em.style.display = 'none'; if (!$('rankEmblemWrap').querySelector('.rank-fb')) $('rankEmblemWrap').insertAdjacentHTML('beforeend', `<div class="rank-fb">${r.icon}</div>`); };
-    const old = $('rankEmblemWrap').querySelector('.rank-fb'); if (old) old.remove();
-    if (r.img) { if (em.getAttribute('src') !== r.img) em.src = r.img; } else $('rankEmblemWrap').insertAdjacentHTML('beforeend', `<div class="rank-fb">${r.icon}</div>`);
+    if (shownRankIdx !== info.idx) { showEmblem(r); shownRankIdx = info.idx; preloadRanks(info.idx); }
     $('rankName').textContent = r.name;
     $('rankNameTh').textContent = r.th;
     $('rankScore').textContent = th(info.score);
     let pct, nextText;
-    if (info.idx === RANKS.length - 1) { pct = 100; nextText = `👑 ครองตราสูงสุดมาแล้ว ${th(info.gloryDays)} วัน · อนุโมทนาบุญ!`; }
+    if (info.idx === RANKS.length - 1) { pct = 100; nextText = `ครองตราสูงสุดมาแล้ว ${th(info.gloryDays)} วัน · อนุโมทนาบุญ`; }
     else if (info.score >= 100) {
       pct = Math.min(100, Math.round(info.gloryDays / 30 * 100));
-      nextText = `คะแนนเต็มแล้ว! รักษาไว้อีก ${th(Math.max(0, 30 - info.gloryDays))} วัน จะได้ครองตรา Glorious Ruler`;
+      nextText = `คะแนนเต็มแล้ว รักษาไว้อีก ${th(Math.max(0, 30 - info.gloryDays))} วัน จะได้ครองตรา Glorious Ruler`;
     } else {
       const nx = RANKS[info.idx + 1], lo = info.idx === 0 ? 0 : RANKS[info.idx - 1].max;
       pct = Math.max(4, Math.round((info.score - lo) / (r.max - lo) * 100));
@@ -3263,11 +3591,11 @@
     requestAnimationFrame(() => { $('rankBar').style.width = pct + '%'; });
     $('rankNext').textContent = nextText;
 
-    // เลื่อนแรงก์ → แสดงเอฟเฟกต์
+    // เลื่อนแรงก์ → เอฟเฟกต์ฉลอง
     const key = 'hr_rank_' + u.id, prev = store.get(key);
     if (prev !== null && +prev < info.idx) {
-      $('rankEmblemWrap').classList.remove('pop'); void $('rankEmblemWrap').offsetWidth; $('rankEmblemWrap').classList.add('pop');
-      toast('🎉 ยินดีด้วย! เลื่อนแรงก์เป็น ' + r.name, 'ok', 5000);
+      setTimeout(() => { popEmblem(); sparkBurst(r.glow, 18); }, 400);
+      toast('ยินดีด้วย! เลื่อนแรงก์เป็น ' + r.name, 'ok', 5000);
     }
     store.set(key, String(info.idx));
 
@@ -3275,20 +3603,21 @@
     const beh = d.behavior || [], ym = today().slice(0, 7);
     $('stMonth').textContent = '+' + th(beh.filter((b) => String(b.date).slice(0, 7) === ym).reduce((n, b) => n + b.points, 0));
     $('stDeeds').textContent = th(beh.length);
-    const pending = (d.counsel || []).filter((c) => !c.reply).length;
-    $('stPending').textContent = th(pending);
-    $('stCounselBadge').textContent = '';
+    $('stPending').textContent = th((d.counsel || []).filter((c) => !c.reply).length);
 
     // เส้นทางแรงก์
     $('rankLadder').innerHTML = RANKS.map((rk, i) => {
       const cls = i === info.idx ? 'current' : i < info.idx ? 'passed' : 'locked';
       const range = rk.max === undefined ? '๑๐๐ เกิน ๑ เดือน' : th((i === 0 ? 0 : RANKS[i - 1].max + 1) + '–' + rk.max);
-      return `<div class="rank-step ${cls}" ${i === info.idx ? 'id="rankStepCurrent"' : ''}>${rankImg(rk)}<div class="rs-name">${esc(rk.name)}</div><div class="rs-range">${range}</div></div>`;
+      return `<button type="button" class="rank-step ${cls}" data-rank-i="${i}" ${i === info.idx ? 'id="rankStepCurrent"' : ''}>${rankThumb(rk)}<span class="rs-name">${esc(rk.name)}</span><span class="rs-range">${range}</span></button>`;
     }).join('');
-    setTimeout(() => { const c = $('rankStepCurrent'); if (c) c.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' }); }, 300);
+    setTimeout(() => {
+      const c = $('rankStepCurrent'), lad = $('rankLadder');
+      if (c && lad) lad.scrollTo({ left: c.offsetLeft - lad.clientWidth / 2 + c.clientWidth / 2, behavior: 'smooth' });
+    }, 250);
 
     // ไทม์ไลน์
-    $('studentBehaviorList').innerHTML = !beh.length ? emptyBox('ยังไม่มีประวัติคะแนนความประพฤติ ทำความดีต่อไปนะ 🙏') : beh.map((b) => `
+    $('studentBehaviorList').innerHTML = !beh.length ? emptyBox('ยังไม่มีประวัติคะแนนความประพฤติ ทำความดีต่อไปนะ') : beh.map((b) => `
       <div class="tl-item"><div class="tl-pts">+${th(b.points)}</div>
         <div><div class="tl-reason">${tesc(b.reason)}</div><div class="tl-meta">${thaiDate(b.date)}${b.teacher ? ' · ' + esc(b.teacher) : ''}</div></div></div>`).join('');
 
@@ -3301,11 +3630,16 @@
       <div class="chat-thread">
         <div class="chat-meta">${esc(c.topic)} · ${thaiDateShort(c.date)}</div>
         <div class="bubble me"><small>ฉัน</small>${tesc(c.detail)}</div>
-        ${c.reply ? `<div class="bubble them"><small>${esc(c.replyBy || 'ครูที่ปรึกษา')}</small>${tesc(c.reply)}</div>` : '<div class="bubble wait">⏳ ส่งถึงครูที่ปรึกษาแล้ว รอการตอบกลับ</div>'}
+        ${c.reply ? `<div class="bubble them"><small>${esc(c.replyBy || 'ครูที่ปรึกษา')}</small>${tesc(c.reply)}</div>` : '<div class="bubble wait">ส่งถึงครูที่ปรึกษาแล้ว รอการตอบกลับ</div>'}
       </div>`).join('');
   }
-  $('rankEmblemWrap').addEventListener('click', () => {
-    $('rankEmblemWrap').classList.remove('pop'); void $('rankEmblemWrap').offsetWidth; $('rankEmblemWrap').classList.add('pop');
+  $('rankEmblemWrap').addEventListener('click', popEmblem);
+  $('rankEmblemWrap').addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); popEmblem(); } });
+  $('rankLadder').addEventListener('click', (e) => {
+    const b = e.target.closest('[data-rank-i]'); if (!b) return;
+    const i = +b.dataset.rankI, rk = RANKS[i];
+    const range = rk.max === undefined ? 'คะแนนเต็ม ๑๐๐ ติดต่อกันเกิน ๑ เดือน' : 'คะแนน ' + th((i === 0 ? 0 : RANKS[i - 1].max + 1) + '–' + rk.max);
+    toast(`${rk.name} (${rk.th}) · ${range}`, 'ok', 3000);
   });
   document.querySelectorAll('[data-student-tab]').forEach((btn) => btn.addEventListener('click', () => {
     document.querySelectorAll('[data-student-tab]').forEach((b) => b.classList.toggle('active', b === btn));
@@ -3760,7 +4094,7 @@
 
   // ---------------- รีเฟรชอัตโนมัติ ----------------
   function tickRefresh() {
-    if (!S.user) return;
+    if (!S.user || document.hidden) return;
     S.refreshLeft--;
     if (S.refreshLeft <= 0) { manualRefresh(); }
     const m = Math.floor(Math.max(0, S.refreshLeft) / 60), s = Math.max(0, S.refreshLeft) % 60;
@@ -3774,14 +4108,26 @@
       if (S.activeView === 'reports' || S.activeView === 'line-status') await loadStats();
     } catch (e) { if (e.code !== 'SESSION_EXPIRED') toast('รีเฟรชข้อมูลไม่สำเร็จ: ' + e.message, 'err'); }
   }
-  $('refreshTimer').addEventListener('click', () => { manualRefresh(); toast('🔄 กำลังรีเฟรชข้อมูล...'); });
+  $('refreshTimer').addEventListener('click', () => { manualRefresh(); toast('กำลังรีเฟรชข้อมูล...'); });
   setInterval(tickRefresh, 1000);
+  // กลับมาเปิดแอปหลังพักไว้นาน → ดึงข้อมูลใหม่ให้เอง
+  let hiddenAt = 0;
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) { hiddenAt = Date.now(); return; }
+    if (S.user && hiddenAt && Date.now() - hiddenAt > 5 * 60 * 1000) manualRefresh();
+  });
+  window.addEventListener('offline', () => toast('ขาดการเชื่อมต่ออินเทอร์เน็ต · ข้อมูลที่กรอกถูกเก็บร่างไว้ในเครื่อง', 'warn', 5000));
+  window.addEventListener('online', () => { toast('เชื่อมต่ออินเทอร์เน็ตแล้ว', 'ok'); if (S.user) manualRefresh(); });
 
   // ---------------- เริ่มต้น ----------------
   (async function init() {
     if (!apiConfigured()) { $('configWarning').style.display = 'block'; return; }
     const token = store.get('hr_token');
-    if (!token) return;
+    if (!token) {
+      // ปลุกเซิร์ฟเวอร์ไว้ล่วงหน้าระหว่างที่ผู้ใช้กำลังพิมพ์รหัส ทำให้กดเข้าสู่ระบบแล้วตอบเร็วขึ้น
+      setTimeout(() => { api('ping').catch(() => {}); }, 300);
+      return;
+    }
     S.token = token;
     const cached = readBootCache(token);
     if (cached) {
@@ -3792,7 +4138,11 @@
       return;
     }
     try { await loadData(); showApp(); }
-    catch (e) { logoutLocal(); }
+    catch (e) {
+      if (e.code === 'SESSION_EXPIRED') return; // api() พากลับหน้าเข้าสู่ระบบแล้ว
+      S.token = null; // เน็ตมีปัญหา: ยังไม่ลบรหัสที่จำไว้ ให้ลองเข้าใหม่ได้
+      setLoginMsg('เชื่อมต่อเซิร์ฟเวอร์ไม่ได้ กรุณาตรวจสอบอินเทอร์เน็ตแล้วเข้าสู่ระบบอีกครั้ง', 'info');
+    }
   })();
   </script>
 </body>
