@@ -1367,6 +1367,86 @@
       .login-hero, .login-card, .login-input-wrap.invalid, .login-logo-ring::after, .rank-rays, .rank-emblem { animation: none !important; }
     }
 
+
+    /* =================================================================
+       v1.2.1 — ปรับสำหรับจอมือถือจริง (iPhone/Android)
+       ================================================================= */
+    /* หัวแอปแบบกะทัดรัด */
+    .app-header { padding: 10px 14px; }
+    .hd { display: flex; align-items: center; gap: 10px; }
+    .hd .brand-logo { width: 40px; height: 40px; }
+    .hd-text { flex: 1; min-width: 0; }
+    .hd .brand-title { font-size: 1.08rem; line-height: 1.25; white-space: nowrap; }
+    .hd .brand-subtitle { margin: 1px 0 0; white-space: nowrap; font-size: clamp(.55rem, 2.55vw, .78rem); letter-spacing: -.15px; }
+    .hd-bell { position: relative; flex: none; width: 42px; height: 42px; border-radius: 50%; border: 1px solid #fff; background: rgba(255,255,255,.9);
+      display: grid; place-items: center; cursor: pointer; box-shadow: 0 2px 8px rgba(36,50,66,.10); }
+    .hd-bell svg { width: 22px; height: 22px; fill: none; stroke: #2a3f56; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    .hd-bell .notif-dot { position: absolute; top: 8px; right: 9px; margin: 0; border: 2px solid #fff; width: 10px; height: 10px; }
+    .status-bar-info { padding: 8px 14px; gap: 10px; }
+    .sb-user { display: flex; align-items: center; gap: 8px; min-width: 0; flex: 1; }
+    .sb-avatar { width: 34px; height: 34px; flex: none; border-radius: 50%; display: grid; place-items: center; background: linear-gradient(135deg, #dbeafe, #fde2ee); }
+    .sb-avatar svg { width: 20px; height: 20px; fill: none; stroke: #3a5878; stroke-width: 1.8; stroke-linecap: round; }
+    .sb-text { min-width: 0; }
+    .sb-name { font-size: .84rem; font-weight: 700; color: var(--ink-strong); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .sb-meta { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; margin-top: 2px; }
+    .sb-meta .user-profile-role { font-size: .66rem; padding: 1px 7px; white-space: nowrap; }
+    .sb-timer, .sb-speed { font-size: .64rem; color: #5b7088; white-space: nowrap; cursor: pointer; }
+    .sb-timer::before { content: '⟳ '; }
+    .sb-actions { display: flex; gap: 6px; flex: none; }
+    .sb-btn { font: inherit; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1px; width: 52px; height: 44px;
+      border-radius: 12px; border: 1px solid #dbe7f4; background: #fff; color: #2a4a6e; cursor: pointer; font-size: .6rem; font-weight: 600; }
+    .sb-btn svg { width: 19px; height: 19px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    .sb-btn.out { color: #b72e48; border-color: #f4c9d3; background: #fff7f9; }
+
+    /* ช่องวันที่บน iOS ไม่ล้นกรอบ + ไม่ซูมหน้าจอเวลาแตะช่องกรอก */
+    input[type="date"], input[type="time"] { -webkit-appearance: none; appearance: none; display: block; width: 100%; min-width: 0; max-width: 100%; box-sizing: border-box; text-align: left; }
+    input[type="date"]::-webkit-date-and-time-value { text-align: left; }
+    input, select, textarea { max-width: 100%; box-sizing: border-box; }
+    @media (max-width: 600px) {
+      input, select, textarea, .hr-field input, .hr-field select, .hr-field textarea, .hr-info input, .hr-info select, .login-input-wrap input { font-size: 16px !important; }
+    }
+
+    /* แถบบันทึก: อยู่ท้ายฟอร์ม ไม่ลอยทับเนื้อหา */
+    .hr-savebar { position: static; box-shadow: 0 6px 16px rgba(40,70,120,.10); backdrop-filter: none; }
+    .hr-save-btn { white-space: nowrap; }
+
+    /* การ์ดวันนี้ */
+    .tc-room { font-size: 1.15rem; }
+    .tc-room-sub { display: block; font-size: .76rem; font-weight: 500; opacity: .88; margin-top: 2px; }
+    .tc-hero-top { align-items: flex-start; }
+
+    /* ข้อมูลโฮมรูม: บนมือถือเรียงเป็นแถว อ่านง่าย ไม่ซ้อนกัน */
+    .hr-tname { display: block; font-size: .92rem; line-height: 1.4; word-break: break-word; }
+    @media (max-width: 600px) {
+      .hr-info-grid { grid-template-columns: 1fr; gap: 6px; }
+      .hr-info { display: grid; grid-template-columns: 112px minmax(0, 1fr); column-gap: 10px; row-gap: 2px; align-items: center; padding: 10px 12px; }
+      .hr-info > .hr-info-label { grid-row: span 2; align-self: center; }
+      .hr-info > input, .hr-info > select, .hr-info > .hr-info-value, .hr-info > #hrTeacherPick, .hr-info > .hr-info-sub { grid-column: 2; }
+      .hr-info > input[type="hidden"] { display: none; }
+      .hr-info-sub { font-size: .7rem; }
+      .form-row-2 { grid-template-columns: 1fr 1fr; gap: 8px; }
+      .tc-tab { font-size: .68rem; }
+      .tc-hero { padding: 14px; }
+      .tc-week { gap: 5px; }
+    }
+    @media (max-width: 370px) {
+      .hr-info { grid-template-columns: 1fr; }
+      .hr-info > * { grid-column: 1 !important; grid-row: auto !important; }
+      .sb-btn span { display: none; }
+      .sb-btn { width: 40px; }
+    }
+    /* v1.2.1: ไม่ให้ช่องในแถวเดียวกันดันกันจนล้นกรอบ */
+    .form-row-2 { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+    .form-row-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .hr-field, .hr-info, .field { min-width: 0; }
+    /* ปุ่มเช็กชื่อทั้งห้อง: ปุ่ม "มาครบ" เต็มแถว ปุ่ม "ขาดทั้งห้อง" เล็กลงด้านล่าง */
+    .hr-bulk { grid-template-columns: 1fr; }
+    .hr-bulk-btn.present { padding: 14px 16px; }
+    .hr-bulk-btn.present b { font-size: 1.02rem; }
+    .hr-bulk-btn.absent { justify-self: end; padding: 6px 12px 6px 8px; border-width: 1.5px; gap: 6px; }
+    .hr-bulk-btn.absent .hr-bulk-ico { width: 24px; height: 24px; font-size: .8rem; }
+    .hr-bulk-btn.absent b { font-size: .78rem; }
+    .hr-bulk-btn.absent small { display: none; }
     @media print {
       body { background: #fff !important; padding: 0 !important; }
       body * { visibility: hidden !important; }
@@ -1387,35 +1467,43 @@
 
     <!-- Header -->
     <header class="app-header" id="appHeader" style="display: none;">
-      <div class="header-top">
-        <div class="brand-row">
-          <img class="brand-logo" src="https://i.ibb.co/99CQnjKY/2.png" alt="ตราโรงเรียน" width="40" height="40">
-          <div>
+      <div class="hd">
+        <img class="brand-logo" src="https://i.ibb.co/99CQnjKY/2.png" alt="ตราโรงเรียน" width="40" height="40">
+        <div class="hd-text">
           <h1 class="brand-title">ระบบกิจกรรมโฮมรูม</h1>
           <p class="brand-subtitle">โรงเรียนพระปริยัติธรรมวัดธรรมมงคล แผนกสามัญศึกษา</p>
-          </div>
         </div>
-        <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 4px;">
-          <button type="button" class="notif-trigger" id="openNotifBtn" aria-label="เปิดการแจ้งเตือนในระบบ">
-            <span>🔔 แจ้งเตือน</span>
-            <span class="notif-dot" id="notifDot"></span>
-          </button>
-          <span title="นับถอยหลังการรีเฟรชข้อมูลอัตโนมัติ" style="font-size: 0.72rem; color: #3d5166; font-weight: bold; background: rgba(255, 255, 255, 0.75); padding: 2px 8px; border-radius: 6px; border: 1px solid rgba(255, 255, 255, 0.5); cursor:pointer;" id="refreshTimer">๒๐:๐๐</span>
-          <span id="speedBadge" title="เวลาที่เซิร์ฟเวอร์ใช้ตอบครั้งล่าสุด" style="font-size: 0.66rem; color: #3d5166; background: rgba(255,255,255,0.6); padding: 1px 6px; border-radius: 6px; display:none;"></span>
-        </div>
+        <button type="button" class="hd-bell" id="openNotifBtn" aria-label="การแจ้งเตือน" title="การแจ้งเตือน">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 16.5V11a6 6 0 1 1 12 0v5.5l1.5 2h-15z"/><path d="M10 20.5a2 2 0 0 0 4 0"/></svg>
+          <span class="notif-dot" id="notifDot"></span>
+        </button>
       </div>
     </header>
 
     <!-- Status Bar -->
     <div class="status-bar-info" id="statusBarInfo" style="display: none;">
-      <div class="user-profile-badge" style="min-width:0;">
-        <span>👤</span>
-        <span id="userProfileName" style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width: 170px;">ผู้ใช้งาน</span>
-        <span class="user-profile-role" id="userProfileRole">บทบาท</span>
+      <div class="sb-user">
+        <span class="sb-avatar" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="8.5" r="3.8"/><path d="M4.5 20a7.5 7.5 0 0 1 15 0"/></svg>
+        </span>
+        <div class="sb-text">
+          <div class="sb-name" id="userProfileName">ผู้ใช้งาน</div>
+          <div class="sb-meta">
+            <span class="user-profile-role" id="userProfileRole">บทบาท</span>
+            <span class="sb-timer" id="refreshTimer" title="แตะเพื่อรีเฟรชข้อมูล">๒๐:๐๐</span>
+            <span class="sb-speed" id="speedBadge" title="เวลาที่เซิร์ฟเวอร์ใช้ตอบครั้งล่าสุด" style="display:none;"></span>
+          </div>
+        </div>
       </div>
-      <div style="display: flex; gap: 6px; align-items: center;">
-        <button type="button" class="btn btn-secondary btn-sm" id="quickChangePwdBtn" style="padding: 3px 8px; border-radius: 6px; font-size: 0.72rem; border-color: var(--border-pink);">🔑 รหัสผ่าน</button>
-        <button type="button" class="btn btn-pink btn-sm" id="logoutBtn" style="padding: 3px 8px; border-radius: 6px; font-size: 0.72rem;">ออกจากระบบ ↩️</button>
+      <div class="sb-actions">
+        <button type="button" class="sb-btn" id="quickChangePwdBtn" aria-label="เปลี่ยนรหัสผ่าน" title="เปลี่ยนรหัสผ่าน">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="8" cy="15" r="4"/><path d="M11 12l8-8M16 7l2.5 2.5M14 9l2 2"/></svg>
+          <span>รหัสผ่าน</span>
+        </button>
+        <button type="button" class="sb-btn out" id="logoutBtn" aria-label="ออกจากระบบ" title="ออกจากระบบ">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h4a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-4"/><path d="M10 16l-4-4 4-4M6 12h10"/></svg>
+          <span>ออก</span>
+        </button>
       </div>
     </div>
 
@@ -1625,8 +1713,8 @@
                 <label class="hr-field">
                   <span class="hr-info-label">ประเภทรายงาน</span>
                   <select id="repPeriodType" required>
-                    <option value="รายสัปดาห์">สรุปผลรายสัปดาห์</option>
-                    <option value="รายเดือน">สรุปผลรายเดือน</option>
+                    <option value="รายสัปดาห์">รายสัปดาห์</option>
+                    <option value="รายเดือน">รายเดือน</option>
                   </select>
                 </label>
                 <label class="hr-field">
@@ -2648,7 +2736,7 @@
     const name = currentTeacher() || (ri.advisors[0] || 'ครูที่ปรึกษา');
     const h = new Date().getHours();
     $('tcHello').textContent = (h < 12 ? 'อรุณสวัสดิ์' : h < 17 ? 'สวัสดี' : 'สวัสดียามเย็น') + ' · ' + name;
-    $('tcRoomLine').innerHTML = `ครูที่ปรึกษา ${th(S.user.room)} <span style="font-weight:500;opacity:.85;font-size:.8rem;">· ${th((S.data.students || []).length)} รูป · ${esc(thaiDate(t))}</span>`;
+    $('tcRoomLine').innerHTML = `ครูที่ปรึกษา ${th(S.user.room)}<span class="tc-room-sub">นักเรียน ${th((S.data.students || []).length)} รูป · วัน${dayName(t)}ที่ ${esc(thaiDate(t))}</span>`;
     const chip = $('tcTodayChip'), rec = recordFor(t);
     if (!isHomeroomDay(t)) { chip.className = 'tc-today-chip'; chip.textContent = '🛌 วันนี้โรงเรียนหยุด'; }
     else if (rec) { chip.className = 'tc-today-chip done'; chip.textContent = '✓ บันทึกวันนี้แล้ว'; }
@@ -2672,7 +2760,7 @@
     if (ri.advisors.length > 1) {
       box.innerHTML = `<div class="teacher-pick">${ri.advisors.map((a) => `<button type="button" data-tname="${esc(a)}" class="${a === cur ? 'on' : ''}">${esc(a)}</button>`).join('')}</div>`;
     } else if (ri.advisors.length === 1) {
-      box.innerHTML = `<strong class="hr-info-value" style="font-size:.88rem;">${esc(ri.advisors[0])}</strong><span class="hr-info-sub">ตรวจจากรหัสห้อง</span>`;
+      box.innerHTML = `<strong class="hr-info-value hr-tname">${esc(ri.advisors[0])}</strong><span class="hr-info-sub" style="display:block;">✓ ตรวจจากรหัสห้อง</span>`;
       cur = ri.advisors[0];
     } else {
       box.innerHTML = `<input type="text" id="hrTeacherFree" value="${esc(cur)}" placeholder="พิมพ์ชื่อครูผู้โฮมรูม">`;
@@ -2684,6 +2772,7 @@
     ['hrTeacher', 'bhTeacher', 'repTeacherName', 'csReplyTeacher'].forEach((id) => { $(id).value = name; });
     document.querySelectorAll('#hrTeacherPick [data-tname]').forEach((b) => b.classList.toggle('on', b.dataset.tname === name));
     if (persist && name) store.set('hr_tname_' + S.user.room, name);
+    if (name && S.user && S.user.role === 'teacher') $('userProfileName').textContent = name;
   }
   $('hrTeacherPick').addEventListener('click', (e) => {
     const b = e.target.closest('[data-tname]');
