@@ -1818,6 +1818,7 @@
       color: #fff; background: linear-gradient(145deg, #4c6ef5, #7048e8); }
     .ins-ico { width: 18px; height: 18px; vertical-align: -4px; fill: none; stroke: #2f6fd1; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
     .ins-note { margin-top: 10px; font-size: .78rem; color: #8a5a00; background: #fff6e0; border-radius: 10px; padding: 8px 10px; }
+    .ins-note.warn { background: #ffe3e3; color: #a61e1e; font-weight: 700; }
     .pwa-update { position: fixed; z-index: 130; left: 50%; transform: translateX(-50%); bottom: max(16px, env(safe-area-inset-bottom)); display: flex; align-items: center; gap: 12px;
       padding: 10px 10px 10px 16px; border-radius: 999px; background: #1f2a4d; color: #fff; font-size: .86rem; box-shadow: 0 10px 28px rgba(20,30,60,.3); white-space: nowrap; }
     .pwa-update[hidden] { display: none; }
@@ -2523,15 +2524,15 @@
         <button type="button" class="sheet-close" data-close-sheet aria-label="ปิด"><svg viewBox="0 0 24 24"><path d="M6.5 6.5l11 11M17.5 6.5l-11 11"/></svg></button>
       </div>
       <div class="sheet-body">
-        <div class="ins-app"><img src="assets/icons/icon-192.png" alt="" width="56" height="56"><div><b>โฮมรูม</b><span>แตะไอคอนบนหน้าจอโฮม เข้าระบบได้ทันที</span></div></div>
+        <div class="ins-app"><img src="assets/icons/icon-192.png" alt="" width="56" height="56" onerror="this.onerror=null;this.src='assets/logo.webp'"><div><b>โฮมรูม</b><span>แตะไอคอนบนหน้าจอโฮม เข้าระบบได้ทันที</span></div></div>
         <div class="ins-block" id="insIos">
-          <div class="ins-os">iPhone / iPad (ใช้ Safari)</div>
+          <div class="ins-os">iPhone / iPad (Safari หรือ Chrome)</div>
           <ol class="ins-steps">
-            <li><i>1</i><span>แตะปุ่ม <b>แชร์</b> <svg class="ins-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M8 7l4-4 4 4"/><path d="M6 11H5v10h14V11h-1"/></svg> ที่แถบด้านล่างของ Safari</span></li>
-            <li><i>2</i><span>เลื่อนลงแล้วเลือก <b>เพิ่มไปยังหน้าจอโฮม</b> <svg class="ins-ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="4"/><path d="M12 8v8M8 12h8"/></svg></span></li>
+            <li><i>1</i><span>แตะปุ่ม <b>แชร์</b> <svg class="ins-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M8 7l4-4 4 4"/><path d="M6 11H5v10h14V11h-1"/></svg> (Safari อยู่แถบล่าง · Chrome อยู่ในช่องลิงก์ด้านบน)</span></li>
+            <li><i>2</i><span>เลื่อนรายการลงไปจนสุด แล้วเลือก <b>เพิ่มไปยังหน้าจอโฮม</b> <svg class="ins-ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="4"/><path d="M12 8v8M8 12h8"/></svg></span></li>
             <li><i>3</i><span>แตะ <b>เพิ่ม</b> มุมขวาบน</span></li>
           </ol>
-          <div class="ins-note">ถ้าเปิดลิงก์จากในแอป LINE ให้แตะจุดสามจุด แล้วเลือก "เปิดในเบราว์เซอร์" ก่อน</div>
+          <div class="ins-note" id="insLineNote">ถ้าเปิดลิงก์จากในแอป LINE ให้แตะจุดสามจุด แล้วเลือก "เปิดในเบราว์เซอร์" ก่อน</div>
         </div>
         <div class="ins-block" id="insAndroid">
           <div class="ins-os">Android (ใช้ Chrome)</div>
@@ -4439,6 +4440,7 @@
     function openInstallSheet() {
       $('insIos').hidden = !isIOS && /android/i.test(ua);
       $('insAndroid').hidden = isIOS;
+      $('insLineNote').classList.toggle('warn', /\bLine\//i.test(ua));
       sheet.hidden = false;
       requestAnimationFrame(() => sheet.classList.add('open'));
     }
