@@ -6,6 +6,15 @@
   <meta name="theme-color" content="#2f6fd1">
   <meta name="format-detection" content="telephone=no">
   <meta name="robots" content="noindex, nofollow">
+  <!-- PWA: ติดตั้งเป็นแอปบนมือถือ -->
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" type="image/png" sizes="48x48" href="assets/icons/favicon-48.png">
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="โฮมรูม">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="application-name" content="โฮมรูม">
   <title>ระบบกิจกรรมโฮมรูม โรงเรียนพระปริยัติธรรมวัดธรรมมงคล</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1789,6 +1798,32 @@
     .tc-panel .teacher-pick button { background: rgba(255,255,255,.12); color: #fff; border: 1.5px solid rgba(255,255,255,.25); box-shadow: none; }
     .tc-panel .teacher-pick button.on { background: #fff; color: #3b4fd8; border-color: #fff; }
     .tc-panel .tc-teacher input { background: rgba(255,255,255,.95); }
+    /* =====================================================================
+       v1.5 — PWA (ติดตั้งเป็นแอป)
+       ===================================================================== */
+    .pwa-install { display: flex; align-items: center; justify-content: center; gap: 8px; margin: 14px auto 0; padding: 11px 18px; min-height: 44px;
+      font: inherit; font-size: .9rem; font-weight: 700; color: #3b4cca; background: rgba(255,255,255,.85); border: 1.5px dashed #9fb0f5; border-radius: 999px; cursor: pointer; }
+    .pwa-install[hidden] { display: none; }
+    .pwa-install svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    .pwa-install:active { transform: scale(.97); }
+    .ins-app { display: flex; align-items: center; gap: 12px; padding: 12px; margin-bottom: 12px; border-radius: 16px; background: #f3f6ff; }
+    .ins-app img { border-radius: 14px; background: #fff; box-shadow: 0 2px 8px rgba(40,60,120,.15); flex: none; }
+    .ins-app b { display: block; font-size: 1rem; color: #22305a; }
+    .ins-app span { font-size: .8rem; color: #5b6b85; }
+    .ins-block { border: 1px solid #e3e9f5; border-radius: 16px; padding: 12px 14px; margin-bottom: 12px; }
+    .ins-os { font-weight: 800; font-size: .88rem; color: #3b4cca; margin-bottom: 8px; }
+    .ins-steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+    .ins-steps li { display: flex; gap: 10px; align-items: flex-start; font-size: .88rem; line-height: 1.55; color: #2b3a52; }
+    .ins-steps i { flex: none; width: 24px; height: 24px; border-radius: 50%; display: grid; place-items: center; font-style: normal; font-size: .78rem; font-weight: 800;
+      color: #fff; background: linear-gradient(145deg, #4c6ef5, #7048e8); }
+    .ins-ico { width: 18px; height: 18px; vertical-align: -4px; fill: none; stroke: #2f6fd1; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    .ins-note { margin-top: 10px; font-size: .78rem; color: #8a5a00; background: #fff6e0; border-radius: 10px; padding: 8px 10px; }
+    .pwa-update { position: fixed; z-index: 130; left: 50%; transform: translateX(-50%); bottom: max(16px, env(safe-area-inset-bottom)); display: flex; align-items: center; gap: 12px;
+      padding: 10px 10px 10px 16px; border-radius: 999px; background: #1f2a4d; color: #fff; font-size: .86rem; box-shadow: 0 10px 28px rgba(20,30,60,.3); white-space: nowrap; }
+    .pwa-update[hidden] { display: none; }
+    .pwa-update button { font: inherit; font-weight: 800; font-size: .84rem; color: #1f2a4d; background: #fff; border: none; border-radius: 999px; padding: 7px 14px; cursor: pointer; }
+    @media (display-mode: standalone) { .pwa-install { display: none !important; } }
+
     @media print {
       body { background: #fff !important; padding: 0 !important; }
       body * { visibility: hidden !important; }
@@ -2472,7 +2507,47 @@
           </button>
         </form>
       </div>
+      <button type="button" class="pwa-install" id="pwaInstallBtn" hidden>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M12 7.5v7M9 11.5l3 3 3-3"/><path d="M10.5 18.5h3"/></svg>
+        <span>ติดตั้งแอปลงมือถือ</span>
+      </button>
     </div>
+  </div>
+
+  <div class="sheet" id="installSheet" hidden>
+    <div class="sheet-backdrop" data-close-sheet></div>
+    <div class="sheet-panel" role="dialog" aria-modal="true" aria-labelledby="installSheetTitle">
+      <div class="sheet-grip" aria-hidden="true"></div>
+      <div class="sheet-head">
+        <b id="installSheetTitle">ติดตั้งแอปโฮมรูม</b>
+        <button type="button" class="sheet-close" data-close-sheet aria-label="ปิด"><svg viewBox="0 0 24 24"><path d="M6.5 6.5l11 11M17.5 6.5l-11 11"/></svg></button>
+      </div>
+      <div class="sheet-body">
+        <div class="ins-app"><img src="assets/icons/icon-192.png" alt="" width="56" height="56"><div><b>โฮมรูม</b><span>แตะไอคอนบนหน้าจอโฮม เข้าระบบได้ทันที</span></div></div>
+        <div class="ins-block" id="insIos">
+          <div class="ins-os">iPhone / iPad (ใช้ Safari)</div>
+          <ol class="ins-steps">
+            <li><i>1</i><span>แตะปุ่ม <b>แชร์</b> <svg class="ins-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M8 7l4-4 4 4"/><path d="M6 11H5v10h14V11h-1"/></svg> ที่แถบด้านล่างของ Safari</span></li>
+            <li><i>2</i><span>เลื่อนลงแล้วเลือก <b>เพิ่มไปยังหน้าจอโฮม</b> <svg class="ins-ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="4"/><path d="M12 8v8M8 12h8"/></svg></span></li>
+            <li><i>3</i><span>แตะ <b>เพิ่ม</b> มุมขวาบน</span></li>
+          </ol>
+          <div class="ins-note">ถ้าเปิดลิงก์จากในแอป LINE ให้แตะจุดสามจุด แล้วเลือก "เปิดในเบราว์เซอร์" ก่อน</div>
+        </div>
+        <div class="ins-block" id="insAndroid">
+          <div class="ins-os">Android (ใช้ Chrome)</div>
+          <ol class="ins-steps">
+            <li><i>1</i><span>แตะเมนู <b>จุดสามจุด</b> <svg class="ins-ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="5" r="1.4"/><circle cx="12" cy="12" r="1.4"/><circle cx="12" cy="19" r="1.4"/></svg> มุมขวาบน</span></li>
+            <li><i>2</i><span>เลือก <b>ติดตั้งแอป</b> หรือ <b>เพิ่มลงในหน้าจอหลัก</b></span></li>
+            <li><i>3</i><span>แตะ <b>ติดตั้ง</b></span></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pwa-update" id="pwaUpdate" hidden role="status">
+    <span>มีระบบเวอร์ชันใหม่</span>
+    <button type="button" id="pwaUpdateBtn">อัปเดตเลย</button>
   </div>
 
   <!-- แผ่นเลือกเรื่องที่ใช้บ่อย -->
@@ -4349,6 +4424,69 @@
   window.addEventListener('online', () => { toast('เชื่อมต่ออินเทอร์เน็ตแล้ว', 'ok'); if (S.user) manualRefresh(); });
 
   // ---------------- เริ่มต้น ----------------
+
+  // ---------------- PWA: ติดตั้งแอป + ผู้ช่วยตัวจิ๋ว (service worker) ----------------
+  (function setupPwa() {
+    const isStandalone = () => window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+    const ua = navigator.userAgent || '';
+    const isIOS = /iphone|ipad|ipod/i.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+    const isMobile = isIOS || /android/i.test(ua);
+    let deferredPrompt = null;
+    const btn = $('pwaInstallBtn');
+    const sheet = $('installSheet');
+
+    function refreshBtn() { if (btn) btn.hidden = isStandalone() || !(deferredPrompt || isMobile); }
+    function openInstallSheet() {
+      $('insIos').hidden = !isIOS && /android/i.test(ua);
+      $('insAndroid').hidden = isIOS;
+      sheet.hidden = false;
+      requestAnimationFrame(() => sheet.classList.add('open'));
+    }
+    function closeInstallSheet() {
+      if (sheet.hidden) return;
+      sheet.classList.remove('open');
+      setTimeout(() => { sheet.hidden = true; }, 220);
+    }
+    sheet.addEventListener('click', (e) => { if (e.target.closest('[data-close-sheet]')) closeInstallSheet(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeInstallSheet(); });
+
+    window.addEventListener('beforeinstallprompt', (e) => { e.preventDefault(); deferredPrompt = e; refreshBtn(); });
+    window.addEventListener('appinstalled', () => { deferredPrompt = null; refreshBtn(); toast('ติดตั้งแอปโฮมรูมเรียบร้อย ดูไอคอนได้ที่หน้าจอโฮม'); });
+    if (btn) btn.addEventListener('click', async () => {
+      if (deferredPrompt) {
+        deferredPrompt.prompt();
+        try { await deferredPrompt.userChoice; } catch (err) { /* ignore */ }
+        deferredPrompt = null; refreshBtn();
+      } else {
+        openInstallSheet();
+      }
+    });
+    refreshBtn();
+
+    // ลงทะเบียนผู้ช่วยตัวจิ๋ว (ทำงานเฉพาะบน https หรือ localhost)
+    const secure = location.protocol === 'https:' || location.hostname === 'localhost' || location.hostname === '127.0.0.1';
+    if (!('serviceWorker' in navigator) || !secure) return;
+    const bar = $('pwaUpdate');
+    let reloading = false;
+    function showUpdate(worker) {
+      if (!worker || !navigator.serviceWorker.controller) return;
+      bar.hidden = false;
+      $('pwaUpdateBtn').onclick = () => { bar.hidden = true; worker.postMessage('SKIP_WAITING'); };
+    }
+    navigator.serviceWorker.addEventListener('controllerchange', () => { if (reloading) return; reloading = true; location.reload(); });
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('sw.js', { scope: './' }).then((reg) => {
+        if (reg.waiting) showUpdate(reg.waiting);
+        reg.addEventListener('updatefound', () => {
+          const nw = reg.installing; if (!nw) return;
+          nw.addEventListener('statechange', () => { if (nw.state === 'installed') showUpdate(nw); });
+        });
+        // ตรวจหาเวอร์ชันใหม่ทุกครั้งที่กลับมาเปิดแอป
+        document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible') reg.update().catch(() => {}); });
+      }).catch(() => { /* ไม่มีผลต่อการใช้งานปกติ */ });
+    });
+  })();
+
   (async function init() {
     if (!apiConfigured()) { $('configWarning').style.display = 'block'; return; }
     const token = store.get('hr_token');
