@@ -36,12 +36,12 @@
       --border-pink: #f9d8e6;
       --ink: #243242;
       --muted: #66788a;
-      --pastel-blue: #8ec5fc;
-      --pastel-blue-deep: #4a90e2;
-      --pastel-blue-light: #dff0ff;
-      --pastel-pink: #ffafcc;
-      --pastel-pink-deep: #e06d96;
-      --pastel-pink-light: #ffe5ef;
+      --pastel-blue: #7cc8f5;
+      --pastel-blue-deep: #1f7fd0;
+      --pastel-blue-light: #e3f4fe;
+      --pastel-pink: #f9a8cd;
+      --pastel-pink-deep: #d94d8c;
+      --pastel-pink-light: #fde7f1;
       --success: #34a853;
       --success-bg: #e8f7ed;
       --warning: #d9822b;
@@ -388,9 +388,9 @@
     }
 
     .btn-primary {
-      background: linear-gradient(135deg, #64aef7 0%, #f082ac 100%);
+      background: linear-gradient(135deg, #1e3a8a 0%, #2f9be0 100%);
       color: #ffffff;
-      box-shadow: 0 3px 10px rgba(100, 174, 247, 0.3);
+      box-shadow: 0 3px 10px rgba(30, 58, 138, 0.25);
     }
 
     .btn-primary:hover {
@@ -1160,8 +1160,8 @@
     .login-caps svg { width: 14px; height: 14px; fill: #e0a100; }
     .login-submit { position: relative; margin-top: 4px; height: 52px; border: none; border-radius: 14px; cursor: pointer; font: inherit; font-weight: 700;
       font-size: 1.02rem; color: #fff; display: flex; align-items: center; justify-content: center; gap: 8px;
-      background: linear-gradient(120deg, #2f78cf 0%, #5a8fe0 45%, #d86c9b 100%); background-size: 160% 100%; background-position: 0% 0;
-      box-shadow: 0 10px 22px rgba(47, 120, 207, .30); transition: background-position .35s, transform .12s, box-shadow .2s, opacity .2s; }
+      background: linear-gradient(120deg, #1e3a8a 0%, #2563b8 45%, #2f9be0 100%); background-size: 160% 100%; background-position: 0% 0;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.3), 0 2px 0 #13265c, 0 3px 0 #0f1d49, 0 5px 6px rgba(19,38,92,.25); transition: background-position .35s, transform .12s, box-shadow .2s, opacity .2s; }
     .login-submit:hover { background-position: 100% 0; box-shadow: 0 12px 26px rgba(47, 120, 207, .38); }
     .login-submit:active { transform: translateY(1px); }
     .login-submit:focus-visible { outline: 3px solid rgba(74,144,226,.45); outline-offset: 2px; }
@@ -1195,7 +1195,7 @@
     .hr-info-label { font-size: .76rem; font-weight: 600; color: #48607a; }
     .hr-info-label em { font-style: normal; font-weight: 500; color: var(--muted); }
     .hr-save-btn { border: none; cursor: pointer; font: inherit; font-weight: 700; font-size: .98rem; color: #fff; padding: 13px 18px; border-radius: 14px;
-      background: linear-gradient(120deg, #2f78cf, #5a8fe0 50%, #d86c9b); box-shadow: 0 8px 18px rgba(47,120,207,.28); transition: transform .12s, filter .15s; }
+      background: linear-gradient(120deg, #2f78cf, #5a8fe0 50%, #e85d9b); box-shadow: 0 8px 18px rgba(47,120,207,.28); transition: transform .12s, filter .15s; }
     .hr-save-btn:hover { filter: brightness(1.05); }
     .hr-save-btn:active { transform: translateY(1px); }
     .hr-save-btn[disabled] { opacity: .7; cursor: progress; }
@@ -1235,7 +1235,7 @@
     #homeroomForm { display: flex; flex-direction: column; gap: 12px; }
     .hr-step { background: #fff; border: 1px solid var(--line); border-radius: 18px; padding: 14px; box-shadow: 0 6px 18px rgba(80,120,170,.06); display: flex; flex-direction: column; gap: 10px; }
     .hr-step-head { display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: .92rem; color: var(--ink-strong); }
-    .hr-step-no { width: 24px; height: 24px; border-radius: 50%; display: grid; place-items: center; font-size: .76rem; color: #fff; background: linear-gradient(135deg, #3c82d6, #d86c9b); flex: none; }
+    .hr-step-no { width: 24px; height: 24px; border-radius: 50%; display: grid; place-items: center; font-size: .76rem; color: #fff; background: linear-gradient(135deg, #3c82d6, #e85d9b); flex: none; }
     .hr-auto-tag { margin-left: auto; font-size: .64rem; font-weight: 600; color: #1d6f42; background: #e3f6ea; border-radius: 999px; padding: 2px 8px; white-space: nowrap; }
     .hr-count-total { margin-left: auto; font-size: .72rem; font-weight: 600; color: var(--muted); }
     .hr-info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
@@ -1292,7 +1292,7 @@
     .hr-recent:empty { display: none; }
     .hr-summary-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
     .hr-magic { font: inherit; font-size: .76rem; font-weight: 700; border: none; border-radius: 999px; padding: 6px 12px; cursor: pointer; color: #fff;
-      background: linear-gradient(120deg, #7b61ff, #d86c9b); box-shadow: 0 4px 12px rgba(123,97,255,.3); white-space: nowrap; }
+      background: linear-gradient(120deg, #2f9be0, #e85d9b); box-shadow: 0 4px 12px rgba(47,155,224,.3); white-space: nowrap; }
     .trait-chips { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
     .trait-chip { position: relative; display: flex; align-items: center; gap: 8px; padding: 9px 10px; border-radius: 12px; border: 1.5px solid #dfe9f5; background: #fff; cursor: pointer; font-size: .78rem; line-height: 1.3; color: #33506e; transition: all .15s; }
     .trait-chip input { position: absolute; opacity: 0; pointer-events: none; }
@@ -1320,7 +1320,7 @@
     .chat-reply { display: flex; gap: 6px; align-items: flex-end; }
     .chat-reply textarea { flex: 1; font: inherit; font-size: .84rem; border-radius: 14px; border: 1.5px solid #d6e4f3; padding: 9px 12px; resize: none; min-height: 42px; background: #f7fafe; }
     .chat-reply textarea:focus { outline: none; border-color: var(--focus); background: #fff; }
-    .chat-reply button { flex: none; width: 44px; height: 44px; border-radius: 50%; border: none; cursor: pointer; color: #fff; font-size: 1.05rem; background: linear-gradient(135deg, #3c82d6, #d86c9b); }
+    .chat-reply button { flex: none; width: 44px; height: 44px; border-radius: 50%; border: none; cursor: pointer; color: #fff; font-size: 1.05rem; background: linear-gradient(135deg, #3c82d6, #e85d9b); }
 
     /* ---------- นักเรียน: ตราแรงก์ ---------- */
     .rank-hero { position: relative; overflow: hidden; border-radius: 24px; padding: 18px 16px 18px; text-align: center; color: #fff;
@@ -1470,12 +1470,12 @@
     /* ---------- เข้าสู่ระบบ ---------- */
     .login-container { padding: 0 0 28px; gap: 0; justify-content: flex-start; background: #f5f8fd; }
     .lg-hero { position: relative; overflow: hidden; min-height: 50vh; display: flex; align-items: center; justify-content: center; padding: max(44px, env(safe-area-inset-top)) 20px 78px; color: #fff;
-      background: linear-gradient(150deg, #1c3f8f 0%, #2f6fd1 42%, #7b5be0 72%, #d9669b 100%); }
+      background: linear-gradient(150deg, #1c3f8f 0%, #2f6fd1 42%, #5fb6ec 72%, #e85d9b 100%); }
     .lg-aurora { position: absolute; inset: -20%; pointer-events: none; filter: blur(42px); opacity: .75; }
     .lg-aurora i { position: absolute; border-radius: 50%; mix-blend-mode: screen; animation: lgFloat 14s ease-in-out infinite; }
     .lg-aurora i:nth-child(1) { width: 60%; height: 55%; left: -5%; top: 5%; background: #4dabf7; }
     .lg-aurora i:nth-child(2) { width: 55%; height: 50%; right: -8%; top: 0; background: #f783ac; animation-delay: -4s; animation-duration: 17s; }
-    .lg-aurora i:nth-child(3) { width: 50%; height: 45%; left: 20%; bottom: -5%; background: #9775fa; animation-delay: -8s; animation-duration: 19s; }
+    .lg-aurora i:nth-child(3) { width: 50%; height: 45%; left: 20%; bottom: -5%; background: #f9a8cd; animation-delay: -8s; animation-duration: 19s; }
     .lg-aurora i:nth-child(4) { width: 30%; height: 30%; right: 15%; bottom: 10%; background: #ffd43b; opacity: .45; animation-delay: -2s; }
     @keyframes lgFloat { 0%,100% { transform: translate(0,0) scale(1); } 33% { transform: translate(6%, 4%) scale(1.08); } 66% { transform: translate(-5%, 6%) scale(.95); } }
     .lg-dots { position: absolute; inset: 0; pointer-events: none; opacity: .35;
@@ -1524,7 +1524,7 @@
     .tc-day.missing .tc-day-dot { background: #f0a12b; }
     .tc-day.future { background: transparent; box-shadow: none; opacity: .4; cursor: default; }
     .tc-day.today .tc-day-num { color: #2f6fd1; }
-    .tc-day.sel { border-color: #2f6fd1; background: linear-gradient(160deg, #2f6fd1, #6c5ce7); color: #fff; box-shadow: 0 6px 14px rgba(47,111,209,.32); }
+    .tc-day.sel { border-color: #2f6fd1; background: linear-gradient(160deg, #2f6fd1, #2f9be0); color: #fff; box-shadow: 0 6px 14px rgba(47,111,209,.32); }
     .tc-day.sel .tc-day-abbr, .tc-day.sel .tc-day-num { color: #fff; }
     .tc-day.sel.done .tc-day-dot { background: #8ef0b5; }
     .tc-day.sel.missing .tc-day-dot { background: #ffd27a; }
@@ -1549,7 +1549,7 @@
     .tc-tabs { background: #fff; border: 1px solid var(--line); border-radius: 18px; padding: 5px; gap: 4px; box-shadow: 0 4px 14px rgba(60,100,160,.06); }
     .tc-tab { padding: 9px 2px 8px; border-radius: 13px; gap: 4px; font-size: .72rem; color: #5b7088; }
     .tc-tab svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
-    .tc-tab.active { color: #fff; background: linear-gradient(150deg, #2f6fd1, #6c5ce7); box-shadow: 0 6px 14px rgba(47,111,209,.28); }
+    .tc-tab.active { color: #fff; background: linear-gradient(150deg, #2f6fd1, #2f9be0); box-shadow: 0 6px 14px rgba(47,111,209,.28); }
     .tc-tab span:not(.tc-badge) { white-space: nowrap; }
     .tc-badge { top: 4px; right: 14%; border: 2px solid #fff; }
 
@@ -1593,7 +1593,7 @@
     .tp-item span { font-size: .88rem; font-weight: 600; color: var(--ink-strong); line-height: 1.4; }
     .tp-item small { font-size: .68rem; color: #5b7088; }
     .tp-item:active { filter: brightness(.96); }
-    .hr-magic { background: linear-gradient(120deg, #6c5ce7, #d86c9b); }
+    .hr-magic { background: linear-gradient(120deg, #2f9be0, #e85d9b); }
     .trait-chip .tick svg { width: 13px; height: 13px; fill: none; stroke: #fff; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
     .tc-card-sub { font-size: .68rem; font-weight: 500; color: var(--muted); margin-left: 4px; }
 
@@ -1651,7 +1651,7 @@
     /* ปุ่มแจ้งเตือนลอย */
     .notif-fab { position: fixed; z-index: 90; left: auto; right: 12px; top: auto; bottom: 28px; width: 56px; height: 56px; border-radius: 50%;
       border: 2px solid rgba(255,255,255,.9); display: grid; place-items: center; cursor: grab; touch-action: none; user-select: none; -webkit-user-select: none;
-      background: linear-gradient(145deg, #4c6ef5 0%, #7048e8 100%); color: #fff; -webkit-tap-highlight-color: transparent;
+      background: linear-gradient(145deg, #2f9be0 0%, #e85d9b 100%); color: #fff; -webkit-tap-highlight-color: transparent;
       box-shadow: 0 10px 24px rgba(76,110,245,.38), 0 2px 6px rgba(20,30,60,.18); transition: left .28s cubic-bezier(.2,.8,.2,1), transform .15s, box-shadow .2s; }
     .notif-fab[hidden] { display: none; }
     .notif-fab[style*="top"] { bottom: auto; right: auto; }
@@ -1668,7 +1668,7 @@
     /* เมนูแอดมิน (แทนแถบล่าง) */
     .adm-nav { grid-template-columns: repeat(3, 1fr); gap: 4px; margin: 10px 14px 0; padding: 4px; background: #fff; border: 1px solid var(--line); border-radius: 14px; box-shadow: 0 4px 12px rgba(60,100,160,.06); }
     .adm-nav .nav-btn { display: flex; align-items: center; justify-content: center; text-align: center; font: inherit; font-size: .76rem; font-weight: 700; color: #5b7088; background: transparent; border: none; border-radius: 10px; padding: 9px 4px; cursor: pointer; flex-direction: row; }
-    .adm-nav .nav-btn.active { color: #fff; background: linear-gradient(150deg, #2f6fd1, #6c5ce7); }
+    .adm-nav .nav-btn.active { color: #fff; background: linear-gradient(150deg, #1e3a8a, #2f9be0); box-shadow: inset 0 1px 0 rgba(255,255,255,.3), 0 2px 0 #13265c, 0 3px 4px rgba(19,38,92,.2); }
 
     /* เลเยอร์พื้นหลัง */
     .page-fx { position: fixed; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; display: none; }
@@ -1681,7 +1681,7 @@
     body[data-role="student"] { background: #0f0c29; --rk-glow: #7b8cff; --rk-text: #eef; }
     body[data-role="student"] .page-fx { background:
         radial-gradient(120% 60% at 50% -5%, color-mix(in srgb, var(--rk-glow) 55%, #1b1650) 0%, transparent 62%),
-        linear-gradient(180deg, #17123f 0%, #221a55 38%, #2c2366 70%, #1a1546 100%); }
+        linear-gradient(180deg, #0f1d49 0%, #13265c 38%, #1a3270 70%, #0f1d49 100%); }
     body[data-role="student"] .fx-a { width: 70vmax; height: 70vmax; left: -25vmax; top: 18vh; border-radius: 50%; filter: blur(60px); opacity: .45;
       background: radial-gradient(circle, color-mix(in srgb, var(--rk-glow) 80%, #ff6ec7) 0%, transparent 65%); animation: fxDrift 18s ease-in-out infinite alternate; }
     body[data-role="student"] .fx-b { width: 60vmax; height: 60vmax; right: -24vmax; top: -12vh; border-radius: 50%; filter: blur(60px); opacity: .4;
@@ -1736,7 +1736,7 @@
     body[data-role="student"] .st-stat b { color: #fff; }
     body[data-role="student"] .st-stat span { color: rgba(255,255,255,.7); }
     body[data-role="student"] #view-student .tc-card, body[data-role="student"] #view-student .tc-tabs { background: rgba(255,255,255,.96); border-color: rgba(255,255,255,.6); box-shadow: 0 12px 30px rgba(5,5,30,.35); }
-    body[data-role="student"] .notif-fab { background: linear-gradient(145deg, color-mix(in srgb, var(--rk-glow) 75%, #fff), #7048e8); }
+    body[data-role="student"] .notif-fab { background: linear-gradient(145deg, color-mix(in srgb, var(--rk-glow) 75%, #fff), #e85d9b); }
 
     /* ---------- ครู: พื้นหลังโมเดิร์นสว่าง + กรอบกระจก ---------- */
     body[data-role="teacher"] { background: #eef3fb; }
@@ -1755,19 +1755,19 @@
       background: rgba(255,255,255,.86); border: 1px solid rgba(255,255,255,.95); border-radius: 22px;
       box-shadow: 0 1px 0 rgba(255,255,255,.8) inset, 0 10px 30px rgba(60,80,140,.10), 0 2px 6px rgba(60,80,140,.05); }
     body[data-role="teacher"] #view-teacher .hr-step-head { font-weight: 800; }
-    body[data-role="teacher"] #view-teacher .hr-step-no { background: linear-gradient(145deg, #4c6ef5, #7048e8); color: #fff; box-shadow: 0 4px 10px rgba(76,110,245,.3); }
+    body[data-role="teacher"] #view-teacher .hr-step-no { background: linear-gradient(145deg, #2f9be0, #e85d9b); color: #fff; box-shadow: 0 4px 10px rgba(76,110,245,.3); }
     body[data-role="teacher"] #view-teacher .stu-row { border-color: #e8eef8; border-radius: 14px; }
 
     /* แผงข้อมูลครูที่ปรึกษา: สีเข้มหรู มีสีสันพอดี */
     .tc-panel { position: relative; overflow: hidden; color: #fff; border: none; border-radius: 24px; padding: 16px;
       background: radial-gradient(120% 90% at 100% 0%, rgba(255,140,200,.35) 0%, transparent 45%),
                   radial-gradient(90% 80% at 0% 100%, rgba(80,220,200,.28) 0%, transparent 50%),
-                  linear-gradient(140deg, #1f3a93 0%, #3b4fd8 48%, #6a44d6 100%);
+                  linear-gradient(140deg, #1f3a93 0%, #2563b8 48%, #2f9be0 100%);
       box-shadow: 0 16px 34px rgba(48,62,170,.32), 0 2px 0 rgba(255,255,255,.15) inset; }
     .tc-panel::before { content: ''; position: absolute; right: -40px; top: -40px; width: 170px; height: 170px; border-radius: 50%;
       border: 26px solid rgba(255,255,255,.07); pointer-events: none; }
     .tc-panel::after { content: ''; position: absolute; left: 16px; right: 16px; top: 0; height: 3px; border-radius: 0 0 3px 3px;
-      background: linear-gradient(90deg, #ffd43b, #ff8787, #b197fc); opacity: .9; }
+      background: linear-gradient(90deg, #ffd43b, #ff8787, #f9a8cd); opacity: .9; }
     .tc-panel > * { position: relative; }
     .tc-panel .tc-eyebrow { color: rgba(255,255,255,.75); letter-spacing: .6px; }
     .tc-panel .tc-class { color: #fff; font-size: 1.7rem; letter-spacing: .3px; text-shadow: 0 2px 10px rgba(0,0,0,.18); }
@@ -1785,18 +1785,18 @@
     .tc-panel .tc-day.done .tc-day-dot { background: #63e6be; }
     .tc-panel .tc-day.missing .tc-day-dot { background: #ffc078; }
     .tc-panel .tc-day.future { background: transparent; }
-    .tc-panel .tc-day.sel { background: #fff; border-color: #fff; color: #3b4fd8; box-shadow: 0 8px 18px rgba(10,20,80,.3); }
-    .tc-panel .tc-day.sel .tc-day-abbr { color: #6a44d6; }
+    .tc-panel .tc-day.sel { background: #fff; border-color: #fff; color: #2563b8; box-shadow: 0 8px 18px rgba(10,20,80,.3); }
+    .tc-panel .tc-day.sel .tc-day-abbr { color: #2f9be0; }
     .tc-panel .tc-day.sel .tc-day-num { color: #2b3cb8; }
     .tc-panel .tc-day.sel.done .tc-day-dot { background: #12b886; }
     .tc-panel .tc-day.sel.missing .tc-day-dot { background: #f08c00; }
     .tc-panel .tc-selected-date { color: #fff; }
     .tc-panel .tc-status.done { color: #8ff0c9; } .tc-panel .tc-status.todo, .tc-panel .tc-status.missing { color: #ffd8a8; } .tc-panel .tc-status.edit { color: #d0ebff; }
-    .tc-panel .tc-load-btn { background: #fff; color: #3b4fd8; border-color: #fff; box-shadow: 0 4px 12px rgba(10,20,80,.2); }
+    .tc-panel .tc-load-btn { background: #fff; color: #2563b8; border-color: #fff; box-shadow: 0 4px 12px rgba(10,20,80,.2); }
     .tc-panel .tc-teacher { border-top-color: rgba(255,255,255,.2); }
     .tc-panel .tc-teacher-label { color: rgba(255,255,255,.75); }
     .tc-panel .teacher-pick button { background: rgba(255,255,255,.12); color: #fff; border: 1.5px solid rgba(255,255,255,.25); box-shadow: none; }
-    .tc-panel .teacher-pick button.on { background: #fff; color: #3b4fd8; border-color: #fff; }
+    .tc-panel .teacher-pick button.on { background: #fff; color: #2563b8; border-color: #fff; }
     .tc-panel .tc-teacher input { background: rgba(255,255,255,.95); }
     /* =====================================================================
        v1.5 — PWA (ติดตั้งเป็นแอป)
@@ -1815,7 +1815,7 @@
     .ins-steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
     .ins-steps li { display: flex; gap: 10px; align-items: flex-start; font-size: .88rem; line-height: 1.55; color: #2b3a52; }
     .ins-steps i { flex: none; width: 24px; height: 24px; border-radius: 50%; display: grid; place-items: center; font-style: normal; font-size: .78rem; font-weight: 800;
-      color: #fff; background: linear-gradient(145deg, #4c6ef5, #7048e8); }
+      color: #fff; background: linear-gradient(145deg, #2f9be0, #e85d9b); }
     .ins-ico { width: 18px; height: 18px; vertical-align: -4px; fill: none; stroke: #2f6fd1; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
     .ins-note { margin-top: 10px; font-size: .78rem; color: #8a5a00; background: #fff6e0; border-radius: 10px; padding: 8px 10px; }
     .ins-note.warn { background: #ffe3e3; color: #a61e1e; font-weight: 700; }
@@ -1837,7 +1837,7 @@
     .login-slow b, .login-slow span { display: block; }
     .login-slow b { color: #2f4fb0; }
     .boot-overlay { position: fixed; inset: 0; z-index: 200; display: grid; place-items: center; padding: 24px;
-      background: linear-gradient(160deg, #3a6fd8 0%, #6a4fd8 55%, #c46ba8 100%); opacity: 0; transition: opacity .25s; }
+      background: linear-gradient(160deg, #3a6fd8 0%, #2f9be0 55%, #e85d9b 100%); opacity: 0; transition: opacity .25s; }
     .boot-overlay[hidden] { display: none; }
     .boot-overlay.show { opacity: 1; }
     .boot-card { display: flex; flex-direction: column; align-items: center; gap: 10px; color: #fff; text-align: center; max-width: 320px; }
@@ -1865,14 +1865,14 @@
     .hrx-pg[data-state="done"] i::after, .hrx-pg[data-state="ready"] i::after { content: ""; position: absolute; width: 8px; height: 4px; border: solid #fff; border-width: 0 0 2px 2px; transform: rotate(-45deg) translate(1px,-1px); }
     .hrx-pg[data-state="warn"], .hrx-pg[data-state="part"] { color: #a3600f; background: #fff5e6; }
     .hrx-pg[data-state="warn"] i, .hrx-pg[data-state="part"] i { background: #f0a43a; color: #fff; }
-    .hrx-pg[data-pg="save"][data-state="ready"] { color: #fff; background: linear-gradient(135deg, #2f6fd1, #7a4fd6); }
+    .hrx-pg[data-pg="save"][data-state="ready"] { color: #fff; background: linear-gradient(135deg, #2f6fd1, #2f9be0); }
     .hrx-pg[data-pg="save"][data-state="ready"] i { background: rgba(255,255,255,.3); }
 
     .hrx-sec { --ac: #2f6fd1; --ac-bg: #eaf2fd; scroll-margin-top: 70px; background: #fff; border-radius: 20px; border: 1px solid #e5ecf6;
       box-shadow: 0 8px 22px rgba(40,70,130,.07); overflow: hidden; transition: box-shadow .3s; }
     .hrx-sec.sec-att { --ac: #1f9d5a; --ac-bg: #e8f7ef; }
     .hrx-sec.sec-topic { --ac: #2f6fd1; --ac-bg: #eaf2fd; }
-    .hrx-sec.sec-traits { --ac: #7a4fd6; --ac-bg: #f1ecfd; }
+    .hrx-sec.sec-traits { --ac: #2f9be0; --ac-bg: #e3f2fd; }
     .hrx-sec.sec-save { --ac: #c2416f; --ac-bg: #fdebf2; }
     .hrx-sec.flash { box-shadow: 0 0 0 3px color-mix(in srgb, var(--ac) 45%, transparent), 0 8px 22px rgba(40,70,130,.07); }
     .hrx-head { display: flex; align-items: center; gap: 10px; padding: 12px 14px; background: var(--ac-bg); border-bottom: 1px solid color-mix(in srgb, var(--ac) 14%, #fff); }
@@ -1912,8 +1912,8 @@
     #homeroomForm .stu-no { width: 24px; height: 24px; border-radius: 50%; background: #f1f4f9; display: inline-grid; place-items: center; font-size: .7rem; color: #5b6d86; flex: none; }
     #homeroomForm .trait-chips { gap: 8px; }
     #homeroomForm .trait-chip { border-radius: 14px; padding: 10px; }
-    #homeroomForm .trait-chip.on { border-color: #7a4fd6; background: #f4effe; color: #4b2aa0; }
-    #homeroomForm .trait-chip.on .tick { background: #7a4fd6; border-color: #7a4fd6; }
+    #homeroomForm .trait-chip.on { border-color: #2f9be0; background: #e3f2fd; color: #13265c; }
+    #homeroomForm .trait-chip.on .tick { background: #2f9be0; border-color: #2f9be0; }
 
     .hrx-check { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
     .hrx-check li { display: flex; gap: 10px; align-items: flex-start; padding: 9px 11px; border-radius: 12px; background: #f6f8fc; cursor: pointer; font-size: .84rem; color: #2b3a52; line-height: 1.45; }
@@ -1941,7 +1941,7 @@
        ลำดับตัวอักษร: แสดงผล 28 · หัวข้อหลัก 17 · หัวข้อรอง 13 · เนื้อหา 15 · ป้ายกำกับ 12
        ===================================================================== */
     :root {
-      --c-primary: #3b5bdb; --c-primary-2: #5f3dc4; --c-primary-strong: #2f4ac0;
+      --c-primary: #1e3a8a; --c-primary-2: #2f9be0; --c-primary-strong: #2f4ac0;
       --c-primary-cont: #e8edff; --c-on-primary-cont: #1e3a8a;
       --c-ok: #2b8a3e; --c-ok-cont: #e9f8ee; --c-bad: #c92a2a; --c-bad-cont: #fff0f0; --c-warn: #b35c00; --c-warn-cont: #fff4e5;
       --c-ink: #172033; --c-ink-2: #475467; --c-ink-3: #667085;
@@ -1953,7 +1953,7 @@
     /* ---------- แถบผู้ใช้ (ทุกบทบาท) ---------- */
     .status-bar-info { gap: 12px; }
     .sb-avatar { position: relative; width: 44px !important; height: 44px !important; background: linear-gradient(135deg, var(--c-primary), var(--c-primary-2)) !important;
-      box-shadow: 0 4px 12px rgba(59,91,219,.30); border: 2px solid #fff; }
+      box-shadow: 0 4px 12px rgba(30,58,138,.30); border: 2px solid #fff; }
     .sb-avatar svg { stroke: #fff !important; }
     .sb-initial { position: absolute; inset: 0; display: none; place-items: center; color: #fff; font-size: 1.15rem; font-weight: 800; }
     .sb-avatar.has-initial svg { display: none; }
@@ -1989,7 +1989,7 @@
 
     /* ---------- แผงข้อมูลห้อง (hero) ---------- */
     #view-teacher .tc-panel { position: relative; overflow: hidden; border-radius: 22px !important; padding: 16px 16px 14px !important; color: #fff;
-      background: linear-gradient(140deg, #3b5bdb 0%, #4c4fd8 45%, #6741d9 100%) !important; box-shadow: 0 14px 30px rgba(59,91,219,.28) !important; border: none !important; }
+      background: linear-gradient(140deg, #1e3a8a 0%, #2563b8 45%, #2f9be0 100%) !important; box-shadow: 0 14px 30px rgba(30,58,138,.28) !important; border: none !important; }
     #view-teacher .tc-panel::before { content: ""; position: absolute; inset: 0; width: auto; height: auto; border-radius: 0; border: 0; box-shadow: none; opacity: 1; pointer-events: none;
       background-image: linear-gradient(rgba(255,255,255,.07) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.07) 1px, transparent 1px);
       background-size: 26px 26px; mask-image: linear-gradient(180deg, #000 0%, transparent 70%); -webkit-mask-image: linear-gradient(180deg, #000 0%, transparent 70%); }
@@ -2056,7 +2056,7 @@
     #homeroomForm .hr-info-label { font-size: var(--fs-sub); font-weight: 700; color: var(--c-ink-2); }
     #homeroomForm .hr-info-label em { font-weight: 500; color: var(--c-ink-3); }
     #homeroomForm input[type="text"], #homeroomForm textarea { font-size: var(--fs-body); color: var(--c-ink); background: #fff; border: 1px solid #c9d3e2; border-radius: 12px; }
-    #homeroomForm input[type="text"]:focus, #homeroomForm textarea:focus { border-color: var(--c-primary); box-shadow: 0 0 0 3px rgba(59,91,219,.15); outline: none; }
+    #homeroomForm input[type="text"]:focus, #homeroomForm textarea:focus { border-color: var(--c-primary); box-shadow: 0 0 0 3px rgba(30,58,138,.15); outline: none; }
     .hrx-tip { font-size: var(--fs-label) !important; color: var(--c-ink-3) !important; }
     .hrx-tip b { color: var(--c-bad) !important; }
     .hrx-progress { background: rgba(255,255,255,.97) !important; border: 1px solid var(--c-line) !important; }
@@ -2084,7 +2084,7 @@
     #homeroomForm .topic-pick-btn { background: var(--c-primary-cont) !important; border: 1px solid #c5d0fa !important; border-radius: 14px; }
     #homeroomForm .topic-pick-btn b { color: var(--c-on-primary-cont); font-size: var(--fs-body); }
     #homeroomForm .topic-pick-btn small { color: var(--c-ink-3); }
-    #homeroomForm .hr-magic { background: var(--c-primary) !important; color: #fff !important; border: none !important; font-size: .76rem; font-weight: 800; padding: 6px 12px; border-radius: 99px; box-shadow: 0 4px 10px rgba(59,91,219,.25); }
+    #homeroomForm .hr-magic { background: var(--c-primary) !important; color: #fff !important; border: none !important; font-size: .76rem; font-weight: 800; padding: 6px 12px; border-radius: 99px; box-shadow: 0 4px 10px rgba(30,58,138,.25); }
     #homeroomForm .trait-chip { font-size: var(--fs-sub) !important; color: var(--c-ink-2) !important; border-color: var(--c-line) !important; }
     #homeroomForm .trait-chip.on { border-color: var(--c-primary) !important; background: var(--c-primary-cont) !important; color: var(--c-on-primary-cont) !important; }
     #homeroomForm .trait-chip.on .tick { background: var(--c-primary) !important; border-color: var(--c-primary) !important; }
@@ -2094,7 +2094,7 @@
     .hrx-check li.done .ck { background: var(--c-ok) !important; border-color: var(--c-ok) !important; }
     .hrx-check li.warn, .hrx-check li.part { background: var(--c-warn-cont) !important; }
     #homeroomForm .hr-save-btn { background: linear-gradient(135deg, var(--c-primary), var(--c-primary-2)) !important; color: #fff !important; font-weight: 800; }
-    .hrx-sec.flash { box-shadow: 0 0 0 3px rgba(59,91,219,.35), var(--sh-card) !important; }
+    .hrx-sec.flash { box-shadow: 0 0 0 3px rgba(30,58,138,.35), var(--sh-card) !important; }
     #hrSaveWho { color: var(--c-ink-3) !important; }
 
     /* ---------- ประวัติ (ดรอปดาวน์) ---------- */
@@ -2170,10 +2170,10 @@
     #view-teacher .tc-tabs { background: #dfe5f0 !important; padding: 5px !important; gap: 5px; }
     #view-teacher .tc-tab { justify-content: center !important; text-align: center; font-size: .86rem !important; font-weight: 800 !important; min-height: 46px !important; position: relative; color: #475467 !important; }
     #view-teacher .tc-tab span:first-child { flex: none; }
-    #view-teacher .tc-tab[data-teacher-tab="homeroom-form"] { --tab: #3b5bdb; }
-    #view-teacher .tc-tab[data-teacher-tab="behavior-form"] { --tab: #e8590c; }
-    #view-teacher .tc-tab[data-teacher-tab="counsel-reply"] { --tab: #0ca678; }
-    #view-teacher .tc-tab[data-teacher-tab="submit-report"] { --tab: #7048e8; }
+    #view-teacher .tc-tab[data-teacher-tab="homeroom-form"] { --tab: #1e3a8a; }
+    #view-teacher .tc-tab[data-teacher-tab="behavior-form"] { --tab: #e85d9b; }
+    #view-teacher .tc-tab[data-teacher-tab="counsel-reply"] { --tab: #1c8fd6; }
+    #view-teacher .tc-tab[data-teacher-tab="submit-report"] { --tab: #c98a00; }
     #view-teacher .tc-tab.active { color: #fff !important; background: var(--tab) !important;
       box-shadow: 0 0 0 3px color-mix(in srgb, var(--tab) 25%, transparent), 0 8px 20px color-mix(in srgb, var(--tab) 45%, transparent) !important; }
     #view-teacher .tc-tab.active::after { content: ""; position: absolute; left: 30%; right: 30%; bottom: 5px; height: 3px; border-radius: 3px; background: rgba(255,255,255,.85);
@@ -2183,12 +2183,12 @@
     /* ---------- หัวข้อ 4 ส่วน: พื้นเข้ม ตัวขาว ใหญ่ + เส้นแสงวิ่งรอบกรอบ ---------- */
     .hrx-sec { position: relative; isolation: isolate; }
     .hrx-sec::before { content: ""; position: absolute; inset: 0; border-radius: inherit; padding: 1.6px; pointer-events: none; z-index: 3;
-      background: conic-gradient(from var(--ang), transparent 0deg 250deg, rgba(116,143,252,.0) 260deg, rgba(116,143,252,.95) 320deg, rgba(255,255,255,.95) 340deg, transparent 360deg);
+      background: conic-gradient(from var(--ang), transparent 0deg 250deg, rgba(125,200,245,.0) 260deg, rgba(125,200,245,.95) 320deg, rgba(255,255,255,.95) 340deg, transparent 360deg);
       -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
       animation: borderRun 9s linear infinite; }
     .hrx-sec.sec-topic::before { animation-delay: -2.2s; } .hrx-sec.sec-traits::before { animation-delay: -4.5s; } .hrx-sec.sec-save::before { animation-delay: -6.7s; }
     @keyframes borderRun { to { --ang: 360deg; } }
-    .hrx-head { background: linear-gradient(135deg, #1e2a5e 0%, #2c3d8f 100%) !important; border-bottom: none !important; padding: 14px 16px !important; }
+    .hrx-head { background: linear-gradient(135deg, #13265c 0%, #22408f 100%) !important; border-bottom: none !important; padding: 14px 16px !important; }
     .hrx-title b { font-size: 1.15rem !important; color: #fff !important; letter-spacing: .005em; }
     .hrx-title small, #hrSaveWho { font-size: .8rem !important; color: rgba(255,255,255,.82) !important; font-weight: 600 !important; }
     .hrx-ico { background: rgba(255,255,255,.16) !important; color: #fff !important; border: 1px solid rgba(255,255,255,.25); }
@@ -2204,11 +2204,11 @@
     #homeroomForm .stu-name { font-size: 1.08rem !important; font-weight: 700 !important; color: #172033 !important; }
     #homeroomForm .trait-chip { font-size: .95rem !important; }
     /* ช่องหัวข้อและสาระสำคัญ */
-    #homeroomForm .hr-field > .hr-info-label, #homeroomForm .hr-summary-head .hr-info-label { display: inline-flex; align-items: center; gap: 6px; font-size: .92rem !important; font-weight: 800 !important; color: #1e2a5e !important; }
-    #homeroomForm .hr-field > .hr-info-label::before, #homeroomForm .hr-summary-head .hr-info-label::before { content: ""; width: 4px; height: 16px; border-radius: 2px; background: #3b5bdb; }
+    #homeroomForm .hr-field > .hr-info-label, #homeroomForm .hr-summary-head .hr-info-label { display: inline-flex; align-items: center; gap: 6px; font-size: .92rem !important; font-weight: 800 !important; color: #13265c !important; }
+    #homeroomForm .hr-field > .hr-info-label::before, #homeroomForm .hr-summary-head .hr-info-label::before { content: ""; width: 4px; height: 16px; border-radius: 2px; background: #1e3a8a; }
     #homeroomForm #hrTopic { font-size: 1.08rem !important; font-weight: 700; min-height: 50px; padding: 10px 14px; background: #f8faff !important; border: 1.5px solid #bac8ff !important; }
     #homeroomForm #hrSummary { font-size: 1.04rem !important; line-height: 1.75; min-height: 150px; padding: 12px 14px; background: #f8faff !important; border: 1.5px solid #bac8ff !important; }
-    #homeroomForm #hrTopic:focus, #homeroomForm #hrSummary:focus { background: #fff !important; border-color: #3b5bdb !important; }
+    #homeroomForm #hrTopic:focus, #homeroomForm #hrSummary:focus { background: #fff !important; border-color: #1e3a8a !important; }
     @media (max-width: 360px) { #view-teacher .tc-hero .tc-class { font-size: 2.4rem !important; } #view-teacher .tc-tab { font-size: .76rem !important; } #view-teacher .tc-day { min-height: 76px !important; } }
     @media (prefers-reduced-motion: reduce) { #view-teacher .tc-hero .tc-class, .hrx-sec::before, #view-teacher .tc-day.future::after, #view-teacher .tc-tab.active::after { animation: none !important; } }
 
@@ -2217,13 +2217,13 @@
     #homeroomForm .hr-magic.working::before { content: ""; display: inline-block; width: 11px; height: 11px; margin-right: 6px; vertical-align: -1px; border: 2px solid rgba(255,255,255,.5); border-top-color: #fff; border-radius: 50%; animation: spin .8s linear infinite; }
     @keyframes spin { to { transform: rotate(360deg); } }
     #homeroomForm #hrSummary.ai-flash { animation: aiFlash 1.2s ease; }
-    @keyframes aiFlash { 0% { box-shadow: 0 0 0 0 rgba(59,91,219,.5); background: #eef2ff; } 100% { box-shadow: 0 0 0 10px rgba(59,91,219,0); } }
-    #pane-submit-report .hr-magic { background: #7048e8; color: #fff; border: none; font-size: .76rem; font-weight: 800; padding: 6px 12px; border-radius: 99px; }
+    @keyframes aiFlash { 0% { box-shadow: 0 0 0 0 rgba(30,58,138,.5); background: #eef2ff; } 100% { box-shadow: 0 0 0 10px rgba(30,58,138,0); } }
+    #pane-submit-report .hr-magic { background: #e85d9b; color: #fff; border: none; font-size: .76rem; font-weight: 800; padding: 6px 12px; border-radius: 99px; }
     #pane-submit-report .hr-summary-head { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-bottom: 6px; }
     #repNote { font-family: 'Sarabun', 'Prompt', sans-serif; font-size: 1rem; line-height: 1.7; min-height: 150px; }
-    .auto-badge { display: inline-block; font-size: .7rem; font-weight: 800; color: #5f3dc4; background: #f3f0ff; border: 1px solid #d0bfff; padding: 2px 8px; border-radius: 99px; margin-bottom: 4px; }
+    .auto-badge { display: inline-block; font-size: .7rem; font-weight: 800; color: #2f9be0; background: #f3f0ff; border: 1px solid #d0bfff; padding: 2px 8px; border-radius: 99px; margin-bottom: 4px; }
     .ai-card { background: #f8f6ff; border: 1px solid #d0bfff; border-radius: 12px; padding: 12px; margin-bottom: 12px; }
-    .ai-card-title { font-size: .88rem; display: block; margin-bottom: 4px; color: #4b2aa0; }
+    .ai-card-title { font-size: .88rem; display: block; margin-bottom: 4px; color: #13265c; }
     .ai-test-out { font-size: .8rem; background: #ebfbee; color: #2b8a3e; border-radius: 10px; padding: 8px 10px; line-height: 1.6; }
     .ai-test-out.err { background: #fff0f0; color: #c92a2a; }
     .ai-test-out[hidden] { display: none; }
@@ -2261,7 +2261,7 @@
     #btnCheckAllPresent, #hrSubmitBtn { animation: btnBreath 3.6s ease-in-out infinite; }
     @keyframes btnBreath { 0%,100% { box-shadow: 0 6px 14px rgba(43,138,62,.22); } 50% { box-shadow: 0 8px 22px rgba(43,138,62,.40); } }
     #hrSubmitBtn { animation-name: btnBreathBlue; }
-    @keyframes btnBreathBlue { 0%,100% { box-shadow: 0 8px 18px rgba(59,91,219,.25); } 50% { box-shadow: 0 10px 28px rgba(59,91,219,.48); } }
+    @keyframes btnBreathBlue { 0%,100% { box-shadow: 0 8px 18px rgba(30,58,138,.25); } 50% { box-shadow: 0 10px 28px rgba(30,58,138,.48); } }
     #btnCheckAllPresent > *, #btnCheckAllAbsent > *, #hrSubmitBtn > * { position: relative; z-index: 2; }
 
     /* แถบชื่อสัปดาห์มีพื้นหลัง */
@@ -2271,7 +2271,7 @@
 
     /* ช่องวัน: กระจกมันวาว มีแสงผ่านช้า ๆ และเด้งเบา ๆ */
     #view-teacher .tc-week { padding: 6px 2px 4px; }
-    #view-teacher .tc-day { outline: none !important; transform: none; box-shadow: inset 0 1px 0 rgba(255,255,255,.45), inset 0 -8px 16px rgba(0,0,0,.08), 0 6px 14px rgba(10,10,60,.22) !important;
+    #view-teacher .tc-day { outline: none !important; transform: none; box-shadow: inset 0 1px 0 rgba(255,255,255,.45), inset 0 -8px 16px rgba(0,0,0,.08), 0 1px 0 rgba(0,0,0,.18), 0 2px 0 rgba(0,0,0,.15), 0 3px 0 rgba(0,0,0,.12), 0 4px 4px rgba(10,10,60,.2) !important;
       animation: dayFloat 5s ease-in-out infinite; }
     #view-teacher .tc-day:nth-child(2) { animation-delay: .5s; } #view-teacher .tc-day:nth-child(3) { animation-delay: 1s; }
     #view-teacher .tc-day:nth-child(4) { animation-delay: 1.5s; } #view-teacher .tc-day:nth-child(5) { animation-delay: 2s; }
@@ -2286,7 +2286,7 @@
     #view-teacher .tc-day.locked::after { display: none; }
     /* วันที่เลือก: ยกขึ้น + เรืองแสงรอบตัว (ไม่มีเส้นขอบทับช่องอื่น) */
     #view-teacher .tc-day.sel { animation: none; transform: translateY(-4px) !important;
-      box-shadow: inset 0 0 0 2px rgba(255,255,255,.85), inset 0 1px 0 rgba(255,255,255,.6), 0 0 18px rgba(255,255,255,.55), 0 10px 20px rgba(10,10,60,.35) !important; }
+      box-shadow: inset 0 0 0 2px rgba(255,255,255,.85), inset 0 1px 0 rgba(255,255,255,.6), 0 0 18px rgba(255,255,255,.55), 0 1px 0 rgba(0,0,0,.18), 0 2px 0 rgba(0,0,0,.15), 0 3px 0 rgba(0,0,0,.12), 0 4px 0 rgba(0,0,0,.1), 0 6px 6px rgba(10,10,60,.25) !important; }
     /* วันนี้: พื้นหลังมันวาวเรืองแสงเป็นจังหวะ บอกว่า "ถึงวันนี้แล้ว" */
     #view-teacher .tc-day.today { outline: none !important; }
     #view-teacher .tc-day.today::after { width: 60%; background: linear-gradient(90deg, transparent, rgba(255,255,255,.7), transparent); animation-duration: 3s; }
@@ -2314,6 +2314,100 @@
     @media (prefers-reduced-motion: reduce) {
       #view-teacher .tc-day, #view-teacher .tc-day::after, #btnCheckAllPresent, #hrSubmitBtn, .notice-ico,
       #btnCheckAllPresent::after, #btnCheckAllAbsent::after, #hrSubmitBtn::after, #bhSubmitBtn::after, #repSubmitBtn::after { animation: none !important; } }
+
+    /* ================= v1.10 โทนฟ้า-ชมพู-เหลือง-ขาว-น้ำเงิน + กรอบ 3D (นูน ไม่ลอย) ================= */
+    :root {
+      --c-primary: #1e3a8a; --c-primary-2: #2f9be0; --c-primary-strong: #172f70;
+      --c-primary-cont: #e3f2fd; --c-on-primary-cont: #13265c;
+      --c-sky: #2f9be0; --c-sky-l: #e3f2fd; --c-pink: #e85d9b; --c-pink-l: #fde7f1; --c-yellow: #f6c343; --c-yellow-l: #fff6d6; --c-navy: #1e3a8a;
+      --c-bg: #eef5fc; --c-line: #d3e1f1;
+      --st-present: #2f9e44; --st-absent: #e03131; --st-leave: #f08c00;
+      /* 3D: ผิวเงา + ขอบหนาด้านล่างแนบพื้น (ไม่ยกลอย) */
+      --b3d-face: linear-gradient(180deg, #ffffff 0%, #fbfdff 45%, #f1f7fe 100%);
+      --b3d-bevel: inset 0 1.5px 0 rgba(255,255,255,1), inset 0 -2px 0 rgba(30,58,138,.06), inset 1px 0 0 rgba(255,255,255,.7), inset -1px 0 0 rgba(30,58,138,.04);
+      --b3d-thick: 0 1px 0 #d6e3f3, 0 2px 0 #cddcef, 0 3px 0 #c4d4ea, 0 4px 0 #bccde6, 0 5px 4px rgba(19,38,92,.14);
+      --b3d-thin: 0 1px 0 #d6e3f3, 0 2px 0 #c8d8ec, 0 3px 3px rgba(19,38,92,.12);
+      --sh-card: var(--b3d-bevel), var(--b3d-thick);
+    }
+    body[data-role="teacher"] .page-fx { background:
+      radial-gradient(60% 40% at 0% 0%, rgba(47,155,224,.16), transparent 70%),
+      radial-gradient(50% 35% at 100% 0%, rgba(232,93,155,.12), transparent 70%),
+      radial-gradient(45% 30% at 80% 100%, rgba(246,195,67,.12), transparent 70%),
+      linear-gradient(180deg, #e6f1fc 0%, var(--c-bg) 360px) !important; }
+
+    /* กรอบหลักทุกหน้า: นูนหนา มีเงาวาว */
+    body[data-role="teacher"] #view-teacher .tc-card, body[data-role="teacher"] #view-teacher .hrx-sec,
+    .card, .record-card, .login-card, .tc-card, .hrx-sec {
+      background: var(--b3d-face) !important; border: 1px solid #cfdef0 !important;
+      box-shadow: var(--b3d-bevel), var(--b3d-thick) !important; }
+    .record-card { box-shadow: var(--b3d-bevel), var(--b3d-thin) !important; }
+    .card:hover, .record-card:hover, .tc-card:hover { transform: none !important; }
+    #view-teacher .stu-row, #homeroomForm .trait-chip, #homeroomForm .topic-pick-btn, .hr-tally-item {
+      box-shadow: inset 0 1px 0 #fff, 0 1px 0 #d6e3f3, 0 2px 0 #cbd9ec, 0 2px 3px rgba(19,38,92,.10) !important; }
+
+    /* แผงข้อมูลห้อง: น้ำเงิน → ฟ้า ประกายชมพู-เหลือง ขอบหนาแนบพื้น */
+    #view-teacher .tc-panel {
+      background:
+        radial-gradient(80% 90% at 100% 0%, rgba(232,93,155,.38), transparent 60%),
+        radial-gradient(60% 70% at 0% 100%, rgba(246,195,67,.22), transparent 60%),
+        linear-gradient(140deg, #13265c 0%, #1e3a8a 40%, #2563b8 72%, #2f9be0 100%) !important;
+      box-shadow: inset 0 1.5px 0 rgba(255,255,255,.35), inset 0 -2px 0 rgba(0,0,0,.18),
+        0 1px 0 #13265c, 0 2px 0 #112152, 0 3px 0 #0f1d49, 0 4px 0 #0d1940, 0 6px 6px rgba(19,38,92,.25) !important; }
+    #view-teacher .tc-panel::after { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 48%; pointer-events: none; border-radius: inherit;
+      background: linear-gradient(180deg, rgba(255,255,255,.16), rgba(255,255,255,0)); }
+    #view-teacher .tc-day.today .tc-day-today, #view-teacher .tc-day-today { background: var(--c-yellow) !important; color: #4a3500 !important; }
+
+    /* หัวข้อ 4 ส่วน: น้ำเงินเข้ม + แถบสามสีด้านล่าง */
+    .hrx-head { background: linear-gradient(135deg, #13265c 0%, #1e3a8a 60%, #22408f 100%) !important; position: relative;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.18), inset 0 -3px 0 transparent; }
+    .hrx-head::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 3px;
+      background: linear-gradient(90deg, var(--c-sky) 0 33%, var(--c-pink) 33% 66%, var(--c-yellow) 66% 100%); }
+    .hrx-sec[data-state="part"] .hrx-state { background: var(--c-yellow) !important; color: #4a3500 !important; }
+
+    /* แท็บ */
+    #view-teacher .tc-tabs { background: #dbe9f7 !important; box-shadow: inset 0 2px 3px rgba(19,38,92,.12), inset 0 -1px 0 #fff; }
+    #view-teacher .tc-tab.active { box-shadow: inset 0 1px 0 rgba(255,255,255,.35), 0 1px 0 color-mix(in srgb, var(--tab) 70%, #000), 0 2px 0 color-mix(in srgb, var(--tab) 60%, #000), 0 3px 4px rgba(19,38,92,.25) !important; }
+
+    /* ปุ่มหลัก: นูน กดแล้วยุบ */
+    #homeroomForm .hr-save-btn, .btn-primary, #btnCheckAllPresent, #btnCheckAllAbsent {
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.35), 0 1px 0 rgba(0,0,0,.18), 0 2px 0 rgba(0,0,0,.14), 0 3px 4px rgba(19,38,92,.2) !important; }
+    #homeroomForm .hr-save-btn:active, .btn-primary:active, #btnCheckAllPresent:active, #btnCheckAllAbsent:active { transform: translateY(2px) !important;
+      box-shadow: inset 0 1px 2px rgba(0,0,0,.2), 0 1px 0 rgba(0,0,0,.12) !important; }
+    #homeroomForm .hr-magic { background: linear-gradient(135deg, var(--c-pink), #f07bb1) !important; box-shadow: inset 0 1px 0 rgba(255,255,255,.4), 0 2px 0 #b83f75, 0 3px 4px rgba(184,63,117,.25) !important; }
+    #homeroomForm .trait-chip.on { border-color: var(--c-sky) !important; background: var(--c-sky-l) !important; }
+    #homeroomForm .trait-chip.on .tick { background: var(--c-sky) !important; border-color: var(--c-sky) !important; }
+
+    /* 1. ข้อความสถานะซ้อนปุ่ม → ซ่อนทั้งกล่อง ปุ่มเต็มแถว */
+    #view-teacher .tc-selected-text { display: none !important; }
+    #view-teacher .tc-selected { display: block !important; }
+    #view-teacher .tc-selected #hrLoadExisting { width: 100%; }
+
+    /* 6. เลขที่นักเรียนเป็นวงกลมตามสถานะ */
+    #homeroomForm .stu-no { width: 26px !important; height: 26px !important; font-size: .74rem !important; font-weight: 800; color: #fff !important;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.45), 0 1px 0 rgba(0,0,0,.18) !important; text-align: center; }
+    #homeroomForm .stu-row.present .stu-no { background: var(--st-present) !important; }
+    #homeroomForm .stu-row.absent .stu-no { background: var(--st-absent) !important; }
+    #homeroomForm .stu-row.leave .stu-no { background: var(--st-leave) !important; }
+    #hrRing { background: conic-gradient(var(--st-present) 0 calc(var(--pa, 0) * 1%), var(--st-absent) 0 calc(var(--pb, 0) * 1%), var(--st-leave) 0) !important;
+      box-shadow: 0 0 0 3px rgba(255,255,255,.25), inset 0 1px 2px rgba(0,0,0,.2) !important; }
+    #hrRing[data-mix=""] { background: rgba(255,255,255,.2) !important; }
+
+    /* 4. ขาด = ไม่ทราบสาเหตุ (อัตโนมัติ) · ลา = เลือก 4 เหตุผล */
+    #homeroomForm .stu-reason .absent-note, #homeroomForm .stu-reason .leave-pick { display: none; }
+    #homeroomForm .stu-row.absent .absent-note { display: block; font-size: .8rem; color: #a61e1e; background: #fff0f0; border: 1px solid #ffc9c9; border-radius: 10px; padding: 7px 10px; }
+    #homeroomForm .stu-row.leave .leave-pick { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    #homeroomForm .leave-lbl { font-size: .76rem; font-weight: 800; color: #9a5200; }
+    #homeroomForm .leave-pick .quick-chips { display: flex; gap: 6px; flex-wrap: wrap; margin: 0; }
+    #homeroomForm .leave-pick .quick-chip { border: 1px solid #ffd8a8; background: #fff8ef; color: #7a4100; font-weight: 700; border-radius: 99px; padding: 6px 12px; font-size: .8rem;
+      box-shadow: inset 0 1px 0 #fff, 0 1px 0 #f3c48a; }
+    #homeroomForm .leave-pick .quick-chip.on { background: var(--st-leave); border-color: var(--st-leave); color: #fff; box-shadow: inset 0 1px 0 rgba(255,255,255,.35), 0 1px 0 #b36200; }
+    #homeroomForm .stu-row.leave:not(:has(.quick-chip.on)) .leave-lbl::after { content: " · กรุณาเลือก"; color: #c92a2a; }
+
+    /* หน้าเข้าสู่ระบบ / นักเรียน / ผู้ดูแล: เข้าโทนเดียวกัน */
+    .login-card { border-top: 4px solid transparent !important; background-image: var(--b3d-face), linear-gradient(90deg, var(--c-sky), var(--c-pink), var(--c-yellow)) !important;
+      background-origin: border-box !important; background-clip: padding-box, border-box !important; }
+    .card-blue { border-top: 4px solid var(--c-sky) !important; }
+    .card-pink { border-top: 4px solid var(--c-pink) !important; }
 
     @media print {
       body { background: #fff !important; padding: 0 !important; }
@@ -2356,7 +2450,7 @@
           <div class="sb-name" id="userProfileName">ผู้ใช้งาน</div>
           <div class="sb-meta">
             <span class="user-profile-role" id="userProfileRole">บทบาท</span>
-            <span class="sb-timer" id="refreshTimer" title="แตะเพื่อรีเฟรชข้อมูล">๒๐:๐๐</span>
+            <span class="sb-timer" id="refreshTimer" title="แตะเพื่อรีเฟรชข้อมูล">20:00</span>
             <span class="sb-speed" id="speedBadge" title="เวลาที่เซิร์ฟเวอร์ใช้ตอบครั้งล่าสุด" style="display:none;"></span>
           </div>
         </div>
@@ -2417,7 +2511,7 @@
             <div class="tc-legend" aria-hidden="true">
               <span><i class="lg-done"></i>บันทึกแล้ว</span><span><i class="lg-miss"></i>ยังไม่บันทึก</span><span><i class="lg-fut"></i>ยังไม่ถึง</span>
             </div>
-            <p class="tc-rule">บันทึกย้อนหลังได้ไม่เกิน ๓ วันเรียน</p>
+            <p class="tc-rule">บันทึกย้อนหลังได้ไม่เกิน 3 วันเรียน</p>
           </div>
           <div class="tc-selected">
             <div class="tc-selected-text">
@@ -2471,11 +2565,11 @@
                   </button>
                 </div>
                 <div class="hr-tally">
-                  <div class="hr-tally-item present"><b id="hrPresentText">๐</b><span>มา</span></div>
-                  <div class="hr-tally-item absent"><b id="hrAbsentText">๐</b><span>ขาด</span></div>
-                  <div class="hr-tally-item leave"><b id="hrLeaveText">๐</b><span>ลา</span></div>
+                  <div class="hr-tally-item present"><b id="hrPresentText">0</b><span>มา</span></div>
+                  <div class="hr-tally-item absent"><b id="hrAbsentText">0</b><span>ขาด</span></div>
+                  <div class="hr-tally-item leave"><b id="hrLeaveText">0</b><span>ลา</span></div>
                 </div>
-                <p class="hrx-tip">แตะ <b>ขาด</b> หรือ <b>ลา</b> ที่ชื่อนักเรียน แล้วเลือกสาเหตุ</p>
+                <p class="hrx-tip"><b>ขาด</b> = ไม่ทราบสาเหตุ (ระบบใส่ให้) · <b>ลา</b> = เลือกเหตุผล ป่วย / ลากิจ / ช่วยงานวัด / กฐิน</p>
                 <div class="hr-student-list" id="studentCheckInTableBody"></div>
                 <div class="hr-absent-box">
                   <span class="hr-info-label">สรุปการขาด/ลา <em>(สร้างให้อัตโนมัติ)</em></span>
@@ -2533,7 +2627,7 @@
               <div class="hrx-body">
                 <ul class="hrx-check" id="hrChecklist"></ul>
                 <div class="hr-savebar">
-                  <div class="hr-savebar-info" id="hrSaveInfo">มา ๐ · ขาด ๐ · ลา ๐</div>
+                  <div class="hr-savebar-info" id="hrSaveInfo">มา 0 · ขาด 0 · ลา 0</div>
                   <button type="submit" class="hr-save-btn" id="hrSubmitBtn">บันทึกโฮมรูม</button>
                 </div>
                 <div class="hr-draft-note" id="hrDraftNote"></div>
@@ -2569,7 +2663,7 @@
                   <span class="star" data-star="3" role="radio" aria-label="3 ดาว">★</span>
                   <span class="star" data-star="4" role="radio" aria-label="4 ดาว">★</span>
                   <span class="star" data-star="5" role="radio" aria-label="5 ดาว">★</span>
-                  <span class="star-val" id="starVal">+๑ คะแนน</span>
+                  <span class="star-val" id="starVal">+1 คะแนน</span>
                 </div>
                 <input type="hidden" id="bhPoints" value="1">
               </div>
@@ -2604,7 +2698,7 @@
           <div class="tc-card">
             <div class="notice-auto" role="note">
               <span class="notice-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 16V11a6 6 0 1 1 12 0v5l1.5 2h-15z"/><path d="M10 20.5a2 2 0 0 0 4 0"/></svg></span>
-              <div><b>แจ้งเพื่อทราบ</b><span>หากครูไม่ได้ส่งรายงานรายสัปดาห์ ระบบจะสรุปจากบันทึกโฮมรูมและส่งแทนให้อัตโนมัติทุก<strong>วันจันทร์ เวลา ๐๘.๐๐ น.</strong> (ติดป้าย “ระบบส่งแทน”)</span></div>
+              <div><b>แจ้งเพื่อทราบ</b><span>หากครูไม่ได้ส่งรายงานรายสัปดาห์ ระบบจะสรุปจากบันทึกโฮมรูมและส่งแทนให้อัตโนมัติทุก<strong>วันจันทร์ เวลา 08.00 น.</strong> (ติดป้าย “ระบบส่งแทน”)</span></div>
             </div>
             <h3 class="tc-card-title">ส่งรายงานสรุปผลกิจกรรมโฮมรูม</h3>
             <p class="hr-hint">ระบบคำนวณสถิติจากบันทึกโฮมรูมในช่วงวันที่ให้อัตโนมัติ แล้วเสนอผู้บริหารเป็นบันทึกข้อความ</p>
@@ -2662,7 +2756,7 @@
           </div>
           <div class="rank-name" id="rankName">-</div>
           <div class="rank-name-th" id="rankNameTh">-</div>
-          <div class="rk-score"><b id="rankScore">-</b><span>/ ๑๐๐ คะแนน</span></div>
+          <div class="rk-score"><b id="rankScore">-</b><span>/ 100 คะแนน</span></div>
           <div class="rank-bar"><span id="rankBar"></span></div>
           <div class="rank-next" id="rankNext">-</div>
         </div>
@@ -3278,10 +3372,20 @@
       .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
   }
   function th(str) {
+    // v1.10: ทั้งระบบใช้เลขอารบิก (เลขไทยใช้เฉพาะบันทึกข้อความ → thaiDigits)
+    return String(str === undefined || str === null ? '' : str).replace(/[๐-๙]/g, (x) => String(x.charCodeAt(0) - 0x0E50));
+  }
+  const tesc = (s) => esc(th(s));
+  function thaiDigits(str) {
     const d = ['๐', '๑', '๒', '๓', '๔', '๕', '๖', '๗', '๘', '๙'];
     return String(str === undefined || str === null ? '' : str).replace(/[0-9]/g, (x) => d[+x]);
   }
-  const tesc = (s) => esc(th(s));
+  function thaiDigitsDom(root) {
+    if (!root) return;
+    const w = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+    let n; while ((n = w.nextNode())) { if (/[0-9]/.test(n.nodeValue)) n.nodeValue = thaiDigits(n.nodeValue); }
+    root.querySelectorAll('input, textarea').forEach((el) => { el.value = thaiDigits(el.value); });
+  }
 
   function isoLocal(d) {
     return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
@@ -3756,12 +3860,12 @@
         s: ['ครูที่ปรึกษาได้นำสามเณรทบทวนบทท่องจำภาษาบาลีและบทอาขยาน ฝึกการออกเสียงให้ถูกต้องและท่องจำอย่างสม่ำเสมอ เพื่อเป็นพื้นฐานในการศึกษาพระปริยัติธรรมแผนกบาลี',
             'ครูที่ปรึกษาได้จัดกิจกรรมท่องจำบทบาลีร่วมกัน ตรวจสอบความถูกต้องเป็นรายรูป และแนะนำเทคนิคการจำ เพื่อส่งเสริมความใฝ่เรียนรู้และความศรัทธาในการศึกษาพระธรรมวินัย'] }
     ] },
-    { g: 'ศาสนกิจและการปฏิบัติธรรม', c: '#7a4fd6', bg: '#f2ecfd', items: [
+    { g: 'ศาสนกิจและการปฏิบัติธรรม', c: '#2f9be0', bg: '#f2ecfd', items: [
       { t: 'กิจวัตรนั่งสมาธิก่อนเลิกเรียน', tr: [1, 3], ind: '1.3 · 3.1', k: ['สมาธิ', 'นั่งสมาธิ', 'กิจวัตร', 'จิตนิ่ง'],
         s: ['ครูที่ปรึกษาได้นำสามเณรปฏิบัติกิจวัตรนั่งสมาธิก่อนเลิกเรียน เพื่อฝึกความสงบ ความมีสติ และความตั้งมั่นของจิต ซึ่งเป็นพื้นฐานสำคัญของการเรียนรู้และการดำเนินชีวิตตามหลักพระพุทธศาสนา',
             'ครูที่ปรึกษาได้ควบคุมการปฏิบัติสมาธิของสามเณรให้เป็นไปด้วยความสงบเรียบร้อย พร้อมแนะนำวิธีการกำหนดลมหายใจและการตั้งสติ เพื่อนำไปใช้ในการเรียนและกิจวัตรประจำวัน'] },
-      { t: 'สวดมนต์ ทำวัตร และอ่านกัณฑ์เทศน์ (ศีล ๕)', tr: [1, 4], ind: '1.3 · 4.1', k: ['สวดมนต์', 'ทำวัตร', 'ศีล', 'กัณฑ์เทศน์', 'พาหุง', 'เทศน์'],
-        s: ['ครูที่ปรึกษาได้นำสามเณรสวดมนต์และศึกษาหลักธรรมจากกัณฑ์เทศน์ว่าด้วยศีล ๕ อธิบายความหมายและแนวทางการนำไปปฏิบัติในชีวิตประจำวัน เพื่อปลูกฝังความศรัทธาและการปฏิบัติตนตามหลักพระพุทธศาสนา',
+      { t: 'สวดมนต์ ทำวัตร และอ่านกัณฑ์เทศน์ (ศีล 5)', tr: [1, 4], ind: '1.3 · 4.1', k: ['สวดมนต์', 'ทำวัตร', 'ศีล', 'กัณฑ์เทศน์', 'พาหุง', 'เทศน์'],
+        s: ['ครูที่ปรึกษาได้นำสามเณรสวดมนต์และศึกษาหลักธรรมจากกัณฑ์เทศน์ว่าด้วยศีล 5 อธิบายความหมายและแนวทางการนำไปปฏิบัติในชีวิตประจำวัน เพื่อปลูกฝังความศรัทธาและการปฏิบัติตนตามหลักพระพุทธศาสนา',
             'ครูที่ปรึกษาได้จัดกิจกรรมสวดมนต์และอ่านกัณฑ์เทศน์ร่วมกัน พร้อมกำชับให้สามเณรลงทำวัตรเย็นอย่างพร้อมเพรียง อันเป็นการส่งเสริมการปฏิบัติศาสนกิจอย่างสม่ำเสมอ'] }
     ] },
     { g: 'วินัยและการตรงต่อเวลา', c: '#c96a0c', bg: '#fdf1e3', items: [
@@ -3812,7 +3916,7 @@
         s: ['ครูที่ปรึกษาได้ชี้แจงการเตรียมความพร้อมในการช่วยงานบุญของวัด มอบหมายหน้าที่ให้สามเณรตามความเหมาะสม และกำชับให้แจ้งลาอย่างถูกต้องเมื่อต้องไปปฏิบัติศาสนกิจ เพื่อไม่ให้กระทบต่อการเรียน',
             'ครูที่ปรึกษาได้ติดตามสามเณรที่ไปช่วยงานบุญของวัด และชื่นชมความเสียสละในการปฏิบัติศาสนกิจ พร้อมแนะนำการติดตามบทเรียนที่ขาดไปให้ทัน'] }
     ] },
-    { g: 'ทักษะชีวิตและภัยสังคม', c: '#5f3dc4', bg: '#efeafc', items: [
+    { g: 'ทักษะชีวิตและภัยสังคม', c: '#2f9be0', bg: '#efeafc', items: [
       { t: 'รู้เท่าทันสื่อออนไลน์และข่าวลวง', tr: [4, 5], ind: '4.2 · 5.2', k: ['ออนไลน์', 'สื่อ', 'ข่าว', 'ข่าวลวง', 'โทรศัพท์', 'โซเชียล', 'เกม'],
         s: ['ครูที่ปรึกษาได้ให้ความรู้เรื่องการรู้เท่าทันสื่อออนไลน์ การตรวจสอบความน่าเชื่อถือของแหล่งข้อมูลก่อนเชื่อหรือส่งต่อ และการใช้เทคโนโลยีอย่างมีวิจารณญาณและปลอดภัย',
             'ครูที่ปรึกษาได้ยกตัวอย่างข่าวลวงและกลลวงทางออนไลน์ พร้อมฝึกให้สามเณรวิเคราะห์และตรวจสอบข้อเท็จจริง เพื่อสร้างภูมิคุ้มกันในการใช้สื่อสังคมออนไลน์'] },
@@ -3846,7 +3950,20 @@
   const FLAT_PRESETS = [];
   TOPIC_PRESETS.forEach((g) => g.items.forEach((it) => FLAT_PRESETS.push(it)));
   if ($('hrPresetCount')) $('hrPresetCount').textContent = th(FLAT_PRESETS.length) + ' เรื่องที่ครูใช้บ่อย · ' + th(TOPIC_PRESETS.length) + ' หมวด · เลือกคุณลักษณะตามตัวชี้วัดให้อัตโนมัติ';
-  const REASON_CHIPS = ['ป่วย', 'ลากิจ', 'ช่วยงานวัด/กฐิน', 'ธุระครอบครัว', 'ไม่ทราบสาเหตุ'];
+  const REASON_CHIPS = ['ป่วย', 'ลากิจ', 'ช่วยงานวัด', 'กฐิน'];
+  const ABSENT_REASON = 'ไม่ทราบสาเหตุ';
+  // แปลงเหตุผลเก่าให้เข้ากลุ่มใหม่: ธุระครอบครัว → ลากิจ, ช่วยงานวัด/กฐิน → ช่วยงานวัด
+  function normReason(status, r) {
+    r = String(r || '').trim();
+    if (status === 'present') return '';
+    if (status === 'absent') return ABSENT_REASON;
+    if (/ธุระ|ครอบครัว|กิจ/.test(r)) return 'ลากิจ';
+    if (/ช่วยงานวัด/.test(r)) return 'ช่วยงานวัด';
+    if (/กฐิน/.test(r)) return 'กฐิน';
+    if (/ป่วย|ไม่สบาย/.test(r)) return 'ป่วย';
+    if (/ไม่ทราบ|ไม่ระบุ/.test(r)) return '';
+    return r;
+  }
   const BEHAVIOR_CHIPS = ['ช่วยงานวัด', 'จิตอาสาทำความสะอาด', 'ตั้งใจเรียน ส่งงานครบ', 'ช่วยเหลือเพื่อน', 'ทำวัตรสวดมนต์สม่ำเสมอ', 'มีมารยาทงดงาม'];
   const DAY_TH = ['อาทิตย์', 'จันทร์', 'อังคาร', 'พุธ', 'พฤหัสบดี', 'ศุกร์', 'เสาร์'];
   const ICON_ALERT = '<svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" style="flex:none"><circle cx="12" cy="12" r="10" fill="currentColor"/><path d="M12 7v6" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/><circle cx="12" cy="16.6" r="1.3" fill="#fff"/></svg>';
@@ -4089,6 +4206,7 @@
     if (!list.length) { box.innerHTML = emptyBox('ยังไม่มีรายชื่อนักเรียนในห้องนี้ (ผู้ดูแลระบบเพิ่มได้ในเมนูจัดการข้อมูล)'); updateCheckInCounters(); return; }
     box.innerHTML = list.map((s, i) => {
       const a = st.att[s.id] || { status: 'present', reason: '' };
+      a.reason = normReason(a.status, a.reason);
       return `<div class="stu-row ${a.status}" data-student-id="${esc(s.id)}">
         <div class="stu-main">
           <span class="stu-no">${th(i + 1)}</span>
@@ -4100,8 +4218,10 @@
           </span>
         </div>
         <div class="stu-reason">
-          <input type="text" class="absent-reason-input" maxlength="200" value="${esc(a.reason)}" placeholder="ระบุสาเหตุ (เลือกด้านล่างหรือพิมพ์เอง)">
-          <div class="quick-chips">${REASON_CHIPS.map((c) => `<button type="button" class="quick-chip" data-reason="${esc(c)}">${esc(c)}</button>`).join('')}</div>
+          <div class="absent-note">ขาดเรียน · <b>ไม่ทราบสาเหตุ</b> (ไม่ได้แจ้งลา)</div>
+          <div class="leave-pick"><span class="leave-lbl">เหตุผลการลา</span>
+            <div class="quick-chips" role="radiogroup">${REASON_CHIPS.map((c) => `<button type="button" class="quick-chip${a.status === 'leave' && a.reason === c ? ' on' : ''}" data-reason="${esc(c)}" aria-pressed="${a.status === 'leave' && a.reason === c}">${esc(c)}</button>`).join('')}</div>
+          </div>
         </div>
       </div>`;
     }).join('');
@@ -4110,12 +4230,12 @@
   function setStatus(id, status) {
     const st = tcState(); st.att[id] = st.att[id] || { status: 'present', reason: '' };
     st.att[id].status = status;
-    if (status === 'present') st.att[id].reason = '';
+    st.att[id].reason = status === 'leave' ? normReason('leave', st.att[id].reason) : normReason(status, '');
     const row = document.querySelector(`.stu-row[data-student-id="${CSS.escape(id)}"]`);
     if (row) {
       row.className = 'stu-row ' + status;
       row.querySelectorAll('.seg button').forEach((b) => b.classList.toggle('on', b.dataset.v === status));
-      if (status === 'present') row.querySelector('.absent-reason-input').value = '';
+      row.querySelectorAll('.quick-chip').forEach((b) => { const on = status === 'leave' && b.dataset.reason === st.att[id].reason; b.classList.toggle('on', on); b.setAttribute('aria-pressed', on); });
     }
   }
   $('studentCheckInTableBody').addEventListener('click', (e) => {
@@ -4124,10 +4244,12 @@
     const segBtn = e.target.closest('.seg button');
     if (segBtn) {
       setStatus(id, segBtn.dataset.v);
-      if (segBtn.dataset.v !== 'present') setTimeout(() => row.querySelector('.absent-reason-input').focus(), 30);
     }
     const chip = e.target.closest('[data-reason]');
-    if (chip) { row.querySelector('.absent-reason-input').value = chip.dataset.reason; tcState().att[id].reason = chip.dataset.reason; }
+    if (chip) {
+      const a = tcState().att[id]; a.status = 'leave'; a.reason = chip.dataset.reason;
+      row.querySelectorAll('.quick-chip').forEach((b) => { const on = b === chip; b.classList.toggle('on', on); b.setAttribute('aria-pressed', on); });
+    }
     updateCheckInCounters(); saveDraft();
   });
   $('studentCheckInTableBody').addEventListener('input', (e) => {
@@ -4138,14 +4260,14 @@
   });
   function collectAttendance() {
     const st = tcState();
-    return (S.data.students || []).map((s) => ({ id: s.id, status: (st.att[s.id] || {}).status || 'present', reason: ((st.att[s.id] || {}).reason || '').trim() }));
+    return (S.data.students || []).map((s) => { const status = (st.att[s.id] || {}).status || 'present'; return { id: s.id, status, reason: normReason(status, (st.att[s.id] || {}).reason) }; });
   }
   function attCounts() {
     const c = { p: 0, a: 0, l: 0, names: [] }, nameOf = {};
     (S.data.students || []).forEach((s) => { nameOf[s.id] = s.name; });
     collectAttendance().forEach((x) => {
       if (x.status === 'present') c.p++;
-      else { if (x.status === 'absent') c.a++; else c.l++; c.names.push(`${nameOf[x.id]} (${x.status === 'absent' ? 'ขาด' : 'ลา'} - ${x.reason || 'ไม่ระบุสาเหตุ'})`); }
+      else { if (x.status === 'absent') c.a++; else c.l++; c.names.push(`${nameOf[x.id]} (${x.status === 'absent' ? 'ขาด' : 'ลา'} - ${x.reason || 'ไม่ระบุเหตุผล'})`); }
     });
     return c;
   }
@@ -4162,7 +4284,8 @@
     if (!S.data || !$('hrProgress')) return;
     const st = tcState(), list = S.data.students || [], att = collectAttendance();
     const total = list.length, present = att.filter((x) => x.status === 'present').length;
-    const noReason = att.filter((x) => x.status !== 'present' && !x.reason).length;
+    const noReason = att.filter((x) => x.status === 'leave' && !x.reason).length;
+    const nAbsent = att.filter((x) => x.status === 'absent').length;
     const topic = $('hrTopic').value.trim(), summary = $('hrSummary').value.trim();
     const nTraits = st.traits ? st.traits.size : 0;
     const state = {
@@ -4177,14 +4300,17 @@
     // วงแหวนสัดส่วนนักเรียนที่มา
     const pct = total ? Math.round(present / total * 100) : 0;
     $('hrRing').style.setProperty('--p', pct);
+    $('hrRing').style.setProperty('--pa', total ? present / total * 100 : 0);
+    $('hrRing').style.setProperty('--pb', total ? (present + nAbsent) / total * 100 : 0);
+    $('hrRing').dataset.mix = !total ? '' : (present === total ? 'all' : (nAbsent ? 'absent' : 'leave'));
     $('hrRingText').textContent = total ? th(present) + '/' + th(total) : '-';
-    $('hrTraitCount').textContent = nTraits ? 'เลือกแล้ว ' + th(nTraits) + ' ข้อ จาก ๘' : 'ยังไม่ได้เลือก · เลือกได้มากกว่า 1 ข้อ';
+    $('hrTraitCount').textContent = nTraits ? 'เลือกแล้ว ' + th(nTraits) + ' ข้อ จาก 8' : 'ยังไม่ได้เลือก · เลือกได้มากกว่า 1 ข้อ';
     $('hrSummaryCount').textContent = summary ? th(summary.length) + ' ตัวอักษร' : '';
     const teacher = $('hrTeacher').value || '';
     $('hrSaveWho').textContent = ($('hrDateThai').textContent || '') + (teacher ? '\nผู้โฮมรูม: ' + teacher : '');
     const items = [
       { s: state.att, t: total ? `เช็กชื่อ ${th(total)} รูป · มา ${th(present)}` + (total - present ? ` · ขาด/ลา ${th(total - present)}` : '') : 'ยังไม่มีรายชื่อนักเรียน',
-        w: noReason ? `ยังไม่ระบุสาเหตุ ${th(noReason)} รูป (บันทึกได้ จะใส่ว่า "ไม่ระบุสาเหตุ")` : '', go: 'hrSecAtt' },
+        w: noReason ? `ยังไม่เลือกเหตุผลการลา ${th(noReason)} รูป (ป่วย / ลากิจ / ช่วยงานวัด / กฐิน)` : '', go: 'hrSecAtt' },
       { s: state.topic, t: topic ? 'เรื่อง: ' + topic : 'ยังไม่ได้เลือกเรื่อง', w: topic && !summary ? 'ยังไม่มีสาระสำคัญ · กด “เขียนอัตโนมัติ” ได้' : '', go: 'hrSecTopic' },
       { s: state.traits, t: nTraits ? `คุณลักษณะ ${th(nTraits)} ข้อ` : 'ยังไม่ได้เลือกคุณลักษณะ', w: '', go: 'hrSecTraits' }
     ];
@@ -4239,7 +4365,7 @@
 
   function renderRecentTopics() {
     const seen = new Set(), out = [];
-    (S.data.homeroom || []).forEach((h) => { if (h.topic && !seen.has(h.topic) && out.length < 5) { seen.add(h.topic); out.push(h.topic); } });
+    (S.data.homeroom || []).forEach((h) => { if (h.topic && !seen.has(h.topic) && out.length < 1) { seen.add(h.topic); out.push(h.topic); } });
     $('hrRecentTopics').innerHTML = out.length ? `<span class="hr-info-sub" style="width:100%;">ใช้ล่าสุดในห้องนี้</span>` +
       out.map((t) => `<button type="button" class="quick-chip" data-recent-topic="${esc(t)}">${esc(t.length > 32 ? t.slice(0, 32) + '…' : t)}</button>`).join('') : '';
   }
@@ -4678,7 +4804,7 @@
     // เส้นทางแรงก์
     $('rankLadder').innerHTML = RANKS.map((rk, i) => {
       const cls = i === info.idx ? 'current' : i < info.idx ? 'passed' : 'locked';
-      const range = rk.max === undefined ? '๑๐๐ เกิน ๑ เดือน' : th((i === 0 ? 0 : RANKS[i - 1].max + 1) + '–' + rk.max);
+      const range = rk.max === undefined ? '100 เกิน 1 เดือน' : th((i === 0 ? 0 : RANKS[i - 1].max + 1) + '–' + rk.max);
       return `<button type="button" class="rank-step ${cls}" data-rank-i="${i}" ${i === info.idx ? 'id="rankStepCurrent"' : ''}>${rankThumb(rk)}<span class="rs-name">${esc(rk.name)}</span><span class="rs-range">${range}</span></button>`;
     }).join('');
     setTimeout(() => {
@@ -4708,7 +4834,7 @@
   $('rankLadder').addEventListener('click', (e) => {
     const b = e.target.closest('[data-rank-i]'); if (!b) return;
     const i = +b.dataset.rankI, rk = RANKS[i];
-    const range = rk.max === undefined ? 'คะแนนเต็ม ๑๐๐ ติดต่อกันเกิน ๑ เดือน' : 'คะแนน ' + th((i === 0 ? 0 : RANKS[i - 1].max + 1) + '–' + rk.max);
+    const range = rk.max === undefined ? 'คะแนนเต็ม 100 ติดต่อกันเกิน 1 เดือน' : 'คะแนน ' + th((i === 0 ? 0 : RANKS[i - 1].max + 1) + '–' + rk.max);
     toast(`${rk.name} (${rk.th}) · ${range}`, 'ok', 3000);
   });
   document.querySelectorAll('[data-student-tab]').forEach((btn) => btn.addEventListener('click', () => {
@@ -5066,7 +5192,7 @@
         const a = active[0];
         svg.innerHTML = `<circle cx="0" cy="0" r="115" fill="${TRAIT_COLORS[a.i]}" stroke="#fff" stroke-width="2"></circle>
           <text x="0" y="-4" text-anchor="middle" fill="#1e2d3d" font-size="12" font-weight="700">${TRAIT_SHORT[a.i]}</text>
-          <text x="0" y="14" text-anchor="middle" fill="#1e2d3d" font-size="11" font-weight="600">${th(a.c)} ครั้ง (๑๐๐%)</text>`;
+          <text x="0" y="14" text-anchor="middle" fill="#1e2d3d" font-size="11" font-weight="600">${th(a.c)} ครั้ง (100%)</text>`;
       } else {
         let ang = -Math.PI / 2; const R = 118; let paths = '', labels = '';
         active.forEach(({ c, i }) => {
@@ -5105,7 +5231,7 @@
   // ---------------- LINE ----------------
   function renderLineConfig() {
     const l = S.data.line || {};
-    $('lineHour').innerHTML = Array.from({ length: 24 }, (_, h) => `<option value="${h}">${th(String(h).padStart(2, '0'))}:๐๐ น.</option>`).join('');
+    $('lineHour').innerHTML = Array.from({ length: 24 }, (_, h) => `<option value="${h}">${th(String(h).padStart(2, '0'))}:00 น.</option>`).join('');
     $('lineHour').value = String(l.sendHour === undefined ? 20 : l.sendHour);
     $('lineEnabled').checked = !!l.enabled;
     const badge = $('lineConnectionStatusBadge');
@@ -5157,7 +5283,7 @@
   function renderNotifications() {
     const list = (S.data && S.data.notifications) || [];
     const pinned = S.user && S.user.role === 'teacher' ? `<div class="record-card pinned-note"><div class="record-head"><div class="record-title">ประกาศ: รายงานรายสัปดาห์</div><span class="pin-tag">ปักหมุด</span></div>
-        <div style="font-size:0.82rem;">หากครูไม่ได้ส่งรายงานรายสัปดาห์ ระบบจะสรุปจากบันทึกโฮมรูมและส่งแทนให้อัตโนมัติทุกวันจันทร์ เวลา ๐๘.๐๐ น.</div></div>` : '';
+        <div style="font-size:0.82rem;">หากครูไม่ได้ส่งรายงานรายสัปดาห์ ระบบจะสรุปจากบันทึกโฮมรูมและส่งแทนให้อัตโนมัติทุกวันจันทร์ เวลา 08.00 น.</div></div>` : '';
     $('notificationList').innerHTML = pinned + (!list.length ? (pinned ? '' : emptyBox('ยังไม่มีการแจ้งเตือนสำหรับท่านในระบบ')) : list.map((n) => `
       <div class="record-card">
         <div class="record-head"><div class="record-title">${tesc(noEmoji(n.title))}</div></div>
@@ -5211,6 +5337,7 @@
     $('memoBodyText').innerHTML = body;
     $('memoDecisionBox').innerHTML = `<strong>ความเห็นผู้บริหาร:</strong> [ ${r.status === 'อนุมัติแล้ว' ? '✓' : '&nbsp;&nbsp;'} ] อนุมัติ &nbsp; [ ${r.status === 'ส่งกลับแก้ไข' ? '✓' : '&nbsp;&nbsp;'} ] ส่งกลับแก้ไข
       ${r.comment ? `<br>${tesc(r.comment)}` : ''}${r.decidedBy ? `<br>ลงชื่อ.............................. (${esc(r.decidedBy)}) ${thaiDate(r.decidedAt)}` : ''}`;
+    thaiDigitsDom($('thaiMemoPrintArea'));
     $('memoOverlay').style.display = 'flex';
   }
   $('closeMemoBtn').addEventListener('click', () => { $('memoOverlay').style.display = 'none'; });
