@@ -2113,6 +2113,130 @@
     @media (max-width: 360px) { #view-teacher .tc-class { font-size: 1.8rem !important; } .tc-wring { width: 64px; height: 64px; } .tc-wring > span { width: 52px; height: 52px; } #view-teacher .tc-tab { font-size: .72rem !important; } }
     @media (prefers-reduced-motion: reduce) { .tc-orb, .tc-wring.full { animation: none !important; } }
 
+    /* =====================================================================
+       v1.9 — แผงห้องใหม่ · ปฏิทินสีสถานะ · แท็บเรืองแสง · หัวข้อเข้ม · ฟอนต์มีหัว
+       ===================================================================== */
+    @property --ang { syntax: '<angle>'; inherits: false; initial-value: 0deg; }
+    #view-teacher .tc-hero { display: flex !important; flex-direction: column; align-items: flex-start; gap: 2px; padding: 2px 2px 4px !important; background: none !important; border: none !important; border-radius: 0 !important; box-shadow: none !important; overflow: visible; }
+    #view-teacher .tc-hero::before, #view-teacher .tc-hero::after { content: none !important; display: none !important; }
+    .tc-hero .tc-eyebrow { font-size: .76rem !important; font-weight: 700; color: rgba(255,255,255,.82) !important; }
+    .tc-hero .tc-eyebrow b { color: #fff; font-weight: 800; }
+    #view-teacher .tc-hero .tc-class { position: relative; display: inline-block; font-size: 2.9rem !important; font-weight: 800; line-height: 1.05; margin: 4px 0 6px;
+      background: linear-gradient(100deg, #ffffff 0%, #dbe4ff 35%, #ffe8a3 50%, #dbe4ff 65%, #ffffff 100%); background-size: 250% 100%;
+      -webkit-background-clip: text; background-clip: text; color: transparent; text-shadow: none;
+      filter: drop-shadow(0 4px 14px rgba(20,20,90,.35)); animation: classShine 6s ease-in-out infinite; }
+    @keyframes classShine { 0%, 55% { background-position: 100% 0; } 85%, 100% { background-position: 0% 0; } }
+    .tc-hero .tc-meta { font-size: .8rem; font-weight: 600; color: rgba(255,255,255,.78); letter-spacing: .01em; }
+
+    #view-teacher .tc-cal { background: rgba(10,12,60,.22) !important; border: 1px solid rgba(255,255,255,.22) !important; border-radius: 20px !important; padding: 12px 10px 10px !important;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.18); }
+    #view-teacher .tc-cal-label { font-size: .86rem !important; font-weight: 800 !important; }
+    #view-teacher .tc-week { gap: 7px !important; }
+    #view-teacher .tc-day { position: relative; min-height: 84px !important; padding: 8px 0 18px !important; border-radius: 16px !important; display: flex; flex-direction: column; align-items: center; gap: 1px;
+      border: 1px solid transparent !important; overflow: hidden; }
+    #view-teacher .tc-day-abbr { font-size: .74rem !important; font-weight: 800 !important; opacity: .95 !important; }
+    #view-teacher .tc-day-num { font-size: 1.3rem !important; font-weight: 800 !important; line-height: 1.1; }
+    #view-teacher .tc-day-dot { display: none !important; }
+    .tc-day-mark { width: 20px; height: 20px; border-radius: 50%; display: grid; place-items: center; margin-top: 3px; }
+    .tc-day-mark:empty { display: none; }
+    .tc-day-mark svg { width: 13px; height: 13px; fill: none; stroke: currentColor; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+    .tc-day-today { position: absolute; left: 0; right: 0; bottom: 4px; font-size: .58rem; font-weight: 800; letter-spacing: .02em; }
+    /* บันทึกแล้ว = เขียว */
+    #view-teacher .tc-day.done { background: linear-gradient(160deg, #40c057, #2b8a3e) !important; color: #fff !important; box-shadow: 0 6px 14px rgba(43,138,62,.35); }
+    #view-teacher .tc-day.done .tc-day-mark { background: rgba(255,255,255,.25); }
+    /* ยังไม่บันทึก = แดง */
+    #view-teacher .tc-day.missing { background: linear-gradient(160deg, #ff6b6b, #e03131) !important; color: #fff !important; box-shadow: 0 6px 14px rgba(224,49,49,.35); }
+    #view-teacher .tc-day.missing .tc-day-mark { background: rgba(255,255,255,.25); }
+    /* ยังไม่ถึง = กระจกขาวเงาวาว */
+    #view-teacher .tc-day.future { opacity: 1 !important; color: #fff !important; background: linear-gradient(160deg, rgba(255,255,255,.42), rgba(255,255,255,.12)) !important;
+      border-color: rgba(255,255,255,.55) !important; box-shadow: inset 0 1px 0 rgba(255,255,255,.7), 0 4px 12px rgba(20,20,90,.18); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
+    #view-teacher .tc-day.future::after { content: ""; position: absolute; top: -40%; left: -60%; width: 50%; height: 180%; transform: rotate(20deg);
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.55), transparent); animation: glassGlint 4.5s ease-in-out infinite; }
+    @keyframes glassGlint { 0%, 60% { left: -60%; } 100% { left: 130%; } }
+    /* เกินกำหนดย้อนหลัง */
+    #view-teacher .tc-day.locked { filter: saturate(.35) brightness(.85); opacity: .75 !important; cursor: not-allowed; box-shadow: none !important; }
+    /* วันที่เลือก */
+    #view-teacher .tc-day.sel { transform: translateY(-3px) scale(1.04); outline: 3px solid #fff; outline-offset: 2px; box-shadow: 0 10px 22px rgba(10,10,70,.4) !important; }
+    #view-teacher .tc-day.sel, #view-teacher .tc-day.sel .tc-day-abbr, #view-teacher .tc-day.sel .tc-day-num { color: #fff !important; }
+    #view-teacher .tc-day.today:not(.sel) { outline: 2px dashed rgba(255,255,255,.8); outline-offset: 2px; }
+    .tc-legend { display: flex; justify-content: center; flex-wrap: wrap; gap: 6px 14px; margin-top: 10px; font-size: .7rem; font-weight: 700; color: rgba(255,255,255,.85); }
+    .tc-legend span { display: inline-flex; align-items: center; gap: 5px; white-space: nowrap; }
+    .tc-legend i { width: 10px; height: 10px; border-radius: 3px; display: inline-block; }
+    .lg-done { background: #40c057; } .lg-miss { background: #ff6b6b; } .lg-fut { background: rgba(255,255,255,.6); border: 1px solid #fff; }
+    .tc-rule { margin: 6px 0 0; text-align: center; font-size: .68rem; color: rgba(255,255,255,.7); }
+    #view-teacher .tc-selected:has(#hrLoadExisting[style*="none"]) { display: none !important; }
+
+    /* ---------- แท็บเรืองแสง แต่ละแท็บมีสีของตัวเอง ---------- */
+    #view-teacher .tc-tabs { background: #dfe5f0 !important; padding: 5px !important; gap: 5px; }
+    #view-teacher .tc-tab { justify-content: center !important; text-align: center; font-size: .86rem !important; font-weight: 800 !important; min-height: 46px !important; position: relative; color: #475467 !important; }
+    #view-teacher .tc-tab span:first-child { flex: none; }
+    #view-teacher .tc-tab[data-teacher-tab="homeroom-form"] { --tab: #3b5bdb; }
+    #view-teacher .tc-tab[data-teacher-tab="behavior-form"] { --tab: #e8590c; }
+    #view-teacher .tc-tab[data-teacher-tab="counsel-reply"] { --tab: #0ca678; }
+    #view-teacher .tc-tab[data-teacher-tab="submit-report"] { --tab: #7048e8; }
+    #view-teacher .tc-tab.active { color: #fff !important; background: var(--tab) !important;
+      box-shadow: 0 0 0 3px color-mix(in srgb, var(--tab) 25%, transparent), 0 8px 20px color-mix(in srgb, var(--tab) 45%, transparent) !important; }
+    #view-teacher .tc-tab.active::after { content: ""; position: absolute; left: 30%; right: 30%; bottom: 5px; height: 3px; border-radius: 3px; background: rgba(255,255,255,.85);
+      box-shadow: 0 0 8px #fff; animation: tabPulse 2.2s ease-in-out infinite; }
+    @keyframes tabPulse { 0%,100% { opacity: .55; } 50% { opacity: 1; } }
+
+    /* ---------- หัวข้อ 4 ส่วน: พื้นเข้ม ตัวขาว ใหญ่ + เส้นแสงวิ่งรอบกรอบ ---------- */
+    .hrx-sec { position: relative; isolation: isolate; }
+    .hrx-sec::before { content: ""; position: absolute; inset: 0; border-radius: inherit; padding: 1.6px; pointer-events: none; z-index: 3;
+      background: conic-gradient(from var(--ang), transparent 0deg 250deg, rgba(116,143,252,.0) 260deg, rgba(116,143,252,.95) 320deg, rgba(255,255,255,.95) 340deg, transparent 360deg);
+      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+      animation: borderRun 9s linear infinite; }
+    .hrx-sec.sec-topic::before { animation-delay: -2.2s; } .hrx-sec.sec-traits::before { animation-delay: -4.5s; } .hrx-sec.sec-save::before { animation-delay: -6.7s; }
+    @keyframes borderRun { to { --ang: 360deg; } }
+    .hrx-head { background: linear-gradient(135deg, #1e2a5e 0%, #2c3d8f 100%) !important; border-bottom: none !important; padding: 14px 16px !important; }
+    .hrx-title b { font-size: 1.15rem !important; color: #fff !important; letter-spacing: .005em; }
+    .hrx-title small, #hrSaveWho { font-size: .8rem !important; color: rgba(255,255,255,.82) !important; font-weight: 600 !important; }
+    .hrx-ico { background: rgba(255,255,255,.16) !important; color: #fff !important; border: 1px solid rgba(255,255,255,.25); }
+    .hrx-sec[data-state="done"] .hrx-ico, .hrx-sec[data-state="ready"] .hrx-ico { background: #40c057 !important; color: #fff !important; border-color: #8ce99a; }
+    .hrx-sec[data-state="done"] .hrx-state { background: #40c057 !important; color: #fff !important; }
+    .hrx-sec[data-state="part"] .hrx-state { background: #ffd43b !important; color: #5c3c00 !important; }
+    .hrx-head .hr-auto-tag { background: #40c057 !important; color: #fff !important; }
+    .hrx-ring { box-shadow: 0 0 0 3px rgba(255,255,255,.2); }
+
+    /* ---------- ฟอนต์ไทยแบบมีหัว (Sarabun) อ่านง่ายสำหรับทุกวัย ---------- */
+    #homeroomForm .stu-name, #homeroomForm #hrTopic, #homeroomForm #hrSummary, .hrx-check li .tx, #homeroomForm .hr-absent-text, #homeroomListContainer, .trait-chip {
+      font-family: 'Sarabun', 'Prompt', system-ui, sans-serif !important; }
+    #homeroomForm .stu-name { font-size: 1.08rem !important; font-weight: 700 !important; color: #172033 !important; }
+    #homeroomForm .trait-chip { font-size: .95rem !important; }
+    /* ช่องหัวข้อและสาระสำคัญ */
+    #homeroomForm .hr-field > .hr-info-label, #homeroomForm .hr-summary-head .hr-info-label { display: inline-flex; align-items: center; gap: 6px; font-size: .92rem !important; font-weight: 800 !important; color: #1e2a5e !important; }
+    #homeroomForm .hr-field > .hr-info-label::before, #homeroomForm .hr-summary-head .hr-info-label::before { content: ""; width: 4px; height: 16px; border-radius: 2px; background: #3b5bdb; }
+    #homeroomForm #hrTopic { font-size: 1.08rem !important; font-weight: 700; min-height: 50px; padding: 10px 14px; background: #f8faff !important; border: 1.5px solid #bac8ff !important; }
+    #homeroomForm #hrSummary { font-size: 1.04rem !important; line-height: 1.75; min-height: 150px; padding: 12px 14px; background: #f8faff !important; border: 1.5px solid #bac8ff !important; }
+    #homeroomForm #hrTopic:focus, #homeroomForm #hrSummary:focus { background: #fff !important; border-color: #3b5bdb !important; }
+    @media (max-width: 360px) { #view-teacher .tc-hero .tc-class { font-size: 2.4rem !important; } #view-teacher .tc-tab { font-size: .76rem !important; } #view-teacher .tc-day { min-height: 76px !important; } }
+    @media (prefers-reduced-motion: reduce) { #view-teacher .tc-hero .tc-class, .hrx-sec::before, #view-teacher .tc-day.future::after, #view-teacher .tc-tab.active::after { animation: none !important; } }
+
+    /* v1.9 AI */
+    #homeroomForm .hr-magic.working, .hr-magic:disabled { opacity: .75; cursor: progress; }
+    #homeroomForm .hr-magic.working::before { content: ""; display: inline-block; width: 11px; height: 11px; margin-right: 6px; vertical-align: -1px; border: 2px solid rgba(255,255,255,.5); border-top-color: #fff; border-radius: 50%; animation: spin .8s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    #homeroomForm #hrSummary.ai-flash { animation: aiFlash 1.2s ease; }
+    @keyframes aiFlash { 0% { box-shadow: 0 0 0 0 rgba(59,91,219,.5); background: #eef2ff; } 100% { box-shadow: 0 0 0 10px rgba(59,91,219,0); } }
+    #pane-submit-report .hr-magic { background: #7048e8; color: #fff; border: none; font-size: .76rem; font-weight: 800; padding: 6px 12px; border-radius: 99px; }
+    #pane-submit-report .hr-summary-head { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-bottom: 6px; }
+    #repNote { font-family: 'Sarabun', 'Prompt', sans-serif; font-size: 1rem; line-height: 1.7; min-height: 150px; }
+    .auto-badge { display: inline-block; font-size: .7rem; font-weight: 800; color: #5f3dc4; background: #f3f0ff; border: 1px solid #d0bfff; padding: 2px 8px; border-radius: 99px; margin-bottom: 4px; }
+    .ai-card { background: #f8f6ff; border: 1px solid #d0bfff; border-radius: 12px; padding: 12px; margin-bottom: 12px; }
+    .ai-card-title { font-size: .88rem; display: block; margin-bottom: 4px; color: #4b2aa0; }
+    .ai-test-out { font-size: .8rem; background: #ebfbee; color: #2b8a3e; border-radius: 10px; padding: 8px 10px; line-height: 1.6; }
+    .ai-test-out.err { background: #fff0f0; color: #c92a2a; }
+    .ai-test-out[hidden] { display: none; }
+
+    .close-year { border: 1.5px solid #ffc9c9; background: #fff8f8; border-radius: 12px; padding: 12px; margin-bottom: 12px; display: flex; flex-direction: column; gap: 8px; }
+    .close-year-title { font-size: .9rem; color: #a61e1e; }
+    .close-year .mini-note { margin: 0; line-height: 1.6; }
+    .btn-danger-soft { background: #e03131 !important; color: #fff !important; border: none !important; font-weight: 800; }
+    .btn-danger-soft:disabled { background: #f1aeb5 !important; cursor: not-allowed; }
+    .archive-list { display: flex; flex-direction: column; gap: 4px; font-size: .8rem; }
+    .archive-list:empty { display: none; }
+    .archive-list a { color: #1c7ed6; text-decoration: underline; }
+
     @media print {
       body { background: #fff !important; padding: 0 !important; }
       body * { visibility: hidden !important; }
@@ -2199,16 +2323,11 @@
         <!-- แผงข้อมูลห้อง + ปฏิทินสัปดาห์ (แตะวันเพื่อดู/บันทึกย้อนหลัง) -->
         <div class="tc-panel">
           <span class="tc-orb o1" aria-hidden="true"></span><span class="tc-orb o2" aria-hidden="true"></span>
-          <div class="tc-panel-head">
-            <div class="tc-panel-class">
-              <span class="tc-eyebrow">ห้องที่ปรึกษา</span>
-              <span class="tc-class" id="tcClass">-</span>
-              <div class="tc-chips" id="tcMeta"></div>
-            </div>
-            <div class="tc-head-side">
-              <label class="tc-year"><span>ปีการศึกษา</span><select id="hrYear" aria-label="ปีการศึกษา"></select></label>
-              <div class="tc-wring" id="tcWeekRing" title="จำนวนวันที่บันทึกแล้วในสัปดาห์ที่แสดง"><span><b id="tcWeekDone">-</b><small>บันทึกแล้ว</small></span></div>
-            </div>
+          <div class="tc-hero">
+            <span class="tc-eyebrow">ห้องที่ปรึกษา · ปีการศึกษา <b id="tcYearText">-</b></span>
+            <span class="tc-class" id="tcClass">-</span>
+            <span class="tc-meta" id="tcMeta"></span>
+            <select id="hrYear" aria-label="ปีการศึกษา" hidden></select>
           </div>
           <div class="tc-cal">
             <div class="tc-cal-bar">
@@ -2217,11 +2336,15 @@
               <button type="button" class="tc-cal-nav" id="tcNextWeek" aria-label="สัปดาห์ถัดไป"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
             </div>
             <div class="tc-week" id="tcWeek" role="tablist" aria-label="เลือกวันโฮมรูม"></div>
+            <div class="tc-legend" aria-hidden="true">
+              <span><i class="lg-done"></i>บันทึกแล้ว</span><span><i class="lg-miss"></i>ยังไม่บันทึก</span><span><i class="lg-fut"></i>ยังไม่ถึง</span>
+            </div>
+            <p class="tc-rule">บันทึกย้อนหลังได้ไม่เกิน ๓ วันเรียน</p>
           </div>
           <div class="tc-selected">
             <div class="tc-selected-text">
               <span class="tc-selected-date sr-only" id="hrDateThai">-</span>
-              <span class="tc-status" id="tcDayStatus">-</span>
+              <span class="tc-status sr-only" id="tcDayStatus">-</span>
             </div>
             <button type="button" class="tc-load-btn" id="hrLoadExisting" style="display:none;">เปิดดู / แก้ไข</button>
           </div>
@@ -2292,7 +2415,7 @@
               </header>
               <div class="hrx-body">
                 <button type="button" class="topic-pick-btn" id="hrTopicPickBtn" aria-haspopup="dialog">
-                  <span><b>เลือกเรื่องที่ใช้บ่อย</b><small>20 เรื่อง แบ่ง 5 หมวด · เลือกคุณลักษณะให้อัตโนมัติ</small></span>
+                  <span><b>เลือกเรื่องที่ใช้บ่อย</b><small id="hrPresetCount">เรื่องที่ครูใช้บ่อย · เลือกคุณลักษณะให้ตรงตัวชี้วัดอัตโนมัติ</small></span>
                   <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
                 </button>
                 <label class="hr-field">
@@ -2424,10 +2547,14 @@
               <button type="button" class="btn btn-secondary btn-sm" id="repPreviewBtn">ดูสถิติช่วงวันที่นี้ก่อนส่ง</button>
               <div class="report-preview" id="repPreviewBox" style="display:none;"></div>
               <input type="hidden" id="repTeacherName">
-              <label class="hr-field">
-                <span class="hr-info-label">สรุปผลการดำเนินกิจกรรมและปัญหาที่พบ</span>
-                <textarea id="repNote" maxlength="3000" rows="4" placeholder="สรุปภาพรวมการเข้าโฮมรูม พฤติกรรมนักเรียน และข้อเสนอแนะ..." required></textarea>
-              </label>
+              <div class="hr-field">
+                <div class="hr-summary-head">
+                  <span class="hr-info-label">สรุปผลการดำเนินกิจกรรมและปัญหาที่พบ</span>
+                  <button type="button" class="hr-magic" id="repAutoBtn">เขียนอัตโนมัติ</button>
+                </div>
+                <textarea id="repNote" maxlength="3000" rows="4" placeholder="สรุปภาพรวมการเข้าโฮมรูม พฤติกรรมนักเรียน และข้อเสนอแนะ หรือกด “เขียนอัตโนมัติ” ให้ระบบสรุปจากบันทึกโฮมรูมในช่วงวันที่" required></textarea>
+                <p class="hr-hint">หากครูไม่ได้ส่งรายงานรายสัปดาห์ ระบบจะสรุปและส่งแทนให้อัตโนมัติทุกวันจันทร์ เวลา ๐๘.๐๐ น.</p>
+              </div>
               <button type="submit" class="hr-save-btn" id="repSubmitBtn">ส่งรายงานเพื่อขออนุมัติ</button>
             </form>
           </div>
@@ -2653,6 +2780,17 @@
 
           <!-- ปีการศึกษา -->
           <div id="adminSubYearsSection" style="display:none;">
+            <div class="close-year">
+              <strong class="close-year-title">ปิดปีการศึกษา และย้ายข้อมูลไปคลัง</strong>
+              <p class="mini-note">ใช้เมื่อจบปีการศึกษา ระบบจะสร้างไฟล์ Google Sheet ใหม่ "คลังข้อมูลระบบโฮมรูม ปีการศึกษา …" แล้วย้ายบันทึกโฮมรูม การเช็กชื่อ คะแนนความประพฤติ คำปรึกษา รายงาน และการแจ้งเตือนไปเก็บ
+                (ตรวจนับข้อมูลให้ตรงก่อนลบ) จากนั้นตั้งปีการศึกษาใหม่ · <b>คะแนนความประพฤติของนักเรียนจะเริ่มนับใหม่</b> · ข้อมูลนักเรียน ห้อง ครู และการตั้งค่าคงอยู่เหมือนเดิม</p>
+              <div class="form-row-2">
+                <div class="field"><label for="closeYearConfirm">พิมพ์ปีการศึกษาที่จะปิด (<span id="closeYearCur">-</span>)</label><input type="text" id="closeYearConfirm" inputmode="numeric" autocomplete="off" placeholder="พิมพ์เลขปีเพื่อยืนยัน"></div>
+                <div class="field"><label for="closeYearNext">ปีการศึกษาใหม่</label><input type="text" id="closeYearNext" inputmode="numeric" autocomplete="off"></div>
+              </div>
+              <button type="button" class="btn btn-danger-soft btn-sm" id="btnCloseYear" disabled>ปิดปีการศึกษาและย้ายข้อมูล</button>
+              <div class="archive-list" id="archiveList"></div>
+            </div>
             <form id="addYearForm" class="form-grid" style="border: 1px solid var(--border); padding: 10px; border-radius: 8px; background: #fff; margin-bottom: 10px;">
               <strong style="font-size: 0.8rem;">➕ เพิ่มปีการศึกษา</strong>
               <div style="display:flex; gap:8px; align-items:flex-end;">
@@ -2763,6 +2901,27 @@
             </div>
             <div id="lineSummaryText" style="margin-bottom:8px; color:#1e3a2f;"></div>
             <div class="rooms-status-grid" id="lineRoomsGrid"></div>
+          </div>
+
+          <div class="ai-card">
+            <strong class="ai-card-title">ผู้ช่วยเขียนอัตโนมัติ (AI · Google Gemini)</strong>
+            <p class="mini-note" style="margin:0 0 8px;">ใช้เขียนสาระสำคัญโฮมรูมและสรุปรายงานเป็นภาษาราชการ · ถ้า AI ใช้ไม่ได้ ระบบจะใช้ข้อความสำเร็จรูปแทนโดยอัตโนมัติ · คีย์ถูกเก็บในเซิร์ฟเวอร์ ไม่แสดงในหน้าเว็บ</p>
+            <div class="form-grid">
+              <div class="field">
+                <label for="aiKey">API key (เว้นว่างไว้หากไม่ต้องการเปลี่ยน)</label>
+                <input type="password" id="aiKey" autocomplete="off" placeholder="วาง API key จาก Google AI Studio">
+              </div>
+              <div style="display:flex; justify-content:space-between; align-items:center; gap:6px; flex-wrap:wrap;">
+                <span id="aiStatusBadge" class="status-pill status-pending">ยังไม่ได้ตั้งค่า</span>
+                <span style="display:flex; gap:6px; flex-wrap:wrap;">
+                  <button type="button" class="btn btn-secondary btn-sm" id="btnSaveAi">บันทึก</button>
+                  <button type="button" class="btn btn-secondary btn-sm" id="btnTestAi">ทดสอบ</button>
+                  <button type="button" class="btn btn-secondary btn-sm" id="btnClearAi">ลบคีย์</button>
+                </span>
+              </div>
+              <div class="ai-test-out" id="aiTestOut" hidden></div>
+              <button type="button" class="btn btn-secondary btn-sm" id="btnRunAutoReports">ส่งรายงานรายสัปดาห์แทนห้องที่ยังไม่ส่ง (สัปดาห์ก่อน) ตอนนี้</button>
+            </div>
           </div>
 
           <div style="background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 12px;">
@@ -3479,81 +3638,119 @@
   }
 
   // ==================== ข้อมูลประกอบหน้าครู ====================
-  // สรุปจากคำตอบ "แบบบันทึกโฮมรูม (การตอบกลับ)" ของครูที่ปรึกษา ภาคเรียนที่ 2/2569
-  // tr = คุณลักษณะที่ครูเลือกบ่อยที่สุดสำหรับเรื่องนั้น (1 รักชาติฯ 2 ซื่อสัตย์ 3 มีวินัย 4 ใฝ่เรียนรู้ 5 พอเพียง 6 มุ่งมั่นฯ 7 รักความเป็นไทย 8 จิตสาธารณะ)
+  // ======= เรื่องที่ใช้บ่อย: สรุปจากแบบบันทึกโฮมรูมจริง 206 รายการ (26 ต.ค.–18 พ.ย. 2569) =======
+  // tr = คุณลักษณะอันพึงประสงค์ที่เกี่ยวข้องโดยตรง 1–3 ข้อ (ตามตัวชี้วัด หลักสูตรแกนกลางฯ 2551)
+  // 1 รักชาติ ศาสน์ กษัตริย์ · 2 ซื่อสัตย์สุจริต · 3 มีวินัย · 4 ใฝ่เรียนรู้ · 5 อยู่อย่างพอเพียง · 6 มุ่งมั่นในการทำงาน · 7 รักความเป็นไทย · 8 มีจิตสาธารณะ
   const TOPIC_PRESETS = [
-    { g: 'ด้านการเรียน', c: '#2f6fc4', bg: '#e8f1fc', items: [
-      { t: 'ติดตามงานค้างและการส่งงาน', tr: [4, 6, 3], k: ['งานค้าง', 'ตามงาน', 'ติดตามงาน', 'ส่งงาน', 'การบ้าน', 'แจกแจงงาน', 'มอบหมายงาน', 'รายงาน'],
-        s: ['ครูที่ปรึกษาติดตามงานค้างและการส่งงานของสามเณรในแต่ละรายวิชา แจ้งให้สามเณรที่มีงานค้างทยอยทำและส่งให้ครบตามกำหนด พร้อมแนะนำการแบ่งเวลาทำงานให้เหมาะสม เพื่อไม่ให้ส่งผลกระทบต่อผลการเรียน',
-            'ตรวจสอบรายชื่อสามเณรที่ยังมีงานค้าง ชี้แจงรายวิชาและกำหนดส่งให้ชัดเจน กำชับให้รับผิดชอบงานของตนเองและส่งให้ทันเวลา หากมีปัญหาในการทำงานให้ปรึกษาครูประจำวิชาหรือครูที่ปรึกษา'] },
-      { t: 'ติดตามผลการเรียนและการแก้ 0 ร มส.', tr: [4, 6, 3], k: ['ผลการเรียน', 'เกรด', 'ติด ร', 'มส', 'แก้ 0', 'แก้ไขเกรด', 'แก้ผลการเรียน', 'คะแนน'],
-        s: ['ครูที่ปรึกษาติดตามผลการเรียนของสามเณร แจ้งรายวิชาที่ยังติด 0 ร หรือ มส. ให้รีบดำเนินการแก้ไขกับครูประจำวิชา พร้อมให้ตั้งเป้าหมายและกำหนดวันที่จะแก้ไขให้แล้วเสร็จ',
-            'พูดคุยเรื่องผลการเรียนของภาคเรียนที่ผ่านมา ให้กำลังใจสามเณรที่ผลการเรียนยังไม่ดี และแนะนำวิธีวางแผนการเรียนให้ดีขึ้นในภาคเรียนนี้ ทั้งการทบทวนบทเรียนและการส่งงานให้ตรงเวลา'] },
-      { t: 'เตรียมความพร้อมสอบนักธรรม', tr: [4, 3, 6], k: ['นักธรรม', 'สอบธรรม', 'ธรรมศึกษา', 'อ่านหนังสือสอบ'],
-        s: ['ครูที่ปรึกษาเน้นย้ำให้สามเณรเตรียมความพร้อมสำหรับการสอบนักธรรม ทบทวนเนื้อหาวิชาธรรม พุทธประวัติ วินัย และกระทู้อย่างสม่ำเสมอ แบ่งเวลาอ่านหนังสือในแต่ละวัน และดูแลสุขภาพให้พร้อมในวันสอบ',
-            'ใกล้ถึงช่วงสอบนักธรรม จึงกำชับให้สามเณรขยันอ่านหนังสือ ฝึกเขียนกระทู้ และสอบถามครูผู้สอนเมื่อมีข้อสงสัย เพื่อให้สอบผ่านตามเป้าหมาย'] },
-      { t: 'ฝึกทักษะวิชาการ (ไทย อังกฤษ คณิตศาสตร์)', tr: [4, 6], k: ['ทักษะ', 'แบบฝึก', 'ทดสอบ', 'คำศัพท์', 'อังกฤษ', 'คณิต', 'แต่งประโยค'],
-        s: ['ครูที่ปรึกษาจัดกิจกรรมฝึกทักษะวิชาการ ให้สามเณรทำแบบฝึกหัดและแบบทดสอบสั้น ๆ เพื่อทบทวนความรู้และพัฒนาทักษะที่ยังอ่อน พร้อมแจ้งผลและแนะนำแนวทางปรับปรุง',
-            'ฝึกทักษะการคิดและความจำผ่านแบบฝึกหัด สามเณรได้ฝึกปฏิบัติจริงและได้รับคำแนะนำจากครูเป็นรายบุคคล เพื่อเพิ่มความมั่นใจในการเรียน'] },
-      { t: 'แนะแนวการเรียนต่อและเป้าหมายชีวิต', tr: [4, 6], k: ['เรียนต่อ', 'มหาวิทยาลัย', 'มหาลัย', 'เป้าหมาย', 'อนาคต', 'แนะแนว'],
-        s: ['ครูที่ปรึกษาพูดคุยเรื่องเป้าหมายชีวิตและการเรียนต่อ ให้สามเณรสำรวจความถนัดและความสนใจของตนเอง กำหนดเป้าหมายให้ชัดเจน และวางแผนการเรียนเพื่อไปสู่เป้าหมายนั้น',
-            'แนะแนวการศึกษาต่อและการวางแผนอนาคต ให้ข้อมูลเกี่ยวกับการสมัครเรียนต่อ และกระตุ้นให้สามเณรตั้งใจเรียนเพื่อเตรียมความพร้อม'] }
+    { g: 'การเรียนและติดตามงาน', c: '#2f6fc4', bg: '#e8f1fc', items: [
+      { t: 'ติดตามงานค้างและการส่งงาน', tr: [6, 4], ind: '6.1 · 4.1', k: ['งานค้าง', 'ตามงาน', 'ติดตามงาน', 'ส่งงาน', 'การบ้าน', 'แจกแจงงาน', 'มอบหมายงาน', 'เคลียร์งาน', 'แก้งาน'],
+        s: ['ครูที่ปรึกษาได้ติดตามงานค้างและการส่งงานของสามเณรในแต่ละรายวิชา โดยแจ้งรายวิชาและกำหนดส่งให้ทราบอย่างชัดเจน กำชับให้สามเณรวางแผนการทำงานและส่งงานให้ครบถ้วนตามกำหนด เพื่อปลูกฝังความรับผิดชอบต่อหน้าที่และความตั้งใจในการเรียน',
+            'ครูที่ปรึกษาได้ตรวจสอบรายชื่อสามเณรที่ยังมีงานค้าง พร้อมชี้แจงแนวทางการติดต่อครูประจำวิชาเพื่อดำเนินการแก้ไข และเน้นย้ำให้สามเณรปฏิบัติงานที่ได้รับมอบหมายด้วยความเพียรพยายามจนสำเร็จ'] },
+      { t: 'ติดตามผลการเรียนและการแก้ไข 0 ร มส.', tr: [4, 6], ind: '4.1 · 6.2', k: ['ผลการเรียน', 'เกรด', 'ติด ร', 'มส', 'แก้ 0', 'ติดเกรด', 'แก้ผลการเรียน', 'คะแนน', 'ติด ร.'],
+        s: ['ครูที่ปรึกษาได้ติดตามผลการเรียนของสามเณร แจ้งรายวิชาที่มีผลการเรียน 0 ร หรือ มส. ให้ดำเนินการแก้ไขกับครูประจำวิชาโดยเร็ว พร้อมให้สามเณรกำหนดเป้าหมายและระยะเวลาการแก้ไขที่ชัดเจน',
+            'ครูที่ปรึกษาได้พูดคุยเรื่องผลการเรียนของภาคเรียนที่ผ่านมา ให้กำลังใจสามเณรที่ผลการเรียนยังไม่เป็นไปตามเป้าหมาย และแนะนำแนวทางการวางแผนการเรียนให้ดีขึ้นในภาคเรียนนี้'] },
+      { t: 'ฝึกทักษะวิชาการ (ไทย อังกฤษ คณิตศาสตร์)', tr: [4, 6], ind: '4.1 · 4.2', k: ['ทักษะ', 'แบบฝึก', 'ทดสอบ', 'คำศัพท์', 'อังกฤษ', 'คณิต', 'แต่งประโยค', 'ภาษาไทย'],
+        s: ['ครูที่ปรึกษาได้จัดกิจกรรมฝึกทักษะวิชาการ โดยให้สามเณรทำแบบฝึกหัดและแบบทดสอบระยะสั้น เพื่อทบทวนความรู้และพัฒนาทักษะที่ยังไม่ผ่านเกณฑ์ พร้อมแจ้งผลและให้คำแนะนำเป็นรายบุคคล',
+            'ครูที่ปรึกษาได้ส่งเสริมทักษะการคิดและความจำผ่านแบบฝึกหัดในรายวิชาพื้นฐาน เปิดโอกาสให้สามเณรได้ฝึกปฏิบัติจริงและซักถามข้อสงสัย เพื่อเสริมสร้างความมั่นใจในการเรียน'] }
     ] },
-    { g: 'ด้านวินัยและความรับผิดชอบ', c: '#c96a0c', bg: '#fdf1e3', items: [
-      { t: 'การมาเรียน ขาด ลา มาสาย และการตรงต่อเวลา', tr: [3, 4], k: ['มาสาย', 'ขาด', 'ลา', 'ตรงต่อเวลา', 'มาเรียน', 'ตื่นเช้า', 'เวลา'],
-        s: ['ครูที่ปรึกษาเน้นย้ำเรื่องการมาเรียนให้ตรงเวลา ชี้แจงผลเสียของการขาดเรียนและมาสาย ให้สามเณรแจ้งลาทุกครั้งที่มีกิจธุระ และฝึกเตรียมตัวล่วงหน้าเพื่อสร้างนิสัยความมีวินัย',
-            'พูดคุยเรื่องการตรงต่อเวลาและคุณค่าของเวลา ให้สามเณรมาถึงโรงเรียนก่อนเวลาเข้าเรียน ไม่ผัดวันประกันพรุ่ง และรับผิดชอบต่อการเข้าเรียนของตนเอง'] },
-      { t: 'การทำวาระเวรและความสะอาดห้องเรียน', tr: [3, 8, 6], k: ['เวร', 'วาระ', 'ความสะอาด', 'ทำความสะอาด', 'ห้องน้ำ', 'ขยะ', 'จัดห้อง', 'บอร์ด'],
-        s: ['ครูที่ปรึกษาชี้แจงและจัดแบ่งหน้าที่เวรประจำวัน ให้สามเณรรับผิดชอบรักษาความสะอาดห้องเรียนและพื้นที่ส่วนรวมตามที่ได้รับมอบหมาย ทำงานร่วมกันอย่างสามัคคี และตรวจความเรียบร้อยก่อนกลับ',
-            'ติดตามการทำเวรทำความสะอาดห้องเรียน ทิ้งขยะ ปิดไฟและถอดปลั๊กให้เรียบร้อย ฝึกให้สามเณรมีความรับผิดชอบต่อหน้าที่และมีจิตสาธารณะต่อส่วนรวม'] },
-      { t: 'กฎระเบียบของห้องเรียนและการแต่งกาย', tr: [3, 6], k: ['กฎ', 'ระเบียบ', 'แต่งกาย', 'ข้อตกลง', 'เครื่องแต่งกาย', 'เข้าแถว', 'บัตรนักเรียน'],
-        s: ['ครูที่ปรึกษาทบทวนกฎระเบียบและข้อตกลงของห้องเรียน เน้นการแต่งกายให้ถูกต้องเรียบร้อย การเคารพครูผู้สอน ไม่รบกวนผู้อื่น และปฏิบัติตามระเบียบของโรงเรียนอย่างสม่ำเสมอ',
-            'ตรวจความเรียบร้อยของการแต่งกายและอุปกรณ์การเรียน พร้อมชี้แจงระเบียบที่ต้องปฏิบัติ เพื่อสร้างบรรยากาศการเรียนรู้ที่เป็นระเบียบและอยู่ร่วมกันอย่างมีความสุข'] },
-      { t: 'ความซื่อสัตย์และความรับผิดชอบต่อหน้าที่', tr: [2, 3, 6], k: ['ซื่อสัตย์', 'รับผิดชอบ', 'โกหก', 'หน้าที่', 'คำพูด'],
-        s: ['ครูที่ปรึกษาพูดคุยเรื่องความซื่อสัตย์และความรับผิดชอบ ให้สามเณรพูดความจริง รักษาคำพูด กล้ายอมรับและแก้ไขเมื่อทำผิด และทำหน้าที่ที่ได้รับมอบหมายอย่างเต็มความสามารถ',
-            'ปลูกฝังคุณธรรมด้านความซื่อสัตย์สุจริต ไม่ทำความดีเพียงเพราะมีคนมองเห็น และไม่หลีกเลี่ยงความรับผิดชอบ เพื่อให้เป็นผู้ที่ผู้อื่นเชื่อถือและไว้วางใจได้'] }
+    { g: 'เตรียมสอบนักธรรม-บาลี', c: '#b5651d', bg: '#fbf0e4', items: [
+      { t: 'เตรียมความพร้อมสอบนักธรรม', tr: [4, 6, 1], ind: '4.1 · 6.2 · 1.3', k: ['นักธรรม', 'สอบธรรม', 'ธรรมศึกษา', 'อ่านหนังสือสอบ', 'แผนกธรรม', 'โทเอก', 'ติวนักธรรม', 'เก็งข้อสอบ'],
+        s: ['ครูที่ปรึกษาได้เน้นย้ำให้สามเณรเตรียมความพร้อมสำหรับการสอบธรรมสนามหลวง โดยทบทวนวิชาธรรม พุทธประวัติ วินัย และกระทู้อย่างสม่ำเสมอ จัดสรรเวลาอ่านหนังสือให้เหมาะสม เพื่อให้สอบผ่านตามเป้าหมาย',
+            'เนื่องจากใกล้ถึงกำหนดการสอบนักธรรม ครูที่ปรึกษาจึงกำชับให้สามเณรขยันทบทวนบทเรียน ฝึกเขียนกระทู้ และสอบถามครูผู้สอนเมื่อมีข้อสงสัย อันเป็นการส่งเสริมการศึกษาพระปริยัติธรรมตามหลักพระพุทธศาสนา'] },
+      { t: 'ทบทวนบาลีและบทท่องจำ (อาขยาน)', tr: [4, 1], ind: '4.1 · 1.3', k: ['บาลี', 'อาขยาน', 'ท่องจำ', 'บทท่อง', 'สารบัญ'],
+        s: ['ครูที่ปรึกษาได้นำสามเณรทบทวนบทท่องจำภาษาบาลีและบทอาขยาน ฝึกการออกเสียงให้ถูกต้องและท่องจำอย่างสม่ำเสมอ เพื่อเป็นพื้นฐานในการศึกษาพระปริยัติธรรมแผนกบาลี',
+            'ครูที่ปรึกษาได้จัดกิจกรรมท่องจำบทบาลีร่วมกัน ตรวจสอบความถูกต้องเป็นรายรูป และแนะนำเทคนิคการจำ เพื่อส่งเสริมความใฝ่เรียนรู้และความศรัทธาในการศึกษาพระธรรมวินัย'] }
     ] },
-    { g: 'ด้านศาสนาและคุณธรรม', c: '#7a4fd6', bg: '#f2ecfd', items: [
-      { t: 'กิจวัตรประจำวัน นั่งสมาธิก่อนเลิกเรียน', tr: [3, 4], k: ['สมาธิ', 'กิจวัตร', 'จิตนิ่ง'],
-        s: ['ครูที่ปรึกษานำสามเณรนั่งสมาธิก่อนเลิกเรียน เพื่อฝึกให้จิตใจสงบ มีสติ และจดจ่อกับสิ่งที่ทำ พร้อมทบทวนกิจวัตรประจำวันของสามเณร',
-            'ร่วมกันนั่งสมาธิและทบทวนกิจวัตรประจำวัน ส่งเสริมให้สามเณรมีความสำรวมและนำสติไปใช้ในการเรียนและการดำเนินชีวิต'] },
-      { t: 'สวดมนต์ / ศีล 5 / อ่านกัณฑ์เทศน์', tr: [1, 4], k: ['สวดมนต์', 'ศีล', 'กัณฑ์เทศน์', 'พาหุง', 'อาขยาต', 'บทสวด', 'ธรรมะ'],
-        s: ['ครูที่ปรึกษานำสามเณรสวดมนต์และศึกษาหลักธรรม อ่านกัณฑ์เทศน์ที่เกี่ยวข้องกับศีล 5 พร้อมอธิบายความหมายและแนวทางนำไปปฏิบัติในชีวิตประจำวัน',
-            'ทบทวนบทสวดมนต์และหลักศีล 5 ให้สามเณรเข้าใจความสำคัญของการรักษาศีล และเป็นศาสนทายาทที่ดีตามแบบอย่างพระพุทธศาสนา'] },
-      { t: 'มารยาทและการสำรวมกิริยาของสามเณร', tr: [3, 7], k: ['มารยาท', 'สำรวม', 'กาลเทศะ', 'ไหว้', 'กิริยา', 'คำหยาบ'],
-        s: ['ครูที่ปรึกษาอบรมเรื่องมารยาทและการสำรวมกิริยาของสามเณร การใช้วาจาสุภาพ การวางตัวให้เหมาะสมกับกาลเทศะ และการมีสัมมาคารวะต่อครูบาอาจารย์',
-            'ฝึกการแสดงความเคารพและการวางตัวที่เหมาะสม ให้สามเณรสังเกตพฤติกรรมของตนเองและพัฒนาตนให้เป็นแบบอย่างที่ดีแก่ผู้อื่น'] },
-      { t: 'จิตอาสาและการทำประโยชน์แก่วัดและโรงเรียน', tr: [8, 1], k: ['จิตอาสา', 'บำเพ็ญประโยชน์', 'ประโยชน์', 'เสียสละ', 'ส่วนรวม', 'ช่วยงาน', 'กฐิน'],
-        s: ['ครูที่ปรึกษาส่งเสริมให้สามเณรมีจิตอาสา ร่วมทำประโยชน์ให้แก่วัดและโรงเรียน เห็นคุณค่าของสถานที่ที่อาศัยและศึกษาเล่าเรียน และรู้จักเสียสละเพื่อส่วนรวม',
-            'พูดคุยเรื่องการบำเพ็ญประโยชน์และการช่วยเหลืองานส่วนรวม ให้สามเณรทำความดีด้วยใจบริสุทธิ์ โดยไม่หวังผลตอบแทน'] }
+    { g: 'ศาสนกิจและการปฏิบัติธรรม', c: '#7a4fd6', bg: '#f2ecfd', items: [
+      { t: 'กิจวัตรนั่งสมาธิก่อนเลิกเรียน', tr: [1, 3], ind: '1.3 · 3.1', k: ['สมาธิ', 'นั่งสมาธิ', 'กิจวัตร', 'จิตนิ่ง'],
+        s: ['ครูที่ปรึกษาได้นำสามเณรปฏิบัติกิจวัตรนั่งสมาธิก่อนเลิกเรียน เพื่อฝึกความสงบ ความมีสติ และความตั้งมั่นของจิต ซึ่งเป็นพื้นฐานสำคัญของการเรียนรู้และการดำเนินชีวิตตามหลักพระพุทธศาสนา',
+            'ครูที่ปรึกษาได้ควบคุมการปฏิบัติสมาธิของสามเณรให้เป็นไปด้วยความสงบเรียบร้อย พร้อมแนะนำวิธีการกำหนดลมหายใจและการตั้งสติ เพื่อนำไปใช้ในการเรียนและกิจวัตรประจำวัน'] },
+      { t: 'สวดมนต์ ทำวัตร และอ่านกัณฑ์เทศน์ (ศีล ๕)', tr: [1, 4], ind: '1.3 · 4.1', k: ['สวดมนต์', 'ทำวัตร', 'ศีล', 'กัณฑ์เทศน์', 'พาหุง', 'เทศน์'],
+        s: ['ครูที่ปรึกษาได้นำสามเณรสวดมนต์และศึกษาหลักธรรมจากกัณฑ์เทศน์ว่าด้วยศีล ๕ อธิบายความหมายและแนวทางการนำไปปฏิบัติในชีวิตประจำวัน เพื่อปลูกฝังความศรัทธาและการปฏิบัติตนตามหลักพระพุทธศาสนา',
+            'ครูที่ปรึกษาได้จัดกิจกรรมสวดมนต์และอ่านกัณฑ์เทศน์ร่วมกัน พร้อมกำชับให้สามเณรลงทำวัตรเย็นอย่างพร้อมเพรียง อันเป็นการส่งเสริมการปฏิบัติศาสนกิจอย่างสม่ำเสมอ'] }
     ] },
-    { g: 'ด้านการดำเนินชีวิต', c: '#1d8a4c', bg: '#e6f6ec', items: [
-      { t: 'การออมปัจจัยและการใช้จ่ายอย่างพอเพียง', tr: [5, 3], k: ['ออม', 'เก็บเงิน', 'ประหยัด', 'ปัจจัย', 'ค่าห้อง', 'ใช้จ่าย', 'อดออม'],
-        s: ['ครูที่ปรึกษาส่งเสริมการออมปัจจัย ให้สามเณรรู้จักวางแผนการใช้จ่าย แยกเงินออมก่อนใช้ และใช้จ่ายอย่างประหยัดตามหลักปรัชญาของเศรษฐกิจพอเพียง',
-            'พูดคุยเรื่องการเก็บออมเพื่ออนาคตและการรับมือความเสี่ยง ให้สามเณรบันทึกรายรับรายจ่าย และใช้ปัจจัยอย่างมีเหตุผลและคุ้มค่า'] },
-      { t: 'การดูแลสุขภาพและการพักผ่อน', tr: [5, 3], k: ['สุขภาพ', 'ป่วย', 'พักผ่อน', 'นอน', 'อาหาร', 'ฉัน', 'ซักผ้า'],
-        s: ['ครูที่ปรึกษาแนะนำการดูแลสุขภาพ การพักผ่อนให้เพียงพอ การฉันอาหารที่มีประโยชน์ และการรักษาความสะอาดของร่างกายและเครื่องนุ่งห่ม เพื่อให้พร้อมต่อการเรียน',
-            'สอบถามสุขภาพกายและใจของสามเณร ให้คำแนะนำในการดูแลตนเอง และแจ้งครูทันทีเมื่อรู้สึกไม่สบาย'] },
-      { t: 'การอยู่ร่วมกันและการเคารพสิทธิผู้อื่น', tr: [3, 8], k: ['อยู่ร่วม', 'เพื่อน', 'รังแก', 'กลั่นแกล้ง', 'ทะเลาะ', 'สิทธิ', 'ทำงานร่วมกัน', 'สามัคคี'],
-        s: ['ครูที่ปรึกษาพูดคุยเรื่องการอยู่ร่วมกันอย่างมีความสุข การเคารพสิทธิของผู้อื่น ไม่กลั่นแกล้งหรือใช้ความรุนแรง รู้จักควบคุมอารมณ์ และแก้ปัญหาความขัดแย้งด้วยเหตุผล',
-            'ส่งเสริมความสามัคคีและการช่วยเหลือซึ่งกันและกัน แนะนำการเลือกคบเพื่อนที่ดี และร่วมสร้างห้องเรียนที่ปลอดภัยสำหรับทุกคน'] },
-      { t: 'รู้เท่าทันภัยออนไลน์และข่าวสาร', tr: [4, 5], k: ['ออนไลน์', 'พนัน', 'โทรศัพท์', 'เกม', 'ข่าว', 'ภัย'],
-        s: ['ครูที่ปรึกษาให้ความรู้เรื่องภัยออนไลน์ เช่น การพนันออนไลน์และการหลอกลวง ให้สามเณรใช้โทรศัพท์อย่างเหมาะสม รู้เท่าทันสื่อ และไม่หลงเชื่อข้อมูลที่ไม่น่าเชื่อถือ',
-            'พูดคุยเรื่องการติดตามข่าวสารอย่างมีวิจารณญาณ และการใช้เทคโนโลยีให้เกิดประโยชน์ต่อการเรียนและการดำเนินชีวิต'] },
-      { t: 'ความภาคภูมิใจในความเป็นไทย', tr: [7, 1], k: ['ความเป็นไทย', 'วัฒนธรรม', 'ภาษาไทย', 'ประเพณี'],
-        s: ['ครูที่ปรึกษาส่งเสริมความภาคภูมิใจในความเป็นไทย การใช้ภาษาไทยอย่างถูกต้อง และการสืบสานวัฒนธรรมประเพณีอันดีงาม',
-            'พูดคุยถึงคุณค่าของวัฒนธรรมไทยและมารยาทไทย ให้สามเณรนำไปปฏิบัติในชีวิตประจำวันอย่างภาคภูมิใจ'] }
+    { g: 'วินัยและการตรงต่อเวลา', c: '#c96a0c', bg: '#fdf1e3', items: [
+      { t: 'การมาเรียน ขาด ลา มาสาย และการตรงต่อเวลา', tr: [3], ind: '3.1', k: ['มาสาย', 'ขาด', 'ลา', 'ตรงต่อเวลา', 'มาเรียน', 'ตื่นเช้า', 'การลาเรียน', 'ขาดเรียน'],
+        s: ['ครูที่ปรึกษาได้เน้นย้ำเรื่องการมาเรียนให้ตรงต่อเวลา ชี้แจงผลกระทบของการขาดเรียนและการมาสาย และกำชับให้สามเณรแจ้งลาทุกครั้งเมื่อมีกิจธุระ เพื่อปลูกฝังความมีวินัยและการปฏิบัติตามระเบียบของสถานศึกษา',
+            'ครูที่ปรึกษาได้พูดคุยเรื่องคุณค่าของเวลาและการตรงต่อเวลา แนะนำให้สามเณรเตรียมตัวล่วงหน้าและมาถึงโรงเรียนก่อนเวลาเข้าเรียน รวมถึงติดตามสามเณรที่มาสายหรือขาดเรียนเป็นรายรูป'] },
+      { t: 'กฎระเบียบห้องเรียน การแต่งกาย และการเข้าแถว', tr: [3], ind: '3.1', k: ['กฎ', 'ระเบียบ', 'แต่งกาย', 'ข้อตกลง', 'เครื่องแต่งกาย', 'เข้าแถว', 'บัตรนักเรียน', 'ตรวจกลิ่นผ้า'],
+        s: ['ครูที่ปรึกษาได้ทบทวนกฎระเบียบและข้อตกลงของห้องเรียน เน้นการแต่งกายให้ถูกต้องเรียบร้อยตามระเบียบของสามเณร การเข้าแถวอย่างเป็นระเบียบ และการเคารพครูผู้สอน เพื่อสร้างบรรยากาศการเรียนรู้ที่มีระเบียบวินัย',
+            'ครูที่ปรึกษาได้ตรวจความเรียบร้อยของการแต่งกายและอุปกรณ์การเรียนของสามเณร พร้อมชี้แจงระเบียบที่ต้องถือปฏิบัติ และแนะนำแนวทางการปรับปรุงเป็นรายรูป'] }
     ] },
-    { g: 'ด้านข่าวสารและอื่น ๆ', c: '#c2416f', bg: '#fdebf2', items: [
-      { t: 'แจ้งข่าวสารและกิจกรรมของโรงเรียน', tr: [3, 8], k: ['แจ้ง', 'ข่าวสาร', 'กิจกรรม', 'ชุมนุม', 'ตรวจนับ', 'ประชุม', 'ผ้าไตร'],
-        s: ['ครูที่ปรึกษาแจ้งข่าวสารและกิจกรรมของโรงเรียนให้สามเณรทราบ ชี้แจงสิ่งที่ต้องเตรียมและกำหนดการให้ชัดเจน พร้อมกำชับให้เข้าร่วมกิจกรรมอย่างพร้อมเพรียง',
-            'ประชาสัมพันธ์กิจกรรมและข้อปฏิบัติของโรงเรียน ให้สามเณรเตรียมตัวและปฏิบัติตามกำหนดการได้อย่างถูกต้อง'] },
-      { t: 'เรียบร้อยดี / ไม่มีเรื่องเพิ่มเติม', tr: [3], k: ['เรียบร้อยดี', 'ไม่มี'],
-        s: ['ครูที่ปรึกษาตรวจเช็กความเรียบร้อยของสามเณรประจำวัน สอบถามปัญหาการเรียนและความเป็นอยู่ วันนี้ไม่พบปัญหาที่ต้องติดตามเพิ่มเติม'] }
+    { g: 'หน้าที่ เวรวาระ และความสะอาด', c: '#0b8a8a', bg: '#e3f6f6', items: [
+      { t: 'การทำวาระเวรและความสะอาดห้องเรียน', tr: [6, 3, 8], ind: '6.1 · 3.1 · 8.2', k: ['เวร', 'วาระ', 'ความสะอาด', 'ทำความสะอาด', 'ห้องน้ำ', 'ขยะ', 'จัดห้อง', 'เวรวาระ'],
+        s: ['ครูที่ปรึกษาได้ชี้แจงและจัดแบ่งหน้าที่เวรประจำวัน ให้สามเณรรับผิดชอบรักษาความสะอาดห้องเรียนและพื้นที่ที่ได้รับมอบหมายอย่างสม่ำเสมอ เพื่อปลูกฝังความรับผิดชอบต่อหน้าที่และการทำงานร่วมกันอย่างมีระเบียบ',
+            'ครูที่ปรึกษาได้ติดตามการปฏิบัติหน้าที่เวรทำความสะอาดห้องเรียน การทิ้งขยะ การปิดไฟและถอดปลั๊กเครื่องใช้ไฟฟ้า พร้อมเน้นย้ำให้สามเณรปฏิบัติหน้าที่ด้วยความเต็มใจและเห็นแก่ประโยชน์ส่วนรวม'] },
+      { t: 'ดูแลรักษาพื้นที่และทรัพย์สินส่วนรวม', tr: [8, 3], ind: '8.2 · 3.1', k: ['ส่วนรวม', 'พื้นที่', 'บอร์ด', 'ตกแต่งห้อง', 'ปรับปรุงห้อง', 'ทรัพย์สิน'],
+        s: ['ครูที่ปรึกษาได้มอบหมายให้สามเณรร่วมกันดูแลรักษาพื้นที่และทรัพย์สินส่วนรวม รวมถึงปรับปรุงห้องเรียนให้สะอาดและเป็นระเบียบ เพื่อปลูกฝังจิตสำนึกในการรักษาสาธารณสมบัติ',
+            'ครูที่ปรึกษาได้นำสามเณรร่วมกันปรับปรุงและตกแต่งห้องเรียน โดยแบ่งหน้าที่ตามความถนัด ส่งเสริมการทำงานเป็นทีมและความรับผิดชอบต่อพื้นที่ที่ใช้ร่วมกัน'] }
+    ] },
+    { g: 'ความซื่อสัตย์และความรับผิดชอบ', c: '#1d6fa5', bg: '#e6f2fa', items: [
+      { t: 'ความซื่อสัตย์ การพูดความจริง และการรักษาคำพูด', tr: [2], ind: '2.1 · 2.2', k: ['ซื่อสัตย์', 'โกหก', 'คำพูด', 'พูดความจริง', 'ยอมรับผิด'],
+        s: ['ครูที่ปรึกษาได้พูดคุยเรื่องความซื่อสัตย์สุจริต ให้สามเณรประพฤติตรงตามความเป็นจริงทั้งกาย วาจา ใจ พูดความจริง รักษาคำพูด และกล้ายอมรับเมื่อกระทำผิด เพื่อเป็นผู้ที่ผู้อื่นเชื่อถือและไว้วางใจ',
+            'ครูที่ปรึกษาได้ยกตัวอย่างพฤติกรรมที่แสดงถึงความไม่ซื่อสัตย์ และชี้ให้เห็นผลกระทบต่อตนเองและผู้อื่น พร้อมส่งเสริมให้สามเณรฝึกความซื่อสัตย์ในชีวิตประจำวันอย่างต่อเนื่อง'] },
+      { t: 'ความรับผิดชอบต่อหน้าที่ที่ได้รับมอบหมาย', tr: [6, 3], ind: '6.1 · 3.1', k: ['รับผิดชอบ', 'หน้าที่', 'ภาระหน้าที่', 'มอบหมาย'],
+        s: ['ครูที่ปรึกษาได้เน้นย้ำให้สามเณรรับผิดชอบต่อหน้าที่ที่ได้รับมอบหมาย ปฏิบัติงานด้วยความตั้งใจและเพียรพยายามจนสำเร็จ และไม่สร้างภาระให้ผู้อื่น',
+            'ครูที่ปรึกษาได้ทบทวนหน้าที่ของสามเณรแต่ละรูป ทั้งด้านการเรียน การทำเวร และกิจวัตร พร้อมติดตามผลการปฏิบัติและให้คำแนะนำในการปรับปรุง'] }
+    ] },
+    { g: 'มารยาทและความเป็นไทย', c: '#c2416f', bg: '#fdebf2', items: [
+      { t: 'มารยาท การไหว้ และการสำรวมกิริยาของสามเณร', tr: [7, 3], ind: '7.1 · 3.1', k: ['มารยาท', 'ไหว้', 'สำรวม', 'กาลเทศะ', 'กิริยา', 'คำหยาบ', 'สุภาพ'],
+        s: ['ครูที่ปรึกษาได้อบรมเรื่องมารยาทและการสำรวมกิริยาของสามเณร การไหว้และการแสดงความเคารพที่ถูกต้อง การใช้วาจาสุภาพ และการวางตนให้เหมาะสมกับกาลเทศะ เพื่อเป็นแบบอย่างที่ดีแก่ผู้อื่น',
+            'ครูที่ปรึกษาได้ฝึกปฏิบัติการแสดงความเคารพและการสำรวมกาย วาจา ใจ พร้อมแนะนำแนวทางการปฏิบัติตนอย่างเหมาะสมทั้งภายในวัดและสถานศึกษา'] },
+      { t: 'ความภาคภูมิใจในวัฒนธรรมและประเพณีไทย', tr: [7, 1], ind: '7.1 · 1.2', k: ['วัฒนธรรม', 'ความเป็นไทย', 'ประเพณี', 'ภาษาไทย', 'ภูมิใจ'],
+        s: ['ครูที่ปรึกษาได้พูดคุยเรื่องคุณค่าของวัฒนธรรมและประเพณีไทย ส่งเสริมให้สามเณรภาคภูมิใจในความเป็นไทย ใช้ภาษาไทยได้อย่างถูกต้อง และร่วมสืบสานประเพณีอันดีงาม',
+            'ครูที่ปรึกษาได้ยกตัวอย่างประเพณีและภูมิปัญญาไทยที่เกี่ยวข้องกับพระพุทธศาสนา และชวนสามเณรร่วมแสดงความคิดเห็นถึงแนวทางการอนุรักษ์และสืบทอด'] }
+    ] },
+    { g: 'ความพอเพียงและการออม', c: '#2b8a3e', bg: '#e9f8ee', items: [
+      { t: 'การออมปัจจัยและการใช้จ่ายอย่างประหยัด', tr: [5], ind: '5.1', k: ['ออม', 'เก็บเงิน', 'ปัจจัย', 'ประหยัด', 'ใช้จ่าย', 'ค่าห้อง', 'ฝากออม', 'ฝากปัจจัย'],
+        s: ['ครูที่ปรึกษาได้ส่งเสริมการออมปัจจัยและการใช้จ่ายอย่างประหยัดตามหลักปรัชญาของเศรษฐกิจพอเพียง ให้สามเณรรู้จักวางแผนการใช้จ่ายอย่างพอประมาณและมีเหตุผล เพื่อสร้างภูมิคุ้มกันให้แก่ตนเองในอนาคต',
+            'ครูที่ปรึกษาได้พูดคุยกับสามเณรเรื่องการบริหารปัจจัยที่ได้รับ การแยกเงินออมก่อนใช้จ่าย และการหลีกเลี่ยงการใช้จ่ายที่ไม่จำเป็น'] },
+      { t: 'การดูแลสุขภาพและการพักผ่อน', tr: [5, 3], ind: '5.2 · 3.1', k: ['สุขภาพ', 'ป่วย', 'พักผ่อน', 'นอน', 'อาหาร', 'ฉัน', 'น้ำอัดลม', 'ร่างกาย'],
+        s: ['ครูที่ปรึกษาได้ให้ความรู้เรื่องการดูแลสุขภาพ การเลือกฉันอาหารที่มีประโยชน์ การพักผ่อนให้เพียงพอ และการป้องกันโรคตามฤดูกาล เพื่อให้สามเณรมีสุขภาพแข็งแรงพร้อมต่อการศึกษาเล่าเรียน',
+            'ครูที่ปรึกษาได้สอบถามสุขภาพและความเป็นอยู่ของสามเณร พร้อมแนะนำการจัดตารางเวลาพักผ่อนและการดูแลตนเองอย่างเหมาะสม'] }
+    ] },
+    { g: 'จิตอาสาและการช่วยงานวัด', c: '#e8590c', bg: '#fff0e6', items: [
+      { t: 'จิตอาสาบำเพ็ญประโยชน์ต่อวัดและโรงเรียน', tr: [8, 1], ind: '8.2 · 1.3', k: ['จิตอาสา', 'บำเพ็ญประโยชน์', 'เสียสละ', 'ประโยชน์', 'ส่วนรวม', 'ช่วยเหลือ'],
+        s: ['ครูที่ปรึกษาได้ส่งเสริมให้สามเณรร่วมกิจกรรมจิตอาสาบำเพ็ญประโยชน์ต่อวัดและโรงเรียนด้วยความเต็มใจ โดยไม่หวังผลตอบแทน เพื่อปลูกฝังจิตสาธารณะและการทำนุบำรุงพระพุทธศาสนา',
+            'ครูที่ปรึกษาได้ชี้ให้เห็นคุณค่าของการเสียสละเพื่อส่วนรวม และชวนสามเณรวางแผนกิจกรรมบำเพ็ญประโยชน์ที่สามารถปฏิบัติได้จริงในวัดและสถานศึกษา'] },
+      { t: 'การช่วยงานวัดและงานบุญ (เช่น งานกฐิน)', tr: [8, 1], ind: '8.2 · 1.3', k: ['กฐิน', 'งานวัด', 'งานบุญ', 'ช่วยงาน', 'ซ้อมสวด', 'ครูบาอาจารย์', 'ผ้าไตร'],
+        s: ['ครูที่ปรึกษาได้ชี้แจงการเตรียมความพร้อมในการช่วยงานบุญของวัด มอบหมายหน้าที่ให้สามเณรตามความเหมาะสม และกำชับให้แจ้งลาอย่างถูกต้องเมื่อต้องไปปฏิบัติศาสนกิจ เพื่อไม่ให้กระทบต่อการเรียน',
+            'ครูที่ปรึกษาได้ติดตามสามเณรที่ไปช่วยงานบุญของวัด และชื่นชมความเสียสละในการปฏิบัติศาสนกิจ พร้อมแนะนำการติดตามบทเรียนที่ขาดไปให้ทัน'] }
+    ] },
+    { g: 'ทักษะชีวิตและภัยสังคม', c: '#5f3dc4', bg: '#efeafc', items: [
+      { t: 'รู้เท่าทันสื่อออนไลน์และข่าวลวง', tr: [4, 5], ind: '4.2 · 5.2', k: ['ออนไลน์', 'สื่อ', 'ข่าว', 'ข่าวลวง', 'โทรศัพท์', 'โซเชียล', 'เกม'],
+        s: ['ครูที่ปรึกษาได้ให้ความรู้เรื่องการรู้เท่าทันสื่อออนไลน์ การตรวจสอบความน่าเชื่อถือของแหล่งข้อมูลก่อนเชื่อหรือส่งต่อ และการใช้เทคโนโลยีอย่างมีวิจารณญาณและปลอดภัย',
+            'ครูที่ปรึกษาได้ยกตัวอย่างข่าวลวงและกลลวงทางออนไลน์ พร้อมฝึกให้สามเณรวิเคราะห์และตรวจสอบข้อเท็จจริง เพื่อสร้างภูมิคุ้มกันในการใช้สื่อสังคมออนไลน์'] },
+      { t: 'ภัยการพนันออนไลน์และสิ่งเสพติด', tr: [5, 3], ind: '5.2 · 3.1', k: ['พนัน', 'เสพติด', 'บุหรี่', 'ภัย', 'อบายมุข'],
+        s: ['ครูที่ปรึกษาได้ให้ความรู้เรื่องภัยของการพนันออนไลน์และสิ่งเสพติด ชี้ให้เห็นผลกระทบต่อตนเอง ครอบครัว และสังคม พร้อมแนะนำวิธีปฏิเสธและการขอความช่วยเหลือเมื่อพบปัญหา',
+            'ครูที่ปรึกษาได้เสริมสร้างความตระหนักรู้เรื่องอบายมุขในรูปแบบต่าง ๆ และกำชับให้สามเณรหลีกเลี่ยงพฤติกรรมเสี่ยง เพื่อดำรงตนอย่างมีภูมิคุ้มกันที่ดี'] },
+      { t: 'การอยู่ร่วมกัน ไม่รังแกกัน และเคารพสิทธิผู้อื่น', tr: [1, 3], ind: '1.1 · 3.1', k: ['รังแก', 'อยู่ร่วมกัน', 'เคารพสิทธิ', 'ทะเลาะ', 'เพื่อน', 'คบเพื่อน', 'ความโกรธ', 'สติ'],
+        s: ['ครูที่ปรึกษาได้พูดคุยเรื่องการอยู่ร่วมกันอย่างสันติ การเคารพสิทธิของผู้อื่น การไม่กลั่นแกล้งหรือใช้ความรุนแรง และการแก้ไขความขัดแย้งด้วยเหตุผล เพื่อสร้างสภาพแวดล้อมในห้องเรียนที่ปลอดภัย',
+            'ครูที่ปรึกษาได้แนะนำการเลือกคบเพื่อนที่ดี การควบคุมอารมณ์ และการช่วยเหลือซึ่งกันและกัน เพื่อให้สามเณรอยู่ร่วมกันอย่างมีความสุขตามบทบาทของพลเมืองดี'] }
+    ] },
+    { g: 'แนะแนวและเป้าหมายชีวิต', c: '#0c7a43', bg: '#e6f6ec', items: [
+      { t: 'แนะแนวการเรียนต่อและเป้าหมายชีวิต', tr: [4, 6, 5], ind: '4.1 · 6.2 · 5.1', k: ['เรียนต่อ', 'มหาวิทยาลัย', 'มหาลัย', 'เป้าหมาย', 'อนาคต', 'แนะแนว', 'อาชีพ', 'ชีวิต'],
+        s: ['ครูที่ปรึกษาได้แนะแนวการศึกษาต่อและการกำหนดเป้าหมายชีวิต ให้สามเณรสำรวจความถนัดและความสนใจของตนเอง กำหนดเป้าหมายที่ชัดเจน และวางแผนการเรียนอย่างมีเหตุผลเพื่อไปสู่เป้าหมายนั้น',
+            'ครูที่ปรึกษาได้ให้ข้อมูลเกี่ยวกับการสมัครเข้าศึกษาต่อ พร้อมแบ่งปันประสบการณ์และสร้างแรงบันดาลใจ เพื่อให้สามเณรตั้งใจศึกษาเล่าเรียนและเตรียมความพร้อมสำหรับอนาคต'] },
+      { t: 'การบริหารเวลาและการวางแผนการเรียน', tr: [6, 5], ind: '6.1 · 5.1', k: ['บริหารเวลา', 'วางแผน', 'ตารางเรียน', 'วันหยุด', 'หลังเรียน', 'ก่อนเรียน'],
+        s: ['ครูที่ปรึกษาได้แนะนำการบริหารเวลาในชีวิตประจำวัน การจัดลำดับความสำคัญระหว่างการเรียน กิจวัตร และการพักผ่อน เพื่อให้สามเณรใช้เวลาอย่างมีประสิทธิภาพและพอประมาณ',
+            'ครูที่ปรึกษาได้สอบถามกิจกรรมที่สามเณรปฏิบัติในช่วงก่อนเรียน หลังเรียน และวันหยุด แล้วแนะนำการวางแผนเวลาให้เหมาะสม เพื่อให้มีเวลาทบทวนบทเรียนอย่างสม่ำเสมอ'] }
+    ] },
+    { g: 'ข่าวสารและประชาสัมพันธ์', c: '#64748b', bg: '#eef1f6', items: [
+      { t: 'แจ้งข่าวสารและกิจกรรมของโรงเรียน', tr: [3], ind: '3.1', k: ['แจ้ง', 'ข่าวสาร', 'ประชาสัมพันธ์', 'กิจกรรม', 'ชุมนุม', 'ตรวจนับ', 'กำหนดการ'],
+        s: ['ครูที่ปรึกษาได้แจ้งข่าวสารและกำหนดการกิจกรรมของโรงเรียนให้สามเณรทราบ พร้อมชี้แจงสิ่งที่ต้องเตรียมและแนวปฏิบัติที่เกี่ยวข้อง เพื่อให้การดำเนินกิจกรรมเป็นไปด้วยความเรียบร้อย',
+            'ครูที่ปรึกษาได้ประชาสัมพันธ์ข่าวสารสำคัญของสถานศึกษา และตอบข้อซักถามของสามเณร เพื่อให้ทุกรูปรับทราบข้อมูลอย่างถูกต้องและทั่วถึง'] },
+      { t: 'เลือกหัวหน้าห้องและคณะกรรมการห้องเรียน', tr: [1, 6], ind: '1.1 · 6.1', k: ['หัวหน้าห้อง', 'กรรมการห้อง', 'เลือกตั้ง', 'ผู้นำ', 'เหรัญญิก'],
+        s: ['ครูที่ปรึกษาได้ดำเนินการคัดเลือกหัวหน้าห้องและคณะกรรมการห้องเรียนตามวิถีประชาธิปไตย พร้อมชี้แจงบทบาทหน้าที่ของผู้นำและผู้ตามที่ดี เพื่อปลูกฝังความเป็นพลเมืองดีและความรับผิดชอบ',
+            'ครูที่ปรึกษาได้อบรมหัวหน้าห้องและคณะกรรมการห้องเรียนเกี่ยวกับบทบาทหน้าที่ การเป็นแบบอย่างที่ดี และการประสานงานกับครูที่ปรึกษา'] },
+      { t: 'ประสานความร่วมมือกับผู้ปกครอง', tr: [3, 1], ind: '3.1 · 1.1', k: ['ผู้ปกครอง', 'กลุ่มไลน์', 'line', 'ประสาน'],
+        s: ['ครูที่ปรึกษาได้ชี้แจงความสำคัญของการประสานความร่วมมือระหว่างครูที่ปรึกษากับผู้ปกครอง และขอให้สามเณรแจ้งผู้ปกครองเข้าร่วมช่องทางการสื่อสารของห้องเรียน เพื่อร่วมกันติดตามพัฒนาการของสามเณร',
+            'ครูที่ปรึกษาได้แจ้งแนวทางการติดต่อสื่อสารกับผู้ปกครอง และเน้นย้ำให้สามเณรแจ้งข่าวสารสำคัญของโรงเรียนให้ผู้ปกครองทราบ'] }
     ] }
   ];
   const FLAT_PRESETS = [];
   TOPIC_PRESETS.forEach((g) => g.items.forEach((it) => FLAT_PRESETS.push(it)));
+  if ($('hrPresetCount')) $('hrPresetCount').textContent = th(FLAT_PRESETS.length) + ' เรื่องที่ครูใช้บ่อย · ' + th(TOPIC_PRESETS.length) + ' หมวด · เลือกคุณลักษณะตามตัวชี้วัดให้อัตโนมัติ';
   const REASON_CHIPS = ['ป่วย', 'ลากิจ', 'ช่วยงานวัด/กฐิน', 'ธุระครอบครัว', 'ไม่ทราบสาเหตุ'];
   const BEHAVIOR_CHIPS = ['ช่วยงานวัด', 'จิตอาสาทำความสะอาด', 'ตั้งใจเรียน ส่งงานครบ', 'ช่วยเหลือเพื่อน', 'ทำวัตรสวดมนต์สม่ำเสมอ', 'มีมารยาทงดงาม'];
   const DAY_TH = ['อาทิตย์', 'จันทร์', 'อังคาร', 'พุธ', 'พฤหัสบดี', 'ศุกร์', 'เสาร์'];
@@ -3606,7 +3803,7 @@
     if (st.year) $('hrYear').value = st.year;
 
     $('tcClass').textContent = th(S.user.room);
-    $('tcMeta').innerHTML = [ri.roomNo ? 'ห้อง ' + th(ri.roomNo) : '', ri.plan || '', 'นักเรียน ' + th(students.length) + ' รูป'].filter(Boolean).map((x) => `<span class="tc-chip">${esc(x)}</span>`).join('');
+    $('tcMeta').textContent = [ri.roomNo ? 'ห้อง ' + th(ri.roomNo) : '', ri.plan || '', 'นักเรียน ' + th(students.length) + ' รูป'].filter(Boolean).join('  ·  ');
     $('repRoom').value = th(S.user.room);
     $('bhRoom').value = S.user.room;
     $('hrTotalCount').textContent = 'ทั้งหมด ' + th(students.length) + ' รูป';
@@ -3630,6 +3827,20 @@
     const diff = Math.round((mondayOf(today()) - mondayOf(iso || today())) / (7 * 86400000));
     return Math.max(0, Math.min(MAX_WEEKS_BACK, diff));
   }
+  // บันทึกย้อนหลังได้ไม่เกิน 3 วันเรียน (นับวันโฮมรูมหลังวันนั้นจนถึงวันนี้)
+  const BACKDATE_LIMIT = 3;
+  function canBackdate(iso) {
+    const t = today(); if (iso > t) return false; if (iso === t) return true;
+    const days = homeroomDays(); let n = 0;
+    const d = new Date(iso + 'T12:00:00'); d.setDate(d.getDate() + 1);
+    while (isoLocal(d) <= t) { if (days.indexOf(DAY_TH[d.getDay()]) >= 0) n++; if (n > BACKDATE_LIMIT) return false; d.setDate(d.getDate() + 1); }
+    return true;
+  }
+  const DAY_ICON = {
+    done: '<svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>',
+    miss: '<svg viewBox="0 0 24 24"><path d="M12 6.5v7M12 17.2v.3"/></svg>',
+    lock: '<svg viewBox="0 0 24 24"><rect x="6" y="11" width="12" height="9" rx="2"/><path d="M8.5 11V8.5a3.5 3.5 0 0 1 7 0V11"/></svg>'
+  };
   function renderWeek() {
     const st = tcState(), t = today(), sel = $('hrDate').value;
     const mon = mondayOf(t); mon.setDate(mon.getDate() - 7 * (st.weekOffset || 0));
@@ -3641,17 +3852,15 @@
       const iso = isoLocal(d);
       if (days.indexOf(DAY_TH[d.getDay()]) < 0) continue;
       first = first || d; last = d;
-      const rec = recordFor(iso), future = iso > t;
+      const rec = recordFor(iso), future = iso > t, locked = !future && !canBackdate(iso);
       const state = future ? 'future' : rec ? 'done' : 'missing';
-      const label = future ? 'ยังไม่ถึง' : rec ? 'บันทึกแล้ว' : 'ยังไม่บันทึก';
-      cells.push(`<button type="button" role="tab" class="tc-day ${state}${iso === sel ? ' sel' : ''}${iso === t ? ' today' : ''}" data-day="${iso}" ${future ? 'disabled' : ''}
+      const label = future ? 'ยังไม่ถึง' : (rec ? 'บันทึกแล้ว' : 'ยังไม่บันทึก') + (locked ? ' (เกินกำหนดบันทึกย้อนหลัง)' : '');
+      const mark = locked ? DAY_ICON.lock : rec ? DAY_ICON.done : future ? '' : DAY_ICON.miss;
+      cells.push(`<button type="button" role="tab" class="tc-day ${state}${locked ? ' locked' : ''}${iso === sel ? ' sel' : ''}${iso === t ? ' today' : ''}" data-day="${iso}" ${future || locked ? 'disabled' : ''}
         aria-selected="${iso === sel}" aria-label="วัน${DAY_TH[d.getDay()]}ที่ ${thaiDate(iso, false)} ${label}">
-        <span class="tc-day-abbr">${DAY_ABBR[d.getDay()]}</span><span class="tc-day-num">${th(d.getDate())}</span><span class="tc-day-dot"></span></button>`);
+        <span class="tc-day-abbr">${DAY_ABBR[d.getDay()]}</span><span class="tc-day-num">${th(d.getDate())}</span><span class="tc-day-mark">${mark}</span>${iso === t ? '<span class="tc-day-today">วันนี้</span>' : ''}</button>`);
     }
-    const doneN = cells.filter((c) => c.indexOf('tc-day done') >= 0).length;
-    $('tcWeekDone').textContent = cells.length ? th(doneN) + '/' + th(cells.length) : '-';
-    $('tcWeekRing').style.setProperty('--p', cells.length ? Math.round(doneN / cells.length * 100) : 0);
-    $('tcWeekRing').classList.toggle('full', cells.length > 0 && doneN === cells.length);
+    $('tcYearText').textContent = th($('hrYear').value || (S.data && S.data.currentYear) || '-');
     $('tcWeek').style.gridTemplateColumns = `repeat(${Math.max(cells.length, 1)}, 1fr)`;
     $('tcWeek').innerHTML = cells.join('');
     const fmt = (d) => th(d.getDate()) + ' ' + d.toLocaleDateString('th-TH', { month: 'short' });
@@ -3750,7 +3959,7 @@
       <div class="tp-group" style="--tp:${g.c}; --tp-bg:${g.bg};">
         <div class="tp-head">${esc(g.g)}<span>${th(g.items.length)} เรื่อง</span></div>
         ${g.items.map((it) => `<button type="button" class="tp-item" data-preset="${FLAT_PRESETS.indexOf(it)}"><span>${esc(it.t)}</span>
-          <small>${it.tr.map((n) => esc(String(traitName(n)).replace(/^\d\.\s*/, ''))).join(' · ')}</small></button>`).join('')}
+          <small>${it.tr.map((n) => esc(String(traitName(n)).replace(/^\d\.\s*/, ''))).join(' · ')}${it.ind ? ' <em>(ตัวชี้วัด ' + esc(it.ind) + ')</em>' : ''}</small></button>`).join('')}
       </div>`).join('');
   }
   function openTopicSheet() {
@@ -3948,32 +4157,57 @@
     saveDraft();
   });
 
-  function writeAutoSummary(cycle) {
-    const st = tcState(), topic = $('hrTopic').value.trim();
-    if (!topic) { toast('⚠️ กรุณาเลือกหรือพิมพ์เรื่องก่อน แล้วระบบจะเขียนสาระสำคัญให้', 'warn'); $('hrTopic').focus(); return; }
-    const idx = st.presetIdx >= 0 && FLAT_PRESETS[st.presetIdx].t === topic ? st.presetIdx : matchPreset(topic);
-    const c = attCounts(), n = c.p + c.a + c.l;
+  function localSummary(topic, idx) {
+    const st = tcState(), c = attCounts(), n = c.p + c.a + c.l;
     let base;
     if (idx >= 0 && FLAT_PRESETS[idx].t === topic) {
       const arr = FLAT_PRESETS[idx].s; base = arr[st.sumVariant % arr.length];
     } else {
       const generic = [
-        `ครูที่ปรึกษาพูดคุยกับสามเณรเรื่อง “${topic}” ชี้แจงให้เข้าใจถึงความสำคัญ และแนะนำแนวทางปฏิบัติที่เหมาะสม เพื่อนำไปปรับใช้ในการเรียนและการดำเนินชีวิตประจำวัน`,
-        `กิจกรรมโฮมรูมวันนี้เน้นเรื่อง “${topic}” ครูที่ปรึกษาอธิบายและเปิดโอกาสให้สามเณรได้ซักถามแลกเปลี่ยน พร้อมกำชับให้นำไปปฏิบัติอย่างสม่ำเสมอ`
+        `ครูที่ปรึกษาได้ดำเนินกิจกรรมโฮมรูมเรื่อง “${topic}” โดยชี้แจงให้สามเณรเข้าใจถึงความสำคัญของเรื่องดังกล่าว และแนะนำแนวทางปฏิบัติที่เหมาะสมเพื่อนำไปปรับใช้ในการเรียนและการดำเนินชีวิตประจำวัน`,
+        `ในกิจกรรมโฮมรูมครั้งนี้ ครูที่ปรึกษาได้อบรมสามเณรในเรื่อง “${topic}” เปิดโอกาสให้สามเณรได้ซักถามและแลกเปลี่ยนความคิดเห็น พร้อมกำชับให้นำไปปฏิบัติอย่างสม่ำเสมอ`,
+        `ครูที่ปรึกษาได้พูดคุยและให้ความรู้แก่สามเณรเรื่อง “${topic}” เพื่อให้สามเณรตระหนักถึงบทบาทหน้าที่ของตนเอง และสามารถนำไปประยุกต์ใช้ได้อย่างถูกต้องเหมาะสม`
       ];
       if (idx >= 0) generic.push(FLAT_PRESETS[idx].s[0]);
       base = generic[st.sumVariant % generic.length];
     }
-    const attLine = !n ? '' : (c.a + c.l === 0 ? ` วันนี้สามเณรมาเรียนครบทั้ง ${n} รูป` : ` วันนี้มาเรียน ${c.p} รูป ขาด ${c.a} รูป ลา ${c.l} รูป`);
-    const text = base + attLine;
-    if (cycle !== null && $('hrSummary').value.trim() && $('hrSummary').value !== st.autoSummary &&
-      !confirm('มีข้อความสาระสำคัญที่พิมพ์ไว้แล้ว ต้องการแทนที่ด้วยข้อความอัตโนมัติหรือไม่?')) return;
-    $('hrSummary').value = text; st.autoSummary = text; st.sumVariant++;
-    $('hrAutoSummary').textContent = 'เขียนอัตโนมัติ';
+    const attLine = !n ? '' : (c.a + c.l === 0 ? ` ทั้งนี้ สามเณรมาเรียนครบทั้ง ${n} รูป` : ` ทั้งนี้ มีสามเณรมาเรียน ${c.p} รูป ขาดเรียน ${c.a} รูป และลา ${c.l} รูป`);
+    return base + attLine;
+  }
+  let aiBusy = false;
+  async function writeAutoSummary(cycle) {
+    const st = tcState(), topic = $('hrTopic').value.trim();
+    if (!topic) { toast('กรุณาเลือกหรือพิมพ์เรื่องก่อน แล้วระบบจะเขียนสาระสำคัญให้', 'warn'); $('hrTopic').focus(); return; }
+    if (aiBusy) return;
+    const cur = $('hrSummary').value.trim();
+    const typedByTeacher = cur && cur !== st.autoSummary;
+    if (cycle !== null && typedByTeacher && !confirm('ระบบจะเรียบเรียงข้อความที่ท่านพิมพ์ไว้ใหม่เป็นภาษาราชการ ต้องการดำเนินการหรือไม่?')) return;
+    const idx = st.presetIdx >= 0 && FLAT_PRESETS[st.presetIdx].t === topic ? st.presetIdx : matchPreset(topic);
     if (!st.traits.size && idx >= 0) applyPresetTraits(idx);
+    const btn = $('hrAutoSummary'), c = attCounts();
+    let text = '';
+    if (S.data && S.data.aiReady) {
+      aiBusy = true; btn.disabled = true; btn.classList.add('working'); btn.textContent = 'กำลังเขียน…';
+      try {
+        const r = await api('aiSummary', { topic, notes: typedByTeacher ? cur : '', present: c.p, absent: c.a, leave: c.l, traits: [...st.traits] });
+        text = (r && r.text) || '';
+      } catch (e) { toast('เขียนด้วย AI ไม่สำเร็จ ใช้ข้อความสำเร็จรูปแทน (' + (e.message || '') + ')', 'warn', 5000); }
+      finally { aiBusy = false; btn.disabled = false; btn.classList.remove('working'); btn.textContent = 'เขียนอัตโนมัติ'; }
+    }
+    if (!text) text = localSummary(topic, idx);
+    $('hrSummary').value = text; st.autoSummary = text; st.sumVariant++;
+    $('hrSummary').classList.remove('ai-flash'); void $('hrSummary').offsetWidth; $('hrSummary').classList.add('ai-flash');
     saveDraft();
   }
   $('hrAutoSummary').addEventListener('click', () => writeAutoSummary(true));
+  $('repAutoBtn').addEventListener('click', () => busy($('repAutoBtn'), async () => {
+    const start = $('repStart').value, end = $('repEnd').value;
+    if (!start || !end) { toast('กรุณาเลือกช่วงวันที่ก่อน', 'warn'); return; }
+    if ($('repNote').value.trim() && !confirm('แทนที่ข้อความสรุปที่มีอยู่ด้วยข้อความที่ระบบเขียนให้หรือไม่?')) return;
+    const r = await api('aiReport', { start, end });
+    $('repNote').value = r.text || '';
+    toast(r.source === 'ai' ? 'ระบบเรียบเรียงสรุปผลด้วย AI แล้ว ตรวจสอบและแก้ไขได้ก่อนส่ง' : 'ระบบสรุปผลจากบันทึกโฮมรูมให้แล้ว ตรวจสอบและแก้ไขได้ก่อนส่ง', 'ok', 5000);
+  }));
 
   function renderTraitsState() {
     setTimeout(updateHrProgress, 0);
@@ -4009,10 +4243,10 @@
       const dr = JSON.parse(store.get(draftKey()) || 'null');
       if (!dr || Date.now() - dr.at > 18 * 3600 * 1000) return;
       const st = tcState();
-      if (dr.date) $('hrDate').value = dr.date;
+      if (dr.date && canBackdate(dr.date)) $('hrDate').value = dr.date;
       $('hrTopic').value = dr.topic || ''; $('hrSummary').value = dr.summary || '';
       st.traits = new Set(dr.traits || []); st.att = dr.att || {}; st.editingId = dr.editingId || null;
-      if (dr.topic || dr.summary) $('hrDraftNote').textContent = '📝 กู้คืนร่างที่ยังไม่ได้บันทึกให้แล้ว';
+      if (dr.topic || dr.summary) $('hrDraftNote').textContent = 'กู้คืนร่างที่ยังไม่ได้บันทึกให้แล้ว';
     } catch (e) { /* ร่างเสีย ข้าม */ }
   }
   function clearDraft() { store.del(draftKey()); $('hrDraftNote').textContent = ''; }
@@ -4198,6 +4432,7 @@
             <div class="record-title">รายงาน${esc(r.periodType)} · ${thaiDateShort(r.start)} – ${thaiDateShort(r.end)}</div>
             <span class="status-pill ${statusPill(r.status)}">${esc(r.status)}</span>
           </div>
+          ${String(r.teacherName || '').indexOf('ระบบส่งแทน') === 0 ? '<span class="auto-badge">ระบบส่งแทน</span>' : ''}
           <div class="record-meta">ผู้ส่ง: ${esc(r.teacherName)} · ส่งเมื่อ ${thaiDateShort(r.date)}</div>
           <div style="font-size:0.82rem; margin-bottom: 6px;">${tesc(r.note)}</div>
           ${r.comment ? `<div style="font-size:0.78rem; color:#8f2d56; background:#fff0f6; padding:6px 8px; border-radius:8px; margin-bottom: 6px;"><strong>ความเห็นผู้บริหาร:</strong> ${tesc(r.comment)}</div>` : ''}
@@ -4405,7 +4640,7 @@
     renderYearsAdmin();
     renderTopicsAdmin();
     renderSchedule();
-    renderLineConfig();
+    renderLineConfig(); renderAiConfig();
     if (!$('hrReportStartDate').value) {
       const t = parseIso(today()); const s = new Date(t); s.setDate(t.getDate() - 30);
       $('hrReportStartDate').value = isoLocal(s); $('hrReportEndDate').value = today();
@@ -4610,7 +4845,27 @@
   });
 
   // ปีการศึกษา
+  function renderCloseYear() {
+    const d = S.data || {}, cur = d.currentYear || '';
+    $('closeYearCur').textContent = th(cur);
+    if (!$('closeYearNext').value) $('closeYearNext').value = cur ? String(Number(cur) + 1) : '';
+    $('btnCloseYear').disabled = $('closeYearConfirm').value.trim() !== String(cur);
+    const list = d.archives || [];
+    $('archiveList').innerHTML = !list.length ? '' : '<b>คลังข้อมูลปีที่ผ่านมา</b>' + list.map((a) =>
+      `<a href="${esc(a.url)}" target="_blank" rel="noopener">ปีการศึกษา ${th(a.year)} · ${th(a.rows)} แถว · ปิดเมื่อ ${thaiDateShort(a.date)}</a>`).join('');
+  }
+  $('closeYearConfirm').addEventListener('input', renderCloseYear);
+  $('btnCloseYear').addEventListener('click', () => busy($('btnCloseYear'), async () => {
+    const cur = (S.data || {}).currentYear, next = $('closeYearNext').value.trim();
+    if (!confirm('ยืนยันปิดปีการศึกษา ' + cur + ' และเริ่มปีการศึกษา ' + next + '?\n\nข้อมูลของปี ' + cur + ' จะย้ายไปไฟล์คลัง และคะแนนความประพฤติจะเริ่มนับใหม่')) return;
+    const r = await api('closeYear', { confirm: $('closeYearConfirm').value.trim(), nextYear: next });
+    $('closeYearConfirm').value = ''; $('closeYearNext').value = '';
+    toast('ปิดปีการศึกษา ' + th(r.year) + ' แล้ว ย้ายข้อมูล ' + th(r.rows) + ' แถวไปคลัง · ปีปัจจุบัน ' + th(r.nextYear), 'ok', 8000);
+    renderAll();
+  }));
+
   function renderYearsAdmin() {
+    renderCloseYear();
     const ys = S.data.yearsDetail || [];
     $('adminYearsTableBody').innerHTML = ys.map((y) => `
       <tr>
@@ -4768,6 +5023,33 @@
     $('lineToken').value = ''; $('lineTo').value = '';
     S.data.line = r.line; renderLineConfig();
     toast(r.message || '💾 บันทึกการตั้งค่า LINE แล้ว', r.message ? 'warn' : 'ok', 6000);
+  }));
+  function renderAiConfig() {
+    const a = (S.data && S.data.ai) || {};
+    const b = $('aiStatusBadge'); if (!b) return;
+    if (a.configured) { b.textContent = 'ตั้งค่าแล้ว ' + (a.masked || '') + (a.route ? ' · ' + (a.route === 'vx' ? 'Vertex AI' : 'Gemini API') : ''); b.className = 'status-pill status-approved'; }
+    else { b.textContent = 'ยังไม่ได้ตั้งค่า (ใช้ข้อความสำเร็จรูป)'; b.className = 'status-pill status-pending'; }
+  }
+  $('btnSaveAi').addEventListener('click', () => busy($('btnSaveAi'), async () => {
+    const key = $('aiKey').value.trim(); if (!key) { toast('กรุณาวาง API key ก่อน', 'warn'); return; }
+    const r = await api('saveAiConfig', { key }); $('aiKey').value = '';
+    if (r && r.ai) S.data.ai = r.ai; renderAiConfig(); toast('บันทึก API key แล้ว กด “ทดสอบ” เพื่อตรวจการเชื่อมต่อ');
+  }));
+  $('btnClearAi').addEventListener('click', () => busy($('btnClearAi'), async () => {
+    if (!confirm('ลบ API key ออกจากระบบ? (ระบบจะใช้ข้อความสำเร็จรูปแทน)')) return;
+    const r = await api('saveAiConfig', { clear: true }); if (r && r.ai) S.data.ai = r.ai; renderAiConfig(); toast('ลบ API key แล้ว');
+  }));
+  $('btnTestAi').addEventListener('click', () => busy($('btnTestAi'), async () => {
+    const out = $('aiTestOut'); out.hidden = false; out.className = 'ai-test-out';
+    try {
+      const r = await api('testAi'); if (r && r.ai) S.data.ai = r.ai; renderAiConfig();
+      out.textContent = 'เชื่อมต่อสำเร็จ (' + r.route + ' · ' + r.model + '): ' + r.sample;
+    } catch (e) { out.className = 'ai-test-out err'; out.textContent = e.message || 'เชื่อมต่อไม่สำเร็จ'; }
+  }));
+  $('btnRunAutoReports').addEventListener('click', () => busy($('btnRunAutoReports'), async () => {
+    if (!confirm('ให้ระบบสรุปและส่งรายงานรายสัปดาห์ (สัปดาห์ก่อน) แทนห้องที่ยังไม่ส่งตอนนี้เลยหรือไม่?')) return;
+    const r = await api('runAutoReports');
+    toast('ส่งแทนแล้ว ' + th((r.sent || []).length) + ' ห้อง' + ((r.skipped || []).length ? ' · ไม่มีบันทึก ' + th(r.skipped.length) + ' ห้อง' : ''), 'ok', 6000);
   }));
   $('btnTestLine').addEventListener('click', () => busy($('btnTestLine'), async () => { await api('testLine'); toast('✅ ส่งข้อความทดสอบเข้า LINE แล้ว'); }));
   $('btnAdminTriggerLineSend').addEventListener('click', () => busy($('btnAdminTriggerLineSend'), async () => {
