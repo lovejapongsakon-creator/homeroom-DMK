@@ -2783,7 +2783,7 @@
         if (j.code === 'SESSION_EXPIRED') { logoutLocal(j.error); }
         throw err;
       }
-      if (!quiet) showSpeed(action, performance.now() - t0);
+      if (!quiet) showSpeed(action, performance.now() - t0, j.ms, j.data && j.data.cached);
       // คำสั่งบันทึกส่วนใหญ่ส่งข้อมูลชุดใหม่กลับมาด้วย นำไปแสดงทันทีโดยไม่ต้องโหลดซ้ำ
       if (j.data && j.data.boot) { applyBoot(j.data.boot); delete j.data.boot; }
       return j.data;
@@ -2791,14 +2791,20 @@
   }
 
   // ---------------- ความเร็ว + ข้อมูลในเครื่อง ----------------
-  function showSpeed(action, ms) {
+  function showSpeed(action, ms, serverMs, cached) {
     const el = $('speedBadge');
     if (!el) return;
     el.style.display = 'inline-block';
     el.textContent = '⚡ ' + th((ms / 1000).toFixed(1)) + ' วิ';
-    el.title = 'คำสั่ง "' + action + '" ใช้เวลา ' + Math.round(ms) + ' ms';
-    try { console.info('[homeroom]', action, Math.round(ms) + 'ms'); } catch (e) { /* ไม่เป็นไร */ }
+    const srv = typeof serverMs === 'number' ? serverMs : null;
+    el.title = 'คำสั่ง "' + action + '" รวม ' + Math.round(ms) + ' ms'
+      + (srv !== null ? ' · ประมวลผลที่เซิร์ฟเวอร์ ' + srv + ' ms · เดินทาง/ปลุกเซิร์ฟเวอร์ ' + Math.max(0, Math.round(ms - srv)) + ' ms' : '')
+      + (cached ? ' · ใช้ข้อมูลที่เตรียมไว้' : '');
+    try { console.info('[homeroom]', action, Math.round(ms) + 'ms', srv !== null ? '(server ' + srv + 'ms)' : '', cached ? 'cached' : ''); } catch (e) { /* ไม่เป็นไร */ }
   }
+
+  // แตะป้ายความเร็วเพื่อดูรายละเอียด (มือถือไม่มีการชี้เมาส์)
+  if ($('speedBadge')) $('speedBadge').addEventListener('click', () => toast($('speedBadge').title, 'ok', 6000));
 
   // เก็บข้อมูลล่าสุดไว้ในเครื่อง: เปิดแอปครั้งต่อไปแสดงได้ทันที แล้วค่อยดึงข้อมูลใหม่มาแทน (ลบทิ้งเมื่อออกจากระบบ)
   function saveBootCache() {
@@ -2887,7 +2893,8 @@
       loginBtn.classList.remove('loading'); loginBtn.classList.add('success');
       loginBtn.querySelector('.login-btn-label').textContent = 'สำเร็จ กำลังเปิดหน้าของท่าน…';
       LOGIN.fails = 0;
-      await loadData();
+      // v1.6: เซิร์ฟเวอร์ส่งข้อมูลหน้ามาพร้อมการตรวจรหัสแล้ว (ไปกลับรอบเดียว)
+      if (r.bootData) applyBoot(r.bootData); else await loadData();
       loginInput.value = '';
       showApp();
     } catch (err) {
