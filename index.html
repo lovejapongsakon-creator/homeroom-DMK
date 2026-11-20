@@ -2237,6 +2237,84 @@
     .archive-list:empty { display: none; }
     .archive-list a { color: #1c7ed6; text-decoration: underline; }
 
+    /* =====================================================================
+       v1.9.1 — ชื่อบรรทัดเดียว · ปุ่มมันวาว · ปฏิทินแบบกระจกมีแสงผ่าน · ประกาศรายงาน
+       ===================================================================== */
+    #homeroomForm .stu-main { min-width: 0; }
+    #homeroomForm .stu-name { flex: 1 1 auto; min-width: 0; white-space: nowrap !important; overflow: hidden; text-overflow: ellipsis; word-break: normal !important;
+      font-size: clamp(.8rem, 4.1vw, 1.08rem) !important; }
+    #homeroomForm .seg { flex: none; }
+    #homeroomForm .seg button { min-width: 42px; padding-left: 8px; padding-right: 8px; }
+    @media (max-width: 400px) { #homeroomForm .seg button { min-width: 36px; padding-left: 6px; padding-right: 6px; } #homeroomForm .stu-row { padding-left: 10px !important; padding-right: 6px !important; } #homeroomForm .stu-main { gap: 6px !important; } }
+    .status-pill { white-space: nowrap !important; overflow: hidden; text-overflow: ellipsis; max-width: 100%; flex-shrink: 1; min-width: 0; font-size: clamp(.62rem, 2.9vw, .75rem); }
+    .record-head { min-width: 0; }
+    .record-head .record-title { min-width: 0; }
+
+    /* ปุ่มสำคัญ: แสงมันวาววิ่งผ่านช้า ๆ บอกว่า "กดได้" */
+    #btnCheckAllPresent, #btnCheckAllAbsent, #hrSubmitBtn, #bhSubmitBtn, #repSubmitBtn { position: relative; overflow: hidden; isolation: isolate; }
+    #btnCheckAllPresent::after, #btnCheckAllAbsent::after, #hrSubmitBtn::after, #bhSubmitBtn::after, #repSubmitBtn::after {
+      content: ""; position: absolute; top: -20%; bottom: -20%; left: -45%; width: 35%; pointer-events: none; z-index: 1;
+      background: linear-gradient(100deg, transparent, rgba(255,255,255,.55), transparent); transform: skewX(-18deg); animation: btnGleam 3.6s ease-in-out infinite; }
+    #btnCheckAllAbsent::after { background: linear-gradient(100deg, transparent, rgba(224,49,49,.18), transparent); animation-delay: 1.2s; }
+    #hrSubmitBtn::after { animation-delay: .6s; }
+    @keyframes btnGleam { 0%, 55% { left: -45%; } 85%, 100% { left: 130%; } }
+    #btnCheckAllPresent, #hrSubmitBtn { animation: btnBreath 3.6s ease-in-out infinite; }
+    @keyframes btnBreath { 0%,100% { box-shadow: 0 6px 14px rgba(43,138,62,.22); } 50% { box-shadow: 0 8px 22px rgba(43,138,62,.40); } }
+    #hrSubmitBtn { animation-name: btnBreathBlue; }
+    @keyframes btnBreathBlue { 0%,100% { box-shadow: 0 8px 18px rgba(59,91,219,.25); } 50% { box-shadow: 0 10px 28px rgba(59,91,219,.48); } }
+    #btnCheckAllPresent > *, #btnCheckAllAbsent > *, #hrSubmitBtn > * { position: relative; z-index: 2; }
+
+    /* แถบชื่อสัปดาห์มีพื้นหลัง */
+    #view-teacher .tc-cal-bar { align-items: center; gap: 8px; }
+    #view-teacher .tc-cal-label { flex: 1; text-align: center; padding: 7px 10px; border-radius: 12px; background: rgba(255,255,255,.18); border: 1px solid rgba(255,255,255,.28);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: clamp(.72rem, 3.4vw, .86rem) !important; }
+
+    /* ช่องวัน: กระจกมันวาว มีแสงผ่านช้า ๆ และเด้งเบา ๆ */
+    #view-teacher .tc-week { padding: 6px 2px 4px; }
+    #view-teacher .tc-day { outline: none !important; transform: none; box-shadow: inset 0 1px 0 rgba(255,255,255,.45), inset 0 -8px 16px rgba(0,0,0,.08), 0 6px 14px rgba(10,10,60,.22) !important;
+      animation: dayFloat 5s ease-in-out infinite; }
+    #view-teacher .tc-day:nth-child(2) { animation-delay: .5s; } #view-teacher .tc-day:nth-child(3) { animation-delay: 1s; }
+    #view-teacher .tc-day:nth-child(4) { animation-delay: 1.5s; } #view-teacher .tc-day:nth-child(5) { animation-delay: 2s; }
+    @keyframes dayFloat { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-2px); } }
+    #view-teacher .tc-day::before { content: ""; position: absolute; inset: 0 0 55% 0; border-radius: 16px 16px 40% 40%; pointer-events: none;
+      background: linear-gradient(180deg, rgba(255,255,255,.35), rgba(255,255,255,0)); }
+    #view-teacher .tc-day::after { content: ""; position: absolute; top: -40%; left: -70%; width: 45%; height: 180%; transform: rotate(18deg); pointer-events: none;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.45), transparent); animation: glassGlint 6s ease-in-out infinite; }
+    #view-teacher .tc-day:nth-child(2)::after { animation-delay: .7s; } #view-teacher .tc-day:nth-child(3)::after { animation-delay: 1.4s; }
+    #view-teacher .tc-day:nth-child(4)::after { animation-delay: 2.1s; } #view-teacher .tc-day:nth-child(5)::after { animation-delay: 2.8s; }
+    #view-teacher .tc-day.locked { animation: none; }
+    #view-teacher .tc-day.locked::after { display: none; }
+    /* วันที่เลือก: ยกขึ้น + เรืองแสงรอบตัว (ไม่มีเส้นขอบทับช่องอื่น) */
+    #view-teacher .tc-day.sel { animation: none; transform: translateY(-4px) !important;
+      box-shadow: inset 0 0 0 2px rgba(255,255,255,.85), inset 0 1px 0 rgba(255,255,255,.6), 0 0 18px rgba(255,255,255,.55), 0 10px 20px rgba(10,10,60,.35) !important; }
+    /* วันนี้: พื้นหลังมันวาวเรืองแสงเป็นจังหวะ บอกว่า "ถึงวันนี้แล้ว" */
+    #view-teacher .tc-day.today { outline: none !important; }
+    #view-teacher .tc-day.today::after { width: 60%; background: linear-gradient(90deg, transparent, rgba(255,255,255,.7), transparent); animation-duration: 3s; }
+    #view-teacher .tc-day.today .tc-day-today { background: rgba(255,255,255,.28); left: 8%; right: 8%; border-radius: 99px; padding: 1px 0; }
+    #view-teacher .tc-day.today:not(.sel) { animation: todayGlow 2.6s ease-in-out infinite; }
+    #view-teacher .tc-day.today.sel { animation: todayGlowSel 2.6s ease-in-out infinite; }
+    @keyframes todayGlow { 0%,100% { box-shadow: inset 0 1px 0 rgba(255,255,255,.5), 0 0 0 rgba(255,255,255,0), 0 6px 14px rgba(10,10,60,.22); } 50% { box-shadow: inset 0 1px 0 rgba(255,255,255,.7), 0 0 20px rgba(255,255,255,.6), 0 6px 14px rgba(10,10,60,.22); } }
+    @keyframes todayGlowSel { 0%,100% { box-shadow: inset 0 0 0 2px rgba(255,255,255,.85), 0 0 12px rgba(255,255,255,.45), 0 10px 20px rgba(10,10,60,.35); } 50% { box-shadow: inset 0 0 0 2px #fff, 0 0 26px rgba(255,255,255,.85), 0 10px 20px rgba(10,10,60,.35); } }
+
+    #view-teacher .tc-status.sr-only { display: none !important; }
+    #view-teacher .tc-selected { justify-content: center !important; }
+    #view-teacher .tc-load-btn { width: 100%; padding: 10px 12px !important; font-size: .86rem !important; }
+
+    /* ประกาศในแท็บรายงาน */
+    .notice-auto { display: flex; gap: 10px; align-items: flex-start; padding: 12px; margin-bottom: 14px; border-radius: 14px; background: linear-gradient(135deg, #fff4e5, #fff9f0);
+      border: 1px solid #ffd8a8; box-shadow: 0 4px 12px rgba(240,140,0,.12); }
+    .notice-ico { flex: none; width: 34px; height: 34px; border-radius: 10px; background: #f08c00; color: #fff; display: grid; place-items: center; animation: bellNudge 4s ease-in-out infinite; }
+    .notice-ico svg { width: 19px; height: 19px; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
+    @keyframes bellNudge { 0%, 88%, 100% { transform: rotate(0); } 91% { transform: rotate(12deg); } 94% { transform: rotate(-10deg); } 97% { transform: rotate(6deg); } }
+    .notice-auto b { display: block; font-size: .86rem; color: #b35c00; }
+    .notice-auto span { font-family: 'Sarabun', 'Prompt', sans-serif; font-size: .92rem; color: #5c3c00; line-height: 1.6; }
+    .notice-auto strong { color: #c92a2a; }
+    .pinned-note { border-color: #ffd8a8 !important; background: #fff9f0 !important; }
+    .pin-tag { font-size: .66rem; font-weight: 800; color: #b35c00; background: #ffe8cc; padding: 2px 8px; border-radius: 99px; white-space: nowrap; }
+    @media (prefers-reduced-motion: reduce) {
+      #view-teacher .tc-day, #view-teacher .tc-day::after, #btnCheckAllPresent, #hrSubmitBtn, .notice-ico,
+      #btnCheckAllPresent::after, #btnCheckAllAbsent::after, #hrSubmitBtn::after, #bhSubmitBtn::after, #repSubmitBtn::after { animation: none !important; } }
+
     @media print {
       body { background: #fff !important; padding: 0 !important; }
       body * { visibility: hidden !important; }
@@ -2524,6 +2602,10 @@
         <!-- 1.4 ส่งรายงาน -->
         <div class="teacher-pane" id="pane-submit-report" style="display:none;">
           <div class="tc-card">
+            <div class="notice-auto" role="note">
+              <span class="notice-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 16V11a6 6 0 1 1 12 0v5l1.5 2h-15z"/><path d="M10 20.5a2 2 0 0 0 4 0"/></svg></span>
+              <div><b>แจ้งเพื่อทราบ</b><span>หากครูไม่ได้ส่งรายงานรายสัปดาห์ ระบบจะสรุปจากบันทึกโฮมรูมและส่งแทนให้อัตโนมัติทุก<strong>วันจันทร์ เวลา ๐๘.๐๐ น.</strong> (ติดป้าย “ระบบส่งแทน”)</span></div>
+            </div>
             <h3 class="tc-card-title">ส่งรายงานสรุปผลกิจกรรมโฮมรูม</h3>
             <p class="hr-hint">ระบบคำนวณสถิติจากบันทึกโฮมรูมในช่วงวันที่ให้อัตโนมัติ แล้วเสนอผู้บริหารเป็นบันทึกข้อความ</p>
             <form id="reportApprovalForm" class="form-grid" novalidate>
@@ -2553,7 +2635,6 @@
                   <button type="button" class="hr-magic" id="repAutoBtn">เขียนอัตโนมัติ</button>
                 </div>
                 <textarea id="repNote" maxlength="3000" rows="4" placeholder="สรุปภาพรวมการเข้าโฮมรูม พฤติกรรมนักเรียน และข้อเสนอแนะ หรือกด “เขียนอัตโนมัติ” ให้ระบบสรุปจากบันทึกโฮมรูมในช่วงวันที่" required></textarea>
-                <p class="hr-hint">หากครูไม่ได้ส่งรายงานรายสัปดาห์ ระบบจะสรุปและส่งแทนให้อัตโนมัติทุกวันจันทร์ เวลา ๐๘.๐๐ น.</p>
               </div>
               <button type="submit" class="hr-save-btn" id="repSubmitBtn">ส่งรายงานเพื่อขออนุมัติ</button>
             </form>
@@ -3615,6 +3696,20 @@
     $('sbInitial').parentElement.classList.toggle('has-initial', !!ch);
   }
 
+  // ย่อขนาดตัวอักษรให้อยู่บรรทัดเดียว (ชื่อนักเรียน / ป้ายสถานะ) ตามความกว้างจอ
+  function fitOneLine(root) {
+    (root || document).querySelectorAll('.stu-name, .status-pill, .fit-1').forEach((el) => {
+      if (!el.offsetParent) return;
+      el.style.removeProperty('font-size');
+      let size = parseFloat(getComputedStyle(el).fontSize), guard = 0;
+      while (el.scrollWidth > el.clientWidth + 1 && size > 10.5 && guard++ < 14) { size -= 0.6; el.style.setProperty('font-size', size + 'px', 'important'); }
+    });
+  }
+  let fitTimer = null;
+  const scheduleFit = () => { clearTimeout(fitTimer); fitTimer = setTimeout(() => fitOneLine(), 60); };
+  window.addEventListener('resize', scheduleFit);
+  new MutationObserver(scheduleFit).observe(document.body, { childList: true, subtree: true });
+
   // ---------------- แสดงผลรวม ----------------
   function renderAll() {
     const u = S.user, d = S.data;
@@ -3997,7 +4092,7 @@
       return `<div class="stu-row ${a.status}" data-student-id="${esc(s.id)}">
         <div class="stu-main">
           <span class="stu-no">${th(i + 1)}</span>
-          <span class="stu-name">${esc(s.name)}</span>
+          <span class="stu-name" title="${esc(s.name)}">${esc(s.name)}</span>
           <span class="seg" role="radiogroup" aria-label="สถานะ ${esc(s.name)}">
             <button type="button" data-v="present" class="${a.status === 'present' ? 'on' : ''}">มา</button>
             <button type="button" data-v="absent" class="${a.status === 'absent' ? 'on' : ''}">ขาด</button>
@@ -5061,12 +5156,14 @@
   const noEmoji = (t) => String(t || '').replace(/[\p{Extended_Pictographic}\uFE0F\u200D]/gu, '').replace(/\s{2,}/g, ' ').trim();
   function renderNotifications() {
     const list = (S.data && S.data.notifications) || [];
-    $('notificationList').innerHTML = !list.length ? emptyBox('ยังไม่มีการแจ้งเตือนสำหรับท่านในระบบ') : list.map((n) => `
+    const pinned = S.user && S.user.role === 'teacher' ? `<div class="record-card pinned-note"><div class="record-head"><div class="record-title">ประกาศ: รายงานรายสัปดาห์</div><span class="pin-tag">ปักหมุด</span></div>
+        <div style="font-size:0.82rem;">หากครูไม่ได้ส่งรายงานรายสัปดาห์ ระบบจะสรุปจากบันทึกโฮมรูมและส่งแทนให้อัตโนมัติทุกวันจันทร์ เวลา ๐๘.๐๐ น.</div></div>` : '';
+    $('notificationList').innerHTML = pinned + (!list.length ? (pinned ? '' : emptyBox('ยังไม่มีการแจ้งเตือนสำหรับท่านในระบบ')) : list.map((n) => `
       <div class="record-card">
         <div class="record-head"><div class="record-title">${tesc(noEmoji(n.title))}</div></div>
         <div style="font-size:0.82rem;">${tesc(n.detail)}</div>
         <div class="record-meta">${thaiDateShort(n.time)} ${th(String(n.time).slice(11, 16))} น.</div>
-      </div>`).join('');
+      </div>`).join(''));
     const seen = store.get(seenKey()) || '';
     const unread = $('notifSheet').classList.contains('open') ? 0 : list.filter((n) => String(n.time) > seen).length;
     const dot = $('notifDot');
