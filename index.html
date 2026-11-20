@@ -2409,6 +2409,39 @@
     .card-blue { border-top: 4px solid var(--c-sky) !important; }
     .card-pink { border-top: 4px solid var(--c-pink) !important; }
 
+
+    /* ===== v1.11 การ์ด "บันทึกเรียบร้อย" · เส้นคั่น · ดรอปดาวน์ ===== */
+    #homeroomForm[hidden], .hr-done[hidden] { display: none !important; }
+    .hr-done { border-radius: 20px; overflow: hidden; margin-bottom: 14px; border: 1px solid #b8e0c4;
+      background: linear-gradient(180deg, #ffffff 0%, #f6fcf8 100%);
+      box-shadow: inset 0 1.5px 0 #fff, 0 1px 0 #cde9d6, 0 2px 0 #c2e2cc, 0 3px 0 #b7dbc2, 0 4px 0 #acd3b8, 0 5px 4px rgba(19,92,50,.14); }
+    .hr-done-head { display: flex; align-items: center; gap: 12px; padding: 16px; position: relative;
+      background: linear-gradient(135deg, #1f7a3d 0%, #2f9e44 60%, #40b85a 100%); color: #fff; box-shadow: inset 0 1px 0 rgba(255,255,255,.25); }
+    .hr-done-head::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 3px;
+      background: linear-gradient(90deg, var(--c-sky) 0 33%, var(--c-pink) 33% 66%, var(--c-yellow) 66% 100%); }
+    .hr-done-ico { width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; flex: none; background: rgba(255,255,255,.22); border: 2px solid rgba(255,255,255,.6); }
+    .hr-done-ico svg { width: 26px; height: 26px; fill: none; stroke: #fff; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+    .hr-done-t { display: flex; flex-direction: column; min-width: 0; }
+    .hr-done-t b { font-size: 1.25rem; font-weight: 800; line-height: 1.25; }
+    .hr-done-t small { font-size: .82rem; opacity: .92; font-weight: 600; }
+    .hr-done-body { padding: 14px 16px 16px; display: grid; gap: 12px; }
+    .hr-done-tally { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .hr-done-tally span { text-align: center; border-radius: 12px; padding: 8px 4px; font-size: .82rem; font-weight: 700;
+      box-shadow: inset 0 1px 0 #fff, 0 1px 0 rgba(0,0,0,.08), 0 2px 0 rgba(0,0,0,.05); }
+    .hr-done-tally b { font-size: 1.1rem; margin-left: 2px; }
+    .hr-done-tally .p { background: #ebfbee; color: #1f7a3d; } .hr-done-tally .a { background: #fff0f0; color: #c92a2a; } .hr-done-tally .l { background: #fff4e6; color: #b35c00; }
+    .hr-done-topic { display: flex; flex-direction: column; gap: 2px; padding: 10px 12px; border-radius: 12px; background: var(--c-sky-l); }
+    .hr-done-topic small { font-size: .74rem; font-weight: 700; color: #47607e; }
+    .hr-done-topic b { font-family: 'Sarabun', var(--font); font-size: .98rem; color: var(--c-navy); }
+    .hr-done-btn { height: 48px; border: none; border-radius: 14px; font: inherit; font-weight: 800; font-size: .98rem; color: #fff; cursor: pointer;
+      background: linear-gradient(135deg, var(--c-navy), var(--c-sky));
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.3), 0 2px 0 #13265c, 0 3px 0 #0f1d49, 0 4px 5px rgba(19,38,92,.22); }
+    .hr-done-btn:active { transform: translateY(2px); box-shadow: inset 0 1px 2px rgba(0,0,0,.2), 0 1px 0 #13265c; }
+    .hr-exist-cancel { margin-left: auto; flex: none; border: 1px solid #f3b4b4; background: #fff; color: #c92a2a; font: inherit; font-weight: 800; font-size: .78rem; border-radius: 99px; padding: 6px 12px; cursor: pointer; }
+    #hrExistBanner { align-items: center; gap: 10px; }
+    .hrx-divider { border: none; height: 2px; margin: 4px 2px 2px; border-radius: 2px;
+      background: linear-gradient(90deg, transparent, #c9daee 12%, #c9daee 88%, transparent); }
+
     @media print {
       body { background: #fff !important; padding: 0 !important; }
       body * { visibility: hidden !important; }
@@ -2536,6 +2569,7 @@
         <!-- 1.1 บันทึกโฮมรูม -->
         <div class="teacher-pane" id="pane-homeroom-form">
           <div class="hr-exist" id="hrExistBanner" style="display:none;"></div>
+          <div class="hr-done" id="hrDoneCard" hidden></div>
 
           <form id="homeroomForm" class="hrx" novalidate>
             <!-- แถบขั้นตอน (แตะเพื่อเลื่อนไปยังส่วนนั้น) -->
@@ -2569,7 +2603,7 @@
                   <div class="hr-tally-item absent"><b id="hrAbsentText">0</b><span>ขาด</span></div>
                   <div class="hr-tally-item leave"><b id="hrLeaveText">0</b><span>ลา</span></div>
                 </div>
-                <p class="hrx-tip"><b>ขาด</b> = ไม่ทราบสาเหตุ (ระบบใส่ให้) · <b>ลา</b> = เลือกเหตุผล ป่วย / ลากิจ / ช่วยงานวัด / กฐิน</p>
+                <hr class="hrx-divider" aria-hidden="true">
                 <div class="hr-student-list" id="studentCheckInTableBody"></div>
                 <div class="hr-absent-box">
                   <span class="hr-info-label">สรุปการขาด/ลา <em>(สร้างให้อัตโนมัติ)</em></span>
@@ -2677,10 +2711,14 @@
               <button type="submit" class="hr-save-btn" id="bhSubmitBtn">บันทึกคะแนน</button>
             </form>
           </div>
-          <div class="tc-card">
-            <h3 class="tc-card-title">ประวัติการให้คะแนนในห้อง</h3>
+          <details class="tc-card hist" id="bhHist">
+            <summary class="hist-sum">
+              <span class="hist-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z"/></svg></span>
+              <span class="hist-title"><b>ประวัติการให้คะแนนในห้อง</b><small id="bhHistCount">แตะเพื่อดูรายการ</small></span>
+              <svg class="hist-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            </summary>
             <div id="teacherBehaviorList" class="record-list"></div>
-          </div>
+          </details>
         </div>
 
         <!-- 1.3 ตอบคำปรึกษา -->
@@ -2733,10 +2771,14 @@
               <button type="submit" class="hr-save-btn" id="repSubmitBtn">ส่งรายงานเพื่อขออนุมัติ</button>
             </form>
           </div>
-          <div class="tc-card">
-            <h3 class="tc-card-title">สถานะรายงานและบันทึกข้อความ</h3>
+          <details class="tc-card hist" id="repHist">
+            <summary class="hist-sum">
+              <span class="hist-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 3.5h7l4 4V20a.5.5 0 0 1-.5.5h-10.5A.5.5 0 0 1 6.5 20V4a.5.5 0 0 1 .5-.5z"/><path d="M14 3.5V8h4M9.5 12.5h5M9.5 16h5"/></svg></span>
+              <span class="hist-title"><b>สถานะรายงานและบันทึกข้อความ</b><small id="repHistCount">แตะเพื่อดูรายการ</small></span>
+              <svg class="hist-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            </summary>
             <div id="teacherReportStatusList" class="record-list"></div>
-          </div>
+          </details>
         </div>
       </section>
 
@@ -4129,17 +4171,30 @@
     const date = $('hrDate').value, st = tcState();
     $('hrDateThai').textContent = date ? 'วัน' + dayName(date) + 'ที่ ' + thaiDate(date) : '-';
     const rec = date && recordFor(date), status = $('tcDayStatus'), btn = $('hrLoadExisting'), ex = $('hrExistBanner');
+    const done = $('hrDoneCard'), form = $('homeroomForm');
+    done.hidden = true; form.hidden = false;
     if (rec && st.editingId === rec.id) {
       status.className = 'tc-status edit'; status.textContent = 'กำลังแก้ไขบันทึกเดิม';
       btn.style.display = 'none';
       ex.style.display = 'flex';
-      ex.innerHTML = `<span>กำลังแก้ไขบันทึกวันที่ ${thaiDateShort(date)} · กด “บันทึกโฮมรูม” เพื่อแทนที่ข้อมูลเดิม</span>`;
+      ex.innerHTML = `<span>กำลังแก้ไขบันทึกวันที่ ${thaiDateShort(date)} · กด “บันทึกโฮมรูม” เพื่อแทนที่ข้อมูลเดิม</span><button type="button" class="hr-exist-cancel" id="hrCancelEdit">ยกเลิกแก้ไข</button>`;
     } else if (rec) {
+      // v1.11: วันที่บันทึกแล้ว → แสดงการ์ด "บันทึกเรียบร้อย" แทนฟอร์ม
       status.className = 'tc-status done';
       status.textContent = `บันทึกแล้ว · มา ${th(rec.present)} ขาด ${th(rec.absent)} ลา ${th(rec.leave)}`;
-      btn.style.display = '';
-      ex.style.display = 'flex';
-      ex.innerHTML = `<span><b>${esc(rec.topic)}</b><br><small>${tesc(String(rec.summary || '').slice(0, 140))}${(rec.summary || '').length > 140 ? '…' : ''}</small></span>`;
+      btn.style.display = 'none';
+      ex.style.display = 'none';
+      form.hidden = true; done.hidden = false;
+      done.innerHTML = `
+        <div class="hr-done-head">
+          <span class="hr-done-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.2 4.2L19 7"/></svg></span>
+          <span class="hr-done-t"><b>บันทึกเรียบร้อย</b><small>วัน${dayName(date)}ที่ ${thaiDate(date)}${rec.teacher ? ' · ' + esc(rec.teacher) : ''}</small></span>
+        </div>
+        <div class="hr-done-body">
+          <div class="hr-done-tally"><span class="p">มา <b>${th(rec.present)}</b></span><span class="a">ขาด <b>${th(rec.absent)}</b></span><span class="l">ลา <b>${th(rec.leave)}</b></span></div>
+          ${rec.topic ? `<div class="hr-done-topic"><small>เรื่อง</small><b>${esc(rec.topic)}</b></div>` : ''}
+          <button type="button" class="hr-done-btn" id="hrDoneEdit">เปิดดู / แก้ไข</button>
+        </div>`;
     } else {
       status.className = 'tc-status ' + (date === today() ? 'todo' : 'missing');
       status.textContent = date === today() ? 'ยังไม่บันทึกวันนี้' : 'ยังไม่ได้บันทึก · บันทึกย้อนหลังได้';
@@ -4148,10 +4203,20 @@
     }
   }
   $('hrYear').addEventListener('change', () => { tcState().year = $('hrYear').value; });
-  $('hrLoadExisting').addEventListener('click', (e) => {
+  document.addEventListener('click', (e) => {
+    if (e.target.closest('#hrDoneEdit')) loadExistingRecord(e.target.closest('#hrDoneEdit'));
+    if (e.target.closest('#hrCancelEdit')) {
+      const st = tcState(); st.editingId = null;
+      $('hrTopic').value = ''; $('hrSummary').value = ''; st.traits = new Set(); st.presetIdx = -1;
+      (S.data.students || []).forEach((s) => { st.att[s.id] = { status: 'present', reason: '' }; });
+      clearDraft(); renderCheckIn(); renderTraitsState(); onDateChanged();
+    }
+  });
+  $('hrLoadExisting').addEventListener('click', (e) => loadExistingRecord(e.currentTarget));
+  function loadExistingRecord(btnEl) {
     const rec = recordFor($('hrDate').value);
     if (!rec) return;
-    busy(e.currentTarget, async () => {
+    busy(btnEl, async () => {
       const r = await api('getHomeroom', { id: rec.id });
       const st = tcState();
       r.attendance.forEach((a) => { st.att[a.id] = { status: a.status, reason: a.reason || '' }; });
@@ -4161,9 +4226,9 @@
       if (r.record.year) $('hrYear').value = r.record.year;
       renderCheckIn(); renderTraitsState(); onDateChanged();
       toast('โหลดบันทึกเดิมแล้ว แก้ไขแล้วกดบันทึกได้เลย');
-      document.querySelector('#homeroomForm .hr-step').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      $('homeroomForm').scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
-  });
+  }
 
   // ---- แผ่นเลือกเรื่อง (แยกหมวดด้วยแถบสี) ----
   function buildTopicSheet() {
@@ -4562,6 +4627,7 @@
   });
   function renderTeacherBehavior() {
     const list = S.data.behavior || [];
+    $('bhHistCount').textContent = list.length ? 'ทั้งหมด ' + list.length + ' รายการ · แตะเพื่อดูรายการ' : 'ยังไม่มีประวัติ';
     $('teacherBehaviorList').innerHTML = !list.length ? emptyBox('ยังไม่มีประวัติการให้คะแนนในห้องนี้') : list.slice(0, 50).map(behaviorCard).join('');
   }
   function behaviorCard(b) {
@@ -4646,6 +4712,8 @@
   function statusPill(s) { return s === 'อนุมัติแล้ว' ? 'status-approved' : s === 'ส่งกลับแก้ไข' ? 'status-revision' : 'status-pending'; }
   function renderTeacherReports() {
     const list = S.data.reports || [];
+    const nWait = list.filter((r) => r.status !== 'อนุมัติแล้ว' && r.status !== 'ส่งกลับแก้ไข').length, nBack = list.filter((r) => r.status === 'ส่งกลับแก้ไข').length;
+    $('repHistCount').textContent = list.length ? 'ทั้งหมด ' + list.length + ' ฉบับ' + (nWait ? ' · รออนุมัติ ' + nWait : '') + (nBack ? ' · ส่งกลับแก้ไข ' + nBack : '') + ' · แตะเพื่อดู' : 'ยังไม่มีรายงาน';
     $('teacherReportStatusList').innerHTML = !list.length ? emptyBox('ยังไม่มีรายงานที่ส่งขออนุมัติ')
       : list.map((r) => `
         <div class="record-card">

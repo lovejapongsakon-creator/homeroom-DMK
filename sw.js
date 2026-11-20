@@ -3,7 +3,7 @@
    - รูปภาพ/ไอคอน/ฟอนต์: ใช้ของในเครื่องก่อน (เปิดเร็ว)
    - ข้อมูลจาก Google Apps Script: ไม่เก็บเลย (ส่งตรงทุกครั้ง ปลอดภัย)
    เมื่ออัปเดตระบบ ให้เปลี่ยนเลข VERSION ด้านล่างทุกครั้ง */
-const VERSION = 'hr-1.10.0';
+const VERSION = 'hr-1.11.0';
 const SHELL = 'shell-' + VERSION;
 const MEDIA = 'media-v1';
 const PRECACHE = [
