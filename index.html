@@ -2442,6 +2442,141 @@
     .hrx-divider { border: none; height: 2px; margin: 4px 2px 2px; border-radius: 2px;
       background: linear-gradient(90deg, transparent, #c9daee 12%, #c9daee 88%, transparent); }
 
+
+    /* ===== v1.12 การ์ดตั้งค่า LINE ===== */
+    .line-card { background: var(--b3d-face); border: 1px solid #cfdef0; border-radius: 16px; padding: 14px; box-shadow: var(--b3d-bevel), var(--b3d-thin); }
+    .line-head { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; flex-wrap: wrap; }
+    .line-head > span:nth-child(2) { flex: 1; min-width: 160px; display: flex; flex-direction: column; }
+    .line-head b { font-size: 1rem; color: var(--c-navy); } .line-head small { font-size: .76rem; color: #5b6d86; }
+    .line-logo { width: 44px; height: 44px; border-radius: 12px; background: #06c755; color: #fff; font-weight: 900; font-size: .72rem; display: grid; place-items: center; letter-spacing: .02em;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.35), 0 2px 0 #04913e; }
+    .line-guide { background: var(--c-sky-l); border-radius: 12px; padding: 10px 12px; margin-bottom: 12px; font-size: .84rem; }
+    .line-guide summary { font-weight: 800; color: var(--c-navy); cursor: pointer; }
+    .line-guide ol { margin: 8px 0 0; padding-left: 20px; display: grid; gap: 6px; line-height: 1.55; }
+    .line-url { display: flex; gap: 6px; align-items: center; margin-top: 4px; }
+    .line-url code { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; background: #fff; border: 1px solid #cfdef0; border-radius: 8px; padding: 6px 8px; font-size: .72rem; }
+    .line-row { display: flex; gap: 6px; } .line-row select { flex: 1; min-width: 0; }
+    .line-quota { font-size: .8rem; background: #fff; border: 1px solid #d3e1f1; border-radius: 12px; padding: 10px 12px; display: grid; gap: 6px; }
+    .lq-bar { height: 8px; border-radius: 8px; background: #e3ecf7; overflow: hidden; } .lq-bar i { display: block; height: 100%; background: linear-gradient(90deg, #06c755, var(--c-sky)); }
+    .lq-warn { color: #9a4a00; background: var(--c-yellow-l); border-radius: 8px; padding: 6px 8px; font-weight: 600; }
+    .line-manual summary { font-size: .78rem; color: #5b6d86; cursor: pointer; } .line-manual input { margin-top: 6px; width: 100%; }
+    .line-actions { display: flex; gap: 6px; flex-wrap: wrap; }
+    .line-quota[hidden] { display: none !important; }
+    .line-card, .line-card .form-grid, .line-guide, .line-guide ol, .line-guide li { min-width: 0; max-width: 100%; }
+    .line-card { overflow: hidden; } .line-guide li { overflow-wrap: anywhere; }
+    .line-url code { width: 0; }
+
+
+    /* ===== v1.13 ปุ่มส่งสรุปเข้าไลน์ ===== */
+    .line-share { display: grid; gap: 10px; margin-bottom: 14px; padding: 12px; border-radius: 14px; background: #f0fbf4; border: 1px solid #bfe8cd; }
+    .line-share-btns { display: flex; gap: 8px; flex-wrap: wrap; }
+    .line-share-btn { flex: 1 1 200px; height: 52px; border: none; border-radius: 14px; display: flex; align-items: center; justify-content: center; gap: 10px; cursor: pointer;
+      font: inherit; font-weight: 800; font-size: 1.02rem; color: #fff; background: linear-gradient(180deg, #19d26a, #06b74f);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.35), 0 2px 0 #04913e, 0 3px 0 #037a34, 0 4px 5px rgba(4,100,40,.25); }
+    .line-share-btn:active { transform: translateY(2px); box-shadow: inset 0 1px 2px rgba(0,0,0,.2), 0 1px 0 #04913e; }
+    .ls-logo { background: #fff; color: #06b74f; font-weight: 900; font-size: .66rem; padding: 4px 6px; border-radius: 7px; }
+    #btnCopySummary { flex: 1 1 140px; height: 52px; }
+    .line-auto { margin-top: 4px; } .line-auto > summary { cursor: pointer; font-size: .82rem; font-weight: 700; color: #5b6d86; padding: 8px 2px; }
+
+
+    /* ===== v1.14 หัก/เพิ่มคะแนน ===== */
+    .bh-mode { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; padding: 4px; border-radius: 14px; background: #e6eef8; box-shadow: inset 0 2px 3px rgba(19,38,92,.12); }
+    .bh-mode-btn { height: 44px; border: none; border-radius: 11px; font: inherit; font-weight: 800; font-size: .92rem; color: #4a5d78; background: transparent; cursor: pointer; }
+    .bh-mode-btn b { font-size: 1.15rem; margin-right: 2px; }
+    .bh-mode-btn.on[data-bh-mode="plus"] { color: #fff; background: linear-gradient(180deg, #37b24d, #2b8a3e); box-shadow: inset 0 1px 0 rgba(255,255,255,.3), 0 2px 0 #1f6b2e; }
+    .bh-mode-btn.on[data-bh-mode="minus"] { color: #fff; background: linear-gradient(180deg, #f03e3e, #c92a2a); box-shadow: inset 0 1px 0 rgba(255,255,255,.3), 0 2px 0 #9b1f1f; }
+    #behaviorForm.minus .star.filled { color: #e03131 !important; text-shadow: 0 1px 0 #9b1f1f; }
+    #behaviorForm.minus .star-val { color: #c92a2a !important; }
+    #behaviorForm.minus #bhSubmitBtn { background: linear-gradient(180deg, #f03e3e, #c92a2a) !important; }
+    .status-pill.pill-minus { background: #fff0f0 !important; color: #c92a2a !important; border: 1px solid #ffc9c9; }
+    .tl-item.minus .tl-pts { background: #e03131 !important; color: #fff !important; }
+
+    /* ===== v1.14 สถานะห้องเรียน ม.1–ม.6 × 3 ห้อง ===== */
+    .rs-edit { margin: 4px 0 8px; font-size: .82rem; }
+    .rs-board { display: grid; gap: 8px; }
+    .rs-row { display: grid; grid-template-columns: 46px 1fr; gap: 8px; align-items: stretch; }
+    .rs-g { display: grid; place-items: center; border-radius: 12px; font-weight: 800; font-size: .86rem; color: #fff; background: linear-gradient(160deg, #1e3a8a, #2f9be0); box-shadow: inset 0 1px 0 rgba(255,255,255,.3), 0 2px 0 #13265c; }
+    .rs-cells { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+    .rs-cell { border-radius: 12px; padding: 8px 4px; font: inherit; display: flex; flex-direction: column; align-items: center; gap: 1px; cursor: default; border: 1px solid transparent; }
+    .rs-cell b { font-size: 1.05rem; line-height: 1.1; } .rs-cell small { font-size: .68rem; font-weight: 700; }
+    .rs-cell.ok { background: #ebfbee; border-color: #b2f2bb; color: #1f7a3d; box-shadow: inset 0 1px 0 #fff, 0 2px 0 #b2f2bb; }
+    .rs-cell.no { background: #fff0f0; border-color: #ffc9c9; color: #c92a2a; box-shadow: inset 0 1px 0 #fff, 0 2px 0 #ffc9c9; }
+    .rs-cell.off { background: repeating-linear-gradient(135deg, #f1f3f5 0 8px, #e9ecef 8px 16px); border-color: #dee2e6; color: #868e96; box-shadow: 0 2px 0 #dee2e6; }
+    .rs-board.editing .rs-cell { cursor: pointer; outline: 2px dashed rgba(30,58,138,.35); outline-offset: -4px; }
+    .rs-legend { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 8px; font-size: .74rem; color: #5b6d86; }
+    .rs-legend i { display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 4px; vertical-align: -1px; }
+    .rs-legend i.ok { background: #40c057; } .rs-legend i.no { background: #fa5252; } .rs-legend i.off { background: #adb5bd; }
+    .adm-nav { grid-template-columns: repeat(4, 1fr) !important; }
+    .adm-nav .nav-btn { font-size: .72rem !important; line-height: 1.25; padding: 8px 2px !important; }
+
+    /* ===== v1.14 คะแนนพฤติกรรมนักเรียน ===== */
+    .pt-top { display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; align-items: flex-start; margin-bottom: 12px; }
+    .pt-tools { display: flex; gap: 6px; }
+    .pt-kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 8px; margin-bottom: 14px; }
+    .pt-kpi { border-radius: 14px; padding: 10px 12px; background: var(--b3d-face); border: 1px solid #d3e1f1; box-shadow: var(--b3d-bevel), var(--b3d-thin); display: flex; flex-direction: column; }
+    .pt-kpi small { font-size: .72rem; font-weight: 700; color: #5b6d86; } .pt-kpi b { font-size: 1.5rem; line-height: 1.2; color: var(--c-navy); } .pt-kpi span { font-size: .7rem; color: #7a8aa0; }
+    .pt-kpi.good b { color: #2b8a3e; } .pt-kpi.warn b { color: #d9480f; } .pt-kpi.plus b { color: #2b8a3e; } .pt-kpi.minus b { color: #c92a2a; }
+    .pt-podium { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; align-items: end; margin-bottom: 14px; }
+    .pt-pod { position: relative; border: none; font: inherit; cursor: pointer; border-radius: 16px 16px 10px 10px; padding: 10px 6px 12px; display: flex; flex-direction: column; align-items: center; gap: 2px; color: #fff; min-width: 0;
+      background: linear-gradient(170deg, #2f9be0, #1e3a8a); box-shadow: inset 0 1.5px 0 rgba(255,255,255,.35), 0 2px 0 #13265c, 0 3px 0 #0f1d49, 0 4px 5px rgba(19,38,92,.25); }
+    .pt-pod.p1 { padding-top: 22px; background: linear-gradient(170deg, #f6c343, #d99a00); color: #3d2a00; box-shadow: inset 0 1.5px 0 rgba(255,255,255,.5), 0 2px 0 #a87400, 0 3px 0 #8a5f00, 0 4px 5px rgba(120,80,0,.3); }
+    .pt-pod.p3 { background: linear-gradient(170deg, #f48cbb, #d94d8c); }
+    .pp-emb img, .pp-emb .rank-fb { width: 52px; height: 52px; object-fit: contain; } .pt-pod.p1 .pp-emb img { width: 64px; height: 64px; }
+    .pp-no { position: absolute; top: 6px; left: 8px; font-weight: 900; font-size: .9rem; opacity: .9; }
+    .pp-name { font-family: 'Sarabun', var(--font); font-weight: 800; font-size: .8rem; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .pp-room { font-size: .68rem; opacity: .85; } .pp-pts { font-weight: 900; font-size: 1.3rem; line-height: 1.1; }
+    .pt-box { border-radius: 14px; background: #fff; border: 1px solid #d3e1f1; padding: 8px 12px; margin-bottom: 10px; box-shadow: inset 0 1px 0 #fff, 0 1px 0 #d6e3f3, 0 2px 0 #cbd9ec; }
+    .pt-box > summary { font-weight: 800; color: var(--c-navy); cursor: pointer; padding: 4px 0; font-size: .9rem; }
+    .pt-dist, .pt-rrow { display: grid; grid-template-columns: 30px 1fr 1.2fr 34px; gap: 8px; align-items: center; padding: 4px 0; font-size: .78rem; }
+    .pt-rrow { grid-template-columns: 24px 56px 1fr 40px 74px; } .pt-rrow small { color: #7a8aa0; font-size: .68rem; } .pr-no { font-weight: 800; color: #5b6d86; text-align: center; }
+    .pd-emb img, .pd-emb .rank-fb { width: 28px; height: 28px; object-fit: contain; } .pd-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-weight: 700; }
+    .pd-bar { height: 10px; border-radius: 6px; background: #edf2f8; overflow: hidden; } .pd-bar i { display: block; height: 100%; border-radius: 6px; background: linear-gradient(90deg, #2f9be0, #1e3a8a); }
+    .pt-dist b, .pt-rrow b { text-align: right; color: var(--c-navy); }
+    .pt-filters { display: grid; gap: 8px; margin: 14px 0 8px; position: sticky; top: 0; z-index: 3; background: rgba(255,255,255,.92); backdrop-filter: blur(6px); padding: 8px 0; }
+    .pt-grades { display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; } .pt-grades::-webkit-scrollbar { display: none; }
+    .pt-g { flex: none; border: 1px solid #cfdef0; background: #fff; color: #3b4f6b; font: inherit; font-weight: 800; font-size: .82rem; border-radius: 99px; padding: 7px 14px; cursor: pointer; }
+    .pt-g.on { background: var(--c-navy); border-color: var(--c-navy); color: #fff; box-shadow: 0 2px 0 #13265c; }
+    .pt-frow { display: grid; grid-template-columns: 1fr 1.3fr; gap: 6px; }
+    .pt-count { font-size: .74rem; color: #7a8aa0; margin-bottom: 6px; }
+    .pt-list { display: grid; gap: 6px; }
+    .pt-row { display: grid; grid-template-columns: 34px 40px 1fr auto; gap: 8px; align-items: center; text-align: left; font: inherit; cursor: pointer; padding: 8px 10px; border-radius: 14px;
+      background: var(--b3d-face); border: 1px solid #d3e1f1; box-shadow: inset 0 1px 0 #fff, 0 1px 0 #d6e3f3, 0 2px 0 #cbd9ec, 0 2px 3px rgba(19,38,92,.08); }
+    .pt-no { width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; font-weight: 800; font-size: .8rem; background: #e6eef8; color: #3b4f6b; }
+    .pt-no.top { background: var(--c-yellow); color: #4a3500; box-shadow: 0 1px 0 #b8860b; }
+    .pt-emb img, .pt-emb .rank-fb { width: 40px; height: 40px; object-fit: contain; display: block; }
+    .pt-who { min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+    .pt-who b { font-family: 'Sarabun', var(--font); font-size: .9rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: #1c2a44; }
+    .pt-who small { font-size: .7rem; color: #6b7a90; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .pt-bar { height: 5px; border-radius: 4px; background: #edf2f8; overflow: hidden; } .pt-bar i { display: block; height: 100%; }
+    .pt-score { display: flex; flex-direction: column; align-items: flex-end; } .pt-score b { font-size: 1.25rem; color: var(--c-navy); line-height: 1.1; } .pt-score b.low { color: #d9480f; }
+    .pt-score small { font-size: .68rem; white-space: nowrap; } .pt-score em { font-style: normal; font-weight: 700; } em.p { color: #2b8a3e; } em.m { color: #c92a2a; }
+    .pt-kpis { grid-template-columns: repeat(3, 1fr) !important; gap: 6px !important; }
+    .pt-kpi { padding: 8px 8px !important; border-radius: 12px !important; }
+    .pt-kpi small { font-size: .64rem !important; line-height: 1.25; min-height: 2.5em; } .pt-kpi b { font-size: 1.25rem !important; } .pt-kpi span { font-size: .62rem !important; }
+    @media (min-width: 700px) { .pt-kpis { grid-template-columns: repeat(6, 1fr) !important; } }
+    .pt-filters select, .pt-filters input[type=search] { width: 100%; height: 42px; border: 1px solid #cfdef0; border-radius: 12px; padding: 0 12px; font: inherit; font-size: .86rem; background: #fff; color: #1c2a44;
+      box-shadow: inset 0 1px 2px rgba(19,38,92,.06); -webkit-appearance: none; appearance: none; }
+    .pt-filters select { background-image: linear-gradient(45deg, transparent 50%, #5b6d86 50%), linear-gradient(135deg, #5b6d86 50%, transparent 50%);
+      background-position: calc(100% - 16px) 18px, calc(100% - 11px) 18px; background-size: 5px 5px; background-repeat: no-repeat; padding-right: 28px; }
+    .pt-more { width: 100%; margin-top: 10px; } .pt-loading { text-align: center; color: #7a8aa0; padding: 18px; font-size: .85rem; }
+    .pt-modal[hidden] { display: none !important; }
+    .pt-modal { position: fixed; inset: 0; z-index: 3000; display: flex; align-items: flex-end; justify-content: center; }
+    .pt-modal-bg { position: absolute; inset: 0; background: rgba(15,29,73,.45); }
+    .pt-modal-panel { position: relative; width: min(560px, 100%); max-height: 82vh; display: flex; flex-direction: column; background: #fff; border-radius: 22px 22px 0 0; box-shadow: 0 -6px 24px rgba(15,29,73,.25); }
+    @media (min-width: 700px) { .pt-modal { align-items: center; } .pt-modal-panel { border-radius: 22px; } }
+    .pt-modal-head { display: flex; align-items: center; gap: 10px; padding: 14px 16px; border-bottom: 1px solid #e3ecf7; }
+    .pt-modal-head > div { flex: 1; display: flex; align-items: center; gap: 10px; min-width: 0; }
+    .pt-modal-head > div > span:nth-child(2) { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+    .pt-modal-head b { font-family: 'Sarabun', var(--font); font-size: 1rem; } .pt-modal-head small { font-size: .74rem; color: #6b7a90; }
+    .ptm-pts { font-size: 1.6rem; font-weight: 900; color: var(--c-navy); display: flex; flex-direction: column; align-items: center; line-height: 1; } .ptm-pts small { font-size: .62rem; color: #7a8aa0; font-weight: 700; }
+    .pt-x { width: 36px; height: 36px; border-radius: 50%; border: none; background: #eef3f9; font-size: 1.3rem; cursor: pointer; color: #3b4f6b; }
+    .pt-modal-body { overflow-y: auto; padding: 12px 16px 20px; display: grid; gap: 6px; }
+    .ptm-sum { display: flex; gap: 8px; flex-wrap: wrap; font-size: .78rem; font-weight: 700; margin-bottom: 4px; } .ptm-sum span { background: #f1f5fa; border-radius: 99px; padding: 4px 10px; }
+    .ptm-sum .p { color: #2b8a3e; background: #ebfbee; } .ptm-sum .m { color: #c92a2a; background: #fff0f0; }
+    .ptm-item { display: grid; grid-template-columns: 48px 1fr; gap: 10px; align-items: center; padding: 8px 10px; border-radius: 12px; background: #f8fafd; border: 1px solid #e3ecf7; }
+    .ptm-item > span:last-child { display: flex; flex-direction: column; } .ptm-item b { font-size: .86rem; font-weight: 700; } .ptm-item small { font-size: .7rem; color: #7a8aa0; }
+    .ptm-v { text-align: center; font-weight: 900; border-radius: 10px; padding: 6px 0; color: #fff; } .ptm-item.p .ptm-v { background: #2b8a3e; } .ptm-item.m .ptm-v { background: #e03131; }
+
     @media print {
       body { background: #fff !important; padding: 0 !important; }
       body * { visibility: hidden !important; }
@@ -2502,7 +2637,8 @@
     <nav class="adm-nav" id="bottomNav" aria-label="เมนูผู้ดูแลระบบ" style="display: none;">
       <button type="button" class="nav-btn active" data-bottom-nav="role-home">หน้าจัดการ</button>
       <button type="button" class="nav-btn" data-bottom-nav="reports">กราฟรายงานผล</button>
-      <button type="button" class="nav-btn" data-bottom-nav="line-status">สถานะ 18 ห้อง</button>
+      <button type="button" class="nav-btn" data-bottom-nav="line-status">สถานะห้องเรียน</button>
+      <button type="button" class="nav-btn" data-bottom-nav="points">คะแนนพฤติกรรม</button>
     </nav>
 
     <main class="app-main" id="appMain" style="display: none;">
@@ -2544,7 +2680,7 @@
             <div class="tc-legend" aria-hidden="true">
               <span><i class="lg-done"></i>บันทึกแล้ว</span><span><i class="lg-miss"></i>ยังไม่บันทึก</span><span><i class="lg-fut"></i>ยังไม่ถึง</span>
             </div>
-            <p class="tc-rule">บันทึกย้อนหลังได้ไม่เกิน 3 วันเรียน</p>
+            <p class="tc-rule" id="tcRule"></p>
           </div>
           <div class="tc-selected">
             <div class="tc-selected-text">
@@ -2683,12 +2819,19 @@
         <div class="teacher-pane" id="pane-behavior-form" style="display:none;">
           <div class="tc-card">
             <h3 class="tc-card-title">ให้คะแนนความประพฤติ</h3>
-            <p class="hr-hint">เพิ่มคะแนนได้เฉพาะนักเรียนในห้องของท่าน · คะแนนจะแสดงเป็นตราแรงก์ในหน้านักเรียนทันที</p>
+            <p class="hr-hint">เพิ่มหรือหักคะแนนได้เฉพาะนักเรียนในห้องของท่าน · คะแนนต่ำสุด 0 · ตราแรงก์ในหน้านักเรียนเปลี่ยนตามทันที</p>
             <form id="behaviorForm" class="form-grid" novalidate>
               <label class="hr-field">
                 <span class="hr-info-label">นักเรียน</span>
                 <select id="bhStudentName" required></select>
               </label>
+              <div class="hr-field">
+                <span class="hr-info-label">ประเภท</span>
+                <div class="bh-mode" role="radiogroup" aria-label="เพิ่มหรือหักคะแนน">
+                  <button type="button" class="bh-mode-btn on" data-bh-mode="plus" role="radio" aria-checked="true"><b>+</b> เพิ่มคะแนน</button>
+                  <button type="button" class="bh-mode-btn" data-bh-mode="minus" role="radio" aria-checked="false"><b>−</b> หักคะแนน</button>
+                </div>
+              </div>
               <div class="hr-field">
                 <span class="hr-info-label">จำนวนคะแนน</span>
                 <div class="star-rating" id="starRatingContainer" role="radiogroup" aria-label="จำนวนดาว">
@@ -2702,7 +2845,7 @@
                 <input type="hidden" id="bhPoints" value="1">
               </div>
               <label class="hr-field">
-                <span class="hr-info-label">เหตุผล / ความดีที่ทำ</span>
+                <span class="hr-info-label" id="bhReasonLbl">เหตุผล / ความดีที่ทำ</span>
                 <input type="text" id="bhReason" maxlength="300" placeholder="เช่น ช่วยจัดเตรียมงานวัด" required>
               </label>
               <div class="quick-chips" id="bhReasonChips"></div>
@@ -3056,6 +3199,11 @@
                 <label for="schedTime">เวลาที่เริ่มจัดกิจกรรม</label>
                 <input type="time" id="schedTime" value="08:30">
               </div>
+              <div class="field">
+                <label for="schedBackdate">ครูบันทึกโฮมรูมย้อนหลังได้ไม่เกิน (วันเรียน)</label>
+                <input type="number" id="schedBackdate" min="0" max="200" step="1" inputmode="numeric" placeholder="0">
+                <small class="mini-note">ใส่ 0 = ไม่จำกัด (เปิดให้ย้อนหลังได้ทุกวัน) · เช่น 3 = ย้อนได้ 3 วันเรียน</small>
+              </div>
               <button type="button" class="btn btn-primary btn-sm" id="btnSaveSchedule" style="margin-top:4px;">💾 บันทึกกำหนดเวลาโฮมรูม</button>
             </div>
           </div>
@@ -3074,6 +3222,47 @@
       </section>
 
       <!-- ==================== 4. รายงานผลและสถิติ (ผู้ดูแล) ==================== -->
+      <section class="view-section" id="view-points">
+        <div class="card card-blue pt-view">
+          <div class="pt-top">
+            <div><h2 class="section-title" style="margin:0;">คะแนนพฤติกรรมนักเรียน</h2>
+              <p class="section-desc" style="margin:2px 0 0;">เรียงจากคะแนนมากที่สุดไปน้อยที่สุด · คะแนนเริ่มต้น <span id="ptStart">50</span> · ต่ำสุด 0</p></div>
+            <div class="pt-tools">
+              <button type="button" class="btn btn-secondary btn-sm" id="ptCsv">ดาวน์โหลด Excel</button>
+              <button type="button" class="btn btn-secondary btn-sm" id="ptPrint">พิมพ์</button>
+            </div>
+          </div>
+          <div class="pt-kpis" id="ptKpis"></div>
+          <div class="pt-podium" id="ptPodium"></div>
+          <details class="pt-box" id="ptDistBox"><summary>จำนวนนักเรียนในแต่ละแรงก์</summary><div id="ptDist"></div></details>
+          <details class="pt-box"><summary>อันดับห้องเรียน (คะแนนเฉลี่ย)</summary><div id="ptRooms"></div></details>
+          <div class="pt-filters">
+            <div class="pt-grades" id="ptGrades" role="tablist"></div>
+            <div class="pt-frow">
+              <select id="ptRoom" aria-label="ห้อง"></select>
+              <select id="ptSort" aria-label="เรียงลำดับ">
+                <option value="desc">คะแนนมาก → น้อย</option>
+                <option value="asc">คะแนนน้อย → มาก</option>
+                <option value="plus">ได้รับเพิ่มมากที่สุด</option>
+                <option value="minus">ถูกหักมากที่สุด</option>
+                <option value="name">เรียงตามห้อง/เลขที่</option>
+              </select>
+            </div>
+            <input type="search" id="ptSearch" placeholder="ค้นหาชื่อหรือรหัสนักเรียน" autocomplete="off">
+          </div>
+          <div class="pt-count" id="ptCount"></div>
+          <div class="pt-list" id="ptList"></div>
+          <button type="button" class="btn btn-secondary pt-more" id="ptMore" hidden>แสดงเพิ่ม</button>
+        </div>
+        <div class="pt-modal" id="ptModal" hidden>
+          <div class="pt-modal-bg" data-pt-close></div>
+          <div class="pt-modal-panel" role="dialog" aria-modal="true" aria-labelledby="ptmName">
+            <div class="pt-modal-head"><div id="ptmHead"></div><button type="button" class="pt-x" data-pt-close aria-label="ปิด">×</button></div>
+            <div class="pt-modal-body" id="ptmBody"></div>
+          </div>
+        </div>
+      </section>
+
       <section class="view-section" id="view-reports">
         <div class="card card-blue" style="margin-bottom:4px;">
           <strong style="font-size: 0.85rem; display:block; margin-bottom: 6px;">📅 กรองช่วงวันที่โฮมรูม</strong>
@@ -3105,7 +3294,7 @@
       <!-- ==================== 6. สถานะการส่งโฮมรูม 18 ห้อง + LINE ==================== -->
       <section class="view-section" id="view-line-status">
         <div class="card card-blue">
-          <h2 class="section-title">สถานะการส่งโฮมรูมประจำวัน (18 ห้อง)</h2>
+          <h2 class="section-title">สถานะการส่งโฮมรูมประจำวัน (ม.1–ม.6 ชั้นละ 3 ห้อง)</h2>
           <p class="section-desc">ตรวจสอบว่าห้องใดบันทึกโฮมรูมแล้ว/ยังไม่บันทึก (เฉพาะห้องที่เปิดใช้งาน)</p>
           <div class="field" style="margin-bottom:12px;">
             <label for="lineFilterDate">เลือกวันที่ตรวจสอบการส่งโฮมรูม</label>
@@ -3117,7 +3306,19 @@
               <span id="lineDateBadge"></span>
             </div>
             <div id="lineSummaryText" style="margin-bottom:8px; color:#1e3a2f;"></div>
-            <div class="rooms-status-grid" id="lineRoomsGrid"></div>
+            <label class="switch-row rs-edit"><input type="checkbox" id="roomEditMode"> แก้ไขเปิด/ปิดห้อง (แตะห้องเพื่อสลับ)</label>
+            <div class="rs-board" id="lineRoomsGrid"></div>
+            <div class="rs-legend"><span><i class="ok"></i>บันทึกแล้ว</span><span><i class="no"></i>ยังไม่บันทึก</span><span><i class="off"></i>ปิดห้อง</span></div>
+          </div>
+          <div class="line-share" id="lineShareBox">
+            <label class="switch-row"><input type="checkbox" id="lineShareTeachers" checked> ใส่ชื่อครูที่ปรึกษาของห้องที่ยังไม่บันทึก</label>
+            <div class="line-share-btns">
+              <button type="button" class="line-share-btn" id="btnShareLine">
+                <span class="ls-logo" aria-hidden="true">LINE</span><span>ส่งสรุปเข้ากลุ่มไลน์</span>
+              </button>
+              <button type="button" class="btn btn-secondary" id="btnCopySummary">คัดลอกข้อความ</button>
+            </div>
+            <p class="mini-note" style="margin:0;">กดแล้วแอปไลน์จะเปิดขึ้น เลือกกลุ่มครู แล้วกดส่ง · ใช้ได้ทั้งกลุ่มปกติและโอเพนแชท ไม่ต้องตั้งค่า ไม่เสียโควตา</p>
           </div>
 
           <div class="ai-card">
@@ -3141,35 +3342,67 @@
             </div>
           </div>
 
-          <div style="background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 12px;">
-            <strong style="font-size:0.85rem; display:block; margin-bottom: 4px;">⚙️ การส่งสรุปเข้า LINE (LINE Messaging API)</strong>
-            <p class="mini-note" style="margin:0 0 8px;">LINE Notify ยุติบริการแล้ว ระบบจึงเตรียมไว้สำหรับ LINE Official Account · เปิดใช้เมื่อพร้อม (ดูขั้นตอนใน README)</p>
+          <details class="line-auto"><summary>ส่งอัตโนมัติผ่านบัญชี LINE ของโรงเรียน (ขั้นสูง · ไม่จำเป็น)</summary>
+          <div class="line-card" id="lineCard">
+            <div class="line-head">
+              <span class="line-logo" aria-hidden="true">LINE</span>
+              <span><b>ส่งสรุปเข้ากลุ่มไลน์อัตโนมัติ</b><small>ผ่าน LINE Official Account ของโรงเรียน</small></span>
+              <span id="lineConnectionStatusBadge" class="status-pill status-pending">ยังไม่เปิดใช้งาน</span>
+            </div>
+
+            <details class="line-guide" id="lineGuide">
+              <summary>วิธีตั้งค่าครั้งแรก (5 ขั้น)</summary>
+              <ol>
+                <li>สร้างบัญชีที่ <b>manager.line.biz</b> แล้วเปิด <b>Messaging API</b> (ตั้งค่า &gt; Messaging API)</li>
+                <li>ที่ <b>developers.line.biz</b> แท็บ Messaging API กด <b>Issue</b> คัดลอก Channel access token มาวางช่องด้านล่าง แล้วกด “บันทึก”</li>
+                <li>ในแท็บเดียวกัน ตรง <b>Webhook URL</b> วางลิงก์นี้ เปิด <b>Use webhook</b>
+                  <span class="line-url"><code id="lineWebhookUrl"></code><button type="button" class="btn btn-secondary btn-sm" id="btnCopyWebhook">คัดลอก</button></span></li>
+                <li>ที่ manager.line.biz &gt; ตั้งค่าบัญชี เปิด <b>“อนุญาตให้เข้าร่วมแชทกลุ่ม”</b> และปิดข้อความตอบกลับอัตโนมัติ/ข้อความทักทาย</li>
+                <li>เชิญบัญชีโรงเรียนเข้า <b>กลุ่มไลน์ครู</b> แล้วพิมพ์ในกลุ่มว่า <b>สรุปโฮมรูม</b> 1 ครั้ง → กด “รีเฟรช” ด้านล่าง กลุ่มจะขึ้นให้เลือก</li>
+              </ol>
+            </details>
+
             <div class="form-grid">
               <div class="field">
-                <label for="lineToken">Channel access token (เว้นว่างไว้หากไม่ต้องการเปลี่ยน)</label>
+                <label for="lineToken">Channel access token <small>(เว้นว่างไว้หากไม่เปลี่ยน)</small></label>
                 <input type="password" id="lineToken" autocomplete="off" placeholder="วาง Channel access token (long-lived)">
+              </div>
+              <div class="field">
+                <label for="lineToSel">ส่งเข้า (กลุ่มที่บัญชีโรงเรียนอยู่)</label>
+                <div class="line-row">
+                  <select id="lineToSel"></select>
+                  <button type="button" class="btn btn-secondary btn-sm" id="btnLineRefresh">รีเฟรช</button>
+                </div>
+              </div>
+              <div class="field">
+                <label for="lineAdminSel">ถ้าโควตาไม่พอส่งเข้ากลุ่ม ให้ส่งถึง</label>
+                <select id="lineAdminSel"></select>
+                <small class="mini-note">ผู้ดูแลต้องเพิ่มบัญชีโรงเรียนเป็นเพื่อน แล้วพิมพ์ “สรุปโฮมรูม” 1 ครั้ง ชื่อจึงจะขึ้นให้เลือก</small>
               </div>
               <div class="form-row-2">
                 <div class="field">
-                  <label for="lineTo">ID ปลายทาง (Group ID / User ID)</label>
-                  <input type="text" id="lineTo" autocomplete="off" placeholder="เช่น C1234... (เว้นว่างไม่เปลี่ยน)">
+                  <label for="lineHour">เวลาส่งอัตโนมัติ</label>
+                  <select id="lineHour"></select>
                 </div>
                 <div class="field">
-                  <label for="lineHour">เวลาส่งอัตโนมัติ (ชั่วโมง)</label>
-                  <select id="lineHour"></select>
+                  <label>&nbsp;</label>
+                  <label class="switch-row"><input type="checkbox" id="lineOnlyPending"> ส่งเฉพาะวันที่ยังมีห้องค้าง</label>
                 </div>
               </div>
               <label class="switch-row"><input type="checkbox" id="lineEnabled"> เปิดใช้การส่งอัตโนมัติ (เฉพาะวันที่มีโฮมรูม)</label>
-              <div style="display:flex; justify-content:space-between; align-items:center; gap:6px; flex-wrap:wrap;">
-                <span id="lineConnectionStatusBadge" class="status-pill status-pending">⚠️ ยังไม่เปิดใช้งาน</span>
-                <span style="display:flex; gap:6px;">
-                  <button type="button" class="btn btn-secondary btn-sm" id="btnSaveLine">💾 บันทึก</button>
-                  <button type="button" class="btn btn-secondary btn-sm" id="btnTestLine">🧪 ทดสอบ</button>
-                  <button type="button" class="btn btn-primary btn-sm" id="btnAdminTriggerLineSend">⚡ ส่งสรุปทันที</button>
-                </span>
+              <div class="line-quota" id="lineQuota" hidden></div>
+              <details class="line-manual"><summary>กรอก ID ปลายทางเอง</summary>
+                <input type="text" id="lineTo" autocomplete="off" placeholder="Group ID (C…) หรือ User ID (U…)">
+              </details>
+              <div class="line-actions">
+                <button type="button" class="btn btn-primary btn-sm" id="btnSaveLine">บันทึก</button>
+                <button type="button" class="btn btn-secondary btn-sm" id="btnTestLine">ทดสอบ</button>
+                <button type="button" class="btn btn-secondary btn-sm" id="btnAdminTriggerLineSend">ส่งสรุปวันนี้ทันที</button>
               </div>
+              <p class="mini-note" style="margin:0;">ครูพิมพ์ <b>สรุปโฮมรูม</b> ในกลุ่มเมื่อไรก็ได้ ระบบตอบกลับทันที (ข้อความตอบกลับไม่นับโควตา)</p>
             </div>
           </div>
+          </details>
         </div>
       </section>
     </main>
@@ -3740,10 +3973,11 @@
     if (!S.user) return;
     document.querySelectorAll('.view-section').forEach((sec) => sec.classList.remove('active'));
     const isAdmin = S.user.role === 'admin';
-    if (!isAdmin && (S.activeView === 'reports' || S.activeView === 'line-status')) S.activeView = 'role-home';
+    if (!isAdmin && (S.activeView === 'reports' || S.activeView === 'line-status' || S.activeView === 'points')) S.activeView = 'role-home';
 
     if (S.activeView === 'reports') { $('view-reports').classList.add('active'); loadStats(); }
     else if (S.activeView === 'line-status') { $('view-line-status').classList.add('active'); loadStats(); }
+    else if (S.activeView === 'points') { $('view-points').classList.add('active'); loadRanking(); }
     else { S.activeView = 'role-home'; $('view-' + S.user.role).classList.add('active'); }
     $('bottomNav').style.display = isAdmin ? 'grid' : 'none';
     document.querySelectorAll('.nav-btn').forEach((b) => b.classList.toggle('active', b.dataset.bottomNav === S.activeView));
@@ -4006,6 +4240,7 @@
     if (/ไม่ทราบ|ไม่ระบุ/.test(r)) return '';
     return r;
   }
+  const BEHAVIOR_CHIPS_MINUS = ['มาสาย', 'ไม่ทำเวร/หน้าที่', 'ไม่ส่งงาน', 'แต่งกายไม่เรียบร้อย', 'ไม่ร่วมทำวัตรสวดมนต์', 'ผิดระเบียบวัด/โรงเรียน', 'ขาดเรียนไม่แจ้ง'];
   const BEHAVIOR_CHIPS = ['ช่วยงานวัด', 'จิตอาสาทำความสะอาด', 'ตั้งใจเรียน ส่งงานครบ', 'ช่วยเหลือเพื่อน', 'ทำวัตรสวดมนต์สม่ำเสมอ', 'มีมารยาทงดงาม'];
   const DAY_TH = ['อาทิตย์', 'จันทร์', 'อังคาร', 'พุธ', 'พฤหัสบดี', 'ศุกร์', 'เสาร์'];
   const ICON_ALERT = '<svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" style="flex:none"><circle cx="12" cy="12" r="10" fill="currentColor"/><path d="M12 7v6" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/><circle cx="12" cy="16.6" r="1.3" fill="#fff"/></svg>';
@@ -4047,7 +4282,7 @@
       st.weekOffset = 0;
       $('traitsCheckboxContainer').innerHTML = ((d.traits || DEFAULT_TRAITS)).map((tname, i) => `
         <label class="trait-chip" data-trait="${i + 1}"><input type="checkbox" name="hrTraits" value="${i + 1}"><span class="tick"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span>${esc(tname)}</span></label>`).join('');
-      $('bhReasonChips').innerHTML = BEHAVIOR_CHIPS.map((c) => `<button type="button" class="quick-chip" data-bh-chip="${esc(c)}">${esc(c)}</button>`).join('');
+      $('bhReasonChips').innerHTML = (bhMode === 'minus' ? BEHAVIOR_CHIPS_MINUS : BEHAVIOR_CHIPS).map((c) => `<button type="button" class="quick-chip" data-bh-chip="${esc(c)}">${esc(c)}</button>`).join('');
       buildTopicSheet();
       restoreDraft();
       st.weekOffset = weekOffsetOf($('hrDate').value);
@@ -4079,12 +4314,14 @@
   function mondayOf(iso) { const d = parseIso(iso); d.setDate(d.getDate() - ((d.getDay() + 6) % 7)); return d; }
   function weekOffsetOf(iso) {
     const diff = Math.round((mondayOf(today()) - mondayOf(iso || today())) / (7 * 86400000));
-    return Math.max(0, Math.min(MAX_WEEKS_BACK, diff));
+    return Math.max(0, Math.min(maxWeeksBack(), diff));
   }
   // บันทึกย้อนหลังได้ไม่เกิน 3 วันเรียน (นับวันโฮมรูมหลังวันนั้นจนถึงวันนี้)
-  const BACKDATE_LIMIT = 3;
+  function backdateLimit() { return Math.max(0, Number(((S.data || {}).settings || {}).BACKDATE_DAYS) || 0); }
+  function maxWeeksBack() { const l = backdateLimit(); return l ? Math.max(1, Math.ceil(l / Math.max(1, homeroomDays().length)) + 1) : 40; }
   function canBackdate(iso) {
     const t = today(); if (iso > t) return false; if (iso === t) return true;
+    const BACKDATE_LIMIT = backdateLimit(); if (!BACKDATE_LIMIT) return true;
     const days = homeroomDays(); let n = 0;
     const d = new Date(iso + 'T12:00:00'); d.setDate(d.getDate() + 1);
     while (isoLocal(d) <= t) { if (days.indexOf(DAY_TH[d.getDay()]) >= 0) n++; if (n > BACKDATE_LIMIT) return false; d.setDate(d.getDate() + 1); }
@@ -4096,6 +4333,7 @@
     lock: '<svg viewBox="0 0 24 24"><rect x="6" y="11" width="12" height="9" rx="2"/><path d="M8.5 11V8.5a3.5 3.5 0 0 1 7 0V11"/></svg>'
   };
   function renderWeek() {
+    const lim = backdateLimit(); $('tcRule').textContent = lim ? 'บันทึกย้อนหลังได้ไม่เกิน ' + lim + ' วันเรียน' : 'บันทึกย้อนหลังได้ · กด ‹ เพื่อดูสัปดาห์ก่อนหน้า';
     const st = tcState(), t = today(), sel = $('hrDate').value;
     const mon = mondayOf(t); mon.setDate(mon.getDate() - 7 * (st.weekOffset || 0));
     const days = homeroomDays();
@@ -4119,10 +4357,10 @@
     $('tcWeek').innerHTML = cells.join('');
     const fmt = (d) => th(d.getDate()) + ' ' + d.toLocaleDateString('th-TH', { month: 'short' });
     $('tcWeekLabel').textContent = first ? (st.weekOffset ? '' : 'สัปดาห์นี้ · ') + fmt(first) + ' – ' + fmt(last) + ' ' + th(last.getFullYear() + 543) : '-';
-    $('tcPrevWeek').disabled = (st.weekOffset || 0) >= MAX_WEEKS_BACK;
+    $('tcPrevWeek').disabled = (st.weekOffset || 0) >= maxWeeksBack();
     $('tcNextWeek').disabled = !(st.weekOffset > 0);
   }
-  $('tcPrevWeek').addEventListener('click', () => { const st = tcState(); st.weekOffset = Math.min(MAX_WEEKS_BACK, (st.weekOffset || 0) + 1); renderWeek(); });
+  $('tcPrevWeek').addEventListener('click', () => { const st = tcState(); st.weekOffset = Math.min(maxWeeksBack(), (st.weekOffset || 0) + 1); renderWeek(); });
   $('tcNextWeek').addEventListener('click', () => { const st = tcState(); st.weekOffset = Math.max(0, (st.weekOffset || 0) - 1); renderWeek(); });
   $('tcWeek').addEventListener('click', (e) => {
     const b = e.target.closest('[data-day]'); if (!b || b.disabled) return;
@@ -4603,10 +4841,24 @@
       : '<option value="">ยังไม่มีรายชื่อนักเรียนในห้องนี้</option>';
     if (keep && st.some((s) => s.id === keep)) sel.value = keep;
   }
+  let bhMode = 'plus';
+  function bhSign() { return bhMode === 'minus' ? '−' : '+'; }
+  function setBhMode(m) {
+    bhMode = m;
+    $('behaviorForm').classList.toggle('minus', m === 'minus');
+    document.querySelectorAll('[data-bh-mode]').forEach((b) => { const on = b.dataset.bhMode === m; b.classList.toggle('on', on); b.setAttribute('aria-checked', on); });
+    $('starVal').textContent = bhSign() + th($('bhPoints').value) + ' คะแนน';
+    $('bhReasonLbl').textContent = m === 'minus' ? 'เหตุผลที่หักคะแนน' : 'เหตุผล / ความดีที่ทำ';
+    $('bhReason').placeholder = m === 'minus' ? 'เช่น มาสาย ไม่ทำเวร' : 'เช่น ช่วยจัดเตรียมงานวัด';
+    $('bhReasonChips').innerHTML = (m === 'minus' ? BEHAVIOR_CHIPS_MINUS : BEHAVIOR_CHIPS).map((c) => `<button type="button" class="quick-chip" data-bh-chip="${esc(c)}">${esc(c)}</button>`).join('');
+    $('bhSubmitBtn').textContent = m === 'minus' ? 'บันทึกการหักคะแนน' : 'บันทึกคะแนน';
+    $('bhReason').value = '';
+  }
+  document.querySelectorAll('[data-bh-mode]').forEach((b) => b.addEventListener('click', () => setBhMode(b.dataset.bhMode)));
   document.querySelectorAll('#starRatingContainer .star').forEach((star) => star.addEventListener('click', () => {
     const val = +star.dataset.star;
     $('bhPoints').value = val;
-    $('starVal').textContent = '+' + th(val) + ' คะแนน';
+    $('starVal').textContent = bhSign() + th(val) + ' คะแนน';
     document.querySelectorAll('#starRatingContainer .star').forEach((s, i) => s.classList.toggle('filled', i < val));
   }));
   $('bhReasonChips').addEventListener('click', (e) => {
@@ -4614,14 +4866,17 @@
   });
   $('behaviorForm').addEventListener('submit', (e) => {
     e.preventDefault();
-    const payload = { studentId: $('bhStudentName').value, points: +$('bhPoints').value, reason: $('bhReason').value.trim(), teacherName: currentTeacher() };
-    if (!payload.studentId || !payload.reason) { toast('⚠️ กรุณาเลือกนักเรียนและระบุเหตุผล', 'warn'); return; }
+    const payload = { studentId: $('bhStudentName').value, points: (bhMode === 'minus' ? -1 : 1) * +$('bhPoints').value, reason: $('bhReason').value.trim(), teacherName: currentTeacher() };
+    if (!payload.studentId || !payload.reason) { toast('กรุณาเลือกนักเรียนและระบุเหตุผล', 'warn'); return; }
+    const stu = (S.data.students || []).find((x) => x.id === payload.studentId);
+    if (bhMode === 'minus' && stu && stu.points <= 0) { toast(stu.name + ' มีคะแนน 0 อยู่แล้ว หักเพิ่มไม่ได้', 'warn'); return; }
     busy($('bhSubmitBtn'), async () => {
       const r = await api('saveBehavior', payload);
       (S.data.students || []).forEach((s) => { if (s.id === r.studentId) s.points = r.total; });
       S.data.behavior = [r.record].concat(S.data.behavior || []);
       saveBootCache(); renderBehaviorSelect(); renderTeacherBehavior();
-      toast(`⭐ +${th(payload.points)} คะแนนให้ ${r.studentName} (สะสม ${th(r.total)})`);
+      toast(r.points < 0 ? `หัก ${th(-r.points)} คะแนน ${r.studentName} (คงเหลือ ${th(r.total)})${r.capped ? ' · หักได้เท่าที่มี เพราะคะแนนต่ำสุดคือ 0' : ''}`
+        : `เพิ่ม ${th(r.points)} คะแนนให้ ${r.studentName} (สะสม ${th(r.total)})`, r.capped ? 'warn' : 'ok', r.capped ? 6000 : undefined);
       $('bhReason').value = '';
     });
   });
@@ -4634,7 +4889,7 @@
     return `<div class="record-card">
       <div class="record-head">
         <div class="record-title">${esc(b.studentName)}</div>
-        <span class="status-pill status-approved">+${th(b.points)} คะแนน</span>
+        <span class="status-pill ${b.points < 0 ? 'pill-minus' : 'status-approved'}">${b.points < 0 ? '−' + th(-b.points) : '+' + th(b.points)} คะแนน</span>
       </div>
       <div style="font-size:0.82rem;">${tesc(b.reason)}</div>
       <div class="record-meta">${thaiDateShort(b.date)}${b.teacher ? ' · ' + esc(b.teacher) : ''}</div>
@@ -4865,8 +5120,9 @@
 
     // สถิติ
     const beh = d.behavior || [], ym = today().slice(0, 7);
-    $('stMonth').textContent = '+' + th(beh.filter((b) => String(b.date).slice(0, 7) === ym).reduce((n, b) => n + b.points, 0));
-    $('stDeeds').textContent = th(beh.length);
+    const mNet = beh.filter((b) => String(b.date).slice(0, 7) === ym).reduce((n, b) => n + b.points, 0);
+    $('stMonth').textContent = (mNet < 0 ? '−' + th(-mNet) : '+' + th(mNet));
+    $('stDeeds').textContent = th(beh.filter((b) => b.points > 0).length);
     $('stPending').textContent = th((d.counsel || []).filter((c) => !c.reply).length);
 
     // เส้นทางแรงก์
@@ -4882,7 +5138,7 @@
 
     // ไทม์ไลน์
     $('studentBehaviorList').innerHTML = !beh.length ? emptyBox('ยังไม่มีประวัติคะแนนความประพฤติ ทำความดีต่อไปนะ') : beh.map((b) => `
-      <div class="tl-item"><div class="tl-pts">+${th(b.points)}</div>
+      <div class="tl-item${b.points < 0 ? ' minus' : ''}"><div class="tl-pts">${b.points < 0 ? '−' + th(-b.points) : '+' + th(b.points)}</div>
         <div><div class="tl-reason">${tesc(b.reason)}</div><div class="tl-meta">${thaiDate(b.date)}${b.teacher ? ' · ' + esc(b.teacher) : ''}</div></div></div>`).join('');
 
     // คำปรึกษา
@@ -5201,14 +5457,145 @@
     const days = S.data.settings.HOMEROOM_DAYS || [];
     document.querySelectorAll('#daySelectorGrid .day-pill').forEach((p) => p.classList.toggle('active', days.includes(p.dataset.day)));
     $('schedTime').value = S.data.settings.HOMEROOM_TIME || '08:30';
+    $('schedBackdate').value = String(S.data.settings.BACKDATE_DAYS || 0);
   }
   document.querySelectorAll('#daySelectorGrid .day-pill').forEach((p) => p.addEventListener('click', () => p.classList.toggle('active')));
   $('btnSaveSchedule').addEventListener('click', () => busy($('btnSaveSchedule'), async () => {
     const days = Array.from(document.querySelectorAll('#daySelectorGrid .day-pill.active')).map((p) => p.dataset.day);
-    const r = await api('saveSchedule', { days, time: $('schedTime').value });
-    toast(`💾 บันทึกวันโฮมรูม: ${r.days.join(', ') || '-'} เวลา ${th(r.time)} น.`);
+    const r = await api('saveSchedule', { days, time: $('schedTime').value, backdate: $('schedBackdate').value });
+    S.data.settings.BACKDATE_DAYS = r.backdate;
+    toast(`บันทึกวันโฮมรูม: ${r.days.join(', ') || '-'} เวลา ${th(r.time)} น. · ย้อนหลัง${r.backdate ? 'ได้ไม่เกิน ' + r.backdate + ' วันเรียน' : 'ได้ไม่จำกัด'}`);
     // ข้อมูลใหม่มากับคำตอบของเซิร์ฟเวอร์แล้ว (ไม่ต้องโหลดซ้ำ)
   }));
+
+  // ---------------- คะแนนพฤติกรรมนักเรียน (Admin) ----------------
+  const PT = { data: null, at: 0, grade: 'all', limit: 60 };
+  async function loadRanking(force) {
+    if (!S.user || S.user.role !== 'admin') return;
+    if (!force && PT.data && Date.now() - PT.at < 120000) { renderRanking(); return; }
+    if (!PT.data) $('ptList').innerHTML = '<div class="pt-loading">กำลังโหลดคะแนน…</div>';
+    try {
+      const r = await api('behaviorRanking');
+      r.students.forEach((s) => { const info = getRankInfo(s.points, s.glory); s.rk = info.idx; });
+      PT.data = r; PT.at = Date.now();
+      renderRanking();
+    } catch (e) { if (e.code !== 'SESSION_EXPIRED') toast(e.message, 'err'); }
+  }
+  function ptGradeOf(room) { return (String(room).match(/ม\.\s*\d+/) || [''])[0]; }
+  function ptRanked(list) { // อันดับร่วม (คะแนนเท่ากันได้อันดับเดียวกัน)
+    const sorted = list.slice().sort((a, b) => b.points - a.points);
+    const pos = {}; let prev = null, rank = 0;
+    sorted.forEach((s, i) => { if (s.points !== prev) { rank = i + 1; prev = s.points; } pos[s.id] = rank; });
+    return pos;
+  }
+  function ptFiltered() {
+    const d = PT.data; if (!d) return [];
+    const q = $('ptSearch').value.trim().toLowerCase(), room = $('ptRoom').value;
+    let list = d.students.filter((s) => (PT.grade === 'all' || ptGradeOf(s.room) === PT.grade) && (!room || s.room === room)
+      && (!q || s.name.toLowerCase().includes(q) || String(s.id).includes(q)));
+    const k = $('ptSort').value;
+    const cmp = { desc: (a, b) => b.points - a.points || b.plus - a.plus, asc: (a, b) => a.points - b.points || b.minus - a.minus,
+      plus: (a, b) => b.plus - a.plus, minus: (a, b) => b.minus - a.minus,
+      name: (a, b) => roomSortKey(a.room) - roomSortKey(b.room) || String(a.id).localeCompare(String(b.id)) }[k];
+    return list.sort(cmp);
+  }
+  function renderRanking() {
+    const d = PT.data; if (!d) return;
+    const all = d.students, pos = ptRanked(all);
+    $('ptStart').textContent = d.start;
+    // ตัวกรองชั้น/ห้อง
+    const grades = Array.from(new Set(all.map((s) => ptGradeOf(s.room)))).filter(Boolean).sort((a, b) => roomSortKey(a + '/0') - roomSortKey(b + '/0'));
+    $('ptGrades').innerHTML = ['all'].concat(grades).map((g) => `<button type="button" class="pt-g${PT.grade === g ? ' on' : ''}" data-pt-g="${esc(g)}">${g === 'all' ? 'ทั้งหมด' : esc(g)}</button>`).join('');
+    const rooms = Array.from(new Set(all.filter((s) => PT.grade === 'all' || ptGradeOf(s.room) === PT.grade).map((s) => s.room))).sort((a, b) => roomSortKey(a) - roomSortKey(b));
+    const keepRoom = $('ptRoom').value;
+    $('ptRoom').innerHTML = '<option value="">ทุกห้อง</option>' + rooms.map((r) => `<option value="${esc(r)}">${esc(r)}</option>`).join('');
+    if (rooms.includes(keepRoom)) $('ptRoom').value = keepRoom;
+    // ภาพรวม (ตามตัวกรองชั้น/ห้อง)
+    const scope = ptFiltered();
+    const n = scope.length, avg = n ? scope.reduce((t, s) => t + s.points, 0) / n : 0;
+    const full = scope.filter((s) => s.points >= 100).length, low = scope.filter((s) => s.points < d.start).length;
+    const plusSum = scope.reduce((t, s) => t + s.plus, 0), minusSum = scope.reduce((t, s) => t + s.minus, 0);
+    $('ptKpis').innerHTML = `
+      <div class="pt-kpi"><small>นักเรียน</small><b>${n}</b><span>รูป</span></div>
+      <div class="pt-kpi"><small>คะแนนเฉลี่ย</small><b>${avg.toFixed(1)}</b><span>คะแนน</span></div>
+      <div class="pt-kpi good"><small>ได้คะแนนเต็ม 100</small><b>${full}</b><span>รูป</span></div>
+      <div class="pt-kpi warn"><small>ต่ำกว่าคะแนนเริ่มต้น</small><b>${low}</b><span>รูป · ควรติดตาม</span></div>
+      <div class="pt-kpi plus"><small>คะแนนที่ให้เพิ่มรวม</small><b>+${plusSum}</b><span>คะแนน</span></div>
+      <div class="pt-kpi minus"><small>คะแนนที่หักรวม</small><b>−${minusSum}</b><span>คะแนน</span></div>`;
+    // โพเดียม 3 อันดับแรก (ตามตัวกรอง)
+    const top = scope.slice().sort((a, b) => b.points - a.points || b.plus - a.plus).slice(0, 3);
+    const order = [1, 0, 2].filter((i) => top[i]);
+    $('ptPodium').innerHTML = top.length ? order.map((i) => { const s = top[i], rk = RANKS[s.rk];
+      return `<button type="button" class="pt-pod p${i + 1}" data-pt-id="${esc(s.id)}">
+        <span class="pp-emb">${rankThumb(rk)}</span><span class="pp-no">${i + 1}</span>
+        <span class="pp-name">${esc(s.name)}</span><span class="pp-room">${esc(s.room)}</span><span class="pp-pts">${s.points}</span></button>`; }).join('') : '';
+    // แรงก์
+    const cnt = RANKS.map(() => 0); scope.forEach((s) => cnt[s.rk]++);
+    const mx = Math.max(1, ...cnt);
+    $('ptDist').innerHTML = RANKS.map((rk, i) => `<div class="pt-dist"><span class="pd-emb">${rankThumb(rk)}</span><span class="pd-name">${esc(rk.name)}</span>
+      <span class="pd-bar"><i style="width:${cnt[i] / mx * 100}%; background:${rk.glow}"></i></span><b>${cnt[i]}</b></div>`).join('');
+    // ห้องเรียน
+    const byRoom = {}; all.forEach((s) => { const r = byRoom[s.room] || (byRoom[s.room] = { n: 0, sum: 0, minus: 0 }); r.n++; r.sum += s.points; r.minus += s.minus; });
+    const rr = Object.keys(byRoom).map((k) => ({ room: k, avg: byRoom[k].sum / byRoom[k].n, n: byRoom[k].n, minus: byRoom[k].minus })).sort((a, b) => b.avg - a.avg);
+    const rmax = Math.max(1, ...rr.map((r) => r.avg));
+    $('ptRooms').innerHTML = rr.map((r, i) => `<div class="pt-rrow"><span class="pr-no">${i + 1}</span><span class="pr-room">${esc(r.room)}</span>
+      <span class="pd-bar"><i style="width:${r.avg / rmax * 100}%"></i></span><b>${r.avg.toFixed(1)}</b><small>${r.n} รูป${r.minus ? ' · หัก ' + r.minus : ''}</small></div>`).join('');
+    // รายชื่อ
+    $('ptCount').textContent = `แสดง ${Math.min(PT.limit, n)} จาก ${n} รูป`;
+    $('ptList').innerHTML = !n ? emptyBox('ไม่พบนักเรียนตามเงื่อนไข') : scope.slice(0, PT.limit).map((s) => {
+      const rk = RANKS[s.rk];
+      return `<button type="button" class="pt-row" data-pt-id="${esc(s.id)}">
+        <span class="pt-no${pos[s.id] <= 3 ? ' top' : ''}">${pos[s.id]}</span>
+        <span class="pt-emb">${rankThumb(rk)}</span>
+        <span class="pt-who"><b>${esc(s.name)}</b><small>${esc(s.room)} · ${esc(rk.name)}${s.n ? '' : ' · ยังไม่มีรายการ'}</small>
+          <span class="pt-bar"><i style="width:${Math.min(100, s.points)}%; background:${rk.glow}"></i></span></span>
+        <span class="pt-score"><b class="${s.points < d.start ? 'low' : ''}">${s.points}</b><small><em class="p">+${s.plus}</em> <em class="m">−${s.minus}</em></small></span>
+      </button>`; }).join('');
+    $('ptMore').hidden = n <= PT.limit;
+  }
+  $('ptGrades').addEventListener('click', (e) => { const b = e.target.closest('[data-pt-g]'); if (!b) return; PT.grade = b.dataset.ptG; PT.limit = 60; $('ptRoom').value = ''; renderRanking(); });
+  ['ptRoom', 'ptSort'].forEach((id) => $(id).addEventListener('change', () => { PT.limit = 60; renderRanking(); }));
+  let ptT = 0; $('ptSearch').addEventListener('input', () => { clearTimeout(ptT); ptT = setTimeout(() => { PT.limit = 60; renderRanking(); }, 200); });
+  $('ptMore').addEventListener('click', () => { PT.limit += 100; renderRanking(); });
+  document.addEventListener('click', async (e) => {
+    if (e.target.closest('[data-pt-close]')) { $('ptModal').hidden = true; return; }
+    const b = e.target.closest('#view-points [data-pt-id]'); if (!b || !PT.data) return;
+    const s = PT.data.students.find((x) => x.id === b.dataset.ptId); if (!s) return;
+    const rk = RANKS[s.rk];
+    $('ptmHead').innerHTML = `<span class="pt-emb">${rankThumb(rk)}</span><span><b id="ptmName">${esc(s.name)}</b><small>${esc(s.room)} · รหัส ${esc(s.id)} · ${esc(rk.name)}</small></span><span class="ptm-pts">${s.points}<small>คะแนน</small></span>`;
+    $('ptmBody').innerHTML = `<div class="ptm-sum"><span class="p">เพิ่มรวม +${s.plus}</span><span class="m">หักรวม −${s.minus}</span><span>${s.n} รายการ</span></div><div class="pt-loading">กำลังโหลดประวัติ…</div>`;
+    $('ptModal').hidden = false;
+    try {
+      const r = await api('studentBehavior', { id: s.id });
+      $('ptmBody').querySelector('.pt-loading').outerHTML = !r.records.length ? emptyBox('ยังไม่มีประวัติ') : r.records.map((x) => `
+        <div class="ptm-item ${x.points < 0 ? 'm' : 'p'}"><span class="ptm-v">${x.points < 0 ? '−' + (-x.points) : '+' + x.points}</span>
+          <span><b>${esc(x.reason)}</b><small>${thaiDateShort(x.date)}${x.teacher ? ' · ' + esc(x.teacher) : ''}</small></span></div>`).join('');
+    } catch (err) { toast(err.message, 'err'); }
+  });
+  function ptRowsForExport() {
+    const d = PT.data, pos = ptRanked(d.students);
+    return ptFiltered().map((s) => [pos[s.id], s.id, s.name, s.room, s.points, s.plus, s.minus, s.n, RANKS[s.rk].name, s.last ? thaiDateShort(s.last) : '-']);
+  }
+  const PT_HEAD = ['อันดับ', 'รหัสนักเรียน', 'ชื่อ-สกุล', 'ห้อง', 'คะแนนรวม', 'คะแนนเพิ่ม', 'คะแนนหัก', 'จำนวนรายการ', 'แรงก์', 'ล่าสุด'];
+  $('ptCsv').addEventListener('click', () => {
+    if (!PT.data) return;
+    const csv = '﻿' + [PT_HEAD].concat(ptRowsForExport()).map((r) => r.map((v) => '"' + String(v).replace(/"/g, '""') + '"').join(',')).join('\r\n');
+    const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([csv], { type: 'text/csv;charset=utf-8' }));
+    a.download = 'คะแนนพฤติกรรม_' + today() + '.csv'; document.body.appendChild(a); a.click(); a.remove();
+  });
+  $('ptPrint').addEventListener('click', () => {
+    if (!PT.data) return;
+    const w = window.open('', '_blank'); if (!w) { toast('เบราว์เซอร์บล็อกหน้าต่างพิมพ์', 'warn'); return; }
+    const filt = (PT.grade === 'all' ? 'ทุกชั้น' : PT.grade) + ($('ptRoom').value ? ' · ห้อง ' + $('ptRoom').value : '');
+    w.document.write(`<!doctype html><html lang="th"><head><meta charset="utf-8"><title>คะแนนพฤติกรรมนักเรียน</title>
+      <style>body{font-family:'Sarabun','TH Sarabun New',sans-serif;margin:16mm 12mm;color:#111}h1{font-size:18px;margin:0}p{margin:2px 0 10px;font-size:13px}
+      table{width:100%;border-collapse:collapse;font-size:12.5px}th,td{border:1px solid #999;padding:4px 6px}th{background:#e9eef7}td.n{text-align:center}</style></head><body>
+      <h1>คะแนนพฤติกรรมนักเรียน · ${esc((S.data.settings || {}).SCHOOL_NAME || '')}</h1><p>${esc(filt)} · ข้อมูล ณ ${thaiDate(today())}</p>
+      <table><thead><tr>${PT_HEAD.map((h) => `<th>${h}</th>`).join('')}</tr></thead><tbody>
+      ${ptRowsForExport().map((r) => `<tr>${r.map((v, i) => `<td class="${i === 2 ? '' : 'n'}">${esc(v)}</td>`).join('')}</tr>`).join('')}</tbody></table>
+      <script>window.onload=function(){window.print()}<\/script></body></html>`);
+    w.document.close();
+  });
 
   // ---------------- สถิติ/กราฟ (Admin) ----------------
   async function loadStats() {
@@ -5285,33 +5672,116 @@
     }).join('');
   }
 
+  function lineShareText() {
+    const st = S.stats; if (!st) return '';
+    const rooms = st.status.rooms.filter((r) => r.open !== false).sort((a, b) => roomSortKey(a.room) - roomSortKey(b.room)), withT = $('lineShareTeachers').checked;
+    const advOf = {}; (S.data.rooms || []).forEach((r) => { advOf[r.room] = [r.adv1, r.adv2].filter((x) => x && x !== '-').join(', '); });
+    const sent = rooms.filter((r) => r.sent).map((r) => r.room), unsent = rooms.filter((r) => !r.sent);
+    const d = st.status.date;
+    let t = `สรุปการบันทึกโฮมรูม วัน${dayName(d)}ที่ ${thaiDate(d)}\n`;
+    t += `บันทึกแล้ว ${sent.length}/${rooms.length} ห้อง\n`;
+    if (unsent.length) {
+      t += `\nยังไม่บันทึก ${unsent.length} ห้อง\n` + unsent.map((r) => '- ' + r.room + (withT && advOf[r.room] ? ' (' + advOf[r.room] + ')' : '')).join('\n');
+      t += '\n\nขอความกรุณาครูที่ปรึกษาบันทึกโฮมรูมด้วยครับ';
+    } else t += '\nบันทึกครบทุกห้องแล้ว ขอบคุณครูที่ปรึกษาทุกท่านครับ';
+    const sch = (S.data.settings || {}).SCHOOL_NAME; if (sch) t += '\n\n' + sch;
+    return t;
+  }
+  $('btnShareLine').addEventListener('click', () => {
+    const t = lineShareText(); if (!t) { toast('ยังไม่มีข้อมูลสถานะ กรุณารอสักครู่', 'warn'); return; }
+    window.open('https://line.me/R/share?text=' + encodeURIComponent(t), '_blank');
+  });
+  $('btnCopySummary').addEventListener('click', async () => {
+    const t = lineShareText(); if (!t) return;
+    try { await navigator.clipboard.writeText(t); toast('คัดลอกแล้ว นำไปวางในไลน์ได้เลย'); }
+    catch (e) { prompt('คัดลอกข้อความนี้', t); }
+  });
+  function roomSortKey(r) { const m = String(r).match(/(\d+)\s*\/\s*(\d+)/); return m ? (+m[1]) * 100 + (+m[2]) : 9999; }
   function renderLineStatus() {
     const st = S.stats; if (!st) return;
-    const rooms = st.status.rooms;
+    const all = st.status.rooms.slice().sort((a, b) => roomSortKey(a.room) - roomSortKey(b.room));
+    const rooms = all.filter((r) => r.open !== false);
     const sent = rooms.filter((r) => r.sent).map((r) => r.room), unsent = rooms.filter((r) => !r.sent).map((r) => r.room);
+    const closed = all.length - rooms.length;
     $('lineDateBadge').textContent = 'วันที่ ' + thaiDateShort(st.status.date);
     $('lineSummaryText').innerHTML = `
-      <div>✅ <strong>ส่งแล้ว (${th(sent.length)}/${th(rooms.length)} ห้อง):</strong> ${sent.length ? th(sent.join(', ')) : '-'}</div>
-      <div style="margin-top:4px;">❌ <strong>ยังไม่ได้ส่ง (${th(unsent.length)}/${th(rooms.length)} ห้อง):</strong> ${unsent.length ? th(unsent.join(', ')) : 'ส่งครบทุกห้องแล้ว 🎉'}</div>`;
-    $('lineRoomsGrid').innerHTML = rooms.map((r) => `<div class="room-chip ${r.sent ? 'sent' : 'unsent'}">${r.sent ? '✅' : '❌'} ${th(r.room)}</div>`).join('');
+      <div><strong>บันทึกแล้ว ${th(sent.length)}/${th(rooms.length)} ห้อง:</strong> ${sent.length ? th(sent.join(', ')) : '-'}</div>
+      <div style="margin-top:4px;"><strong>ยังไม่บันทึก ${th(unsent.length)}/${th(rooms.length)} ห้อง:</strong> ${unsent.length ? th(unsent.join(', ')) : 'ครบทุกห้อง'}</div>
+      ${closed ? `<div style="margin-top:4px; color:#6b7a90;">ปิดห้อง ${th(closed)} ห้อง (ไม่นับ)</div>` : ''}`;
+    const grades = {};
+    all.forEach((r) => { const g = (String(r.room).match(/ม\.\s*\d+/) || [r.room])[0]; (grades[g] = grades[g] || []).push(r); });
+    const edit = $('roomEditMode').checked;
+    $('lineRoomsGrid').classList.toggle('editing', edit);
+    $('lineRoomsGrid').innerHTML = Object.keys(grades).map((g) => `
+      <div class="rs-row"><span class="rs-g">${esc(g)}</span><div class="rs-cells">${grades[g].map((r) => {
+        const cls = r.open === false ? 'off' : r.sent ? 'ok' : 'no';
+        const lbl = r.open === false ? 'ปิดห้อง' : r.sent ? 'บันทึกแล้ว' : 'ยังไม่บันทึก';
+        return `<button type="button" class="rs-cell ${cls}" data-room="${esc(r.room)}" data-open="${r.open !== false}" ${edit ? '' : 'tabindex="-1"'}>
+          <b>${esc(String(r.room).replace(/^ม\.\s*\d+/, ''))}</b><small>${edit ? (r.open === false ? 'แตะเพื่อเปิด' : 'แตะเพื่อปิด') : lbl}</small></button>`;
+      }).join('')}</div></div>`).join('');
   }
+  $('roomEditMode').addEventListener('change', renderLineStatus);
+  $('lineRoomsGrid').addEventListener('click', (e) => {
+    const c = e.target.closest('.rs-cell'); if (!c || !$('roomEditMode').checked) return;
+    const open = c.dataset.open !== 'true';
+    if (!confirm((open ? 'เปิด' : 'ปิด') + 'ห้อง ' + c.dataset.room + ' ?' + (open ? '' : '\nห้องที่ปิดจะไม่นับในสถานะ/รายงาน และครูห้องนั้นเข้าระบบไม่ได้'))) return;
+    busy(c, async () => {
+      await api('setRoomOpen', { room: c.dataset.room, open });
+      S.statsCache = {}; await loadStats();
+      toast((open ? 'เปิด' : 'ปิด') + 'ห้อง ' + c.dataset.room + ' แล้ว');
+    });
+  });
+
 
   // ---------------- LINE ----------------
   function renderLineConfig() {
     const l = S.data.line || {};
-    $('lineHour').innerHTML = Array.from({ length: 24 }, (_, h) => `<option value="${h}">${th(String(h).padStart(2, '0'))}:00 น.</option>`).join('');
+    $('lineHour').innerHTML = Array.from({ length: 24 }, (_, h) => `<option value="${h}">${String(h).padStart(2, '0')}:00 น.</option>`).join('');
     $('lineHour').value = String(l.sendHour === undefined ? 20 : l.sendHour);
     $('lineEnabled').checked = !!l.enabled;
+    $('lineOnlyPending').checked = !!l.onlyPending;
+    $('lineWebhookUrl').textContent = CONFIG.API_URL;
+    const cands = l.candidates || [];
+    const groups = cands.filter((c) => c.type === 'group'), users = cands.filter((c) => c.type === 'user');
+    const cur = l.hasTo ? `<option value="">${esc((l.toType === 'group' ? 'กลุ่ม: ' : 'ผู้ใช้: ') + (l.toName || 'ตั้งค่าไว้แล้ว'))} (ปัจจุบัน)</option>` : '<option value="">— ยังไม่ได้เลือก —</option>';
+    $('lineToSel').innerHTML = cur + groups.map((c) => `<option value="${esc(c.id)}">กลุ่ม: ${esc(c.name)}</option>`).join('')
+      + users.map((c) => `<option value="${esc(c.id)}">ผู้ใช้: ${esc(c.name)}</option>`).join('');
+    $('lineAdminSel').innerHTML = `<option value="__keep">${l.adminName ? esc(l.adminName) + ' (ปัจจุบัน)' : '— ไม่ส่ง (ข้ามวันนั้น) —'}</option>`
+      + (l.adminName ? '<option value="">— ไม่ส่ง (ข้ามวันนั้น) —</option>' : '') + users.map((c) => `<option value="${esc(c.id)}">${esc(c.name)}</option>`).join('');
     const badge = $('lineConnectionStatusBadge');
-    if (l.enabled && l.hasToken && l.hasTo) { badge.textContent = '🟢 เปิดใช้งาน' + (l.triggerInstalled ? '' : ' (ยังไม่มีตัวตั้งเวลา)'); badge.className = 'status-pill status-approved'; }
-    else if (l.hasToken && l.hasTo) { badge.textContent = '⏸️ ตั้งค่าแล้ว แต่ยังปิดอยู่'; badge.className = 'status-pill status-pending'; }
-    else { badge.textContent = '⚠️ ยังไม่เปิดใช้งาน'; badge.className = 'status-pill status-pending'; }
+    if (l.enabled && l.hasToken && l.hasTo) { badge.textContent = 'เปิดใช้งาน' + (l.triggerInstalled ? '' : ' (ยังไม่มีตัวตั้งเวลา)'); badge.className = 'status-pill status-approved'; }
+    else if (l.hasToken && l.hasTo) { badge.textContent = 'ตั้งค่าแล้ว · ยังปิดอยู่'; badge.className = 'status-pill status-pending'; }
+    else if (l.hasToken) { badge.textContent = 'ยังไม่ได้เลือกกลุ่ม'; badge.className = 'status-pill status-pending'; }
+    else { badge.textContent = 'ยังไม่เปิดใช้งาน'; badge.className = 'status-pill status-pending'; }
+    $('lineGuide').open = !(l.hasToken && l.hasTo);
+    const q = $('lineQuota');
+    if (l.quota && l.quota.limit) {
+      const left = Math.max(0, l.quota.limit - l.quota.used), n = l.members || 0;
+      const times = n ? Math.floor(left / n) : null;
+      q.hidden = false;
+      q.innerHTML = `<div class="lq-bar"><i style="width:${Math.min(100, l.quota.used / l.quota.limit * 100)}%"></i></div>
+        <div>โควตาเดือนนี้ใช้ไป <b>${l.quota.used}</b> / ${l.quota.limit} ข้อความ${n ? ` · กลุ่มมี <b>${n}</b> คน (ส่ง 1 ครั้ง = ${n} ข้อความ) · ส่งเข้ากลุ่มได้อีกราว <b>${times}</b> ครั้ง` : ''}</div>
+        ${n && n * 22 > l.quota.limit ? `<div class="lq-warn">ส่งทุกวันเรียนจะใช้ราว ${n * 22} ข้อความ/เดือน เกินโควตาฟรี แนะนำติ๊ก “ส่งเฉพาะวันที่ยังมีห้องค้าง” และตั้งผู้รับสำรอง</div>` : ''}`;
+    } else if (l.quotaError) { q.hidden = false; q.innerHTML = `<div class="lq-warn">ตรวจโควตาไม่ได้: ${esc(l.quotaError)}</div>`; }
+    else q.hidden = true;
   }
+  $('btnCopyWebhook').addEventListener('click', async () => {
+    try { await navigator.clipboard.writeText(CONFIG.API_URL); toast('คัดลอก Webhook URL แล้ว'); } catch (e) { toast('คัดลอกไม่ได้ กรุณากดค้างที่ลิงก์เพื่อคัดลอก', 'warn'); }
+  });
+  $('btnLineRefresh').addEventListener('click', () => busy($('btnLineRefresh'), async () => {
+    const r = await api('lineRefresh'); S.data.line = r.line; renderLineConfig();
+    const n = (r.line.candidates || []).length;
+    toast(n ? 'พบกลุ่ม/ผู้ใช้ ' + n + ' รายการ เลือกได้ในช่อง “ส่งเข้า”' : 'ยังไม่พบกลุ่ม · เชิญบัญชีโรงเรียนเข้ากลุ่มแล้วพิมพ์ “สรุปโฮมรูม” ก่อน', n ? 'ok' : 'warn', 5000);
+  }));
   $('btnSaveLine').addEventListener('click', () => busy($('btnSaveLine'), async () => {
-    const r = await api('saveLineConfig', { token: $('lineToken').value.trim(), to: $('lineTo').value.trim(), sendHour: +$('lineHour').value, enabled: $('lineEnabled').checked });
+    const adm = $('lineAdminSel').value;
+    const payload = { token: $('lineToken').value.trim(), to: $('lineTo').value.trim() || $('lineToSel').value, sendHour: +$('lineHour').value,
+      enabled: $('lineEnabled').checked, onlyPending: $('lineOnlyPending').checked };
+    if (adm !== '__keep') payload.adminTo = adm;
+    const r = await api('saveLineConfig', payload);
     $('lineToken').value = ''; $('lineTo').value = '';
     S.data.line = r.line; renderLineConfig();
-    toast(r.message || '💾 บันทึกการตั้งค่า LINE แล้ว', r.message ? 'warn' : 'ok', 6000);
+    toast(r.message || 'บันทึกการตั้งค่า LINE แล้ว', r.message ? 'warn' : 'ok', 6000);
   }));
   function renderAiConfig() {
     const a = (S.data && S.data.ai) || {};
@@ -5425,6 +5895,7 @@
     try {
       await loadData();
       if (S.activeView === 'reports' || S.activeView === 'line-status') await loadStats();
+      if (S.activeView === 'points') await loadRanking(true);
     } catch (e) { if (e.code !== 'SESSION_EXPIRED') toast('รีเฟรชข้อมูลไม่สำเร็จ: ' + e.message, 'err'); }
   }
   $('refreshTimer').addEventListener('click', () => { manualRefresh(); toast('กำลังรีเฟรชข้อมูล...'); });
